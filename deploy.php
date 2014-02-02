@@ -9,9 +9,9 @@
  
 	// The commands
 	$commands = array(
-		'git checkout .',
+		'git fetch --all',
+		'git reset --hard origin/master',
 		'whoami',
-		'git status',
 	);
  
 	// Run the commands for output
