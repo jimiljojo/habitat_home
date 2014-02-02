@@ -1,19 +1,13 @@
 <?php
-
-	// TITLE: Account Account View
-	// FILE: account/view/account.php
-	// AUTHOR: AUTOGEN
-
-
+	/* index View for Account section */
 ?>
-<h2>account/view/account.php</h2>
+<h4>Your Account</h4>
 <hr>
-<ul>
-	<li>search</li>
-	<li>create</li>
-	<li>read</li>
-	<li>update</li>
-	<li>delete</li>
-	<li>list</li>
-</ul>
-<hr>
+<dl>
+    <dt>Personal Info</dt>
+    <dd>Edit/View your personal info in your Habitat account</dd>
+    <dt>Preferences</dt>
+    <dd>Edit the preferences of your Habitat Account</dd>
+    <dt>Status</dt>
+    <dd>View the status of your Habitat account. Account may be deactivated here.</dd>
+</dl>
