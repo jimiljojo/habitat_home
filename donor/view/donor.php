@@ -1,19 +1,11 @@
 <?php
-
-	// TITLE: Donor Donor View
-	// FILE: donor/view/donor.php
-	// AUTHOR: AUTOGEN
-
-
+    /* this files is the Donor section index View */
 ?>
-<h2>donor/view/donor.php</h2>
+<h4>Donor</h4>
 <hr>
-<ul>
-	<li>search</li>
-	<li>create</li>
-	<li>read</li>
-	<li>update</li>
-	<li>delete</li>
-	<li>list</li>
-</ul>
-<hr>
+<dl>
+    <dt>Info</dt>
+        <dd>View donor information</dd>
+    <dt>Donation History</dt>
+        <dd>Shows amount donated by donor</dd>
+</dl>

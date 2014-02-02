@@ -6,14 +6,16 @@
 
 
 ?>
-<h2>admin/view/admin.php</h2>
+<h4>Administration</h4>
 <hr>
-<ul>
-	<li>search</li>
-	<li>create</li>
-	<li>read</li>
-	<li>update</li>
-	<li>delete</li>
-	<li>list</li>
-</ul>
+<dl>
+    <dt>Authorization </dt>
+	<dd>This is where items are located that an Administrator must authorize. </dd>
+    <dt>System Alerts </dt>
+	<dd>This is where the administrator will see alerts about pledges, delinquent mortgages, security notices, etc. </dd>
+    <dt>Content Management</dt>
+	<dd>This is where you can change the content on the Habitat web-site, not the HOME system.</dd>
+    <!--<dt>Reports/Messaging</dt>
+	<dd>This is where you can run reports on donors and homeowners and send a message to them.</dd>-->
+</dl>
 <hr>
