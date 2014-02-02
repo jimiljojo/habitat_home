@@ -6,8 +6,33 @@
 
 
 ?>
-<h2>account/view/prefs.php</h2>
+<?php
+    /* this files is the Donor section index View */
+    global $dir;
+    global $sub;
+    global $act;
+    global $msg;
+    
+?>
+<h4>Preferences</h4>
+
 <hr>
-<ul>
-</ul>
+<dl>
+    <dt>Receive Mail</dt>
+	<dd><input type="radio" name="mail"id="yes" checked><label>Yes</label></dd>
+	<dd><input type="radio" name="mail"id="no"><label>No</label></dd>
+    <dt>Receive Email</dt>
+	<dd><input type="radio" name="email"id="yes" checked><label>Yes</label></dd>
+	<dd><input type="radio" name="email"id="no"><label>No</label></dd>
+    <dt>Phone Calls</dt>
+	<dd><input type="radio" name="home"id="yes"><label>Home</label></dd>
+	<dd><input type="radio" name="cell"id="no"><label>Cell</label></dd>
+	<dd><input type="radio" name="work"id="yes"><label>Work</label></dd>
+	<dd><input type="radio" name="none"id="no" checked><label>None</label></dd>  
+</dl>
+<button type="button">Update</button>
 <hr>
+<span class="note">
+    Update your contact preferences here.
+    Email may still be used if you forget your password and initiate an account recovery
+</span>
