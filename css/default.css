@@ -1,0 +1,35 @@
+body {
+	font-family: arial;
+	margin: 0px;
+}
+
+h1, h2, h3 {
+	background-color: black;
+	color: white;
+	margin: 0px;
+	padding: 0 10px;
+}
+
+a {text-decoration: none;}
+
+/* ----- */
+
+#body {margin-top: 20px;}
+
+#mainNav, #content {
+	display: inline;
+	float: left;
+}
+
+#mainNav {width: 200px;}
+
+#content {width: 800px;}
+
+/* ----- */
+
+.logout {
+    color: white;
+    background-color: crimson;
+    border-radius: 10px;
+    padding: 0px 5px;
+}

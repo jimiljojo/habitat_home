@@ -1,0 +1,2608 @@
+<?php
+
+	// TITLE: Root Configuration
+	// FILE: root/config.php
+	// AUTHOR: AUTOGEN
+
+
+	DEFINE('APP_TITLE', 'Habitat', 'true');
+	DEFINE('DEFAULT_DIR', 'account', 'true');
+
+?>
+<?php
+
+	// TITLE: Account Account Model
+	// FILE: account/model/account.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Account Personal Info Model
+	// FILE: account/model/info.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Account Preferences Model
+	// FILE: account/model/prefs.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Account Account View
+	// FILE: account/view/account.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>account/view/account.php</h2>
+<hr>
+<ul>
+	<li>search</li>
+	<li>create</li>
+	<li>read</li>
+	<li>update</li>
+	<li>delete</li>
+	<li>list</li>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Account Personal Info View
+	// FILE: account/view/info.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>account/view/info.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Account Preferences View
+	// FILE: account/view/prefs.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>account/view/prefs.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Account Account Controller
+	// FILE: account/controller/account.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Account Personal Info Controller
+	// FILE: account/controller/info.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Account Preferences Controller
+	// FILE: account/controller/prefs.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Account Menu
+	// FILE: account/menu.php
+	// AUTHOR: AUTOGEN
+
+
+	$subLinks = array();
+
+	$subLinks[] = new Link('Personal Info','info');
+	$subLinks[] = new Link('Preferences','prefs');
+
+?>
+<?php
+
+	// TITLE: Account Section Styles
+	// FILE: account/style.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Account Section Scripts
+	// FILE: account/script.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Admin Admin Model
+	// FILE: admin/model/admin.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Admin Authrorization Model
+	// FILE: admin/model/auth.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Admin System Alerts Model
+	// FILE: admin/model/alerts.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Admin Reports Model
+	// FILE: admin/model/reports.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Admin Admin View
+	// FILE: admin/view/admin.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>admin/view/admin.php</h2>
+<hr>
+<ul>
+	<li>search</li>
+	<li>create</li>
+	<li>read</li>
+	<li>update</li>
+	<li>delete</li>
+	<li>list</li>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Admin Authrorization View
+	// FILE: admin/view/auth.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>admin/view/auth.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Admin System Alerts View
+	// FILE: admin/view/alerts.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>admin/view/alerts.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Admin Reports View
+	// FILE: admin/view/reports.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>admin/view/reports.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Admin Admin Controller
+	// FILE: admin/controller/admin.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Admin Authrorization Controller
+	// FILE: admin/controller/auth.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Admin System Alerts Controller
+	// FILE: admin/controller/alerts.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Admin Reports Controller
+	// FILE: admin/controller/reports.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Admin Menu
+	// FILE: admin/menu.php
+	// AUTHOR: AUTOGEN
+
+
+	$subLinks = array();
+
+	$subLinks[] = new Link('Authrorization','auth');
+	$subLinks[] = new Link('System Alerts','alerts');
+	$subLinks[] = new Link('Reports','reports');
+
+?>
+<?php
+
+	// TITLE: Admin Section Styles
+	// FILE: admin/style.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Admin Section Scripts
+	// FILE: admin/script.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Office Office Model
+	// FILE: office/model/office.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Accounts Model
+	// FILE: office/model/accounts.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Donations Model
+	// FILE: office/model/donations.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Donors Model
+	// FILE: office/model/donor.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Events Model
+	// FILE: office/model/event.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Friends of Habitat Model
+	// FILE: office/model/foh.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Home Owners Model
+	// FILE: office/model/homeowner.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Interests Model
+	// FILE: office/model/interests.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Organizations Model
+	// FILE: office/model/orgs.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Projects Model
+	// FILE: office/model/projects.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Schedules Model
+	// FILE: office/model/schedules.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Office Office View
+	// FILE: office/view/office.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/office.php</h2>
+<hr>
+<ul>
+	<li>search</li>
+	<li>create</li>
+	<li>read</li>
+	<li>update</li>
+	<li>delete</li>
+	<li>list</li>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Accounts View
+	// FILE: office/view/accounts.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/accounts.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Donations View
+	// FILE: office/view/donations.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/donations.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Donors View
+	// FILE: office/view/donor.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/donor.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Events View
+	// FILE: office/view/event.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/event.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Friends of Habitat View
+	// FILE: office/view/foh.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/foh.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Home Owners View
+	// FILE: office/view/homeowner.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/homeowner.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Interests View
+	// FILE: office/view/interests.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/interests.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Organizations View
+	// FILE: office/view/orgs.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/orgs.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Projects View
+	// FILE: office/view/projects.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/projects.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Schedules View
+	// FILE: office/view/schedules.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>office/view/schedules.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Office Office Controller
+	// FILE: office/controller/office.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Accounts Controller
+	// FILE: office/controller/accounts.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Donations Controller
+	// FILE: office/controller/donations.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Donors Controller
+	// FILE: office/controller/donor.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Events Controller
+	// FILE: office/controller/event.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Friends of Habitat Controller
+	// FILE: office/controller/foh.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Home Owners Controller
+	// FILE: office/controller/homeowner.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Interests Controller
+	// FILE: office/controller/interests.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Organizations Controller
+	// FILE: office/controller/orgs.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Projects Controller
+	// FILE: office/controller/projects.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Schedules Controller
+	// FILE: office/controller/schedules.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Office Menu
+	// FILE: office/menu.php
+	// AUTHOR: AUTOGEN
+
+
+	$subLinks = array();
+
+	$subLinks[] = new Link('Accounts','accounts');
+	$subLinks[] = new Link('Donations','donations');
+	$subLinks[] = new Link('Donors','donor');
+	$subLinks[] = new Link('Events','event');
+	$subLinks[] = new Link('Friends of Habitat','foh');
+	$subLinks[] = new Link('Home Owners','homeowner');
+	$subLinks[] = new Link('Interests','interests');
+	$subLinks[] = new Link('Organizations','orgs');
+	$subLinks[] = new Link('Projects','projects');
+	$subLinks[] = new Link('Schedules','schedules');
+
+?>
+<?php
+
+	// TITLE: Office Section Styles
+	// FILE: office/style.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Office Section Scripts
+	// FILE: office/script.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Donor Donor Model
+	// FILE: donor/model/donor.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Donor Information Model
+	// FILE: donor/model/info.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Donor Donations Model
+	// FILE: donor/model/donation.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Donor Donor View
+	// FILE: donor/view/donor.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>donor/view/donor.php</h2>
+<hr>
+<ul>
+	<li>search</li>
+	<li>create</li>
+	<li>read</li>
+	<li>update</li>
+	<li>delete</li>
+	<li>list</li>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Donor Information View
+	// FILE: donor/view/info.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>donor/view/info.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Donor Donations View
+	// FILE: donor/view/donation.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>donor/view/donation.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Donor Donor Controller
+	// FILE: donor/controller/donor.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Donor Information Controller
+	// FILE: donor/controller/info.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Donor Donations Controller
+	// FILE: donor/controller/donation.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Donor Menu
+	// FILE: donor/menu.php
+	// AUTHOR: AUTOGEN
+
+
+	$subLinks = array();
+
+	$subLinks[] = new Link('Information','info');
+	$subLinks[] = new Link('Donations','donation');
+
+?>
+<?php
+
+	// TITLE: Donor Section Styles
+	// FILE: donor/style.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Donor Section Scripts
+	// FILE: donor/script.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Home Owner Home Owner Model
+	// FILE: homeowner/model/homeowner.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Home Owner Information Model
+	// FILE: homeowner/model/info.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Home Owner Requirements Model
+	// FILE: homeowner/model/requirements.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Home Owner Sweat Equity Model
+	// FILE: homeowner/model/sweat.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Home Owner Mortgage Model
+	// FILE: homeowner/model/mortgage.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Home Owner Home Owner View
+	// FILE: homeowner/view/homeowner.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>homeowner/view/homeowner.php</h2>
+<hr>
+<ul>
+	<li>search</li>
+	<li>create</li>
+	<li>read</li>
+	<li>update</li>
+	<li>delete</li>
+	<li>list</li>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Home Owner Information View
+	// FILE: homeowner/view/info.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>homeowner/view/info.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Home Owner Requirements View
+	// FILE: homeowner/view/requirements.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>homeowner/view/requirements.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Home Owner Sweat Equity View
+	// FILE: homeowner/view/sweat.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>homeowner/view/sweat.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Home Owner Mortgage View
+	// FILE: homeowner/view/mortgage.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>homeowner/view/mortgage.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Home Owner Home Owner Controller
+	// FILE: homeowner/controller/homeowner.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Home Owner Information Controller
+	// FILE: homeowner/controller/info.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Home Owner Requirements Controller
+	// FILE: homeowner/controller/requirements.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Home Owner Sweat Equity Controller
+	// FILE: homeowner/controller/sweat.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Home Owner Mortgage Controller
+	// FILE: homeowner/controller/mortgage.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Home Owner Menu
+	// FILE: homeowner/menu.php
+	// AUTHOR: AUTOGEN
+
+
+	$subLinks = array();
+
+	$subLinks[] = new Link('Information','info');
+	$subLinks[] = new Link('Requirements','requirements');
+	$subLinks[] = new Link('Sweat Equity','sweat');
+	$subLinks[] = new Link('Mortgage','mortgage');
+
+?>
+<?php
+
+	// TITLE: Home Owner Section Styles
+	// FILE: homeowner/style.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Home Owner Section Scripts
+	// FILE: homeowner/script.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Volunteer Volunteer Model
+	// FILE: volunteer/model/volunteer.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Volunteer Availability Model
+	// FILE: volunteer/model/availability.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Volunteer Consent Model
+	// FILE: volunteer/model/consent.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Volunteer Interests Model
+	// FILE: volunteer/model/interests.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Volunteer Schedule Model
+	// FILE: volunteer/model/schedule.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Volunteer Work History Model
+	// FILE: volunteer/model/history.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Volunteer Volunteer View
+	// FILE: volunteer/view/volunteer.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>volunteer/view/volunteer.php</h2>
+<hr>
+<ul>
+	<li>search</li>
+	<li>create</li>
+	<li>read</li>
+	<li>update</li>
+	<li>delete</li>
+	<li>list</li>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Volunteer Availability View
+	// FILE: volunteer/view/availability.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>volunteer/view/availability.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Volunteer Consent View
+	// FILE: volunteer/view/consent.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>volunteer/view/consent.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Volunteer Interests View
+	// FILE: volunteer/view/interests.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>volunteer/view/interests.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Volunteer Schedule View
+	// FILE: volunteer/view/schedule.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>volunteer/view/schedule.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Volunteer Work History View
+	// FILE: volunteer/view/history.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>volunteer/view/history.php</h2>
+<hr>
+<ul>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Volunteer Volunteer Controller
+	// FILE: volunteer/controller/volunteer.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Volunteer Availability Controller
+	// FILE: volunteer/controller/availability.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Volunteer Consent Controller
+	// FILE: volunteer/controller/consent.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Volunteer Interests Controller
+	// FILE: volunteer/controller/interests.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Volunteer Schedule Controller
+	// FILE: volunteer/controller/schedule.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Volunteer Work History Controller
+	// FILE: volunteer/controller/history.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Volunteer Menu
+	// FILE: volunteer/menu.php
+	// AUTHOR: AUTOGEN
+
+
+	$subLinks = array();
+
+	$subLinks[] = new Link('Availability','availability');
+	$subLinks[] = new Link('Consent','consent');
+	$subLinks[] = new Link('Interests','interests');
+	$subLinks[] = new Link('Schedule','schedule');
+	$subLinks[] = new Link('Work History','history');
+
+?>
+<?php
+
+	// TITLE: Volunteer Section Styles
+	// FILE: volunteer/style.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Volunteer Section Scripts
+	// FILE: volunteer/script.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Home Home Model
+	// FILE: home/model/home.php
+	// AUTHOR: AUTOGEN
+
+
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
+
+?>
+<?php
+
+	// TITLE: Home Home View
+	// FILE: home/view/home.php
+	// AUTHOR: AUTOGEN
+
+
+?>
+<h2>home/view/home.php</h2>
+<hr>
+<ul>
+	<li>search</li>
+	<li>create</li>
+	<li>read</li>
+	<li>update</li>
+	<li>delete</li>
+	<li>list</li>
+</ul>
+<hr>
+<?php
+
+	// TITLE: Home Home Controller
+	// FILE: home/controller/home.php
+	// AUTHOR: AUTOGEN
+
+
+	switch ($act) {
+
+		case 'search':
+			// CODE HERE
+			break;
+
+		case 'create':
+			// CODE HERE
+			break;
+
+		case 'read':
+			// CODE HERE
+			break;
+
+		case 'update':
+			// CODE HERE
+			break;
+
+		case 'delete':
+			// CODE HERE
+			break;
+
+		case 'list':
+			// CODE HERE
+			break;
+
+		default:
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
+
+
+	}// end switch
+
+?>
+<?php
+
+	// TITLE: Home Section Styles
+	// FILE: home/style.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Home Section Scripts
+	// FILE: home/script.php
+	// AUTHOR: AUTOGEN
+
+
+
+	// VOID
+
+
+?>
+<?php
+
+	// TITLE: Root Menu
+	// FILE: root/menu.php
+	// AUTHOR: AUTOGEN
+
+
+	$subLinks = array();
+
+	$links[] = new Link('Account','account');
+	$links[] = new Link('Admin','admin');
+	$links[] = new Link('Office','office');
+	$links[] = new Link('Donor','donor');
+	$links[] = new Link('Home Owner','homeowner');
+	$links[] = new Link('Volunteer','volunteer');
+	$links[] = new Link('Home','home');
+
+?>
