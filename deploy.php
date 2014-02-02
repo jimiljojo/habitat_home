@@ -9,13 +9,9 @@
  
 	// The commands
 	$commands = array(
-		'echo $PWD',
+		'git checkout .',
 		'whoami',
-		'git pull',
 		'git status',
-		'git submodule sync',
-		'git submodule update',
-		'git submodule status',
 	);
  
 	// Run the commands for output
