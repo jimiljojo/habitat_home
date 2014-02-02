@@ -25,10 +25,10 @@
 	<dd><input type="radio" name="email"id="yes" checked><label>Yes</label></dd>
 	<dd><input type="radio" name="email"id="no"><label>No</label></dd>
     <dt>Phone Calls</dt>
-	<dd><input type="radio" name="home"id="yes"><label>Home</label></dd>
-	<dd><input type="radio" name="cell"id="no"><label>Cell</label></dd>
-	<dd><input type="radio" name="work"id="yes"><label>Work</label></dd>
-	<dd><input type="radio" name="none"id="no" checked><label>None</label></dd>  
+	<dd><input type="radio" name="phone"id="yes"><label>Home</label></dd>
+	<dd><input type="radio" name="phone"id="no"><label>Cell</label></dd>
+	<dd><input type="radio" name="phone"id="yes"><label>Work</label></dd>
+	<dd><input type="radio" name="phone"id="no" checked><label>None</label></dd>  
 </dl>
 <button type="button">Update</button>
 <hr>
