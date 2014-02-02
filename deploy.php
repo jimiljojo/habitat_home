@@ -9,8 +9,7 @@
  
 	// The commands
 	$commands = array(
-		'git fetch --all',
-		'git reset --hard origin/master',
+		'git pull',
 		'whoami',
 	);
  
