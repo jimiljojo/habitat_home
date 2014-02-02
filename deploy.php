@@ -9,7 +9,7 @@
  
 	// The commands
 	$commands = array(
-		'git pull',
+		'git checkout .',
 		'whoami',
 	);
  
@@ -36,7 +36,7 @@
  .  ____  .    ____________________________
  |/      \|   |                            |
 [| <span style="color: #FF0000;">&hearts;    &hearts;</span> |]  | Git Deployment Script v0.1 |
- |___==___|  /              &copy; oodavid 2012 |
+ |___==___|  /              &copy; habitat for humanity |
               |____________________________|
  
 <?php echo $output; ?>
