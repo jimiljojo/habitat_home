@@ -1,0 +1,37 @@
+th, td {padding: 0px 5px;}
+table td {vertical-align: top;}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+table th {
+	color: white;
+	background-color: blue;
+}
+
+table.intTable {width: 100%;}
+
+table.intTable td {
+	width: 33%;
+	padding: 5px 5px;
+}
+
+h4.show, h4.hide {
+	padding-left: 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	}
+
+h4.show + div {display: block;}
+h4.hide + div {display: none;}
+h4.show + div, h4.hide + div {
+    border: 1px solid black;
+}
+h4.show, h4.hide {
+    margin-bottom: 0px;
+    color: white;
+    background-color: black;
+    padding-left: 10px;
+}

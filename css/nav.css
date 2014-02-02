@@ -1,0 +1,27 @@
+/*
+	FILE: NAV Style File
+*/
+
+
+#mainNav ul, #subNav ul  {
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+
+/*#mainNav li {display: inline;}*/
+
+nav a {
+	text-decoration: none;
+	padding: 0 10px;
+	margin: 0 10px;
+}
+
+nav a:hover {background-color: lightgrey;}
+
+#mainNav a {color: blue;}
+#subNav a {color: green;}
+
+a.selected {font-weight: bold;}
+
+#subNav a {margin-left: 25px;}
