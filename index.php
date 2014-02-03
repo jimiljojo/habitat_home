@@ -48,6 +48,7 @@
 		<link rel="stylesheet" href="css/default.css" >
 		<link rel="stylesheet" href="css/nav.css" >
 		<link rel="stylesheet" href="css/color.css" >
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
 		<?php
 			// <link rel="stylesheet" href="css/nav.css" >
 			if (isset($styles)) {
