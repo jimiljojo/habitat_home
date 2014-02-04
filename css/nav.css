@@ -19,7 +19,7 @@ nav a {
 
 nav a:hover {background-color: lightgrey;}
 
-#mainNav a {color: blue;}
+/*#mainNav a {color: blue;}*/
 #subNav a {color: green;}
 
 a.selected {font-weight: bold;}
