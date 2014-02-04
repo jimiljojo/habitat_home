@@ -3,7 +3,7 @@ body {
 	margin: 0px;
 }
 
-h1, h2, h3 {
+h1, h3 {
 	background-color: black;
 	color: white;
 	margin: 0px;
@@ -23,7 +23,7 @@ a {text-decoration: none;}
 
 #mainNav {width: 200px;}
 
-#content {width: 800px;}
+#content {width: 1220px;}
 
 /* ----- */
 
