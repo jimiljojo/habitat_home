@@ -8,58 +8,58 @@
 ?>
 <nav id="mainNav">
 	<img style="margin-bottom: 15px;" src="img/habitat_logo2.jpg" alt="Habitat For Humanity Logo" />
-	<ul class="nav">
+	<ul class="nav nav-pills nav-stacked" style="max-width: 300px">
 <?php
 	$links = array('home', 'logout');
 	$thisSection = ($dir == 'home');
-	$selected = ($thisSection) ? 'class="active"' : '';
-	echo '<li ' .$selected . '><a href="index.php?dir=home">Home</a></li>';
+	$isactive = ($thisSection) ? 'class="active"' : '';
+	echo '<li ' .$isactive . '><a href="index.php?dir=home">Home</a></li>';
 
 	//echo '<li><a href="index.php?dir=home&sub=logout">Logout</a></li>';
 
 	$thisSection = ($dir == 'account');
-	$selected = ($thisSection) ? 'class="selected"' : '';
-	echo '<li ' .$selected . '><a href="index.php?dir=account" ' . $selected . '>Account</a></li>';
+	$isactive = ($thisSection) ? 'class="active"' : '';
+	echo '<li ' .$isactive . '><a href="index.php?dir=account" ' . $isactive . '>Account</a></li>';
 	if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
 
 //echo '<hr>';
 	
     if ($isAdmin) {
 	    $thisSection = ($dir == 'admin');
-	    $selected = ($thisSection) ? 'class="selected"' : '';
-	    echo '<li ' .$selected . '><a href="index.php?dir=admin"'. $selected . '>Admin</a></li>';
+	    $isactive = ($thisSection) ? 'class="active"' : '';
+	    echo '<li ' .$isactive . '><a href="index.php?dir=admin"'. $isactive . '>Admin</a></li>';
 	    if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
 	}// end if
 
     
     if ($isOffice) {
 		$thisSection = ($dir == 'office');
-		$selected = ($thisSection) ? 'class="selected"' : '';
-		echo '<li ' .$selected . '><a href="index.php?dir=office" ' . $selected . '>Office</a></li>';
+		$isactive = ($thisSection) ? 'class="active"' : '';
+		echo '<li ' .$isactive . '><a href="index.php?dir=office" ' . $isactive . '>Office</a></li>';
 		if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
     }// end if
 
     
 	if ($isDonor) {
 		$thisSection = ($dir == 'donor');
-		$selected = ($thisSection) ? 'class="selected"' : '';
-		echo '<li ' .$selected . '><a href="index.php?dir=donor" ' . $selected . '>Donor</a></li>';
+		$isactive = ($thisSection) ? 'class="active"' : '';
+		echo '<li ' .$isactive . '><a href="index.php?dir=donor" ' . $isactive . '>Donor</a></li>';
 		if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
     }// end if
 
 
     if ($isHomeowner) {
 		$thisSection = ($dir == 'homeowner');
-		$selected = ($thisSection) ? 'class="selected"' : '';
-		echo '<li ' .$selected . '><a href="index.php?dir=homeowner" ' . $selected . '>Homeowner</a></li>';
+		$isactive = ($thisSection) ? 'class="active"' : '';
+		echo '<li ' .$isactive . '><a href="index.php?dir=homeowner" ' . $isactive . '>Homeowner</a></li>';
 		if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
     }// end if
 
 
     if ($isVolunteer) {
 	    $thisSection = ($dir == 'volunteer');
-	    $selected = ($thisSection) ? 'class="selected"' : '';
-	    echo '<li ' .$selected . '><a href="index.php?dir=volunteer" ' . $selected . '>Volunteer</a></li>';
+	    $isactive = ($thisSection) ? 'class="active"' : '';
+	    echo '<li ' .$isactive . '><a href="index.php?dir=volunteer" ' . $isactive . '>Volunteer</a></li>';
 	    if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
 	}// end if
 	
