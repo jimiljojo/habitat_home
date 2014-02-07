@@ -72,9 +72,10 @@
 		<div id="page">
 			<header>
 				<h1><?php echo APP_TITLE; ?></h1>
-				<?php include 'root/nav.php'; ?>
+				
 			</header>
 			<div id="body">
+				<?php include 'root/nav.php'; ?>
 				<?php //if (file_exists($dir . '/menu.php')) {include 'root/subNav.php';} ?>
 				<div id="content">
 					<?php include $page; // view call ?>
