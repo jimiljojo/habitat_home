@@ -3,7 +3,7 @@
 	
 	*/
 	$class = 'flavor';
-	$values = array('id', 'title', 'groupId');
+	$values = array('name', 'title', 'groupId');
 	$tab = "\t";
 	$return = "\n";
 ?>
