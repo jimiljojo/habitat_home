@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <title></title>
+                <!--
+                <script src="js/FILENAME.js"></script>
+                <link rel="stylesheet" href="FILENAME.css" />
+                -->
+                <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu">    
+                <style>
+                        body {font-family: 'Ubuntu', sans-serif; text-align: center;}
+                        .bold {font-weight: bold;}
+                        .note {font-size: 10pt; color: grey;}
+                        .mandatory {color: crimson;}
+                        /*
+                        h4.show, h4.hide {width: 742px;}
+                        div {width: 750px;}
+                        */
+                        label {margin-left: 5px;}
+                        h4.show + div {display: block;}
+                        h4.hide + div {display: none;}
+                        h4.show + div, h4.hide + div {
+                                border: 1px solid black;
+                        }
+                        h4.show, h4.hide {
+                                margin-bottom: 0px;
+                                color: white;
+                                background-color: black;
+                                padding-left: 10px;
+                        }
+                        #page {width: 800px; text-align: left; margin: auto;}
+                </style>
+                <script>
+                        function swap(e) {
+                                if (e.className === "hide") {
+                                   e.className = "show";
+                                } else {
+                                   e.className = "hide";
+                                }// end if-else
+                        }// end function
+
+                        function showAll() {
+                                es = document.getElementsByTagName("h4");
+                                l = es.length;
+                                for (i = 0; i < l; i++) {
+                                   if(es[i].className === "hide") {swap(es[i]);}
+                                }// end for
+                        }
+
+                        function hideAll() {
+                                es = document.getElementsByTagName("h4");
+                                l = es.length;
+                                for (i = 0; i < l; i++) {
+                                   if(es[i].className === "show") {swap(es[i]);}
+                                }// end for
+                        }
+                </script>
+        </head>
+	<body>
+		<div id="page">
+		<h2>Committee Member/Volunteer Interest Application</h2>
+		For non-construction-related volunteer opportunities<br/>
+										
+		<br/>
+		<span class="bold">Contact Person</span> Charlotte Bader, 854-6168 extension 106, <a href="mailto:vc@yorkhabitat.org">vc@yorkhabitat.org</a><br/>
+		<br/>
+		<input name="name" /><label>Name</label><br/>
+		<input name="street" /><label>Street</label><br/>
+		<input name="" /><label>City</label><br/>
+		<input name="" /><label>State</label><br/>
+		<input name="" /><label>Zip</label><br/>
+		<input name="" /><label>Phone</label><br/>
+		<input name="" /><label>Email<span class="mandatory">*</span></label><br/>
+		<input name="" /><label>Employer</label><br/>
+		<input name="" /><label>Work Phone</label><br/>
+		<input name="" /><label>Title/Occupation</label><br/>
+		<input name="" /><label>Cell Phone</label><br/>
+		<span class="note"><span class="mandatory">*</span> Email address is essential in order to receive monthly updates and special invitations</span><br/>
+
+		<hr/>
+
+		<button onclick="showAll();">Show All</button>
+		<button onclick="hideAll();">Hide All</button>
+		
+		<input name="id" value="99" type="hidden">
+		
+		<h4 class="show" onclick="swap(this);">Commitee</h4>
+		<div><table class="intTable"><tbody><tr><td><input name="interest[]" value="25" type="checkbox"><label>Development/Sponorship</label></td><td><input name="interest[]" value="26" type="checkbox"><label>Building and Site Selection</label></td><td><input name="interest[]" value="27" type="checkbox"><label>Personnel/Human Resources</label></td></tr><tr><td><input name="interest[]" value="28" type="checkbox"><label>Faith Relations</label></td><td><input name="interest[]" value="29" type="checkbox"><label>Marketing/Special Events</label></td><td><input name="interest[]" value="30" type="checkbox"><label>Finance</label></td></tr><tr><td></td></tr></tbody></table></div>
+		<h4 class="show" onclick="swap(this);">Office</h4>
+		<div><table class="intTable"><tbody><tr><td><input name="interest[]" value="1" type="checkbox"><label>Office/Computer skills</label></td><td><input name="interest[]" value="2" type="checkbox"><label>Office/Filing, Maling, Copying</label></td><td><input name="interest[]" value="3" type="checkbox"><label>Making Phone Calls</label></td></tr><tr><td></td><td></td></tr></tbody></table></div>
+		<h4 class="show" onclick="swap(this);">Skilled</h4>
+		<div><table class="intTable"><tbody><tr><td><input name="interest[]" value="5" type="checkbox"><label>Architecture</label></td><td><input name="interest[]" value="6" type="checkbox"><label>Photography</label></td><td><input name="interest[]" value="7" type="checkbox"><label>I.T. Expertise</label></td></tr><tr><td><input name="interest[]" value="8" type="checkbox"><label>Networking/Development</label></td><td><input name="interest[]" value="9" type="checkbox"><label>Public Speaking</label></td><td><input name="interest[]" value="10" type="checkbox"><label>Finance/Budgeting with Families</label></td></tr><tr><td></td><td></td></tr></tbody></table></div>
+		<h4 class="show" onclick="swap(this);">Event Planning</h4>
+		<div><table class="intTable"><tbody><tr><td><input name="interest[]" value="15" type="checkbox"><label>Planning Youth Activities</label></td><td><input name="interest[]" value="16" type="checkbox"><label>Gala Planning</label></td><td><input name="interest[]" value="17" type="checkbox"><label>Special Event Planning</label></td></tr><tr><td></td><td></td></tr></tbody></table></div>
+		<h4 class="show" onclick="swap(this);">Management</h4>
+		<div><table class="intTable"><tbody><tr><td><input name="interest[]" value="12" type="checkbox"><label>Human Resources Expertise</label></td><td><input name="interest[]" value="13" type="checkbox"><label>Teaching/Leading Classes</label></td><td><input name="interest[]" value="14" type="checkbox"><label>Board Training/Recruitment</label></td></tr><tr><td></td><td></td><td></td></tr></tbody></table></div>
+		<h4 class="show" onclick="swap(this);">Communications</h4>
+		<div><table class="intTable"><tbody><tr><td><input name="interest[]" value="19" type="checkbox"><label>Work with Churches</label></td><td><input name="interest[]" value="20" type="checkbox"><label>Construction Site Host/Hostess</label></td><td><input name="interest[]" value="21" type="checkbox"><label>Mission Teams Host/Hostess</label></td></tr><tr><td><input name="interest[]" value="22" type="checkbox"><label>Partnering with Families</label></td><td><input name="interest[]" value="23" type="checkbox"><label>Grant Research</label></td><td><input name="interest[]" value="24" type="checkbox"><label>Writing Press Releases/Articles</label></td></tr><tr><td></td><td></td><td></td></tr></tbody></table></div>
+		<br/>
+		<br/>
+		<input type="checkbox" /> Other <input name="other" /><br/>
+		<br/>
+		
+		<hr/>
+		
+		<br/>
+		I have special talents/skills in the following areas</br>
+		<textarea name="other"></textarea><br/>
+		
+		</br>
+		I prefer to recieve York Habitat for Humanity mail<br/>
+		</br>
+		<input type="radio" name="recieve" value="none"><label>none</label>
+		<input type="radio" name="recieve" value="home"><label>home</label>
+		<input type="radio" name="recieve" value="work"><label>work</label><br/>
+		<br/>
+		I am available to volunteer in the <span class="note">(check all that apply)</span><br/>
+		<input type="checkbox" name="day" /><label>day</label><br/>
+		<input type="checkbox" name="eve" /><label>evening</label><br/>
+		<input type="checkbox" name="weekend" /><label>weekends</label><br/>
+		<br/>
+		<input type="checkbox" name="ofage" /><label>I am 16 years or older</label><br/>
+		<br/>
+		<input type="checkbox" name="okphoto" /><label>I understand a personal photograph may be used in appropriate newspapers and/or newsletters. <span class="note">(This will help to highlight your service to the community and our affiliate.)</span><label><br/>
+		<br/>
+		<input name="signature" /><label>Signature</label><br/>
+		<input name="date" /><label>Date</label><br/>
+		</div>
+	</body>
+</html>
