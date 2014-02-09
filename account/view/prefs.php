@@ -17,6 +17,7 @@
 <h4>Preferences</h4>
 
 <hr>
+<form action="index.php" method="post">
 <dl>
     <dt>Receive Mail</dt>
 	<dd><input type="radio" name="mail"id="yes" checked><label>Yes</label></dd>
@@ -31,8 +32,9 @@
 	<dd><input type="radio" name="phone"id="no" checked><label>None</label></dd>  
 </dl>
 <button type="button">Update</button>
+</form>
 <hr>
 <span class="note">
     Update your contact preferences here.
     Email may still be used if you forget your password and initiate an account recovery
-</span>
+</span> 
