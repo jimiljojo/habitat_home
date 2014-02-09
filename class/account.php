@@ -21,15 +21,18 @@ class Account
         private $jobTitle;
 
         // Account Preferences
-        private $preferenceOption1;
-        private $preferenceOption2;
-        private $preferenceOption3;
-        private $preference1;
-        private $preference2;
-        private $preference3;
-        private $preferenceCallUpdate;
-        private $preferenceMailUpdate;
-        private $preferenceEmailUpdate;
+		private $preferenceOption1="Yes";
+		private $preferenceOption2="No";
+		private $preferenceOption3;
+        private $mailYes=true;
+		private $mail_result;
+        private $emailYes=true;
+		private $emailresult;
+        private $home_calls;
+		private $cell_calls;
+		private $work_calls;
+		private $no_calls;
+		private $call_result;
 
 
 
@@ -70,7 +73,7 @@ class Account
 	public function setAccountWorkPhone($workPhone) {$this->workPhone = $workPhone;}
         public function setAccountJobTitle($jobTitle) {$this->jobTitle = $jobTitle;}
 
-        // Account Preferences functions
+      /*  // Account Preferences functions
         public function getPreferenceOption1() {return $this->preferenceOption1;}
         public function getPreferenceOption2() {return $this->preferenceOption2;}
         public function getPreferenceOption3() {return $this->preferenceOption3;}
@@ -94,6 +97,42 @@ class Account
         public function setPreferenceCall($preferenceCallUpdate){$this->preferenceCallUpdate = $preferenceCallUpdate;}
         public function setPreferenceMail($preferenceMailUpdate){$this->preferenceMailUpdate = $preferenceMailUpdate;}
         public function setPreferenceEmail($preferenceEmailUpdate){$this->preferenceEmailUpdate = $preferenceEmailUpdate;}
+*/
+
+		public function getPreferenceOption1() 
+		{
+		if($mailYes) 
+		mail_result=$preferenceOption1;
+		else
+		mail_result=$preferenceOption2;
+		return $this->mail_result;
+		}
+		public function setPreferenceOption1($mail_result) {$this->preferenceOption1 = $mail_result;}
+		
+		public function getPreferenceOption2()
+		{
+		if($emailYes)
+		email_result=$preferenceOption1;
+		else
+		email_result=$preferenceOption2;
+		return $this->email_result;
+		}
+		public function setPreferenceOption2($email_result) {$this->preferenceOption2 = $email_result;}
+		
+		public function getPreferenceOption3()
+		{
+		if($home_calls==true)
+		call_result="Home";
+		else if($cell_calls==true)
+		call_result="Cell";
+		else if($work_calls==true)
+		call_result="Work";
+		else
+		call_result="None";
+		return $this->call_result;
+		}
+		public function setPreferenceOption3($call_result) {$this->preferenceOption3 = $call_result;}
+		
 
 }// end class
 ?>
