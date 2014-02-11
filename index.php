@@ -1,6 +1,6 @@
 <?php
 
-	//----- TEMPORARY VALUESss
+	//----- TEMPORARY VALUES
 	
 	$isAdmin = true;
 	$isOffice = true;
