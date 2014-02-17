@@ -10,29 +10,29 @@ class Account
 	private $lName;
 	private $street1;
 	private $street2;
-        private $city;
-        private $state;
-        private $zip;
-        private $phone;
-        private $email;
-        private $ssn;
-        private $employer;
-        private $workPhone;
-        private $jobTitle;
-
-        // Account Preferences
-		private $preferenceOption1="Yes";
-		private $preferenceOption2="No";
-		private $preferenceOption3;
-        private $mailYes=true;
-		private $mail_result;
-        private $emailYes=true;
-		private $emailresult;
-        private $home_calls;
-		private $cell_calls;
-		private $work_calls;
-		private $no_calls;
-		private $call_result;
+    private $city;
+    private $state;
+    private $zip;
+    private $phone;
+    private $email;
+    private $ssn;
+    private $employer;
+    private $workPhone;
+    private $jobTitle;
+    private $cellPhone;
+    // Account Preferences
+	private $preferenceOption1="Yes";
+	private $preferenceOption2="No";
+	private $preferenceOption3;
+    private $mailYes=true;
+	private $mail_result;
+    private $emailYes=true;
+	private $emailresult;
+    private $home_calls;
+	private $cell_calls;
+	private $work_calls;
+	private $no_calls;
+	private $call_result;
 
 
 
