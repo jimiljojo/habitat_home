@@ -29,7 +29,8 @@
 		<input name="act" type="hidden" value="<?php echo $act;?>" >
 		<input name="fname" type="text" value="John"><label>First Name</label>*</span></label><br/>
 		<input name="lname" type="text" value="Doe"><label>Last Name</label>*</span></label><br/>
-		<input name="street" type="text" value="123 Main Street"><label>Street</label>*</span></label><br/>
+		<input name="street1" type="text" value="123 Main Street"><label>Street</label>*</span></label><br/>
+		<input name="street2" type="text" value="APT SUIT"><label>Apartment/suit</label></span></label><br/>
 		<input name="city" type="text" value="Anytown"><label>City</label>*</span></label><br/>
 		<input name="state" type="text" value="pa"><label>State</label>*</span></label><br/>
 		<input name="zip" type="text" value="12345"><label>Zip</label>*</span></label><br/>
