@@ -25,10 +25,9 @@
 <hr>
 <form  action="index.php" method="get">
     <input name="act" type="hidden" value="<?php echo $act;?>" >
-    I have special talents/skills in the following areas</br>
-    <textarea cols="40" rows="4" name="other"></textarea><br/>
+    
 
-    </br>
+    
     I prefer to receive York Habitat for Humanity mail<br/>
     </br>
     <input type="radio" name="receive" value="none" selected="selected"><label>none</label>
