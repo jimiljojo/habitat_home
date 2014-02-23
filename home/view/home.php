@@ -29,7 +29,7 @@
 <h3>Welcome John Doe</h3>
 <hr>
 <?php if ($isAdmin) { ?>
-<h4>Admin</h4>
+<h4>Admin :D</h4>
 <dl>
     <dt>Authorization Notices</dt>
 	<dd><a href="">Sweat-Equity (13)</a></dd>
