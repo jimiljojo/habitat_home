@@ -90,7 +90,7 @@ class DBIO {
 		
 	   private function getVolInts($vid) {
 		  global $con;
-		  $sql = 'SELECT interest_id FROM Interested_In WHERE volunteer_id = ' . $vid;
+		  $sql = 'SELECT Interest_interest_id FROM Volunteer_has_Interest WHERE Volunteer_Person_person_id= ' . $vid;
 		  $volIntIds = array();
 		  $ints = array();
 		  $this->open();
