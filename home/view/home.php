@@ -26,7 +26,7 @@
     
     .cItem dd {border: 1px solid #000;}
 </style>
-<h3>Welcome John Doe</h3>
+<h3>Welcome Jimil Doe</h3>
 <hr>
 <?php if ($isAdmin) { ?>
 <h4>Admin</h4>
