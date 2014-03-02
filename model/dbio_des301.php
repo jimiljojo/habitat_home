@@ -77,7 +77,7 @@ class DBIO {
 		
 	   private function getIntTypes() {
 		  global $con;
-		  $sql = 'SELECT type_id, title FROM interest_type';
+		  $sql = 'SELECT type_id, title FROM Interest_Type';
 		  $types = array();
 		  $this->open();		
 		  $results = mysql_query($sql, $con);
@@ -105,7 +105,7 @@ class DBIO {
 
 	   private function getAllInts() {
 		  global $con;
-		  $sql = 'SELECT interest_id, title, type_id FROM interest';
+		  $sql = 'SELECT interest_id, title, type_id FROM Interest';
 		  $ints = array();
 		  $this->open();
 		  $results = mysql_query($sql, $con);
