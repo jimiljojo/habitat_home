@@ -39,22 +39,6 @@
 		if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
     }// end if
 
-    
-	if ($isDonor) {
-		$thisSection = ($dir == 'donor');
-		$isactive = ($thisSection) ? 'class="active"' : '';
-		echo '<li ' .$isactive . '><a href="index.php?dir=donor" ' . $isactive . '>Donor</a></li>';
-		if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
-    }// end if
-
-
-    if ($isHomeowner) {
-		$thisSection = ($dir == 'homeowner');
-		$isactive = ($thisSection) ? 'class="active"' : '';
-		echo '<li ' .$isactive . '><a href="index.php?dir=homeowner" ' . $isactive . '>Homeowner</a></li>';
-		if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
-    }// end if
-
 
     if ($isVolunteer) {
 	    $thisSection = ($dir == 'volunteer');
