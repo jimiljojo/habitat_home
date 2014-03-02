@@ -4,8 +4,6 @@
 	
 	$isAdmin = true;
 	$isOffice = true;
-	$isDonor = true;
-	$isHomeowner = true;
 	$isVolunteer = true;
 
 	//----- SESSION
