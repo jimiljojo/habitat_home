@@ -1,13 +1,39 @@
 <?php
-	/* index View for Account section */
+    //File: admin/view/admin.php
+    //Author: Brandon Willis; bmw5285
 ?>
-<h4>Your Account</h4>
+<style>
+	dd.list
+		{
+		border-collapse:collapse;
+		border-bottom-style:dotted;
+		border-width: 1px;
+		border-color:lightgrey;
+		}
+	dd.list
+		{
+		padding:0px;
+		padding-left:60px;
+		}
+	dt.list
+		{
+		padding:5px;
+		padding-left:20px;
+		}
+	h4
+		{
+
+		}
+</style>
+
+<h4>Your Account</h4>       
 <hr>
+
 <dl>
-    <dt>Personal Info</dt>
-    <dd>Edit/View your personal info in your Habitat account</dd>
-    <dt>Preferences</dt>
-    <dd>Edit the preferences of your Habitat Account</dd>
-    <dt>Status</dt>
-    <dd>View the status of your Habitat account. Account may be deactivated here.</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=account&sub=info">Personal Information</a></dt>
+        <dd class="list">Edit/View your personal info in your Habitat account</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=account&sub=prefs">Preferences</a></dt>
+        <dd class="list">Edit the preferences of your Habitat Account</dd>
+    <!--<dt class="list">Status</dt>
+    <dd class="list">View the status of your Habitat account. Account may be deactivated here.</dd>-->
 </dl>

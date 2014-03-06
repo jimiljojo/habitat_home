@@ -30,14 +30,14 @@
 <hr>
 
 <dl>
-    <dt class="list"><a href="/habitat/index.php?dir=volunteer&sub=availability">Availability</a></dt>
+    <dt class="list"><a href="/habitat_home/index.php?dir=volunteer&sub=availability">Availability</a></dt>
 	<dd class="list">Shows a volunteer's availability</dd>
-    <dt class="list"><a href="/habitat/index.php?dir=volunteer&sub=consent">Consent</a></dt>
+    <dt class="list"><a href="/habitat_home/index.php?dir=volunteer&sub=consent">Consent</a></dt>
 	<dd class="list">Shows the consents the volunteer agreed to</dd>
-    <dt class="list"><a href="/habitat/index.php?dir=volunteer&sub=interests">Interests</a></dt>
+    <dt class="list"><a href="/habitat_home/index.php?dir=volunteer&sub=interests">Interests</a></dt>
 	<dd class="list">View and edit the volunteer work interests</dd>
-    <dt class="list"><a href="/habitat/index.php?dir=volunteer&sub=schedule">Schedule</a></dt>
+    <dt class="list"><a href="/habitat_home/index.php?dir=volunteer&sub=schedule">Schedule</a></dt>
 	<dd class="list">View and edit the volunteer schedule</dd>
-    <dt class="list"><a href="/habitat/index.php?dir=volunteer&sub=history">Work History</a></dt>
+    <dt class="list"><a href="/habitat_home/index.php?dir=volunteer&sub=history">Work History</a></dt>
 	<dd class="list">View and print a history of the volunteer hours and jobs worked</dd>
 </dl>
