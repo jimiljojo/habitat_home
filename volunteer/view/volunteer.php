@@ -1,6 +1,6 @@
 <?php
     //File: volunteer view
-	//Author: Brandon Willis; bmw5285
+    //Author: Brandon Willis; bmw5285
 ?>
 <style>
 	dd.list
