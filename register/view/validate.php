@@ -40,7 +40,14 @@
     $occupation = isset($_SESSION['occupation']) ? $_SESSION['occupation'] : 'null';
     $cellPhone = isset($_SESSION['cellPhone']) ? $_SESSION['cellPhone'] : 'null';
     
-    $interests = isset($_SESSION['interests']) ? $_SESSION['interests'] : 'null';
+    // $interests = isset($_SESSION['interests']) ? $_SESSION['interests'] : 'null';
+
+    $interests=isset($_SESSION['interest']) ? $_SESSION['interest'] : 'NotWorking';
+    $items = array();
+                foreach($interests as $username) {
+                $items[] = $username;
+                }
+    
     
     $receive = isset($_SESSION['receive']) ? $_SESSION['receive'] : 'null';
     $day = isset($_SESSION['day']) ? $_SESSION['day'] : 'null';
@@ -70,20 +77,21 @@
     echo 'employer: ' . $employer . '<br>';
     echo 'work phone: ' . $workPhone . '<br>';
     echo 'occupation: ' . $occupation . '<br>';
-    echo 'cell phone: ' . $cellPhone . '<br>';
+    echo 'cell phone: ' . $cellPhone . '<br><br><br>';
+
+    echo '<b>Interests:</b><br>';
+    foreach ($items as $i) {
+                echo $i.'<br>';
+                
+                }
+    
+    
     ?>
-    <dl>
-	<dt>Interests</dt>
-	<dd>Faith Relations</dd>
-	<dd>Making Phone Calls</dd>
-	<dd>I.T. Expertise</dd>
-	<dd>Special Event Planning</dd>
-	<dd>Teaching/Leading Classes</dd>
-	<dd>Mission Teams Host/Hostess</dd>
-    </dl>
+    
     
     
     <?php
+    echo '<br><br><b>Preferences:</b><br>';
     echo 'receive: ' . $receive . '<br>';
     echo 'day: ' . $day . '<br>';
     echo 'eve: ' . $eve . '<br>';

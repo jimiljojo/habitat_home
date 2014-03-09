@@ -66,9 +66,13 @@
 	
 	case 'getOther':
 	    session_start();
-	    $_SESSION['interests'] = isset($_GET['interest']) ? $_GET['interest'] : '';
-
-	    $progress = 3;
+	    $items = array();
+		foreach(($_GET['interest']) as $username) {
+ 		$items[] = $username;
+		}
+		$_SESSION['interest'] = ($items);
+	    
+		$progress = 3;
 	    $act = 'setPassword';
 	    include ('view/other.php');
 	    break;
