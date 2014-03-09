@@ -1,31 +1,55 @@
 <?php
     /* this files is the Office section index View */
 ?>
+
+<?php
+    //File: office/view/office.php
+    //Author: Brandon Willis; bmw5285
+?>
+<style>
+	dd.list
+		{
+		border-collapse:collapse;
+		border-bottom-style:dotted;
+		border-width: 1px;
+		border-color:lightgrey;
+		}
+	dd.list
+		{
+		padding:0px;
+		padding-left:60px;
+		}
+	dt.list
+		{
+		padding:5px;
+		padding-left:20px;
+		}
+	h4
+		{
+
+		}
+</style>
+
 <h4>Office Volunteer</h4>
 <hr>
+
 <dl>
-    <dt>Accounts</dt>
-	<dd>View and make changes to accounts</dd>
-    <dt>Donations</dt>
-	<dd>Find information on specific donations</dd>
-    <dt>Donor</dt>
-	<dd>Find donor information</dd>
-    <dt>Events</dt>
-	<dd>Find event information</dd>
-    <dt>Friends of Habitat</dt>
-	<dd>Find information on Friends of Habitat</dd>
-    <dt>Homeowners</dt>
-	<dd>Find information on homeowners</dd>
-    <dt>Interests</dt>
-	<dd>Find a list of interests for a volunteer</dd>
-    <dt>Organizations</dt>
-	<dd>Find information on Organizations</dd>
-    <dt>Pledges</dt>
-	<dd>Find pledge information</dd>
-    <dt>Projects</dt>
-	<dd>Find information on a project</dd>
-    <dt>Schedules</dt>
-	<dd>Find volunteer schedules</dd>
-    <dt>Volunteers</dt>
-	<dd>Find information on a volunteer</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=accounts">Accounts</a></dt>
+	<dd class="list">View and make changes to accounts</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=donations">Donations</a></dt>
+	<dd class="list">Find information on specific donations</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=event">Events</a></dt>
+	<dd class="list">Find event information</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=foh">Friends of Habitat</a></dt>
+	<dd class="list">Find information on Friends of habitat_home</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=interests">Interests</a></dt>
+	<dd class="list">Find a list of interests for a volunteer</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=orgs">Organizations</a></dt>
+	<dd class="list">Find information on Organizations</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=projects">Projects</a></dt>
+	<dd class="list">Find information on a project</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=schedules">Schedules</a></dt>
+	<dd class="list">Find volunteer schedules</dd>
+    <dt class="list">Volunteers</dt>
+	<dd class="list">Find information on a volunteer</dd>
 </dl>

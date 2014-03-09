@@ -1,13 +1,16 @@
 <?php
     //SCW5137
+	
     global $dir;
     global $sub;
     global $act;
     global $msg;
+    global $dbio;
     
     
 
-    $schedules = $dbio->getAllEvents();
+    $schedules = $dbio->getVolunteerEvents(2); //getAllEvents() //$personId hard set
+	
 
     //Code has been tested using a database
 ?>
@@ -16,6 +19,7 @@
         background: #cc0000;
         color: white;
         margin-top: 4px;
+				padding_bottom: 100px;
     }
     
     input.notSignedUp {
@@ -29,15 +33,26 @@
     {
         width: 160px;
         text-align: left;
-        height: 40px;
+		height: 50px;
     }
     
     th
     {
         text-align: left;
+		height: 250px;
+		vertical-align:top;
     }
+	
+	h4.other
+	{
+	border-bottom-style: dotted;
+	padding-bottom: 20px;
+	border-width:1px;
+	border-color:lightgrey;
+	}
+	
     table.VolSchedule{
-        width: 750px;
+        width: 55em;
     }
     
     table.VolSchedule tr:nth-child(2n+3) td {background-color: lavender;}
@@ -74,7 +89,7 @@ foreach($schedules as $schedule) {
  ?>
     </table>
 
-    <h4>Other Events</h4>
+    <h4 class='other'>Other Events</h4>
     <table class="VolSchedule">
     <tr><th>Status</th><th>Event Name</th><th>Event Date</th><th>Event Time</th><th>Event Location</th><th>Event Type</th></tr>
 
