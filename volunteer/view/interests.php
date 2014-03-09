@@ -2,6 +2,7 @@
 
     // FILE: Volunteer Interest View
     // AUTHOR: des301
+	// Modified by: bmw5285 //very slightly
 
     global $dir;
     global $sub;
@@ -15,6 +16,7 @@
     //global $interests;
     $interestTypes = $dbio->getInterestTypes();
     $interests = $dbio->getVolunteerInterests($personId);
+
 
 ?>
     <h4>Your Volunteer Interests</h4>
