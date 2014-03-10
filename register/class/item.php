@@ -10,10 +10,7 @@
 
 	// CONSTRUCTOR //
 
-	public function __construct($id, $title) {
-	    if (isset($id)) $this->id = $id;
-	    if (isset($title)) $this->title = $title;
-	}
+	public function __construct() {}
 
 
 	// METHODS //

@@ -56,71 +56,24 @@ class DBIO {
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 		
-	   public function getAllInterests() {
-		  $interests = $this->getAllInts();
-		  return $interests;
-	   }
-
-	   public function getInterestTypes() {
-		  $types = $this->getIntTypes();
-		  return $types;
-	   }
-	   
-	   public function getVolunteerInterests($volunteerId) {
-		  $volIntIds = $this->getVolInts($volunteerId);
-		  $interests = $this->getAllInts();
-		  foreach ($interests as $int) {
-			 $int->setIsInterest(in_array($int->getId(), $volIntIds));
-		  }// end foreach
-		  return $interests;
-	   }// end function
-		
-	   private function getIntTypes() {
+	   public function getAllInterestTypes() {
 		  global $con;
 		  $sql = 'SELECT type_id, title FROM Interest_Type';
 		  $types = array();
 		  $this->open();		
 		  $results = mysql_query($sql, $con);
 		  while($result = mysql_fetch_array($results)) {
-			 $types[$result[0]] = new Item($result[0], $result[1]);
+			 $int_type= new Item();
+			 $int_type->setId($result[0]);
+			 $int_type->setTitle($result[1]);
+			 $types[]=$int_type;
 		  }// end while
 		  $this->close();
 		  return $types;
 	   }// end function
-		
-	   private function getVolInts($vid) {
-		  global $con;
-		  $sql = 'SELECT Interest_interest_id FROM Volunteer_has_Interest WHERE Volunteer_Person_person_id= ' . $vid;
-		  $volIntIds = array();
-		  $ints = array();
-		  $this->open();
-		  $results = mysql_query($sql, $con);
-		  while($result = mysql_fetch_array($results)) {
-			 $vii = $result[0];
-			 $volIntIds[] = $vii;
-		  }// end while
-		  $this->close();
-		  return $volIntIds;
-	   }// end function
 
-	   private function getAllInts() {
-		  global $con;
-		  $sql = 'SELECT interest_id, title, type_id FROM Interest';
-		  $ints = array();
-		  $this->open();
-		  $results = mysql_query($sql, $con);
-		  while($result = mysql_fetch_array($results)) {
-			 $int = new Interest();
-			 $int->setId($result[0]);
-			 $int->setTitle($result[1]);
-			 $int->setTypeId($result[2]);
-			 $ints[] = $int;
-		  }// end while
-		  $this->close();
-		  return $ints;
-	   }// end function
-
-	   public function readInterest() {
+	   
+	   public function getAllInterests() {
 		global $con;
 		$sql = 'SELECT * FROM Interest';
 		$this->open();
@@ -138,6 +91,46 @@ class DBIO {
 		$this->close();
 		return $interests;
 	}// end function
-                                
+
+	public function getInterestsOfType($type_id) {
+		global $con;
+		$sql = 'SELECT * FROM Interest Where type_id='.$type_id;
+		$this->open();
+		$results = mysql_query($sql, $con);
+
+			$interests = array();
+			while($result = mysql_fetch_array($results)) {
+				$interest = new Interest();
+				$interest->setId($result[0]);
+				$interest->setTypeid($result[1]);
+				$interest->setTitle($result[2]);
+				//$interest->setDescription($result[3]);
+				$interests[] = $interest;
+			}// end while
+		$this->close();
+		return $interests;
+	}// end function
+    
+	public function getInterestsByIds($ids) {
+		global $con;
+		$sql = 'SELECT * FROM Interest Where interest_id IN ('. $ids .')';
+		$this->open();
+		$results = mysql_query($sql, $con);
+
+			$interests = array();
+			while($result = mysql_fetch_array($results)) {
+				$interest = new Interest();
+				$interest->setId($result[0]);
+				$interest->setTypeid($result[1]);
+				$interest->setTitle($result[2]);
+				//$interest->setDescription($result[3]);
+				$interests[] = $interest;
+			}// end while
+		$this->close();
+		return $interests;
+	}// end function
+    
+
+
 	}// end class
 ?>

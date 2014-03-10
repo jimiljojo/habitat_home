@@ -8,7 +8,9 @@
 
 <div style="padding-left: 10px;">
 <?php
-
+	
+	require_once('/class/item.php');
+	require_once('/class/interest.php');
 	require_once ('/model/dbio_register.php');
 	$dbio= new DBIO();
 

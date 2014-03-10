@@ -26,7 +26,11 @@
     echo isset($_SESSION['photo']) ? 1 : 0;
     echo isset($_SESSION['signature']) ? 1 : 0;
     echo isset($_SESSION['date']) ? 1 : 0;
+
 */
+
+    global $dbio;
+
     $fname = isset($_SESSION['fname']) ? $_SESSION['fname'] : 'null';
     $lname = isset($_SESSION['lname']) ? $_SESSION['lname'] : 'null';
     $street = isset($_SESSION['street']) ? $_SESSION['street'] : 'null';
@@ -79,15 +83,31 @@
     echo 'occupation: ' . $occupation . '<br>';
     echo 'cell phone: ' . $cellPhone . '<br><br><br>';
 
+    
+    //Displaying Interests
     echo '<b>Interests:</b><br>';
     //foreach ($items as $i) {
+    
+    $count=1;
+    $interestIds='';
     foreach ($interests as $i) {
-    
-                echo $i.'<br>';
                 
+                If($count==1){
+                $interestIds= $interestIds . $i;
                 }
-    
-    
+
+                else{
+                   $interestIds= $interestIds . ',' . $i; 
+                }
+
+                $count++;
+                }
+
+    $selectedInterests = $dbio->getInterestsByIds($interestIds);
+    foreach($selectedInterests as $int){
+        echo $int->getTitle().'<br>';
+    }
+
     ?>
     
     
