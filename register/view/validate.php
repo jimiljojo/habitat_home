@@ -43,12 +43,12 @@
     // $interests = isset($_SESSION['interests']) ? $_SESSION['interests'] : 'null';
 
     $interests=isset($_SESSION['interest']) ? $_SESSION['interest'] : 'NotWorking';
-    $items = array();
+   /* $items = array();
                 foreach($interests as $username) {
                 $items[] = $username;
                 }
     
-    
+    */
     $receive = isset($_SESSION['receive']) ? $_SESSION['receive'] : 'null';
     $day = isset($_SESSION['day']) ? $_SESSION['day'] : 'null';
     $eve = isset($_SESSION['eve']) ? $_SESSION['eve'] : 'null';
@@ -80,7 +80,9 @@
     echo 'cell phone: ' . $cellPhone . '<br><br><br>';
 
     echo '<b>Interests:</b><br>';
-    foreach ($items as $i) {
+    //foreach ($items as $i) {
+    foreach ($interests as $i) {
+    
                 echo $i.'<br>';
                 
                 }

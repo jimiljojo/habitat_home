@@ -8,8 +8,14 @@
 
 <div style="padding-left: 10px;">
 <?php
+
+	require_once ('/model/dbio_register.php');
+	$dbio= new DBIO();
+
 	$act = (isset($_GET['act'])) ? $_GET['act'] : '';
 	$msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
 	include 'controller/register.php';
+
+	
 ?>
 </div>
