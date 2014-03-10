@@ -8,10 +8,6 @@
 ?>
 <?php
     /* this files is the Donor section index View */
-    global $dir;
-    global $sub;
-    global $act;
-    global $msg;
     
 ?>
 <h4>Preferences</h4>
