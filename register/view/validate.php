@@ -31,18 +31,23 @@
 
     global $dbio;
 
+    $title = isset($_SESSION['title']) ? $_SESSION['title'] : 'null';
     $fname = isset($_SESSION['fname']) ? $_SESSION['fname'] : 'null';
     $lname = isset($_SESSION['lname']) ? $_SESSION['lname'] : 'null';
-    $street = isset($_SESSION['street']) ? $_SESSION['street'] : 'null';
+    $dob = isset($_SESSION['dob']) ? $_SESSION['dob'] : 'null';
+    $gender = isset($_SESSION['gender']) ? $_SESSION['gender'] : 'null';
+    $street1 = isset($_SESSION['street1']) ? $_SESSION['street1'] : 'null';
+    $street2 = isset($_SESSION['street2']) ? $_SESSION['street2'] : 'null';
     $city = isset($_SESSION['city']) ? $_SESSION['city'] : 'null';
     $state = isset($_SESSION['state']) ? $_SESSION['state'] : 'null';
     $zip = isset($_SESSION['zip']) ? $_SESSION['zip'] : 'null';
     $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : 'null';
+    $phone2 = isset($_SESSION['phone2']) ? $_SESSION['phone2'] : 'null';
+    $extension = isset($_SESSION['extension']) ? $_SESSION['extension'] : 'null';
     $email = isset($_SESSION['email']) ? $_SESSION['email'] : 'null';
-    $employer = isset($_SESSION['employer']) ? $_SESSION['employer'] : 'null';
-    $workPhone = isset($_SESSION['workPhone']) ? $_SESSION['workPhone'] : 'null';
-    $occupation = isset($_SESSION['occupation']) ? $_SESSION['occupation'] : 'null';
-    $cellPhone = isset($_SESSION['cellPhone']) ? $_SESSION['cellPhone'] : 'null';
+    $emergencyname = isset($_SESSION['emergencyname']) ? $_SESSION['emergencyname'] : 'null';
+    $emergencyphone = isset($_SESSION['emergencyphone']) ? $_SESSION['emergencyphone'] : 'null';
+    $maritial = isset($_SESSION['maritial']) ? $_SESSION['maritial'] : 'null';
     
     // $interests = isset($_SESSION['interests']) ? $_SESSION['interests'] : 'null';
 
@@ -70,21 +75,33 @@
 <form  action="index.php" method="get">
     <input name="act" type="hidden" value="<?php echo '' . $act;?>" >
 <?php
+    echo '<b>Personal Information:</b><br>';
+    echo 'Title:' .$title . '<br>';
     echo 'first name: ' . $fname . '<br>';
     echo 'last name: ' . $lname . '<br>';
-    echo 'street: ' . $street . '<br>';
-    echo 'city: ' . $city . '<br>';
-    echo 'state: ' . $state . '<br>';
-    echo 'zip: ' . $zip . '<br>';
-    echo 'phone: ' . $phone . '<br>';
-    echo 'email: ' . $email . '<br>';
-    echo 'employer: ' . $employer . '<br>';
-    echo 'work phone: ' . $workPhone . '<br>';
-    echo 'occupation: ' . $occupation . '<br>';
-    echo 'cell phone: ' . $cellPhone . '<br><br><br>';
+    echo 'Date of Birth:'.$dob.'<br>';
+    echo 'Gender:'.$gender.'<br>';
+
+    echo '<b>Address:</b><br>';
+    echo 'Street1: ' . $street1 . '<br>';
+    echo 'Street2:'.$street2.'<br>';
+    echo 'City: ' . $city . '<br>';
+    echo 'State: ' . $state . '<br>';
+    echo 'Zip: ' . $zip . '<br>';
+
+    echo '<b>Contact Information:</b><br>';
+    echo 'Phone: ' . $phone . '<br>';
+    echo 'Sec. Phone:'.$phone2.'&nbsp &nbsp ext. :'.$extension.'<br>';
+    echo 'Email Address: ' . $email . '<br>';
+    echo 'Emergency Contact Name: ' . $emergencyname . '<br>';
+    echo 'Emergency Contact Phone: ' . $emergencyphone . '<br>';
+    $maritialstatus=$dbio->getMaritialStatus($maritial);
+
+    echo '<b>Maritial Status:</b> ' . $maritialstatus . '<br>';
+     '<br><br><br>';
 
     
-    //Displaying Interests
+    //Displaying Interest
     echo '<b>Interests:</b><br>';
     //foreach ($items as $i) {
     

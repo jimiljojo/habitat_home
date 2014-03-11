@@ -62,9 +62,9 @@
     <!-- <input type="radio" name="receive" value="none" selected="selected"><label>Phone</label>
     <input type="radio" name="receive" value="home"><label>Mail</label>
     <input type="radio" name="receive" value="work"><label>Email</label><br/> -->
-    <input type="checkbox" name="phone" value="phone"><label>Phone</label><br>
-    <input type="checkbox" name="mail" value="mail"><label>Mail</label><br>
-    <input type="checkbox" name="email" value="email"><label>Email</label><br></table></div>
+    <input type="checkbox" name="checkPhone" value="phone"><label>Phone</label><br>
+    <input type="checkbox" name="checkMail" value="mail"><label>Mail</label><br>
+    <input type="checkbox" name="checkEmail" value="email"><label>Email</label><br></table></div>
 
 
     <br/>
@@ -76,8 +76,8 @@
     <br/>
     <h4 class="show" onclick="swap(this);">Consent</h4><div><table class="intTable">
     <label><b><span class="mandatory">*</span>I am : </b><span class="note">(Check the one which applies to you.)</span></label><br/>
-    <input type="radio" name="age" value="1" id="age" required="required"><label>Between 16 and 18 years old and have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/YorkHabitatMinorWaiverRelease.pdf" target="_blank">Minor Waiver</a></label> &nbsp&nbsp<span class="note">(You must be 16 years old or older to work on site.)</span><br>
-    <input type="radio" name="age" value="2" id="age" required="required"><label>Above 18 years old </label><br>
+    <input type="radio" name="age" value="1" id="age" required="required"><label>Less than 18 years of age and have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/YorkHabitatMinorWaiverRelease.pdf" target="_blank">Minor Waiver</a></label> &nbsp&nbsp<span class="note">(You must be 16 years old or older to work on site.)</span><br>
+    <input type="radio" name="age" value="2" id="age" required="required"><label>Greater than 18 years of age</label><br>
     <br/>
     <input type="checkbox" name="photo" ><label>I understand a personal photograph may be used in appropriate newspapers and/or newsletters. <span class="note">(This will help to highlight your service to the community and our affiliate.)</span><label><br/>
     <br/>
