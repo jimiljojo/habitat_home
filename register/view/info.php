@@ -68,39 +68,134 @@
 		
 		
 		<input name="act" type="hidden" value="<?php echo $act;?>" >
-		<h4 class="show" onclick="swap(this);">Name</h4><div><table class="intTable">
+		<h4 class="show" onclick="swap(this);">Personal Information</h4><div><table class="intTable">
 		<tr><td>
 		Title<span class="mandatory">* </span></td> 
-		<td><select name="title">
+		<td><select name="title" id="title">
+		<option></option>
   		<option>Mr.</option>
   		<option>Mrs.</option>
   		<option>Ms.</option>
   		<option>Dr.</option>
 		</select></label></td><tr><br>
-		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" value="John"></label></td></tr>
-		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" value="Doe"></label></td></tr> </table></div>
+		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname"></label>
+		</td></tr>
+		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname"></label></td></tr>
+		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp yyyy-mm-dd)</td></tr>
+		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
+		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr></table></div>
 		<h4 class="show" onclick="swap(this);">Address</h4><div><table class="intTable">
-		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" value="123 Main Street"></td></tr><br>
-		<tr><td>Street 2</td><td><input name="street2" type="text" value="APT SUIT"></label></td></tr>
-		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" value="Anytown"></label></td></tr>
-		<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" value="pa"></label></td></tr>
-		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" value="12345"></label></td></tr> </table></div>
+		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1"></td></tr><br>
+		<tr><td>Street 2</td><td><input name="street2" type="text"></label></td></tr>
+		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city"></label></td></tr>
+		<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" id="state"></label></td></tr>
+		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> </table></div>
 		<h4 class="show" onclick="swap(this);">Contact Information</h4><div><table class="intTable">
-		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" value="7175559876"></label></td></tr><br>
-		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" value="jd@email.com"></label></td></tr></table></div>
+		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
+		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" value=></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
+		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr></table></div>
+
 		<h4 class="show" onclick="swap(this);">Maritial Status</h4><div><table class="intTable">
-		<input type="radio" name="group1" value="Single"> Single<br>
-		<input type="radio" name="group1" value="Married"> Married<br>
-		<input type="radio" name="group1" value="Widow"> Widow<br>
-		<input type="radio" name="group1" value="Divorced"> Divorced<br>
+		<input type="radio" name="group1" value="1" id="group1" required="required"><label>Single</label><br>
+		<input type="radio" name="group1" value="2" id="group1" required="required"><label>Married</label><br>
+		<input type="radio" name="group1" value="3" id="group1" required="required"><label>Widow</label><br>
+        <input type="radio" name="group1" value="4" id="group1" required="required"><label>Divorced</label><br>
 		</table></div>
-		<h4 class="show" onclick="swap(this);">Employer Information</h4><div><table class="intTable">
+
+		<!-- <h4 class="show" onclick="swap(this);">Employer Information</h4><div><table class="intTable">
 		<tr><td>Employer</td><td><input name="employer" type="text" value="Mega Corp"></td></tr><br>
 		<tr><td>Work Phone</td><td><input name="workPhone" type="text" value="7175554321"></td></tr>
-		<tr><td>Title/Occupation</td><td><input name="occupation" type="text" value="Laborer"></td></tr></table></div>
+		<tr><td>Title/Occupation</td><td><input name="occupation" type="text" value="Laborer"></td></tr></table></div> -->
 		
 		<br>
-		<input class="btn btn-success" name="submit" type="submit" value="submit" >
+		<script type="text/javascript">
+
+            function check()
+            {
+            	if (document.getElementById('title').value==""
+                 || document.getElementById('title').value==undefined)
+                {
+                    alert ("Please Select your 'Title'");
+                    return false;
+                }
+
+                else if (document.getElementById('fname').value==""
+                 || document.getElementById('fname').value==undefined)
+                {
+                    alert ("Please Enter your 'First Name'");
+                    return false;
+                }
+
+                else if(document.getElementById('lname').value==""
+                	||document.getElementById('lname').value==undefined)
+                {
+                	alert("Please Enter your 'Last Name'");
+                	return false;
+                }
+
+                else if(document.getElementById('dob').value==""
+                	||document.getElementById('dob').value==undefined)
+                {
+                	alert("Please Enter your 'Date of Birth'");
+                	return false;
+                }
+
+                else if(document.getElementById('gender').value==""
+                	||document.getElementById('gender').value==undefined)
+                {
+                	alert("Please Select your 'Gender'");
+                	return false;
+                }
+
+                else if(document.getElementById('street1').value==""
+                	||document.getElementById('street1').value==undefined)
+                {
+                	alert("Please Enter your 'street 1' Address");
+                	return false;
+                }
+
+                else if(document.getElementById('city').value==""
+                	||document.getElementById('city').value==undefined)
+                {
+                	alert("Please Enter the 'City'");
+                	return false;
+                }
+
+                else if(document.getElementById('state').value==""
+                	||document.getElementById('state').value==undefined)
+                {
+                	alert("Please Enter the 'State'");
+                	return false;
+                }
+
+                else if(document.getElementById('zip').value==""
+                	||document.getElementById('zip').value==undefined)
+                {
+                	alert("Please Enter the 'Zip' code");
+                	return false;
+                }
+
+                else if(document.getElementById('phone').value==""
+                	||document.getElementById('phone').value==undefined)
+                {
+                	alert("Please Enter your 'Phone' number");
+                	return false;
+                }
+
+                else if(document.getElementById('email').value==""
+                	||document.getElementById('email').value==undefined)
+                {
+                	alert("Please Enter your 'Email' address");
+                	return false;
+                }
+  
+
+
+                return true;
+            }
+
+        </script>
+		<input class="btn btn-success" name="submit" type="submit" value="submit" onclick="return check();" >
 
 		<br>
 	</form>
