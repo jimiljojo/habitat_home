@@ -94,17 +94,17 @@
 
 		<h4 class="show" onclick="swap(this);">Contact Information</h4><div><table class="intTable">
 		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
-		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" value=></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
+		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
 		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
         <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
         <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
         </table></div>
 
 		<h4 class="show" onclick="swap(this);">Maritial Status</h4><div><table class="intTable">
-		<input type="radio" name="group1" value="1" id="group1" required="required"><label>Single</label><br>
-		<input type="radio" name="group1" value="2" id="group1" required="required"><label>Married</label><br>
-		<input type="radio" name="group1" value="3" id="group1" required="required"><label>Widow</label><br>
-        <input type="radio" name="group1" value="4" id="group1" required="required"><label>Divorced</label><br>
+		<input type="radio" name="maritial" value="1" id="maritial" required="required"><label>Single</label><br>
+		<input type="radio" name="maritial" value="2" id="maritial" required="required"><label>Married</label><br>
+		<input type="radio" name="maritial" value="3" id="maritial" required="required"><label>Widow</label><br>
+        <input type="radio" name="maritial" value="4" id="maritial" required="required"><label>Divorced</label><br>
 		</table></div>
 
 		<!-- <h4 class="show" onclick="swap(this);">Employer Information</h4><div><table class="intTable">

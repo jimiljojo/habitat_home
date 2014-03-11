@@ -53,6 +53,17 @@ class DBIO {
 			}
 			return $itemString;
 		}// end function
+
+		public function getMaritialStatus($maritial){
+		global $con;
+		$sql='SELECT title from Marital_Status where marital_status_id IN ('. $maritial .')';
+		$this->open();
+		$results=mysql_query($sql, $con);
+		$final=mysql_fetch_row($results);
+		$status=$final[0];
+		$this->close();
+		return $status;
+	}
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 		
@@ -129,6 +140,8 @@ class DBIO {
 		$this->close();
 		return $interests;
 	}// end function
+
+	
     
 
 

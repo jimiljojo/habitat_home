@@ -49,7 +49,11 @@
 
 	case 'setPassword':
 	    session_start();
-	    $_SESSION['receive'] = isset($_GET['receive']) ? $_GET['receive'] : '';
+	    $_SESSION['church'] = isset($_GET['church']) ? $_GET['church'] : '';
+	    $_SESSION['ambassador'] = isset($_GET['ambassador']) ? $_GET['ambassador'] : '';
+	    $_SESSION['checkPhone'] = isset($_GET['checkPhone']) ? $_GET['checkPhone'] : '';
+	    $_SESSION['checkMail'] = isset($_GET['checkMail']) ? $_GET['checkMail'] : '';
+	    $_SESSION['checkEmail'] = isset($_GET['checkEmail']) ? $_GET['checkEmail'] : '';
 	    $_SESSION['day'] = isset($_GET['day']) ? $_GET['day'] : '';
 	    $_SESSION['eve'] = isset($_GET['eve']) ? $_GET['eve'] : '';
 	    $_SESSION['wend'] = isset($_GET['wend']) ? $_GET['wend'] : '';
@@ -80,18 +84,25 @@
 	
 	case 'getInterests':
 	    session_start();
+	    $_SESSION['title'] = isset($_GET['title']) ? $_GET['title'] : '';
 	    $_SESSION['fname'] = isset($_GET['fname']) ? $_GET['fname'] : '';
 	    $_SESSION['lname'] = isset($_GET['lname']) ? $_GET['lname'] : '';
-	    $_SESSION['street'] = isset($_GET['street']) ? $_GET['street'] : '';
+	    $_SESSION['dob'] = isset($_GET['dob']) ? $_GET['dob'] : '';
+	    $_SESSION['gender'] = isset($_GET['gender']) ? $_GET['gender'] : '';
+	    $_SESSION['street1'] = isset($_GET['street1']) ? $_GET['street1'] : '';
+	    $_SESSION['street2'] = isset($_GET['street2']) ? $_GET['street2'] : '';
 	    $_SESSION['city'] = isset($_GET['city']) ? $_GET['city'] : '';
 	    $_SESSION['state'] = isset($_GET['state']) ? $_GET['state'] : '';
 	    $_SESSION['zip'] = isset($_GET['zip']) ? $_GET['zip'] : '';
 	    $_SESSION['phone'] = isset($_GET['phone']) ? $_GET['phone'] : '';
+	    $_SESSION['phone2'] = isset($_GET['phone2']) ? $_GET['phone2'] : '';
+	    $_SESSION['extension'] = isset($_GET['extension']) ? $_GET['extension'] : '';
 	    $_SESSION['email'] = isset($_GET['email']) ? $_GET['email'] : '';
-	    $_SESSION['employer'] = isset($_GET['employer']) ? $_GET['employer'] : '';
-	    $_SESSION['workPhone'] = isset($_GET['workPhone']) ? $_GET['workPhone'] : '';
-	    $_SESSION['occupation'] = isset($_GET['occupation']) ? $_GET['occupation'] : '';
-	    $_SESSION['cellPhone'] = isset($_GET['cellPhone']) ? $_GET['cellPhone'] : '';
+	    $_SESSION['emergencyname'] = isset($_GET['emergencyname']) ? $_GET['emergencyname'] : '';
+	    $_SESSION['emergencyphone'] = isset($_GET['emergencyphone']) ? $_GET['emergencyphone'] : '';
+	    $_SESSION['maritial'] = isset($_GET['maritial']) ? $_GET['maritial'] : '';
+
+	    
 
 	    $progress = 2;
 	    $act = 'getOther';
