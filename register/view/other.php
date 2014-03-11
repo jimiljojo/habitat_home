@@ -56,7 +56,7 @@
     <input name="act" type="hidden" value="<?php echo $act;?>" >
     <h4 class="show" onclick="swap(this);">General Information</h4><div><table class="intTable">
     <tr><td>Church or Group Affiliate</td><td><input type="text" name="church"></td></tr><br>
-    <tr><td><span class="mandatory">*</span>Are you a Church Ambassador?</td><td><select name="ambassador" id="ambassador"><option></option><option>Yes</option><option>No</option>
+    <tr><td><span class="mandatory">*</span>Are you a Church Ambassador?</td><td><select name="ambassador" id="ambassador"><option></option><option>Yes</option><option>No</option></select></td></tr>
 </table></div>
     <h4 class="show" onclick="swap(this);">Contact Preference<span class="mandatory">*</span></h4><div><table class="intTable">
     <!-- <input type="radio" name="receive" value="none" selected="selected"><label>Phone</label>

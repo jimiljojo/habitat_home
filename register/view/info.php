@@ -84,16 +84,21 @@
 		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp yyyy-mm-dd)</td></tr>
 		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
 		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr></table></div>
+
 		<h4 class="show" onclick="swap(this);">Address</h4><div><table class="intTable">
 		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1"></td></tr><br>
 		<tr><td>Street 2</td><td><input name="street2" type="text"></label></td></tr>
 		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city"></label></td></tr>
 		<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" id="state"></label></td></tr>
 		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> </table></div>
+
 		<h4 class="show" onclick="swap(this);">Contact Information</h4><div><table class="intTable">
 		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
 		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" value=></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
-		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr></table></div>
+		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
+        <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
+        <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
+        </table></div>
 
 		<h4 class="show" onclick="swap(this);">Maritial Status</h4><div><table class="intTable">
 		<input type="radio" name="group1" value="1" id="group1" required="required"><label>Single</label><br>
@@ -187,6 +192,20 @@
                 {
                 	alert("Please Enter your 'Email' address");
                 	return false;
+                }
+
+                else if(document.getElementById('emergencyname').value==""
+                    ||document.getElementById('emergencyname').value==undefined)
+                {
+                    alert("Please Enter the 'Emergency Contact's Name address");
+                    return false;
+                }
+
+                else if(document.getElementById('emergencyphone').value==""
+                    ||document.getElementById('emergencyphone').value==undefined)
+                {
+                    alert("Please Enter the 'Emergency Contact's Phone'");
+                    return false;
                 }
   
 
