@@ -15,7 +15,7 @@
 //require_once ('C:/wamp/www/habitat_home/model/dbio_des301.php');
 	//$dbio= new DBIO();
 
-	$interestTypes = $dbio->getAllInterestTypes();
+	
 	
 ?>
 <style>
@@ -88,7 +88,8 @@
 	<!-- <input name="id" value="off" type="hidden"> -->Construction Site Host/Hostess
 
 	<?php
-
+	$interestTypes = $dbio->getAllInterestTypes();
+	
 	foreach($interestTypes as $types){
 	 echo'<h4 class="show" onclick="swap(this);">'. $types->getTitle(). '</h4>'; 
 
