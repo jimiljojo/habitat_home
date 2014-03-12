@@ -53,7 +53,7 @@
         <br/>
 	<?php include 'progress.php'; ?>
 	<hr>
-	<form  action="index.php" method="get">
+	<form  action="index.php" method="post">
 	    <input name="act" type="hidden" value="<?php echo $act;?>" >
 	    <!-- <h4 class="show" onclick="swap(this);">User Category</h4><div><table class="intTable">
 	    <label><b><span class="mandatory">*</span>I am a : </b><span class="note">(check all that apply)</span><br>

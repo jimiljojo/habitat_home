@@ -15,7 +15,7 @@
 ?>
 
 
-	<form  action="index.php" method="get">
+	<form  action="index.php" method="post">
 		<input name="dir" type="hidden" value="<?php echo $dir;?>" >
 		<input name="act" type="hidden" value="<?php echo $act;?>" >
 		<img src="../img/habitat_logo.jpg" alt="Habitat Logo" style="height:250px; width:600px;" />

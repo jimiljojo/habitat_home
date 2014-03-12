@@ -82,14 +82,14 @@
 <button onclick="showAll();">Show All</button>
 <button onclick="hideAll();">Hide All</button>
 
-<form  name="interestForm" action="index.php" method="get">
+<form  name="interestForm" action="index.php" method="post">
 	<input name="act" type="hidden" value="<?php echo $act; ?>" >
 	<br>
 	<!-- <input name="id" value="off" type="hidden"> -->Construction Site Host/Hostess
 
 	<?php
 	$interestTypes = $dbio->getAllInterestTypes();
-	
+
 	foreach($interestTypes as $types){
 	 echo'<h4 class="show" onclick="swap(this);">'. $types->getTitle(). '</h4>'; 
 

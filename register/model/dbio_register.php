@@ -156,7 +156,7 @@ class DBIO {
 
 				"INSERT INTO Person
 				(title,first_name,last_name,gender,dob,Marital_Status_marital_status_id,Contact_contact_id,isActive,lastActive,prefEmail,prefMail,prefPhone)
-				Select '" .$title. "','" .$fName. "','" .$lName. "','" .$gender. "','" .$dob. "'," .$maritalStatusId. ",Max(contact_id), 1, Null,". $prefEmail. "," .$prefMail. "," .$prefPhone." From Contact;"
+				Select '" .$title. "','" .$fName. "','" .$lName. "','" .$gender. "','" .$dob. "'," .$maritalStatusId. ",Max(contact_id), 1, Null,". $prefEmail. "," .$prefMail. "," .$prefPhone." From Contact;";
 
 		$this->open();
 		mysql_query($sql, $con);
@@ -184,7 +184,7 @@ public function createNewAccount($consentAge, $consentVideo , $consentWaiver, $c
 
 				"INSERT INTO Account
 				(username, password, date, status, isOffice, isVolunteer,person_id)
-				SELECT '" .$username."','" .$password."', getDate(), 'Active', 0, 1, MAX(person_id) From Person;"
+				SELECT '" .$username."','" .$password."', getDate(), 'Active', 0, 1, MAX(person_id) From Person;";
 
 		$this->open();
 		mysql_query($sql, $con);
