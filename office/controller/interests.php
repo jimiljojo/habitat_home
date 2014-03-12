@@ -7,27 +7,26 @@
 
 	switch ($act) {
 
-		case 'search':
+		case 'readInterest':
 			// CODE HERE
 			break;
 
-		case 'create':
+		case 'createInterest':
+			// CODE HERE
+			break;
+                case 'createInterestType':
+                        break;
+
+		case 'updateInterest':
+			// CODE HERE
+			break;
+          
+		case 'updateInterestType':
 			// CODE HERE
 			break;
 
-		case 'read':
-			// CODE HERE
-			break;
 
-		case 'update':
-			// CODE HERE
-			break;
-
-		case 'delete':
-			// CODE HERE
-			break;
-
-		case 'list':
+		case 'listInterest':
 			// CODE HERE
 			break;
 
