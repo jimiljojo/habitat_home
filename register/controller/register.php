@@ -75,8 +75,11 @@
 	case 'getOther':
 	    session_start();
 	    $items = array();
-		foreach(($_GET['interest']) as $username) {
- 		$items[] = $username;
+
+	    If(!empty($items)){
+			foreach(($_GET['interest']) as $username) {
+ 			$items[] = $username;
+			}
 		}
 		$_SESSION['interest'] = ($items);
 	    

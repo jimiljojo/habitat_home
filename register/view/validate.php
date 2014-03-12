@@ -80,7 +80,7 @@
 <br/>
 <?php include 'progress.php'; ?>
 <hr>
-<form  action="index.php" method="get">
+<form  action="index.php" method="post">
     <input name="act" type="hidden" value="<?php echo '' . $act;?>" >
 <?php
     echo '<b>Personal Information:</b><br>';

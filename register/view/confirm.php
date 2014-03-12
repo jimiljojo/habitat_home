@@ -14,7 +14,7 @@
 	<?php include 'progress.php'; ?>
 	<hr>
 	<br>
-	<form name="index" action="get">
+	<form name="index" action="post">
 	    <h2>You have registered!</h2>
 	    <p>
 	    An administrator must review and authorize your account in order for it to be activated<br>

@@ -63,7 +63,7 @@
 	<?php include 'progress.php'; ?>
 	<hr>
 	<br>
-	<form  action="index.php" method="get">
+	<form  action="index.php" method="post">
 
 		
 		
