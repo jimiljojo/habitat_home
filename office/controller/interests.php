@@ -7,33 +7,30 @@
 
 	switch ($act) {
 
-		case 'readInterest':
+		case 'readInterests':
 			// CODE HERE
 			break;
 
-		case 'createInterest':
+		case 'createInterests':
 			// CODE HERE
 			break;
-                case 'createInterestType':
+                case 'createInterestTypes':
                         break;
 
-		case 'updateInterest':
+		case 'updateInterests':
 			// CODE HERE
 			break;
           
-		case 'updateInterestType':
+		case 'updateInterestTypes':
 			// CODE HERE
 			break;
 
 
-		case 'listInterest':
-			// CODE HERE
-			break;
-
+		case 'listInterests':
+	
 		default:
-			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
-			break;
-
+			$page = $dir . '/view/interests.php';
+                break;
 
 	}// end switch
 
