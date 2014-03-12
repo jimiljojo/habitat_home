@@ -52,7 +52,7 @@
 <br/>
 <?php include 'progress.php'; ?>
 <hr>
-<form  action="index.php" method="post" onsubmit="return checkSubmit()" style="display: inline;">
+<form  action="index.php" method="get" onsubmit="return checkSubmit()" style="display: inline;">
     <input name="act" type="hidden" value="<?php echo $act;?>" >
     <h4 class="show" onclick="swap(this);">General Information</h4><div><table class="intTable">
     <tr><td>Church or Group Affiliate</td><td><input type="text" name="church"></td></tr><br>
