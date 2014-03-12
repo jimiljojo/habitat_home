@@ -11,8 +11,6 @@
 	$links[] = new Link('Account','account');
 	$links[] = new Link('Admin','admin');
 	$links[] = new Link('Office','office');
-	$links[] = new Link('Donor','donor');
-	$links[] = new Link('Home Owner','homeowner');
 	$links[] = new Link('Volunteer','volunteer');
 	
 
