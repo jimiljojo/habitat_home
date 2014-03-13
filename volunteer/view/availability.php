@@ -1,46 +1,39 @@
-<h4>Availability View</h4>
+<h2>volunteer/view/availability.php</h2>
 <hr>
 <form>
-    <label class="bold">I am available to work during...</label><br>
-    <br>
-<?php
-    
-    global $dir;
-    global $sub;
-    global $act;
-    global $msg;
-    global $checkedDay;
-    global $checkedEve;
-    global $checkedWend;
-        
-        /* 
-		Original belongs to Dan S., edited by Kyle T.
-	*/
-    
+    <h5><strong>I am available to work: </strong></h5>
 
-       
-    //$availability = $dbio->getVolunteerAvail($vid='99');
-    
-    $checkedDay = 'Yes';
-    $checkedEve = 'Yes';
-    $checkedWend = 'No';
-    
-    //$checkedDay = ($availability->getDay() == 'Yes') ? 'checked="checked"' : '';
-    //$checkedEve = ($availability->getEve() == "Yes") ? 'checked="checked"' : '';
-    //$checkedWend = ($availability->getWend() == "Yes") ? 'checked="checked"' : '';
-    
-    $checkedDay = ($checkedDay == 'Yes') ? 'checked="checked"' : '';
-    $checkedEve = ($checkedEve == 'Yes') ? 'checked="checked"' : '';
-    $checkedWend = ($checkedWend == 'Yes') ? 'checked="checked"' : '';
+<?php
+
+	// TITLE: Volunteer Availability View
+	// FILE: volunteer/view/availability.php
+	// AUTHOR: Logan Gurreri
+        
+        global $dir;
+        global $sub;
+        global $act;
+        global $msg;
+        global $checkedDay;
+        global $checkedEvening;
+        global $checkedWeekend;
+                
+        $checkedDay = 'Yes';
+        $checkedEvening = 'No';
+        $checkedWeekend = 'No';
+        
+        $checkedDay = ($checkedDay == 'Yes') ? 'checked= "checked"' : '';
+        $checkedEvening = ($checkedEvening == 'Yes') ? 'checked= "checked"' : '';
+        $checkedWeekend = ($checkedWeekend == 'Yes') ? 'checked= "checked"' : '';
+
 ?>
-        <input name="day" type="checkbox" value="0" <?php echo $checkedDay; ?> /><label>Day</label><br/>
-        <input name="eve" type="checkbox" value="1" <?php echo $checkedEve; ?> /><label>Evening</label><br/>
-        <input name="wend" type="checkbox" value="2" <?php echo $checkedWend; ?> /><label>Weekends</label><br/>
-	<br/>
-	<button onclick="validate();">Submit</button>
+
+    <input name="day" type="checkbox" value="0" <?php echo $checkedDay; ?> /> Days<br>
+    <input name="evening" type="checkbox" value="1" <?php echo $checkedEvening; ?> /> Evenings<br>
+    <input name="weekend" type="checkbox" value="2" <?php echo $checkedWeekend; ?> /> Weekends<br><br>
+    <button onclick="validate();">Save Changes</button>
 </form>
 <hr>
 <span class="note">
-    Here is where your availability is displayed. <br>
-    You can make changes to your availability here as well.
+    Here is where your availability is displayed.<br>
+    You can also make changes to your availability here.
 </span>

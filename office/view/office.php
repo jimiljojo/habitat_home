@@ -42,6 +42,8 @@
 	<dd class="list">Find event information</dd>
     <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=foh">Friends of Habitat</a></dt>
 	<dd class="list">Find information on Friends of habitat_home</dd>
+    <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=persons">Persons</a></dt>   
+        <dd class="list">Find information on a particular person</dd>    
     <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=interests">Interests</a></dt>
 	<dd class="list">Find a list of interests for a volunteer</dd>
     <dt class="list"><a href="/habitat_home/index.php?dir=office&sub=orgs">Organizations</a></dt>
