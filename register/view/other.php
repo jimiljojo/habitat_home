@@ -62,9 +62,9 @@
     <!-- <input type="radio" name="receive" value="none" selected="selected"><label>Phone</label>
     <input type="radio" name="receive" value="home"><label>Mail</label>
     <input type="radio" name="receive" value="work"><label>Email</label><br/> -->
-    <input type="checkbox" name="checkPhone" value="phone"><label>Phone</label><br>
-    <input type="checkbox" name="checkMail" value="mail"><label>Mail</label><br>
-    <input type="checkbox" name="checkEmail" value="email"><label>Email</label><br></table></div>
+    <input type="checkbox" name="checkPhone" value=1><label>Phone</label><br>
+    <input type="checkbox" name="checkMail" value=1><label>Mail</label><br>
+    <input type="checkbox" name="checkEmail" value=1><label>Email</label><br></table></div>
 
 
     <br/>

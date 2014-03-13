@@ -31,17 +31,9 @@
 	
 	case 'validate':
 	    session_start();
+	    $_SESSION['userName'] = (isset($_GET['userName'])) ? $_GET['userName'] : '';
 	    $_SESSION['password'] = (isset($_GET['pw1'])) ? $_GET['pw1'] : '';
-	    /*
-	    $password1 = isset($_GET['pw1']) ? $_GET['pw1'] : '';
-	    $password2 = isset($_GET['pw2']) ? $_GET['pw2'] : '';
-	    /*
-	    if ($password1 === $password2) {
-		$_SESSION['password'] = $password;
-	    } else {
-		header ('location:index.php?act=setPassword&msg=Passwords Do Not Match');
-	    }// end if-else
-	    */
+	  
 	    $progress = 5;
 	    $act = 'confirm';
 	    include ('view/validate.php');
@@ -76,7 +68,7 @@
 	    session_start();
 	    $items = array();
 
-	    If(!empty($items)){
+	    If(!empty($_GET['interest'])){
 			foreach(($_GET['interest']) as $username) {
  			$items[] = $username;
 			}
