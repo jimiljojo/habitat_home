@@ -3,9 +3,35 @@
 	// TITLE: Office Interests Model
 	// FILE: office/model/interests.php
 	// AUTHOR: AUTOGEN
+global $msg;
+global $dbio;
+
+$VolFName = $_GET['VolFName'];
+$VolLName = $_GET['VolLname'];
+$intName = $_GET['intName'];
+$userInts = $_GET['int[]'];
+
+$dbAllInterests = $dbio->getVolBy($intName); 
+
+$intNames = array();
+//Initialize interest name as an array 
+
+foreach ($userInts as $UseInt)  //assigned interests and all interests 
+{
+    if (!in_array($UseInt, $dbAllInterests))
+    { $intNames[] = $UseInts;
+    }
+
+}
+
+$dbio->setVolunteerByAnInterest($VolFName, $VolLName);
+//List all volunteers with specific interests
 
 
-	function search() {}
+
+foreach ($)
+
+        function search() {}
 	function create() {}
 	function read() {}
 	function update() {}
