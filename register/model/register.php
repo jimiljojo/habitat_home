@@ -34,7 +34,7 @@
 	// when available for work
 	$day = $_GET['day'];
 	$eve = $_GET['eve'];
-	$wend $_GET['weekend'];
+	$wend = $_GET['weekend'];
 	
 	// consents
 	$ofAge = $_GET['ofAge'];
