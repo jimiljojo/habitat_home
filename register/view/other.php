@@ -52,27 +52,32 @@
 <br/>
 <?php include 'progress.php'; ?>
 <hr>
-<form  action="index.php" method="post" onsubmit="return checkSubmit()" style="display: inline;">
+<form  action="index.php" method="get" onsubmit="return checkSubmit()" style="display: inline;">
     <input name="act" type="hidden" value="<?php echo $act;?>" >
     <h4 class="show" onclick="swap(this);">General Information</h4><div><table class="intTable">
     <tr><td>Church or Group Affiliate</td><td><input type="text" name="church"></td></tr><br>
-    <tr><td><span class="mandatory">*</span>Are you a Church Ambassador?</td><td><select name="ambassador" id="ambassador"><option></option><option>Yes</option><option>No</option></select></td></tr>
+    <tr><td><span class="mandatory">*</span>Are you a Church Ambassador?</td><td>
+        <select name="ambassador" id="ambassador">
+            <option></option>
+            <option value=1>Yes</option>
+            <option value=0>No</option>
+        </select></td></tr>
 </table></div>
     <h4 class="show" onclick="swap(this);">Contact Preference<span class="mandatory">*</span></h4><div><table class="intTable">
     <!-- <input type="radio" name="receive" value="none" selected="selected"><label>Phone</label>
     <input type="radio" name="receive" value="home"><label>Mail</label>
     <input type="radio" name="receive" value="work"><label>Email</label><br/> -->
-    <input type="checkbox" name="checkPhone" value="phone"><label>Phone</label><br>
-    <input type="checkbox" name="checkMail" value="mail"><label>Mail</label><br>
-    <input type="checkbox" name="checkEmail" value="email"><label>Email</label><br></table></div>
+    <input type="checkbox" name="checkPhone" value=1><label>Phone</label><br>
+    <input type="checkbox" name="checkMail" value=1><label>Mail</label><br>
+    <input type="checkbox" name="checkEmail" value=1><label>Email</label><br></table></div>
 
 
     <br/>
     <h4 class="show" onclick="swap(this);">Volunteer Availability<span class="mandatory">*</span></h4><div><table class="intTable">
     I am available to volunteer in the <span class="note">(check all that apply)</span><br/>
-    <input type="checkbox" name="day"><label>day</label><br/>
-    <input type="checkbox" name="eve"><label>evening</label><br/>
-    <input type="checkbox" name="wend" checked="checked"><label>weekends</label><br/></table></div>
+    <input type="checkbox" name="day" value=1><label>day</label><br/>
+    <input type="checkbox" name="eve"  value=1><label>evening</label><br/>
+    <input type="checkbox" name="wend" value=1><label>weekends</label><br/></table></div>
     <br/>
     <h4 class="show" onclick="swap(this);">Consent</h4><div><table class="intTable">
     <label><b><span class="mandatory">*</span>I am : </b><span class="note">(Check the one which applies to you.)</span></label><br/>
@@ -82,14 +87,14 @@
     <input type="checkbox" name="photo" value="1"><label>I understand a personal photograph may be used in appropriate newspapers and/or newsletters. <span class="note">(This will help to highlight your service to the community and our affiliate.)</span><label><br/>
     <br/>
     <label><b><span class="mandatory">*</span>Please Click and read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/ConstructionSafety.pdf" target="_blank">Construction Safety Guidelines</a></b></label><br>
-    <input type="checkbox" name="safety" id="safety"><label>I have read the Construction Safety Guidelines</label><br/>
+    <input type="checkbox" name="safety" id="safety" value=1><label>I have read the Construction Safety Guidelines</label><br/>
     <br/>
     <label><b><span class="mandatory">*</span>Please Click and watch the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/ConstructionVideo.html" target="_blank">Construction Safety Video</a></b></label><br>
-    <input type="checkbox" name="video" id="video"><label>I have watched the Construction Safety Video</label><br/>
+    <input type="checkbox" name="video" id="video" value=1><label>I have watched the Construction Safety Video</label><br/>
     </br>
 
     <label><b><span class="mandatory">*</span>Please Click and read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/waiverform20120711.pdf" target="_blank">Liability Waiver Form</a></b></label><br>
-    <input type="checkbox" name="waiver" id="waiver"><label>I accept the terms of the liability waiver form</label><br/>
+    <input type="checkbox" name="waiver" id="waiver" value=1><label>I accept the terms of the liability waiver form</label><br/>
     </br> </table></div>
     </br>
 

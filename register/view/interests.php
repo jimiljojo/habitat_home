@@ -82,7 +82,7 @@
 <button onclick="showAll();">Show All</button>
 <button onclick="hideAll();">Hide All</button>
 
-<form  name="interestForm" action="index.php" method="post">
+<form  name="interestForm" action="index.php" method="get">
 	<input name="act" type="hidden" value="<?php echo $act; ?>" >
 	<br>
 	<!-- <input name="id" value="off" type="hidden"> -->Construction Site Host/Hostess

@@ -15,7 +15,7 @@
 	<?php include 'progress.php'; ?>
 	<hr>
 	<br>
-	<form  action="index.php" method="post">
+	<form  action="index.php" method="get">
 	    <input name="dir" type="hidden" value="<?php echo $dir;?>" >
 	    <input name="sub" type="hidden" value="<?php echo $sub;?>" >
 	    <input name="act" type="hidden" value="<?php echo $act;?>" >
