@@ -28,9 +28,9 @@
     
     $church = isset($_SESSION['church']) ? $_SESSION['church'] : 'null';
     $ambassador = isset($_SESSION['ambassador']) ? $_SESSION['ambassador'] : 'null';
-    $checkPhone = isset($_SESSION['checkPhone']) ? $_SESSION['checkPhone'] : 'null';
-    $checkMail = isset($_SESSION['checkMail']) ? $_SESSION['checkMail'] : 'null';
-    $checkEmail = isset($_SESSION['checkEmail']) ? $_SESSION['checkEmail'] : 'null';
+    $checkPhone = isset($_SESSION['checkPhone']) ? $_SESSION['checkPhone'] : '0';
+    $checkMail = isset($_SESSION['checkMail']) ? $_SESSION['checkMail'] : '0';
+    $checkEmail = isset($_SESSION['checkEmail']) ? $_SESSION['checkEmail'] : '0';
 
     $day = isset($_SESSION['day']) ? $_SESSION['day'] : 'null';
     $eve = isset($_SESSION['eve']) ? $_SESSION['eve'] : 'null';

@@ -62,6 +62,7 @@
     //$flag=$dbio->createNewPerson("1234Queens","c206","Atlanta","AT","17404","7174241134","sbhg@hoag","6716264765","500","MR.","Sidd","Ked","Male","10-10-1000",1,1,0,1);
     $flag=$dbio->createNewPerson($street1,$street2,$city,$state,$zip,$phone,$email,$phone2,$extension,$title,$fname,$lname,$gender,$dob,$maritial,$checkEmail,$checkMail,$checkPhone);
     echo 'Completed 1';
+    //echo $street1 .",".$street2.",".$city.",".$state.",".$zip.",".$phone.",".$email.",".$phone2.",".$extension.",".$title.",".$fname.",".$lname.",".$gender.",".$dob.",".$maritial.",".$checkEmail.",".$checkMail.",".$checkPhone;	
 
    /* if($flag){
     	echo 'Entering 2';

@@ -147,7 +147,7 @@ class DBIO {
 	}// end function
 
 	
-    public function createNewPerson($street1,$street2,$city,$state,$zip,$phone,$email,$phone2,$extension,$title,$fName,$lName,$gender,$dob,$maritalStatusId,$prefEmail,$prefMail,$prefPhone){
+    public function createNewPerson($street1,$street2,$city,$state,$zip,$phone,$email,$phone2,$extension,$title,$fName,$lName,$gender,$dob,$maritialStatusId,$prefEmail,$prefMail,$prefPhone){
 		global $con;
 		$this->open();
 
@@ -155,18 +155,16 @@ class DBIO {
 				(street1,street2,city,state,zip)
 				VALUES
 				('" .$street1. "','" .$street2. "','" .$city. "','" .$state. "','" .$zip. "');";
-
 		mysql_query($sql, $con);
 
 		$sql=	"INSERT INTO Contact
 				(address_id,phone,email,phone2,extension)
 				Select Max(address_id),'" .$phone. "','" .$email. "','" .$phone2. "','" .$extension. "' From homes_db.Address;";
-
 		mysql_query($sql, $con);
-
+	
 		$sql=	"INSERT INTO Person
 				(title,first_name,last_name,gender,dob,Marital_Status_marital_status_id,Contact_contact_id,isActive,lastActive,prefEmail,prefMail,prefPhone)
-				Select '" .$title. "','" .$fName. "','" .$lName. "','" .$gender. "','" .$dob. "'," .$maritalStatusId. ",Max(contact_id), 1, Null,". $prefEmail. "," .$prefMail. "," .$prefPhone." From Contact;";
+				Select '" .$title. "','" .$fName. "','" .$lName. "','" .$gender. "','" .$dob. "'," .$maritialStatusId. ",Max(contact_id), 1, Null,". $prefEmail. "," .$prefMail. "," .$prefPhone." From Contact;";
 		mysql_query($sql, $con);			
 		
 		$this->close();
@@ -177,20 +175,21 @@ class DBIO {
 
 public function createNewAccount($consentAge, $consentVideo , $consentWaiver, $consentPhoto , $availDay , $availEve, $availWend, $consentMinor, $consentSafety, $emergencyName, $emergencyPhone, $churchAmbassador, $affiliation,$interestIds, $username, $password){
 		global $con;
-		
+		$this->open();
+
 		$sql =	"INSERT INTO Volunteer
 				(consentAge, consentVideo, consentWaiver , consentPhoto, availDay, availEve, availWend, Person_person_id,
 				 isBoardMember, consentMinor, consentSafety, emergencyName, emergencyPhone, churchAmbassador, affiliation)
 				SELECT " .$consentAge. "," .$consentVideo. " , " .$consentWaiver. ", " .$consentPhoto. " , " .$availDay. " , " .$availEve. ", " .$availWend. ",
-				MAX(person_id), 0, " .$consentMinor. ", " .$consentSafety. ", '" .$emergencyName. "', '" .$emergencyPhone. "', " .$churchAmbassador. ", '" .$affiliation. "' FROM Person;".
+				MAX(person_id), 0, " .$consentMinor. ", " .$consentSafety. ", '" .$emergencyName. "', '" .$emergencyPhone. "', " .$churchAmbassador. ", '" .$affiliation. "' FROM Person;";
+		mysql_query($sql, $con);
 
-
-				"INSERT INTO Account
+		$sql =	"INSERT INTO Account
 				(username, password, date, status, isOffice, isVolunteer,person_id)
 				SELECT '" .$username."','" .$password."', getDate(), 'Active', 0, 1, MAX(person_id) From Person;";
-
-		$this->open();
 		mysql_query($sql, $con);
+		
+		
 
 		foreach ($interestIds as $interestId) {
 		$sql=	"INSERT INTO Volunteer_has_Interest
