@@ -13,6 +13,15 @@
 	$person = new Person();
 	$person = $dbio->readPerson($account->getPerson());
 
+	//read contact from person
+	$contact = new Contact();
+	$contact = $dbio->readContact($person->getContact());
+	
+	//read address from contact
+	$address = new Address();
+	$address = $dbio->readAddress($contact->getAddress());
+	
+
 	// function search() {}
 	// function create() {}
 	// function read() {}
