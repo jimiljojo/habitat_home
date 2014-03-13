@@ -15,6 +15,7 @@
 		private $email;
 		private $ssn;
 		private $workphone;
+		//private $workphoneext;
 		private $jobtitle;
 		private $cell;
 		private $employer;
@@ -42,6 +43,7 @@
 		public function getEmail() {return $this->email;}
 		public function getSsn() {return $this->ssn;}
 		public function getWorkphone() {return $this->workphone;}
+		//public function getWorkphoneext() {return $this->workphoneext;}
 		public function getJobtitle() {return $this->jobtitle;}
 		public function getCell() {return $this->cell;}
 		public function getEmployer() {return $this->employer;}
@@ -61,6 +63,7 @@
 		public function setEmail($email) {$this->email = $email;}
 		public function setSsn($ssn) {$this->ssn = $ssn;}
 		public function setWorkphone($workphone) {$this->workphone = $workphone;}
+		//public function setWorkphoneext($workphoneext) {$this->workphoneext = $workphoneext;}
 		public function setJobtitle($jobtitle) {$this->jobtitle = $jobtitle;}
 		public function setCell($cell) {$this->cell = $cell;}
 		public function setEmployer($employer) {$this->employer = $employer;}
