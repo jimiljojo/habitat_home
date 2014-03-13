@@ -119,6 +119,58 @@ class DBIO {
 		  $this->close();
 		  return $ints;
 	   }// end function
+
+	   public function readAccount($id) {
+			global $con;
+			$sql = 'SELECT * FROM Account WHERE account_id = ' . $id;
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if ($result) {
+				$result = mysql_fetch_array($result);
+				$account = new Account();
+				$account->setAccount_id($result[0]);
+				$account->setUsername($result[1]);
+				$account->setPassword($result[2]);
+				$account->setDate($result[3]);
+				$account->setStatus($result[4]);
+				$account->setIsOffice($result[5]);
+				$account->setIsVolunteer($result[6]);
+				$account->setPerson($result[7]);
+			} else {
+				echo " DB error";
+			}
+			return $account;
+		}// end function
+
+		public function readPerson($id) {
+			global $con;
+			$sql = 'SELECT * FROM Person WHERE person_id = ' . $id;
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if ($result) {
+				$result = mysql_fetch_array($result);
+				$person = new Person();
+				$person->setPerson_id($result[0]);
+				$person->setTitle($result[1]);
+				$person->setFirst_name($result[2]);
+				$person->setLast_name($result[3]);
+				$person->setGender($result[4]);
+				$person->setDob($result[5]);
+				$person->setMarital_status($result[6]);
+				$person->setContact($result[7]);
+				$person->setIsActive($result[8]);
+				$person->setLastActive($result[9]);
+				$person->setPrefEmail($result[10]);
+				$person->setPrefMail($result[11]);
+				$person->setPrefPhone($result[12]);
+			} else {
+				echo "DB error";
+			}
+			return $person;
+		}// end function
+
                                 
 	}// end class
 ?>
