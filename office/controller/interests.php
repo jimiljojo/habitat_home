@@ -7,9 +7,9 @@
 
 	switch ($act) {
 
-		//case 'readInterests':
+		case 'readInterests':
 			// CODE HERE
-		//	break;
+			break;
 
 		case 'createInterests':
 			// CODE HERE
