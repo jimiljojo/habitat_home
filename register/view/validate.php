@@ -2,32 +2,6 @@
     
     // FILE: Registration Validation Page
     // AUTHOR: des301
-/*
-    echo isset($_SESSION['fname']) ? 1 : 0;
-    echo isset($_SESSION['lname']) ? 1 : 0;
-    echo isset($_SESSION['street']) ? 1 : 0;
-    echo isset($_SESSION['city']) ? 1 : 0;
-    echo isset($_SESSION['state']) ? 1 : 0;
-    echo isset($_SESSION['zip']) ? 1 : 0;
-    echo isset($_SESSION['phone']) ? 1 : 0;
-    echo isset($_SESSION['email']) ? 1 : 0;
-    echo isset($_SESSION['employer']) ? 1 : 0;
-    echo isset($_SESSION['workPhone']) ? 1 : 0;
-    echo isset($_SESSION['occupation']) ? 1 : 0;
-    echo isset($_SESSION['cellPhone']) ? 1 : 0;
-    
-    echo isset($_SESSION['interests']) ? 1 : 0;
-    
-    echo isset($_SESSION['receive']) ? 1 : 0;
-    echo isset($_SESSION['day']) ? 1 : 0;
-    echo isset($_SESSION['eve']) ? 1 : 0;
-    echo isset($_SESSION['wend']) ? 1 : 0;
-    echo isset($_SESSION['age']) ? 1 : 0;
-    echo isset($_SESSION['photo']) ? 1 : 0;
-    echo isset($_SESSION['signature']) ? 1 : 0;
-    echo isset($_SESSION['date']) ? 1 : 0;
-
-*/
 
     global $dbio;
 
@@ -49,20 +23,14 @@
     $emergencyphone = isset($_SESSION['emergencyphone']) ? $_SESSION['emergencyphone'] : 'null';
     $maritial = isset($_SESSION['maritial']) ? $_SESSION['maritial'] : 'null';
     
-    // $interests = isset($_SESSION['interests']) ? $_SESSION['interests'] : 'null';
 
     $interests=isset($_SESSION['interest']) ? $_SESSION['interest'] : 'NotWorking';
-   /* $items = array();
-                foreach($interests as $username) {
-                $items[] = $username;
-                }
     
-    */
     $church = isset($_SESSION['church']) ? $_SESSION['church'] : 'null';
     $ambassador = isset($_SESSION['ambassador']) ? $_SESSION['ambassador'] : 'null';
-    $checkPhone = isset($_SESSION['checkPhone']) ? $_SESSION['checkPhone'] : 'null';
-    $checkMail = isset($_SESSION['checkMail']) ? $_SESSION['checkMail'] : 'null';
-    $checkEmail = isset($_SESSION['checkEmail']) ? $_SESSION['checkEmail'] : 'null';
+    $checkPhone = isset($_SESSION['checkPhone']) ? $_SESSION['checkPhone'] : '0';
+    $checkMail = isset($_SESSION['checkMail']) ? $_SESSION['checkMail'] : '0';
+    $checkEmail = isset($_SESSION['checkEmail']) ? $_SESSION['checkEmail'] : '0';
 
     $day = isset($_SESSION['day']) ? $_SESSION['day'] : 'null';
     $eve = isset($_SESSION['eve']) ? $_SESSION['eve'] : 'null';
@@ -76,11 +44,13 @@
     $date = isset($_SESSION['date']) ? $_SESSION['date'] : 'null';
 
 ?>
+
+
 <h4>Please validate your info</h4>
 <br/>
 <?php include 'progress.php'; ?>
 <hr>
-<form  action="index.php" method="post">
+<form  action="index.php" method="get">
     <input name="act" type="hidden" value="<?php echo '' . $act;?>" >
 <?php
     echo '<b>Personal Information:</b><br>';
@@ -90,32 +60,31 @@
     echo 'Date of Birth:'.$dob.'<br>';
     echo 'Gender:'.$gender.'<br>';
 
-    echo '<b>Address:</b><br>';
+    echo '<br><b>Address:</b><br>';
     echo 'Street1: ' . $street1 . '<br>';
     echo 'Street2:'.$street2.'<br>';
     echo 'City: ' . $city . '<br>';
     echo 'State: ' . $state . '<br>';
     echo 'Zip: ' . $zip . '<br>';
 
-    echo '<b>Contact Information:</b><br>';
+    echo '<br><b>Contact Information:</b><br>';
     echo 'Phone: ' . $phone . '<br>';
     echo 'Sec. Phone:'.$phone2.'&nbsp &nbsp ext. :'.$extension.'<br>';
     echo 'Email Address: ' . $email . '<br>';
     echo 'Emergency Contact Name: ' . $emergencyname . '<br>';
     echo 'Emergency Contact Phone: ' . $emergencyphone . '<br>';
+    
     $maritialstatus=$dbio->getMaritialStatus($maritial);
-
-
-    echo '<b>Maritial Status:</b> ' . $maritialstatus . '<br>';
+    echo '<br><b>Maritial Status:</b> ' . $maritialstatus . '<br>';
      '<br><br><br>';
 
     
     //Displaying Interest
     echo '<br><b>Interests:</b><br>';
-    //foreach ($items as $i) {
-    
+      
     $count=1;
     $interestIds='';
+
     foreach ($interests as $i) {
                 
                 If($count==1){
@@ -139,11 +108,11 @@
     
     
     <?php
-    echo '<b>General Information:</b><br>';
+    echo '<br><b>General Information:</b><br>';
     echo 'Church or Group Affiliate: '.$church.'<br>';
     echo 'Are you a Church Ambassador? &nbsp &nbsp'.$ambassador.'<br>';
 
-    echo '<b>Contact Preference:</b><br>';
+    echo '<br><b>Contact Preference:</b><br>';
     echo $checkPhone.'<br>';
     echo $checkMail.'<br>';
     echo $checkEmail.'<br>';
@@ -162,7 +131,7 @@
     }
     
 
-    echo '<b>Consent</b><br>';
+    echo '<br><b>Consent</b><br>';
     if($age=="1"){
         echo 'I am Less than 18 years of age and have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/YorkHabitatMinorWaiverRelease.pdf" target="_blank">Minor Waiver</a><br>';
     }
