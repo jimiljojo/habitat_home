@@ -43,9 +43,9 @@
 	    session_start();
 	    $_SESSION['church'] = isset($_GET['church']) ? $_GET['church'] : '';
 	    $_SESSION['ambassador'] = isset($_GET['ambassador']) ? $_GET['ambassador'] : '';
-	    $_SESSION['checkPhone'] = isset($_GET['checkPhone']) ? $_GET['checkPhone'] : '';
-	    $_SESSION['checkMail'] = isset($_GET['checkMail']) ? $_GET['checkMail'] : '';
-	    $_SESSION['checkEmail'] = isset($_GET['checkEmail']) ? $_GET['checkEmail'] : '';
+	    $_SESSION['checkPhone'] = isset($_GET['checkPhone']) ? $_GET['checkPhone'] : 0;
+	    $_SESSION['checkMail'] = isset($_GET['checkMail']) ? $_GET['checkMail'] : 0;
+	    $_SESSION['checkEmail'] = isset($_GET['checkEmail']) ? $_GET['checkEmail'] : 0;
 	    $_SESSION['day'] = isset($_GET['day']) ? $_GET['day'] : '';
 	    $_SESSION['eve'] = isset($_GET['eve']) ? $_GET['eve'] : '';
 	    $_SESSION['wend'] = isset($_GET['wend']) ? $_GET['wend'] : '';
