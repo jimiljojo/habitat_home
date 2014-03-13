@@ -116,6 +116,7 @@
     ?>
    
 </table>
+    
     <h5>Total Time Worked:
     <?php
     if ($totalMin == "0")
