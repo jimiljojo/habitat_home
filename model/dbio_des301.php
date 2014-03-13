@@ -171,6 +171,49 @@ class DBIO {
 			return $person;
 		}// end function
 
+			public function readContact($id) {
+		global $con;
+		$sql = 'SELECT * FROM Contact WHERE contact_id = ' . $id;
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$this->close();
+		if ($result) {
+				$result = mysql_fetch_array($result);
+				$contact = new Contact();
+				$contact->setContact_id($result[0]);
+				$contact->setAddress($result[1]);
+				$contact->setPhone($result[2]);
+				$contact->setEmail($result[3]);
+				$contact->setPhone2($result[4]);
+				$contact->setExtension($result[5]);
+		} else {
+			echo "DB eroor";
+		}
+		return $contact;
+	}// end function
+
+
+	public function readAddress($id) {
+		global $con;
+		$sql = 'SELECT * FROM Address where address_id = ' . $id;
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$this->close();
+		if ($result) {
+			$result = mysql_fetch_array($result);
+			$address = new Address();
+			$address->setAddress_id($result[0]);
+			$address->setStreet1($result[1]);
+			$address->setStreet2($result[2]);
+			$address->setCity($result[3]);
+			$address->setState($result[4]);
+			$address->setZip($result[5]);
+		} else {
+			echo "DB eroor";
+		}
+		return $address;
+	}// end function
+
                                 
 	}// end class
 ?>

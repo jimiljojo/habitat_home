@@ -14,6 +14,8 @@
 	// REQUIRES/INCLUDES
 	require_once('class/accnt.php');
 	require_once('class/person.php');
+	require_once('class/contact.php');
+	require_once('class/address.php');
 	require_once ('class/link.php');
 	require_once ('class/item.php');
 	require_once ('class/interest.php');

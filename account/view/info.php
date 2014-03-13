@@ -16,17 +16,17 @@
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
     $lName = $person->getLast_name();
-    $street1 = '123 Main Street';//$info["Street1"];
-    $street2 = '';//$info["Street2"];
-    $city = 'Anytown';//$info["City"];
-    $state = 'PA';//$info["State"];
-    $zip = '17402';//$info["ZIP"];
-    $phone = '717-555-5309';//$info["Phone"];
-    $email = 'jdoe@abc.com';//$info["Email"];
-    $employer = 'Best Company';//$info["Employer"];
-    $workPhone = '717-555-9874';//$info["WorkPhone"];
-    $workExt = '102';
-    $jobTitle = 'Manager';//$info["Title/Occupation"];
+    $street1 = $address->getStreet1();
+    $street2 = $address->getStreet2();
+    $city = $address->getCity();
+    $state = $address->getState();
+    $zip = $address->getZip();
+    $phone = $contact->getPhone();
+    $email = $contact->getEmail();
+    $employer = 'abc company';
+    $workPhone = $contact->getPhone2();
+    $workExt = $contact->getExtension();
+    $jobTitle = 'engineer';
 
 ?>
 <h4>Personal Information</h4>
