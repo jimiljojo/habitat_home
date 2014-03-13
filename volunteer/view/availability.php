@@ -4,6 +4,7 @@
     <h5><strong>I am available to work: </strong></h5>
 
 <?php
+
 	// TITLE: Volunteer Availability View
 	// FILE: volunteer/view/availability.php
 	// AUTHOR: Logan Gurreri
