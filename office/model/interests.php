@@ -18,14 +18,14 @@ $intNames = array();
 
 foreach ($userInts as $UseInt)  //assigned interests and all interests 
 {
-    if (!in_array($UseInt, $dbAllInterests))
-    { $intNames[] = $UseInts;
+    if (!in_array($dbAllInterests))
+    { $intNames[] = $dbAllInterests;
     }
 
-}
+}//list all interests
 
-$dbio->setVolunteerByAnInterest($VolFName, $VolLName);
-//List all volunteers with specific interests
+$dbio->setVolunteerInterests($intNames);
+//List all interests
 
 
 
