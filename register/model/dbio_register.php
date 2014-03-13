@@ -149,22 +149,26 @@ class DBIO {
 	
     public function createNewPerson($street1,$street2,$city,$state,$zip,$phone,$email,$phone2,$extension,$title,$fName,$lName,$gender,$dob,$maritalStatusId,$prefEmail,$prefMail,$prefPhone){
 		global $con;
-		
+		$this->open();
+
 		$sql =	"INSERT INTO Address
 				(street1,street2,city,state,zip)
 				VALUES
-				('" .$street1. "','" .$street2. "','" .$city. "','" .$state. "','" .$zip. "');" .
+				('" .$street1. "','" .$street2. "','" .$city. "','" .$state. "','" .$zip. "');";
 
-				"INSERT INTO Contact
+		mysql_query($sql, $con);
+
+		$sql=	"INSERT INTO Contact
 				(address_id,phone,email,phone2,extension)
-				Select Max(address_id),'" .$phone. "','" .$email. "','" .$phone2. "','" .$extension. "' From homes_db.Address;".
+				Select Max(address_id),'" .$phone. "','" .$email. "','" .$phone2. "','" .$extension. "' From homes_db.Address;";
 
-				"INSERT INTO Person
+		mysql_query($sql, $con);
+
+		$sql=	"INSERT INTO Person
 				(title,first_name,last_name,gender,dob,Marital_Status_marital_status_id,Contact_contact_id,isActive,lastActive,prefEmail,prefMail,prefPhone)
 				Select '" .$title. "','" .$fName. "','" .$lName. "','" .$gender. "','" .$dob. "'," .$maritalStatusId. ",Max(contact_id), 1, Null,". $prefEmail. "," .$prefMail. "," .$prefPhone." From Contact;";
-
-		$this->open();
-		mysql_query($sql, $con);
+		mysql_query($sql, $con);			
+		
 		$this->close();
 
 		return True;
