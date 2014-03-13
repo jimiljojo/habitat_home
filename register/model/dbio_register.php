@@ -1,5 +1,8 @@
 <?php
 
+    // FILE: Registration Database
+    // AUTHOR: sbkedia
+
 class DBIO {
 	
 	
@@ -54,19 +57,21 @@ class DBIO {
 			return $itemString;
 		}// end function
 
-		public function getMaritialStatus($maritial){
-		global $con;
-		$sql='SELECT title from Marital_Status where marital_status_id IN ('. $maritial .')';
-		$this->open();
-		$results=mysql_query($sql, $con);
-		$final=mysql_fetch_row($results);
-		$status=$final[0];
-		$this->close();
-		return $status;
-	}
+		
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 		
+		public function getMaritialStatus($maritial){
+			global $con;
+			$sql='SELECT title from Marital_Status where marital_status_id IN ('. $maritial .')';
+			$this->open();
+			$results=mysql_query($sql, $con);
+			$final=mysql_fetch_row($results);
+			$status=$final[0];
+			$this->close();
+			return $status;
+		}
+
 	   public function getAllInterestTypes() {
 		  global $con;
 		  $sql = 'SELECT type_id, title FROM Interest_Type';
@@ -74,10 +79,10 @@ class DBIO {
 		  $this->open();		
 		  $results = mysql_query($sql, $con);
 		  while($result = mysql_fetch_array($results)) {
-			 $int_type= new Item();
-			 $int_type->setId($result[0]);
-			 $int_type->setTitle($result[1]);
-			 $types[]=$int_type;
+				$int_type= new Item();
+				$int_type->setId($result[0]);
+				$int_type->setTitle($result[1]);
+				$types[]=$int_type;
 		  }// end while
 		  $this->close();
 		  return $types;
@@ -124,11 +129,11 @@ class DBIO {
     
 	public function getInterestsByIds($ids) {
 		global $con;
-		$sql = 'SELECT * FROM Interest Where interest_id IN ('. $ids .')';
+		$sql = "SELECT * FROM Interest Where interest_id IN (". $ids .");";
 		$this->open();
 		$results = mysql_query($sql, $con);
-
 			$interests = array();
+
 			while($result = mysql_fetch_array($results)) {
 				$interest = new Interest();
 				$interest->setId($result[0]);
@@ -166,7 +171,7 @@ class DBIO {
 	}//end function
 
 
-public function createNewAccount($consentAge, $consentVideo , $consentWaiver, $consentPhoto , $availDay , $availEve, $availWend, $consentMinor, $consentSafety, $emergencyName, $emergencyPhone, $churchAmbassador, $affiliation,$interestId, $username, $password){
+public function createNewAccount($consentAge, $consentVideo , $consentWaiver, $consentPhoto , $availDay , $availEve, $availWend, $consentMinor, $consentSafety, $emergencyName, $emergencyPhone, $churchAmbassador, $affiliation,$interestIds, $username, $password){
 		global $con;
 		
 		$sql =	"INSERT INTO Volunteer
@@ -176,18 +181,21 @@ public function createNewAccount($consentAge, $consentVideo , $consentWaiver, $c
 				MAX(person_id), 0, " .$consentMinor. ", " .$consentSafety. ", '" .$emergencyName. "', '" .$emergencyPhone. "', " .$churchAmbassador. ", '" .$affiliation. "' FROM Person;".
 
 
-				"INSERT INTO Volunteer_has_Interest
-				(Volunteer_Person_person_id,Interest_interest_id)
-				SELECT MAX(person_id)," .$interestId." FROM Person;".
-
-
-
 				"INSERT INTO Account
 				(username, password, date, status, isOffice, isVolunteer,person_id)
 				SELECT '" .$username."','" .$password."', getDate(), 'Active', 0, 1, MAX(person_id) From Person;";
 
 		$this->open();
 		mysql_query($sql, $con);
+
+		foreach ($interestIds as $interestId) {
+		$sql=	"INSERT INTO Volunteer_has_Interest
+			  	(Volunteer_Person_person_id,Interest_interest_id)
+			  	SELECT MAX(person_id)," .$interestId." FROM Person;";
+
+		mysql_query($sql, $con);
+		}	  	
+
 		$this->close();
 
 		return True;
