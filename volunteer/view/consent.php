@@ -14,8 +14,6 @@
         global $checkedSigned;
         global $checkedVideo;
         global $consent;
-        global $test;
-        $test = 'Ben';
         
         $checked16 = 'Yes';
         $checkedPhoto = 'No';
