@@ -46,14 +46,14 @@
 	    $_SESSION['checkPhone'] = isset($_GET['checkPhone']) ? $_GET['checkPhone'] : 0;
 	    $_SESSION['checkMail'] = isset($_GET['checkMail']) ? $_GET['checkMail'] : 0;
 	    $_SESSION['checkEmail'] = isset($_GET['checkEmail']) ? $_GET['checkEmail'] : 0;
-	    $_SESSION['day'] = isset($_GET['day']) ? $_GET['day'] : '';
-	    $_SESSION['eve'] = isset($_GET['eve']) ? $_GET['eve'] : '';
-	    $_SESSION['wend'] = isset($_GET['wend']) ? $_GET['wend'] : '';
-	    $_SESSION['age'] = isset($_GET['age']) ? $_GET['age'] : '';
-	    $_SESSION['photo'] = isset($_GET['photo']) ? $_GET['photo'] : '';
-	    $_SESSION['safety'] = isset($_GET['safety']) ? $_GET['safety'] : '';
-	    $_SESSION['video'] = isset($_GET['video']) ? $_GET['video'] : '';
-	    $_SESSION['waiver'] = isset($_GET['waiver']) ? $_GET['waiver'] : '';
+	    $_SESSION['day'] = isset($_GET['day']) ? $_GET['day'] : 0;
+	    $_SESSION['eve'] = isset($_GET['eve']) ? $_GET['eve'] : 0;
+	    $_SESSION['wend'] = isset($_GET['wend']) ? $_GET['wend'] : 0;
+	    $_SESSION['age'] = isset($_GET['age']) ? $_GET['age'] : 0;
+	    $_SESSION['photo'] = isset($_GET['photo']) ? $_GET['photo'] : 0;
+	    $_SESSION['safety'] = isset($_GET['safety']) ? $_GET['safety'] : 0;
+	    $_SESSION['video'] = isset($_GET['video']) ? $_GET['video'] : 0;
+	    $_SESSION['waiver'] = isset($_GET['waiver']) ? $_GET['waiver'] : 0;
 
 	    $_SESSION['signature'] = isset($_GET['signature']) ? $_GET['signature'] : '';
 	    $_SESSION['date'] = isset($_GET['date']) ? $_GET['date'] : '';
