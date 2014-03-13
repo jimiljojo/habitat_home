@@ -12,10 +12,11 @@
     $allInfo = mysql_query($query);
     $info = mysql_fetch_array($allInfo);
 */
+
     
-    $title = 'Mr';//$info["Title"];
-    $fName = 'John';//$info["FirstName"];
-    $lName = 'Doe';//$info["LastName"];
+    $title = $person->getTitle();
+    $fName = $person->getFirst_name();
+    $lName = $person->getLast_name();
     $street1 = '123 Main Street';//$info["Street1"];
     $street2 = '';//$info["Street2"];
     $city = 'Anytown';//$info["City"];
