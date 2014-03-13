@@ -12,7 +12,6 @@
     $allInfo = mysql_query($query);
     $info = mysql_fetch_array($allInfo);
 */
-
     
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
@@ -22,7 +21,7 @@
     $city = 'Anytown';//$info["City"];
     $state = 'PA';//$info["State"];
     $zip = '17402';//$info["ZIP"];
-    $phone = '717*555-5309';//$info["Phone"];
+    $phone = '717-555-5309';//$info["Phone"];
     $email = 'jdoe@abc.com';//$info["Email"];
     $employer = 'Best Company';//$info["Employer"];
     $workPhone = '717-555-9874';//$info["WorkPhone"];
@@ -52,47 +51,47 @@
 		    <option value="3">Dr.</option>;
 		</select>
 		<span class="required">*</span>
-		<br/>
-		<input name="fName" type="text" placeholder="first name" value="<?php echo $fName; ?>" />
+		<br>
+		<input name="fName" type="text" placeholder="first name" value="<?php echo $fName; ?>" >
 		<span class="required">*</span>
-		<br/>
-		<input name="lName" type="text" placeholder="last name" value="<?php echo $lName; ?>"  />
+		<br>
+		<input name="lName" type="text" placeholder="last name" value="<?php echo $lName; ?>"  >
 		<span class="required">*</span>
-		<br/>
+		<br>
 	    </td>
 	    <td>
-		<input name="street1" type="text" placeholder="street 1" value="<?php echo $street1; ?>" />
+		<input name="street1" type="text" placeholder="street 1" value="<?php echo $street1; ?>" >
 		<span class="required">*</span>
-		<br/>
-		<input name="street2" type="text" placeholder="street 2" value="<?php echo $street2; ?>" />
-		<br/>
-		<input name="city" type="text" placeholder="city" value="<?php echo $city; ?>" />
+		<br>
+		<input name="street2" type="text" placeholder="street 2" value="<?php echo $street2; ?>" >
+		<br>
+		<input name="city" type="text" placeholder="city" value="<?php echo $city; ?>" >
 		<span class="required">*</span>
-		<br/>
+		<br>
 		<select name="state">
 		    <option value="20">MD</option>
 		    <option value="38" selected="selected">PA</option>
 		    <option value="43">TX</option>
 		</select>
 		<span class="required">*</span>
-		<br/>
-		<input name="zip" type="text" placeholder="zip" value="<?php echo $zip; ?>" />
+		<br>
+		<input name="zip" type="text" placeholder="zip" value="<?php echo $zip; ?>" >
 		<span class="required">*</span>
 	    </td>
 	    <td>
-		<input name="phone" type="text" placeholder="phone" value="<?php echo $phone; ?>" />
+		<input name="phone" type="text" placeholder="phone" value="<?php echo $phone; ?>" >
 		<span class="required">*</span></label>
-		<br/>
-		<input name="email" type="text" placeholder="email" value="<?php echo $email; ?>"" />
+		<br>
+		<input name="email" type="text" placeholder="email" value="<?php echo $email; ?>" >
 		<span class="required">*</span>
-		<br/>
-		<input name="employer" type="text" placeholder="employer" value="<?php echo $employer; ?>" />
-		<br/>
-		<input name="workPhone" type="text" placeholder="work phone" value="<?php echo $workPhone; ?>"" />
-		<br/>
-		<input name="workExt" type="text" placeholder="ext" value="<?php echo $workExt; ?>" />
-		<br/>
-		<input name="jobTitle" type="text" placeholder="job title" value="<?php echo $jobTitle; ?>" />
+		<br>
+		<input name="employer" type="text" placeholder="employer" value="<?php echo $employer; ?>" >
+		<br>
+		<input name="workPhone" type="text" placeholder="work phone" value="<?php echo $workPhone; ?>" >
+		<br>
+		<input name="workExt" type="text" placeholder="ext" value="<?php echo $workExt; ?>" >
+		<br>
+		<input name="jobTitle" type="text" placeholder="job title" value="<?php echo $jobTitle; ?>" >
 	    </td>
 	</tr>
     </table>
