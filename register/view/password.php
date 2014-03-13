@@ -67,42 +67,52 @@
 	    <tr><td><label><span class="mandatory">*</span>Confirm</label></td><td><input type="password" name="pw2" id="pw2"> </td><td>&nbsp<span style="color:lightgrey; font-size: 10pt;">re-type password</span></td></tr></table></div><br>
 	    <br>
 	    <script type="text/javascript">
-	    function check()
+
+            function checkPassword()
             {
-            	if (document.getElementById('username').value==""
-                 || document.getElementById('username').value==undefined)
+            	
+
+            	if (document.getElementById('userName').value==""
+                 || document.getElementById('userName').value==undefined)
                 {
-                    alert ("Please Enter your prefered Username");
+                    alert ("Please Enter your 'Username'");
                     return false;
                 }
 
-                if (document.getElementById('pw1').value==""
+                else if (document.getElementById('pw1').value==""
                  || document.getElementById('pw1').value==undefined)
                 {
-                    alert ("Please Enter your prefered Password");
+                    alert ("Please Enter your 'Password'");
                     return false;
                 }
 
-                if (document.getElementById('pw2').value==""
+                else if (document.getElementById('pw2').value==""
                  || document.getElementById('pw2').value==undefined)
                 {
-                    alert ("Please Re-Type your Password");
+                    alert ("Please verify your Password");
                     return false;
                 }
 
-                if (document.getElementById('pw1').value!=document.getElementById('pw2').value)
-                {
-                    alert ("Your Passwords don't match!");
-                    return false;
-                }
+                else if (document.getElementById('pw1').value!=document.getElementById('pw2').value)
+               
+                 {
+                     alert ("Your Passwords don't match. Please re-type your Passwords!");
+                     return false;
+                 }
 
-                return true;
+                else{
+                	return true;
+                }
+                
+
             }
-         </script>
-	    <input class="btn btn-success" name="submit" type="submit" value="submit" onclick="return check();" >
+            </script>
+
+	    
+	    <input class="btn btn-success" name="submit" type="submit" value="submit" onclick="return checkPassword();">
 
 	    <br>
 	</form>
 	<br>
-	<hr>
+
 	
