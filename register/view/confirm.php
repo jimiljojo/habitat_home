@@ -40,7 +40,7 @@
     $availEve = isset($_SESSION['eve']) ? $_SESSION['eve'] : 'null';
     $availWend = isset($_SESSION['wend']) ? $_SESSION['wend'] : 'null';
     $age = isset($_SESSION['age']) ? $_SESSION['age'] : 'null';	
-    $photo = isset($_SESSION['photo']) ? $_SESSION['photo'] : 'null';
+    $consentPhoto = isset($_SESSION['photo']) ? $_SESSION['photo'] : 'null';
     $consentSafety = isset($_SESSION['safety']) ? $_SESSION['safety'] : 'null';
     $consentVideo = isset($_SESSION['video']) ? $_SESSION['video'] : 'null';
     $consentWaiver = isset($_SESSION['waiver']) ? $_SESSION['waiver'] : 'null';
@@ -60,17 +60,17 @@
     }
     
     //$flag=$dbio->createNewPerson("1234Queens","c206","Atlanta","AT","17404","7174241134","sbhg@hoag","6716264765","500","MR.","Sidd","Ked","Male","10-10-1000",1,1,0,1);
-    $flag=$dbio->createNewPerson($street1,$street2,$city,$state,$zip,$phone,$email,$phone2,$extension,$title,$fname,$lname,$gender,$dob,$maritial,$checkEmail,$checkMail,$checkPhone);
+    //$flag=$dbio->createNewPerson($street1,$street2,$city,$state,$zip,$phone,$email,$phone2,$extension,$title,$fname,$lname,$gender,$dob,$maritial,$checkEmail,$checkMail,$checkPhone);
     echo 'Completed 1';
     //echo $street1 .",".$street2.",".$city.",".$state.",".$zip.",".$phone.",".$email.",".$phone2.",".$extension.",".$title.",".$fname.",".$lname.",".$gender.",".$dob.",".$maritial.",".$checkEmail.",".$checkMail.",".$checkPhone;	
 
-   /* if($flag){
+   // if($flag){
     	echo 'Entering 2';
-    $flag2=$dbio->createNewAccount($consentAge, $consentVideo , $consentWaiver, $consentPhoto , $availDay , $availEve, $availWend, $consentMinor, 
-    	$consentSafety, $emergencyName, $emergencyPhone, $churchAmbassador, $affiliation,$interestIds, $userName, $password);
-    }
+    $flag2=$dbio->createNewAccount($consentAge, $consentVideo , $consentWaiver, $consentPhoto , $availDay , $availEve, $availWend, $consentMinor, $consentSafety, $emergencyName, $emergencyPhone, $churchAmbassador, $affiliation,$interestIds, $userName, $password);
+    //}
+   
     echo 'Completed 2';
-*/
+	//echo $consentAge.",".$consentVideo.",".$consentWaiver.",".$consentPhoto.",".$availDay.",".$availEve.",".$availWend.",".$consentMinor.",".$consentSafety.",".$emergencyName.",". $emergencyPhone.",". $churchAmbassador.",". $affiliation.",". $userName.",". $password;
 ?>
 	<h4>Confirmation</h4>
 	<?php include 'progress.php'; ?>

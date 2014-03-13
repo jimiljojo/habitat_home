@@ -183,12 +183,6 @@ public function createNewAccount($consentAge, $consentVideo , $consentWaiver, $c
 				SELECT " .$consentAge. "," .$consentVideo. " , " .$consentWaiver. ", " .$consentPhoto. " , " .$availDay. " , " .$availEve. ", " .$availWend. ",
 				MAX(person_id), 0, " .$consentMinor. ", " .$consentSafety. ", '" .$emergencyName. "', '" .$emergencyPhone. "', " .$churchAmbassador. ", '" .$affiliation. "' FROM Person;";
 		mysql_query($sql, $con);
-
-		$sql =	"INSERT INTO Account
-				(username, password, date, status, isOffice, isVolunteer,person_id)
-				SELECT '" .$username."','" .$password."', getDate(), 'Active', 0, 1, MAX(person_id) From Person;";
-		mysql_query($sql, $con);
-		
 		
 
 		foreach ($interestIds as $interestId) {
@@ -198,6 +192,12 @@ public function createNewAccount($consentAge, $consentVideo , $consentWaiver, $c
 
 		mysql_query($sql, $con);
 		}	  	
+		
+		$sql =	"INSERT INTO Account
+				(username, password, date, status, isOffice, isVolunteer,person_id)
+				SELECT '" .$username."','" .$password."', now(), 'Active', 0, 1, MAX(person_id) From Person;";
+		mysql_query($sql, $con);
+		
 
 		$this->close();
 
