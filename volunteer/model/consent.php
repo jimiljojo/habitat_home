@@ -5,11 +5,17 @@
 	// AUTHOR: AUTOGEN
 
 
-	function search() {}
-	function create() {}
-	function read() {}
-	function update() {}
-	function delete() {}
-	function list() {}
 
+    function setVolunteerConsent($vid, $age, $photo, $agree, $video) {
+    
+   
+        $dbio->setVolunteerConsent($vid, $age, $photo, $agree, $video);
+
+    }
+    function getVolunteerConsent($vid) {
+        
+        return $dbConsent = $dbio->getVolunteerConsentBy($vid);
+     
+    
+    }
 ?>
