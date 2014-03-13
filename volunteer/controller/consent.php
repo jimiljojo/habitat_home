@@ -2,40 +2,33 @@
 
 	// TITLE: Volunteer Consent Controller
 	// FILE: volunteer/controller/consent.php
-	// AUTHOR: AUTOGEN
+	// AUTHOR: rwg5215
 
+
+        $vid = $_GET['vid'];
+        include ($dir . '/model/consent.php');
 
 	switch ($act) {
 
-		case 'search':
-			// CODE HERE
-			break;
+		case 'updateConsent':
+                            
+                    // availability
+                    $age = $_GET['age'];
+                    $photo = $_GET['photo'];
+                    $agree = $_GET['agree'];
+                    $video = $_GET['video'];
+                                         
+                        setVolunteerConsent($vid, $age, $photo, $agree, $video);
+                        break;
 
-		case 'create':
-			// CODE HERE
-			break;
-
-		case 'read':
-			// CODE HERE
-			break;
-
-		case 'update':
-			// CODE HERE
-			break;
-
-		case 'delete':
-			// CODE HERE
-			break;
-
-		case 'list':
-			// CODE HERE
-			break;
-
-		default:
-			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
-			break;
-
+		case 'viewConsent':
+                default:
+                    
+                        getVolunteerConsent($vid);
+                        break;
 
 	}// end switch
+        
+        $page = $dir . '/view/' . $sub. '.php';
 
 ?>
