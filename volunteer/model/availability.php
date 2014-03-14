@@ -13,7 +13,7 @@
     }
     function getVolunteerAvailability($vid) {
         
-        return $dbAvailability = $dbio->getVolunteerAvailabilityBy($vid);
+        return $dbAvailability = $dbio->getVolunteerAvailability($vid);
      
     
     }
