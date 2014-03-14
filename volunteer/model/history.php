@@ -2,14 +2,19 @@
 
 	// TITLE: Volunteer Work History Model
 	// FILE: volunteer/model/history.php
-	// AUTHOR: AUTOGEN
+	// AUTHOR: rwg5215
 
 
-	function search() {}
-	function create() {}
-	function read() {}
-	function update() {}
-	function delete() {}
-	function list() {}
+    function setVolunteerHistory($vid, $association, $date, $start, $end, $auth) {
+    
+   
+        $dbio->setVolunteerHistory($vid, $association, $date, $start, $end, $auth);
 
+    }
+    function getVolunteerHistory($vid) {
+        
+        return $dbConsent = $dbio->getVolunteerHistory($vid);
+     
+    
+    }
 ?>
