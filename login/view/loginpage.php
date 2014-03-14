@@ -5,6 +5,8 @@ global $sub;
 global $dir;
 global $msg;
 
+$act='loginCheck';
+
 ?>
 
 <style>
@@ -63,7 +65,9 @@ global $msg;
                     return false;
                 }
 
+                
                 return true;
+
 
             }
 

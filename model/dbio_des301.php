@@ -56,6 +56,23 @@ class DBIO {
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 		
+		public function getLogin($user,$pw){
+
+			global $con;
+
+			$sql='SELECT username,password FROM Account WHERE username="'.$user.'" AND password="'.$pw.'"';
+			$this->open();
+			$results=mysql_query($sql,$con);
+			$final=mysql_fetch_row($results);
+			$status=$final[0];
+			$this->close();
+			return $status;
+		}
+	   
+
+
+
+
 	   public function getAllInterests() {
 		  $interests = $this->getAllInts();
 		  return $interests;
