@@ -31,12 +31,38 @@
 	
 	case 'validate':
 	    session_start();
-	    $_SESSION['userName'] = (isset($_GET['userName'])) ? $_GET['userName'] : '';
-	    $_SESSION['password'] = (isset($_GET['pw1'])) ? $_GET['pw1'] : '';
+	    $use=($_GET['userName']);
+	    $usernameCheck=$dbio->getUsername($use);
+	    if($use==$usernameCheck)
+	    {
+	    	$act = 'validate';
+	    	$progress = 4;
+	    	include ('view/password.php');
+	    }
+
+	    else
+	    {
+	    	$password1=($_GET['pw1']);
+	    	$password2=($_GET['pw2']);
+	    	if($password1 != $password2)
+	    	{
+	    		$act = 'validate';
+	    		$progress = 4;
+	    		include ('view/password.php');
+	    	}
+
+	    	else
+	    	{
+	    		$_SESSION['userName'] = (isset($_GET['userName'])) ? $_GET['userName'] : '';
+	    		$_SESSION['password'] = (isset($_GET['pw1'])) ? $_GET['pw1'] : '';
 	  
-	    $progress = 5;
-	    $act = 'confirm';
-	    include ('view/validate.php');
+	    		$progress = 5;
+	    		$act = 'confirm';
+	    		include ('view/validate.php');
+	    	}
+	    }
+
+	    
 	    break;
 
 	case 'setPassword':
