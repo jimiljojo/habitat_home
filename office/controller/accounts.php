@@ -16,7 +16,8 @@
 			break;
 
 		case 'read':
-			// CODE HERE
+			include 'office/model/accounts.php';
+			$page = $dir . '/view/viewAccounts.php';
 			break;
 
 		case 'update':

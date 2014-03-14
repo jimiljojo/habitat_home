@@ -214,6 +214,27 @@ class DBIO {
 		return $address;
 	}// end function
 
+	public function readAccounts() {
+		global $con;
+		$sql = 'SELECT * FROM Account';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$accounts =array();
+		while($rows = mysql_fetch_array($result)){
+			$account = new Account();
+			$account->setAccount_id($rows[0]);
+			$account->setUsername($rows[1]);
+			$account->setPassword($rows[2]);
+			$account->setDate($rows[3]);
+			$account->setStatus($rows[4]);
+			$account->setIsOffice($rows[5]);
+			$account->setIsVolunteer($rows[6]);
+			$account->setPerson($rows[7]);
+			$accounts[] = $account;
+		}
+		$this->close();
+		return $accounts;
+	}// end function
                                 
 	}// end class
 ?>

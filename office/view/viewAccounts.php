@@ -1,11 +1,4 @@
-<?php
 
-// TITLE: Office Accounts View
-// FILE: office/view/accounts.php
-// AUTHOR: Martin Arabi; mva5164
-
-
-?>
 
 <style> /* css */ 
 
@@ -98,7 +91,7 @@ break;
 <input id="input1" name="input1" placeholder="first name" type="text">
 <input id="input2" name="input2" placeholder="last name" type="text">
 </form><br><br/> 
-
+<?php read($accounts); ?>
 <!--results can be listed here, pushing text down.-->
 
 <br>
