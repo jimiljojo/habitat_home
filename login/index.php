@@ -8,11 +8,9 @@
 
 <div style="padding-left: 10px;">
 <?php
+	require_once ('../model/dbio_des301.php');
 	
-	//require_once('/class/item.php');
-	
-	//require_once ('/model/dbio_register.php');
-	//$dbio= new DBIO();
+	$dbio= new DBIO();
 
 	$act = (isset($_GET['act'])) ? $_GET['act'] : '';
 	$msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';

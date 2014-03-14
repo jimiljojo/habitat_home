@@ -38,6 +38,9 @@
 	    	$act = 'validate';
 	    	$progress = 4;
 	    	include ('view/password.php');
+	    	print '<script type="text/javascript">'; 
+			print 'alert("The Username '. $use .' is already registered. Please try a different username!")'; 
+			print '</script>';
 	    }
 
 	    else
