@@ -42,6 +42,9 @@
     $waiver = isset($_SESSION['waiver']) ? $_SESSION['waiver'] : 'null';
     $signature = isset($_SESSION['signature']) ? $_SESSION['signature'] : 'null';
     $date = isset($_SESSION['date']) ? $_SESSION['date'] : 'null';
+    $userName = isset($_SESSION['userName']) ? $_SESSION['userName'] : 'null';
+    $password = isset($_SESSION['pw1']) ? $_SESSION['pw1'] : 'null';
+
 
 ?>
 
@@ -53,7 +56,8 @@
 <form  action="index.php" method="get">
     <input name="act" type="hidden" value="<?php echo '' . $act;?>" >
 <?php
-    echo '<b>Personal Information:</b><br>';
+    echo '<b>Username:</b>'.$userName.'<br>';
+    echo '<br><b>Personal Information:</b><br>';
     echo 'Title:' .$title . '<br>';
     echo 'first name: ' . $fname . '<br>';
     echo 'last name: ' . $lname . '<br>';
