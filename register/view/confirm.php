@@ -59,18 +59,13 @@
     	$consentMinor=0;
     }
     
-    //$flag=$dbio->createNewPerson("1234Queens","c206","Atlanta","AT","17404","7174241134","sbhg@hoag","6716264765","500","MR.","Sidd","Ked","Male","10-10-1000",1,1,0,1);
-    //$flag=$dbio->createNewPerson($street1,$street2,$city,$state,$zip,$phone,$email,$phone2,$extension,$title,$fname,$lname,$gender,$dob,$maritial,$checkEmail,$checkMail,$checkPhone);
-    echo 'Completed 1';
-    //echo $street1 .",".$street2.",".$city.",".$state.",".$zip.",".$phone.",".$email.",".$phone2.",".$extension.",".$title.",".$fname.",".$lname.",".$gender.",".$dob.",".$maritial.",".$checkEmail.",".$checkMail.",".$checkPhone;	
 
-   // if($flag){
-    	echo 'Entering 2';
-    $flag2=$dbio->createNewAccount($consentAge, $consentVideo , $consentWaiver, $consentPhoto , $availDay , $availEve, $availWend, $consentMinor, $consentSafety, $emergencyName, $emergencyPhone, $churchAmbassador, $affiliation,$interestIds, $userName, $password);
-    //}
-   
-    echo 'Completed 2';
-	//echo $consentAge.",".$consentVideo.",".$consentWaiver.",".$consentPhoto.",".$availDay.",".$availEve.",".$availWend.",".$consentMinor.",".$consentSafety.",".$emergencyName.",". $emergencyPhone.",". $churchAmbassador.",". $affiliation.",". $userName.",". $password;
+    $flag=$dbio->createNewPerson($street1,$street2,$city,$state,$zip,$phone,$email,$phone2,$extension,$title,$fname,$lname,$gender,$dob,$maritial,$checkEmail,$checkMail,$checkPhone);
+    
+
+    if($flag){
+        $flag2=$dbio->createNewAccount($consentAge, $consentVideo , $consentWaiver, $consentPhoto , $availDay , $availEve, $availWend, $consentMinor, $consentSafety, $emergencyName, $emergencyPhone, $churchAmbassador, $affiliation,$interestIds, $userName, $password);
+    }
 ?>
 	<h4>Confirmation</h4>
 	<?php include 'progress.php'; ?>
