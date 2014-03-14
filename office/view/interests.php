@@ -166,10 +166,18 @@
 				foreach($ints as &$int)
 				{
 					$interest = $int->getTitle();
+					$hold[] = $interest;
 					echo "<option value = '{$interest}' name = '{$interest}'>{$interest}</option>";
 				}
+				/*sort($hold);
+				//echo $hold[2];
+				foreach($hold as &$value)
+				{
+					$interest = $value->getTitle();
+					echo "<option value = '{$interest}' name = '{$interest}'>{$interest}</option>";
+				}*/
 			?> <!--end drop down menu options-->
-
+			
 			<!--<option value="name" selected="selected" >Name</option> 					<!-- this code is used if using changeable (javascript) input boxes-->
 			<!--<option value="interest" >Interest</option>--> 								<!-- this code is used if using changeable (javascript) input boxes-->
 			</select> <!-- end drop down menu -->
@@ -250,21 +258,50 @@ if (isset($_POST['searchBy'])) //checks if "search by" button has been clicked
 	}
 	else
 	{
-		$searchBy = $_POST['searchBy'];
+		/*$searchBy = $_POST['searchBy'];
 		echo $searchBy;
 		$dbio->getInterestsSearch($searchBy); //model call
-		$id = $int->getId(); //Interest() class call
-		$typeId = $int->getTypeId(); //Interest() class call
-		$title = $int->getTitle(); //Interest() class call
-		$description = $int->getDescription(); //Interest() class call
-		echo "<div>";
-			echo "<form class='searchBy' method='post' action=''>"; //search by result form
-				echo "<input name='{$id}' type='text' readonly='readonly' value='{$id}'>"; //html, uneditable input boxes based on sql results
-				echo "<input name='{$typeId}' type='text' readonly='readonly' value='{$typeId}'>"; //html, uneditable input boxes based on sql results
-				echo "<input name='{$title}' type='text' readonly='readonly' value='{$title}'>"; //html, uneditable input boxes based on sql results
-				echo "<input name='{$description}' type='text' readonly='readonly' value='{$description}'>"; //html, uneditable input boxes based on sql results
-			echo "</form>"; //search by result form end
-		echo "</div>";
+		foreach($ints as &$int) //loop which goes through each interest and pulls data (Interest() class call)
+		{
+			if ($searchBy == $int->getTitle())
+			{
+				$id = $int->getId(); //Interest() class call
+				$typeId = $int->getTypeId(); //Interest() class call
+				$title = $int->getTitle(); //Interest() class call
+				$description = $int->getDescription(); //Interest() class call
+				echo "<div>";
+					echo "<form class='searchBy' method='post' action=''>"; //search by result form
+						echo "<input name='{$id}' type='text' readonly='readonly' value='{$id}'>"; //html, uneditable input boxes based on sql results
+						echo "<input name='{$typeId}' type='text' readonly='readonly' value='{$typeId}'>"; //html, uneditable input boxes based on sql results
+						echo "<input name='{$title}' type='text' readonly='readonly' value='{$title}'>"; //html, uneditable input boxes based on sql results
+						echo "<input name='{$description}' type='text' readonly='readonly' value='{$description}'>"; //html, uneditable input boxes based on sql results
+					echo "</form>"; //search by result form end
+				echo "</div>";
+			}
+		}*/
+		
+		$searchBy = $_POST['searchBy'];
+		echo $searchBy;
+		$dbio->readVolunteerInterest($searchBy); //model call
+		//echo $volInts[5];
+		foreach($volInts as $volInt) //loop which goes through each interest and pulls data (Interest() class call)
+		{
+			if ($searchBy == $volInt->getInterest_title())
+			{
+				$first_name = $volInt->getFirst_name(); //Interest() class call
+				$last_name = $volInt->getLast_name(); //Interest() class call
+				$type_title = $volInt->getType_title(); //Interest() class call
+				$interest_title = $volInt->getInterest_title(); //Interest() class call
+				echo "<div>";
+					echo "<form class='searchBy' method='post' action=''>"; //search by result form
+						echo "<input name='{$first_name}' type='text' readonly='readonly' value='{$first_name}, {$last_name}'>"; //html, uneditable input boxes based on sql results
+						echo "<input name='{$type_title}' type='text' readonly='readonly' value='{$type_title}'>"; //html, uneditable input boxes based on sql results
+						echo "<input name='{$interest_title}' type='text' readonly='readonly' value='{$interest_title}'>"; //html, uneditable input boxes based on sql results
+						//echo "<input name='{$description}' type='text' readonly='readonly' value='{$description}'>"; //html, uneditable input boxes based on sql results
+					echo "</form>"; //search by result form end
+				echo "</div>";
+			}
+		}
 	}
 		
 }
