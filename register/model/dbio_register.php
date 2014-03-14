@@ -72,6 +72,19 @@ class DBIO {
 			return $status;
 		}
 
+		public function getUsername($use)
+		{
+			global $con;
+			$sql='SELECT username FROM Account WHERE username IN ("'.$use.'")';
+			$this->open();
+			$results=mysql_query($sql,$con);
+			$final=mysql_fetch_row($results);
+			$status=$final[0];
+			$this->close();
+			return $status;
+		}
+
+
 	   public function getAllInterestTypes() {
 		  global $con;
 		  $sql = 'SELECT type_id, title FROM Interest_Type';
