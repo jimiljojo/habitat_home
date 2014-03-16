@@ -5,13 +5,11 @@
 	// AUTHOR: des301
 
 	global $dir;
-	global $sub;
-	global $act;
-	global $msg;
-	global $total;
-	$progress = 5;
 	
+	$progress = 5;
 	$act = 'getInfo';
+	
+	
 ?>
 
 
@@ -24,6 +22,5 @@
 		<br>
 		<input class="btn btn-success" style="margin-left: 100px;" type="submit" name="submit" value="Start"> Click to start the Volunteer Registration process...<br>
 	</form>
-	
 	<br>
 	<hr>

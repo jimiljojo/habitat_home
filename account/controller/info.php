@@ -27,8 +27,8 @@
 			// CODE HERE
 			break;
 
-		case 'list':
-			// CODE HERE
+		case 'infoUpdate':
+			include 'account/model/updateinfo.php';
 			break;
 
 		default:

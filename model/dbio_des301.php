@@ -252,6 +252,17 @@ class DBIO {
 		$this->close();
 		return $accounts;
 	}// end function
-                                
-	}// end class
+
+	public function updateInfo($accid,$person,$contact,$address) {
+		global $con;
+		
+		$sql = "update Person set title='" . $person->getTitle() ."', first_name='" . $person->getFirst_name() . "' , last_name='" . $person->getLast_name() . "' where person_id=(select person_id from Account where account_id=" . $accid . ");" ;
+		//$sql2 = "update Contact set phone='" . $contact->getPhone() . "', email='" . $contact->getEmail() . "', phone2='" . $contact->getPhone2() . "' , extension='" . $contact->getExtension() "' where contact_id=(select Contact_contact_id from Person where person_id=(select person_id from Account where account_id=" . $accid . "));"
+		$this->open();
+		$result = mysql_query($sql, $con);
+	//	$result2 = mysql_query($sql2, $con);
+		if($result)// && $result2)
+			echo "UPDATED";
+	}                                
+}// end class
 ?>

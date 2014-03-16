@@ -15,7 +15,7 @@
 
 	
 	case 'confirm':
-	    session_start();
+	    // session_start();
 	    $progress = 6;
 	    include ('view/confirm.php');
 	    session_destroy();
@@ -30,7 +30,7 @@
 
 	
 	case 'validate':
-	    session_start();
+	    // session_start();
 	    $use=($_GET['userName']);
 	    $usernameCheck=$dbio->getUsername($use);
 	    if($use==$usernameCheck)
@@ -69,7 +69,7 @@
 	    break;
 
 	case 'setPassword':
-	    session_start();
+	    // session_start();
 	    $_SESSION['church'] = isset($_GET['church']) ? $_GET['church'] : '';
 	    $_SESSION['ambassador'] = isset($_GET['ambassador']) ? $_GET['ambassador'] : '';
 	    $_SESSION['checkPhone'] = isset($_GET['checkPhone']) ? $_GET['checkPhone'] : 0;
@@ -94,7 +94,7 @@
 	
 	
 	case 'getOther':
-	    session_start();
+	    // session_start();
 	    $items = array();
 
 	    If(!empty($_GET['interest'])){
@@ -111,7 +111,7 @@
 
 	
 	case 'getInterests':
-	    session_start();
+	    // session_start();
 	    $_SESSION['title'] = isset($_GET['title']) ? $_GET['title'] : '';
 	    $_SESSION['fname'] = isset($_GET['fname']) ? $_GET['fname'] : '';
 	    $_SESSION['lname'] = isset($_GET['lname']) ? $_GET['lname'] : '';
@@ -142,7 +142,6 @@
 	    
 	    $lifetime = 30 * 60;// 60 seconds * 30 minutes = 1800 seconds
 	    session_set_cookie_params($lifetime, '/');
-	    session_start();
 	
 	    //if(isset($_COOKIE["PHPSESSID"])) {echo 'session started';}
 	    

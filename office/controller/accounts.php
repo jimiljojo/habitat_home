@@ -12,7 +12,6 @@
 			break;
 
 		case 'create':
-			// CODE HERE
 			break;
 
 		case 'read':
