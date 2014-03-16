@@ -7,6 +7,7 @@
 
 ?>
 <h2>office/view/event.php</h2>
+<h2>hello</h2>
 <hr>
 <ul>
 </ul>
