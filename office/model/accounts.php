@@ -10,7 +10,7 @@
 	function search() {}
 	function create() {}
 	function read($accounts) {
-		echo '<table style="width:500px"><th>Account ID  </th><th>Username</th><th>Password</th><th>Date</th><th>Status</th><thIsOffice></th><th>isAdmin</th><th>isVol</th><th>Person ID</th>';
+		echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Account ID  </th><th>Username</th><th>Password</th><th>Date</th><th>Status</th><thIsOffice></th><th>isAdmin</th><th>isVol</th><th>Person ID</th></tr>';
 		foreach ($accounts as $account) {
 			echo '<tr><td>' . $account->getAccount_id() . '</td>';
 			echo '<td>' . $account->getUsername() . '</td>';

@@ -27,14 +27,15 @@
     $workPhone = $contact->getPhone2();
     $workExt = $contact->getExtension();
     $jobTitle = 'engineer';
-
 ?>
 <h4>Personal Information</h4>
+
 <hr>
 <form action="index.php" method="GET">
     <input name="id" type="hidden" value="0" >
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+    <input name="accid" type="hidden" value="<?php echo $accountid; ?>" >
     <input name="act" type="hidden" value="infoUpdate" >
     <table>
 	<tr>
@@ -45,10 +46,10 @@
 	<tr>
 	    <td>
 		<select name="title" type="text">
-		    <option value="0" selected="selected">Mr.</option>;
-		    <option value="1">Mrs.</option>;
-		    <option value="2">Ms.</option>;
-		    <option value="3">Dr.</option>;
+		    <option value="Mr" selected="selected">Mr.</option>;
+		    <option value="Mrs">Mrs.</option>;
+		    <option value="Ms">Ms.</option>;
+		    <option value="Dr">Dr.</option>;
 		</select>
 		<span class="required">*</span>
 		<br>
@@ -95,6 +96,6 @@
 	    </td>
 	</tr>
     </table>
-    <input type="submit" value="Update" disabled="disabled">
+    <input type="submit" value="Update">
 </form>
 <hr>
