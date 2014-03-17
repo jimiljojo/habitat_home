@@ -11,7 +11,7 @@
 	$subLinks[] = new Link('Donations','donations');
 	$subLinks[] = new Link('Events','event');
 	$subLinks[] = new Link('Friends of Habitat','foh');
-	$subLinks[] = new Link('Persons','person');
+	$subLinks[] = new Link('Persons','persons');
 	$subLinks[] = new Link('Interests','interests');
 	$subLinks[] = new Link('Organizations','orgs');
 	$subLinks[] = new Link('Projects','projects');
