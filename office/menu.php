@@ -16,5 +16,6 @@
 	$subLinks[] = new Link('Organizations','orgs');
 	$subLinks[] = new Link('Projects','projects');
 	$subLinks[] = new Link('Schedules','schedules');
+	$subLinks[] = new Link('Volunteer','volunteer');
 
 ?>
