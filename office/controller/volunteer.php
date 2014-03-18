@@ -10,32 +10,59 @@
 	switch ($act) {
 
 		case 'search':
-			include 'office/model/volunteer.php';
-                        $page = $dir . '/view/searchVolunteer.php';
+                    
+                    $parameter = $_GET['param'];
+                    $value1 = $_GET['i1'];
+                    $value2 = $_GET['i2'];
+                  
+                    
+                    include $dir . '/model' . $sub . '.php;';
+                    $volunteers = searchVolunteerBy($parameters);
+                    $page = $dir . '/view/search' . ucfirst($sub) . '.php';
+ 
 			break;
 
 		case 'create':
-                        include 'office/model/volunteer.php';
-                        $page = $dir . '/view/createVolunteer.php';
+                    
+                    $parameter = $_GET['param'];
+                    $title = $_GET['title'];
+                    $gender = $_GET['gender'];
+                    $marital_status = $_GET['marital_status'];
+                    //$contact = $_GET['contact'];
+                    $fname = $_GET['fn'];
+                    $lname = $_GET['ln'];
+                    $addr = $_GET['addr'];
+                    $city = $_GET['city'];
+                    $state = $_GET['state'];
+                    $zip = $_GET['zip'];
+                    $phone = $_GET['pn'];
+                    $dob = &_GET['dob'];
+                    
+                    include $dir . '/model' . $sub . '.php';
+                    $volunteers = createVolunteerBy($parameters);
+                    $page = $dir . '/view/create' . ucfirst($sub) . '.php';
+                    
+                    
 			break;
 
-		case 'read':
-			include 'office/model/volunteer.php';
-			$page = $dir . '/view/readVolunteer.php';
+		case 'edit':
+                    
 			break;
 
 		case 'update':
-			include 'office/model/volunteer.php';
-                        $page = $dir . '/view/updateVolunteer.php';
+                    
 			break;
 
 		case 'delete':
-			// CODE HERE
+                    
 			break;
 
 		case 'list':
-			include 'office/model/volunteer.php';
-                        $page = $dir . '/view/listVolunteer.php';
+                                      
+                    include $dir . '/model' . $sub . '.php;'
+                    $volunteers = listVolunteerBy($parameters);
+                    $page = $dir . '/view/list' . ucfirst($sub) . '.php';
+                    
 			break;
 
 		default:
