@@ -4,7 +4,9 @@
 	// FILE: volunteer/controller/availability.php
 	// AUTHOR: AUTOGEN
 
-        $vid = $_GET['vid'];
+        //$vid = $_GET['vid'];
+        $personId= 7;
+        
         include ($dir . '/model/availability.php');
 
 	switch ($act) {
