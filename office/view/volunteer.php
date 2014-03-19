@@ -7,9 +7,17 @@
 
 ?>
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>    
+    <body>
+    <h4>Volunteer Search</h4>   
+        
+    </body>
+</html>
 
-
-<h4>Volunteer Search</h4>
 
 
 
