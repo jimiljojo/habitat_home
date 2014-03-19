@@ -10,8 +10,12 @@
 	
 	function search() {}
 	function create() {}
-	function read($events) {
+	function readEvents($events) {
 	return $events;
+	}
+
+	function readEvent_Types($event_types){
+		return $event_types;
 	}
 	function update() {}
 	function delete() {}
