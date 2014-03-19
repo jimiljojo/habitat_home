@@ -31,9 +31,10 @@
        
 
 <div id="content">
-	<h4>Volunteer Search</h4>
+	<h2>Volunteer Search</h2>
 <hr>
-<button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=listVolunteer';">View All</button><form method="GET" action="index.php">
+<button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=listVolunteer';">
+    View All</button><form method="GET" action="listVolunteer.php">
     <input type="hidden" name="dir" value="office" >
     <input type="hidden" name="sub" value="volunteer" >
     <input type="hidden" name="act" value="" >
@@ -51,8 +52,9 @@
     var msg = "This part is under construction"
 </script>
 
-<button type="Submit" onclick="alert(msg);">Create New</button><!--
-<button type="Submit" onclick="window.location=\'index.php?dir=&act=newVolunteer\';">Create New</button>
+<button type="Submit" onclick="alert(msg);">Create New</button>
+<!--
+<button type="Submit" onclick="window.location=\'index.php?dir=&act=createVolunteer\';">Create New</button>
 -->
 <hr>
 <div>
