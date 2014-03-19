@@ -306,6 +306,16 @@ class DBIO {
 		$this->close();
 		return $event_types;
 	}// end function
+
+	public function countEventGuests($event_id) {
+		global $con;
+		$sql = "Select Count(*) from Person_relates_to_Event where Event_event_id=".$event_id. " And onGuestList=1";
+		$this->open();
+		$result = mysql_query($sql, $con); 
+		$this->close();
+		$row=mysql_fetch_array($result);
+		return $row[0];
+	}// end function	
                                 
 }// end class
 ?>
