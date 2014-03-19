@@ -34,10 +34,11 @@
 	<h2>Volunteer Search</h2>
 <hr>
 <button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=listVolunteer';">
-    View All</button><form method="GET" action="listVolunteer.php">
+    View All</button>
+<form method="GET" action="index.php">
     <input type="hidden" name="dir" value="office" >
     <input type="hidden" name="sub" value="volunteer" >
-    <input type="hidden" name="act" value="" >
+    <input type="hidden" name="act" value="search" >
     <input name="search" type="submit" value="Search By">
     <select id="searchBy" name="searchBy" onchange="searchByHandler();">
 	<option value="name" selected="selected">Name</option>
