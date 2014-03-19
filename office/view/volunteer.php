@@ -29,43 +29,6 @@
     </head>	<body><!--onload="omniload()"-->
        
 
-    <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-	    <a href="" class="brand"><span class="ackronymLetter">H</span>abitat <span class="ackronymLetter">O</span>perations <span class="ackronymLetter">M</span>anagement <span class="ackronymLetter">E</span>nvironment</a>
-	    <!--<a href="" class="brand"><span class="ackronymLetter">H</span>abitat <span class="ackronymLetter">E</span>nterprise <span class="ackronymLetter">R</span>esource <span class="ackronymLetter">P</span>roduction <span class="ackronymLetter">E</span>nvironment <span class="ackronymLetter">S</span>ystem</a>-->
-              <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-              <!--<a href="/index.php" class="brand">Habitat For Humanity</a>-->
-              <!-- Be sure to leave the brand out there if you want it shown -->
-              <!-- Everything you want hidden at 940px or less, place within here -->
-              <div class="nav-collapse collapse">
-                <!-- .nav, .navbar-search, .navbar-form, etc -->
-		<a href="index.php?dir=home&sub=logout" class="navbar-text pull-right logout"><span style="color: white;">Logout</span></a>
-              </div>
-           </div>
-	    
-       </div>
-    </div>
-
-        <nav>
-	<img style="margin-bottom: 15px;" src="img/habitat_logo2.jpg" alt="Habitat For Humanity Logo" />
-	<ul class="nav nav-list">
-<li ><a href="index.php?dir=home">Home</a></li><li ><a href="index.php?dir=account" >Account</a></li><li ><a href="index.php?dir=admin">Admin</a></li><li class="active"><a href="index.php?dir=office" class="active">Office</a></li><ul class="nav nav-list">
-    <li class="subli"><a href="index.php?dir=office&sub=account">Accounts</a></li><li class="subli"><a href="index.php?dir=office&sub=donation">Donations</a></li><li class="subli"><a href="index.php?dir=office&sub=donor">Donors</a></li><li class="subli"><a href="index.php?dir=office&sub=event">Events</a></li><li class="subli"><a href="index.php?dir=office&sub=foh">Friends Of Habitat</a></li><li class="subli"><a href="index.php?dir=office&sub=homeowner">Homeowners</a></li><li class="subli"><a href="index.php?dir=office&sub=interest">Interests</a></li><li class="subli"><a href="index.php?dir=office&sub=organization">Organizations</a></li><li class="subli"><a href="index.php?dir=office&sub=project">Projects</a></li><li class="subli"><a href="index.php?dir=office&sub=schedule">Schedules</a></li><li class="subli"><a " class="subaselected" href="index.php?dir=office&sub=volunteer">Volunteers</a></li>    <li class="divider"></li>
-</ul>
-
-<li ><a href="index.php?dir=donor" >Donor</a></li><li ><a href="index.php?dir=homeowner" >Homeowner</a></li><li ><a href="index.php?dir=volunteer" >Volunteer</a></li>	<hr>
-	<dl>
-	    <dt>GMT</dt>
-	    <dd>06:08:47</dd>
-	    <dt>Client IP</dt>
-	    <dd>75.102.119.53</dd>
-	    <dt>Server IP</dt>
-	    <dd>31.170.162.163</dd>
-	</dl>
-    </ul>
-
-</nav>
         <div id="content">
 	    <h4>Volunteer Search</h4>
 <hr>
