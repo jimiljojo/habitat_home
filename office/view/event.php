@@ -58,13 +58,19 @@ alignment: bottom;
 
 <!-- Search by, drop down menu of event types -->
 <form class='searchBy' action="index.php" method="get"> 
-   <input type="hidden" name="dir" value="office">
-   <input type="hidden" name="sub" value="accounts">
+   <input type="hidden" name="dir" value="<?php echo $dir; ?>">
+   <input type="hidden" name="sub" value="<?php echo $sub; ?>">
    <input type="hidden" name="act" value="search">
    <input name="searchBy" id="searchBy" type="submit" value="Search Event Type" action="index.php" method="get">
 
-	<select id="searchOption" name="searchBy" method="get">
-		<option value="" selected="selected" >Name</option>		
+	<select id="eventType" name="eventType" method="get">
+		
+		 <?php
+		 $Event_type= readEvent_Types(); 
+		 foreach ($Event_type as $EventTypeItem){ ?>
+			<option value= <?php echo $EventTypeItem->getType_id(); ?> > <?php echo $EventTypeItem->getTitle() ?> </option>		
+		<?php }// end foreach ?>
+
 	</select>
 
 </form>

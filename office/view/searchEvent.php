@@ -1,13 +1,13 @@
-<? php 
+<?php
 
-	// TITLE: Office ViewEvents view 
-	// FILE: office/model/viewEvent.php
+	// TITLE: Office searchEvents view 
+	// FILE: office/model/searchEvent.php
 	// AUTHOR: sbkedia
 
 			//Title | Date | Type [may be hidden] | GuestList | Time | Address | Committee [may be hidden] | Sponsor-->
-	?>
+?>
 
-<h2>All Events</h2>
+<h2>Events of Type:</h2>
 
 <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
 <br/><br/>
@@ -17,7 +17,6 @@
 		<th>Title</th>
 		<th>Date</th>
 		<th>Time</th>
-		<th>Type</th>
 		<th>Guest List</th> <!-- make this a button to pull up  a table showing the guest list -->
 		<th>Address</th> 
 		<!--<th>Committee</th>-->
@@ -25,21 +24,14 @@
 		
 	</tr>
 	<?php 
-	$Event= readEvents();
-	$Event_type= readEvent_Types();
+	$Event= searchEvent($_SESSION['eventType']);
 
 	foreach ($Event as $EventItem) { ?>
 	<tr> 
 		<td><?php echo $EventItem->getTitle(); ?></td>
 		<td><?php echo $EventItem->getDate(); ?></td>
 		<td><?php echo $EventItem->getTime(); ?></td>
-			
-			<?php foreach ($Event_type as $EventTypeItem){ 					//Entering Event Type title from its ID
-				if($EventItem->getType()==$EventTypeItem->getType_id()){ ?>
-					<td><?php echo $EventTypeItem->getTitle(); ?></td> 
-			<?php }//end if
-			}// end foreach ?>
-
+		
 		<td>
 			<?php 
 			$EventNumberOfGuests = countEventGuest($EventItem->getEvent_id());	//Number of Guests attending the event

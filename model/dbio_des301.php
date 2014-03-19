@@ -289,6 +289,7 @@ class DBIO {
 		return $events;
 	}// end function
 
+
 	public function readAllEvent_Type() {
 		global $con;
 		$sql = 'SELECT * FROM Event_Type';
@@ -316,6 +317,30 @@ class DBIO {
 		$row=mysql_fetch_array($result);
 		return $row[0];
 	}// end function	
-                                
+ 
+
+	public function searchEventByType($eventTypeId) {
+		global $con;
+		$sql = 'SELECT * FROM Event Where type_id='.$eventTypeId;
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$events= array();
+		
+		while($rows = mysql_fetch_array($result)){
+			$event = new Event();
+			$event->setEvent_id($rows[0]);
+			$event->setTitle($rows[1]);
+			$event->setDate($rows[2]);
+			$event->setTime($rows[3]);
+			$event->setType($rows[4]);
+			$event->setAddress($rows[5]);
+			$event->setCommittee($rows[7]);
+			$event->setSponsoredBy($rows[8]);
+			$events[]=$event;
+		} 
+		$this->close();
+		return $events;
+	}// end function
+	                               
 }// end class
 ?>
