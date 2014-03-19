@@ -4,7 +4,7 @@
 	// FILE: office/model/viewEvent.php
 	// AUTHOR: sbkedia
 
-			//Title | Date | Type [may be hidden] | GuestList | Time | Address | Committee [may be hidden] | Sponsor-->
+			//Title | Date | Type [may be hidden] | GuestList | Time | Address | Committee [may be hidden] | Sponsor
 	?>
 
 <h2>All Events</h2>
@@ -46,7 +46,13 @@
 			echo $EventNumberOfGuests; ?> 
 		</td>
 
-		<td><?php echo $EventItem->getAddress(); ?></td>
+		<td>
+		<?php 
+		$Address = readAddressByID($EventItem->getAddress());
+
+		echo $Address->getStreet1() . " , " . $Address->getStreet2() . " , " . $Address->getCity() . " , " . $Address->getState() . " , " . $Address->getZip();
+		?>
+		</td>
 		<!--<td><?php echo $EventItem->getCommittee(); ?></td> -->
 		<td><?php echo $EventItem->getSponsoredBy(); ?></td>
 	</tr>

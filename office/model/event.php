@@ -35,6 +35,12 @@
 		return $committees;
 	}
 
+	function readAddressByID($addressID){
+		global $dbio;
+		$address = $dbio->readAddress($addressID);
+		return $address;
+	}
+
 	function create() {}
 
 	
