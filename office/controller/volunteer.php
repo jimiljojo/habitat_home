@@ -59,7 +59,7 @@
 
 		case 'list':
                                       
-                    include $dir . '/model' . $sub . '.php;'
+                    include $dir . '/model' . $sub . '.php;';
                     $volunteers = listVolunteer();
                     $page = $dir . '/view/list' . ucfirst($sub) . '.php';
                     
