@@ -2,7 +2,7 @@
 
 	// TITLE: Volunteer Consent Model
 	// FILE: volunteer/model/consent.php
-	// AUTHOR: AUTOGEN
+	// AUTHOR: rwg5215
 
 
 

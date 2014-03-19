@@ -2,7 +2,7 @@
 
 	// TITLE: Volunteer Availability Controller
 	// FILE: volunteer/controller/availability.php
-	// AUTHOR: AUTOGEN
+	// AUTHOR: rwg5215
 
         //$vid = $_GET['vid'];
         $personId= 20;

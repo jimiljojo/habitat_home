@@ -2,7 +2,7 @@
 
 	// TITLE: Volunteer Work History Controller
 	// FILE: volunteer/controller/history.php
-	// AUTHOR: AUTOGEN
+	// AUTHOR: rwg5215
 
 
 	switch ($act) {
