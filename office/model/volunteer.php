@@ -14,9 +14,10 @@
 
 public function searchVolunteerBy($value1, $value2) {}
 
-public function createVolunteer($title,$gender,$marital_status,$fname,$lname,$addr,$city,$state,$zip,$phone,$dob);
+public function createVolunteer($title,$gender,$marital_status,$fname,$lname,$addr,$city,$state,$zip,$phone,$dob){}
 
-public function listVolunteer();
+public function listVolunteer(){
+}
 
 
 
