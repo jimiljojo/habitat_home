@@ -294,16 +294,17 @@ class DBIO {
 		$sql = 'SELECT * FROM Event_Type';
 		$this->open();
 		$result = mysql_query($sql, $con);
-		$this->close();
-		if ($result) {
+		$event_types=array();
+		
+		while($rows = mysql_fetch_array($result)) {
 			$event_type = new Event_type();
-			$event_type->setType_id(result[0]);
-			$event_type->setTitle(result[1]);
-			$event_type->setDescription(result[2]);
-		} else {
-			$event_type = false
-		}
-		return $event_type;
+			$event_type->setType_id($rows[0]);
+			$event_type->setTitle($rows[1]);
+			$event_type->setDescription($rows[2]);
+			$event_types[]=$event_type;
+		} 
+		$this->close();
+		return $event_types;
 	}// end function
                                 
 }// end class
