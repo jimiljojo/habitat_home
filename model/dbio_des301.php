@@ -287,7 +287,6 @@ class DBIO {
 
 	}                                
 
-	}
 
 
 	public function readAllEvent() {
