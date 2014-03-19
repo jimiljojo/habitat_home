@@ -5,7 +5,7 @@
 	// AUTHOR: AUTOGEN
 
         //$vid = $_GET['vid'];
-        $personId= 7;
+        $personId= 20;
         
         include ($dir . '/model/availability.php');
 
@@ -18,13 +18,14 @@
                     $eve = $_GET['eve'];
                     $wend = $_GET['weekend'];
                                          
-                        setVolunteerAvailability($vid, $day, $eve, $wend);
+                       // setVolunteerAvailability($vid, $day, $eve, $wend);
                         break;
 
 		case 'viewAvailability':
+                   // $page = $dir . '/view/interests.php';
                 default:
                     
-                        getVolunteerAvailability($vid);
+                       // getVolunteerAvailability($vid);
                         break;
 
 	}// end switch

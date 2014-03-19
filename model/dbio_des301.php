@@ -68,6 +68,27 @@ class DBIO {
 			$this->close();
 			return $status;
 		}
+
+		public function getAvailability($ppid){
+
+			global $con;
+
+			$sql= 'SELECT availDay,availEve,availWend from Volunteer where Person_person_id="'.$ppid.'"';
+			$this->open();
+			$avail = array();
+			$results=mysql_query($sql,$con);
+			while($result = mysql_fetch_array($results)) {
+			 $ava = new Availability();
+			 $ava->setDay($result[0]);
+			 $ava->setEve($result[1]);
+			 $ava->setWend($result[2]);
+			 $avail[] = $ava;
+		  }// end while
+		  $this->close();
+		  return avail;
+
+		}
+		
 	   
 
 
@@ -263,124 +284,6 @@ class DBIO {
 	//	$result2 = mysql_query($sql2, $con);
 		if($result)// && $result2)
 			echo "UPDATED";
-	}
-
-
-	public function readAllEvent() {
-		global $con;
-		$sql = 'SELECT * FROM Event';
-		$this->open();
-		$result = mysql_query($sql, $con);
-		$events= array();
-		
-		while($rows = mysql_fetch_array($result)){
-			$event = new Event();
-			$event->setEvent_id($rows[0]);
-			$event->setTitle($rows[1]);
-			$event->setDate($rows[2]);
-			$event->setTime($rows[3]);
-			$event->setType($rows[4]);
-			$event->setAddress($rows[5]);
-			$event->setCommittee($rows[7]);
-			$event->setSponsoredBy($rows[8]);
-			$events[]=$event;
-		} 
-		$this->close();
-		return $events;
-	}// end function
-
-
-	public function readAllEvent_Type() {
-		global $con;
-		$sql = 'SELECT * FROM Event_Type';
-		$this->open();
-		$result = mysql_query($sql, $con);
-		$event_types=array();
-		
-		while($rows = mysql_fetch_array($result)) {
-			$event_type = new Event_type();
-			$event_type->setType_id($rows[0]);
-			$event_type->setTitle($rows[1]);
-			$event_type->setDescription($rows[2]);
-			$event_types[]=$event_type;
-		} 
-		$this->close();
-		return $event_types;
-	}// end function
-
-	public function countEventGuests($event_id) {
-		global $con;
-		$sql = "Select Count(*) from Person_relates_to_Event where Event_event_id=".$event_id. " And onGuestList=1";
-		$this->open();
-		$result = mysql_query($sql, $con); 
-		$this->close();
-		$row=mysql_fetch_array($result);
-		return $row[0];
-	}// end function	
- 
-
-	public function searchEventByType($eventTypeId) {
-		global $con;
-		$sql = 'SELECT * FROM Event Where type_id='.$eventTypeId;
-		$this->open();
-		$result = mysql_query($sql, $con);
-		$events= array();
-		
-		while($rows = mysql_fetch_array($result)){
-			$event = new Event();
-			$event->setEvent_id($rows[0]);
-			$event->setTitle($rows[1]);
-			$event->setDate($rows[2]);
-			$event->setTime($rows[3]);
-			$event->setType($rows[4]);
-			$event->setAddress($rows[5]);
-			$event->setCommittee($rows[7]);
-			$event->setSponsoredBy($rows[8]);
-			$events[]=$event;
-		} 
-		$this->close();
-		return $events;
-	}// end function
-	                   
-
-	public function readAllCommittee() {
-		global $con;
-		$sql = 'SELECT * FROM Committee';
-		$this->open();
-		$result = mysql_query($sql, $con);
-		$committees=array();
-		
-		while($rows = mysql_fetch_array($result)) {
-			$committe = new Committee();
-			$committe->setCommittee_id($rows[0]);
-			$committe->setTitle($rows[1]);
-			$committes[]=$committe;
-		} 
-		$this->close();
-		return $committes;
-	}// end function
-
-
-	public function createEvent($addressObj , $eventObj){
-		global $con;
-		$this->open();
-
-		$sql =	"INSERT INTO Address
-				(street1,street2,city,state,zip)
-				VALUES
-				('" .$addressObj->getStreet1(). "','" .$addressObj->getStreet2(). "','" .$addressObj->getCity(). "','" .$addressObj->getState(). "','" .$addressObj->getZip(). "');";
-		mysql_query($sql, $con);
-
-
-		$sql= 	"INSERT INTO Event
-				(title,date,time,type_id,Address_address_id,Project_project_id,Committee_committee_id,sponsoredBy)
-				SELECT 
-				 '" .$eventObj->getTitle(). "' , CAST(now() as Date) , CAST(now() as Time) ," .$eventObj->getType(). " , Max(address_id), Null ," .$eventObj->getCommittee()." ,'" .$eventObj->getSponsoredBy(). "' From Address;" ;
-		mysql_query($sql, $con);			
-
-		$this->close();
-	}
-
-
+	}                                
 }// end class
 ?>
