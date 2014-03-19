@@ -284,9 +284,9 @@ class DBIO {
 	//	$result2 = mysql_query($sql2, $con);
 		if($result)// && $result2)
 			echo "UPDATED";
-<<<<<<< HEAD
+
 	}                                
-=======
+
 	}
 
 
@@ -406,6 +406,6 @@ class DBIO {
 	}
 
 
->>>>>>> Fixed some minor issues with creating an event
+
 }// end class
 ?>
