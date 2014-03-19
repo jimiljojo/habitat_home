@@ -5,7 +5,7 @@
 	// AUTHOR: rwg5215
 
 
-        $vid = $_GET['vid'];
+       // $vid = $_GET['vid'];
         include ($dir . '/model/consent.php');
 
 	switch ($act) {
@@ -18,13 +18,13 @@
                     $agree = $_GET['agree'];
                     $video = $_GET['video'];
                                          
-                        setVolunteerConsent($vid, $age, $photo, $agree, $video);
+                        //setVolunteerConsent($vid, $age, $photo, $agree, $video);
                         break;
 
 		case 'viewConsent':
                 default:
                     
-                        getVolunteerConsent($vid);
+                       // getVolunteerConsent($vid);
                         break;
 
 	}// end switch

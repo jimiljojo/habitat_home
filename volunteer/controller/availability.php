@@ -4,7 +4,9 @@
 	// FILE: volunteer/controller/availability.php
 	// AUTHOR: AUTOGEN
 
-        $vid = $_GET['vid'];
+        //$vid = $_GET['vid'];
+        $personId= 20;
+        
         include ($dir . '/model/availability.php');
 
 	switch ($act) {
@@ -16,13 +18,14 @@
                     $eve = $_GET['eve'];
                     $wend = $_GET['weekend'];
                                          
-                        setVolunteerAvailability($vid, $day, $eve, $wend);
+                       // setVolunteerAvailability($vid, $day, $eve, $wend);
                         break;
 
 		case 'viewAvailability':
+                   // $page = $dir . '/view/interests.php';
                 default:
                     
-                        getVolunteerAvailability($vid);
+                       // getVolunteerAvailability($vid);
                         break;
 
 	}// end switch

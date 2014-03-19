@@ -68,6 +68,27 @@ class DBIO {
 			$this->close();
 			return $status;
 		}
+
+		public function getAvailability($ppid){
+
+			global $con;
+
+			$sql= 'SELECT availDay,availEve,availWend from Volunteer where Person_person_id="'.$ppid.'"';
+			$this->open();
+			$avail = array();
+			$results=mysql_query($sql,$con);
+			while($result = mysql_fetch_array($results)) {
+			 $ava = new Availability();
+			 $ava->setDay($result[0]);
+			 $ava->setEve($result[1]);
+			 $ava->setWend($result[2]);
+			 $avail[] = $ava;
+		  }// end while
+		  $this->close();
+		  return avail;
+
+		}
+		
 	   
 
 

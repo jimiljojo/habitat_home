@@ -1,9 +1,5 @@
 <?php
 
-	// TITLE: event Class
-	// FILE: class/event.php
-	// AUTHOR: AUTOGEN
-
 
 	class Event {
 
