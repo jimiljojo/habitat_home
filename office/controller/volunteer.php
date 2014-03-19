@@ -4,7 +4,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- * Author: rwg5215
+ * Author: Roman Galysh
  */
 
 	switch ($act) {
@@ -36,7 +36,7 @@
                     $state = $_GET['state'];
                     $zip = $_GET['zip'];
                     $phone = $_GET['pn'];
-                    $dob = &_GET['dob'];
+                    $dob = $_GET['dob'];
                     
                     include $dir . '/model' . $sub . '.php';
                     $volunteers = createVolunteerBy($parameters);
