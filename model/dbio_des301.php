@@ -69,7 +69,7 @@ class DBIO {
 			return $status;
 		}
 
-		public function getAvailability($ppid){
+		public function getVolunteerAvailability($ppid){
 
 			global $con;
 
@@ -82,10 +82,11 @@ class DBIO {
 			 $ava->setDay($result[0]);
 			 $ava->setEve($result[1]);
 			 $ava->setWend($result[2]);
-			 $avail[] = $ava;
+			 //$avail[] = $ava;
+			 //var_dump($avail);
 		  }// end while
 		  $this->close();
-		  return avail;
+		  return $ava;
 
 		}
 		

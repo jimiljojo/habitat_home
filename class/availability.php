@@ -19,13 +19,13 @@
 
 		//Method
 
-		public function getDays() {return $this->days;}
-		public function getEvenings() {return $this->evenings;}
-		public function getWeekends() {return $this->weekends;}
+		public function getDay() {return $this->days;}
+		public function getEve() {return $this->evenings;}
+		public function getWend() {return $this->weekends;}
 
-		public function setDays($days) {$this->days = $days;}
-		public function setEvenings($evenings) {$this->evenings = $evenings;}
-		public function setWeekends($weekends) {$this->weekends = $weekends;}
+		public function setDay($days) {$this->days = $days;}
+		public function setEve($evenings) {$this->evenings = $evenings;}
+		public function setWend($weekends) {$this->weekends = $weekends;}
 
 	}//end class
 

@@ -16,10 +16,38 @@
         global $checkedDay;
         global $checkedEvening;
         global $checkedWeekend;
-                
-        $checkedDay = 'Yes';
-        $checkedEvening = 'No';
-        $checkedWeekend = 'No';
+
+         $avail=getAvailability();
+
+        $dbDay=$avail->getDay();
+        $dbEve=$avail->getEve();
+        $dbWend=$avail->getWend();
+
+        if($dbDay=="1"){
+            $checkedDay = 'Yes';
+        }
+
+        else{
+            $checkedDay= 'No';
+        }
+
+        if($dbEve=="1"){
+            $checkedEvening= 'Yes';
+        }
+
+        else{
+            $checkedEvening= 'No';
+        }
+
+        if($dbWend=="1")
+        {
+            $checkedWeekend="Yes";
+        }
+
+        else{
+            $checkedWeekend="No";
+        }
+        
         
         $checkedDay = ($checkedDay == 'Yes') ? 'checked= "checked"' : '';
         $checkedEvening = ($checkedEvening == 'Yes') ? 'checked= "checked"' : '';
