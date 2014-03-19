@@ -341,6 +341,46 @@ class DBIO {
 		$this->close();
 		return $events;
 	}// end function
-	                               
+	                   
+
+	public function readAllCommittee() {
+		global $con;
+		$sql = 'SELECT * FROM Committee';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$committees=array();
+		
+		while($rows = mysql_fetch_array($result)) {
+			$committe = new Committee();
+			$committe->setCommittee_id($rows[0]);
+			$committe->setTitle($rows[1]);
+			$committes[]=$committe;
+		} 
+		$this->close();
+		return $committes;
+	}// end function
+
+
+	public function createEvent($addressObj , $eventObj){
+		global $con;
+		$this->open();
+
+		$sql =	"INSERT INTO Address
+				(street1,street2,city,state,zip)
+				VALUES
+				('" .$addressObj->getStreet1(). "','" .$addressObj->getStreet2(). "','" .$addressObj->getCity(). "','" .$addressObj->getState(). "','" .$addressObj->getZip(). "');";
+		mysql_query($sql, $con);
+
+
+		$sql= 	"INSERT INTO Event
+				(title,date,time,type_id,Address_address_id,Project_project_id,Committee_committee_id,sponsoredBy)
+				SELECT 
+				 '" .$eventObj->getTitle(). "' , CAST(now() as Date) , CAST(now() as Time) ," .$eventObj->getType(). " , Max(address_id), Null ," .$eventObj->getCommittee()." ,'" .$eventObj->getSponsoredBy(). "' From Address;" ;
+		mysql_query($sql, $con);			
+
+		$this->close();
+	}
+
+
 }// end class
 ?>

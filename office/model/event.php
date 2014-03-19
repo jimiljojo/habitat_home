@@ -29,6 +29,12 @@
 		return $events;
 	}
 	
+	function readCommittees(){
+		global $dbio;
+		$committees = $dbio->readAllCommittee();
+		return $committees;
+	}
+
 	function create() {}
 
 	
