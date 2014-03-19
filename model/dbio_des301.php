@@ -263,6 +263,48 @@ class DBIO {
 	//	$result2 = mysql_query($sql2, $con);
 		if($result)// && $result2)
 			echo "UPDATED";
-	}                                
+	}
+
+
+	public function readAllEvent() {
+		global $con;
+		$sql = 'SELECT * FROM Event';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$events= array();
+		
+		while($rows = mysql_fetch_array($result)){
+			$event = new Event();
+			$event->setEvent_id($rows[0]);
+			$event->setTitle($rows[1]);
+			$event->setDate($rows[2]);
+			$event->setTime($rows[3]);
+			$event->setType($rows[4]);
+			$event->setAddress($rows[5]);
+			$event->setCommittee($rows[7]);
+			$event->setSponsoredBy($rows[8]);
+			$events[]=$event;
+		} 
+		$this->close();
+		return $events;
+	}// end function
+
+	public function readAllEvent_Type() {
+		global $con;
+		$sql = 'SELECT * FROM Event_Type';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$this->close();
+		if ($result) {
+			$event_type = new Event_type();
+			$event_type->setType_id(result[0]);
+			$event_type->setTitle(result[1]);
+			$event_type->setDescription(result[2]);
+		} else {
+			$event_type = false
+		}
+		return $event_type;
+	}// end function
+                                
 }// end class
 ?>

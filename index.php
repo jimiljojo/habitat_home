@@ -19,6 +19,8 @@
 	require_once ('class/link.php');
 	require_once ('class/item.php');
 	require_once ('class/interest.php');
+	require_once ('class/event.php');
+	require_once ('class/event_type.php');
 	require_once ('model/dbio_des301.php');
 	//require_once('model/databaseio.php');
 	//require_once('model/urlio.php');

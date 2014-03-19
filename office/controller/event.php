@@ -16,7 +16,9 @@
 			break;
 
 		case 'read':
-			// CODE HERE
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEvent.php';
+			break;
 			break;
 
 		case 'update':
