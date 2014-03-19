@@ -27,11 +27,12 @@
 			// CODE HERE
 			break;
 
-		case 'list':
-			// CODE HERE
+		case 'infoUpdate':
+			include 'account/model/updateinfo.php';
 			break;
 
 		default:
+			include 'account/model/info.php';
 			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 

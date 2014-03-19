@@ -12,11 +12,11 @@
 			break;
 
 		case 'create':
-			// CODE HERE
 			break;
 
 		case 'read':
-			// CODE HERE
+			include 'office/model/accounts.php';
+			$page = $dir . '/view/viewAccounts.php';
 			break;
 
 		case 'update':

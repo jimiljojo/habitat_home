@@ -4,38 +4,31 @@
 	// FILE: volunteer/controller/availability.php
 	// AUTHOR: AUTOGEN
 
+        //$vid = $_GET['vid'];
+        $personId= 7;
+        
+        include ($dir . '/model/availability.php');
 
 	switch ($act) {
 
-		case 'search':
-			// CODE HERE
-			break;
+		case 'updateAvailability':
+                            
+                    // availability
+                    $day = $_GET['day'];
+                    $eve = $_GET['eve'];
+                    $wend = $_GET['weekend'];
+                                         
+                        setVolunteerAvailability($vid, $day, $eve, $wend);
+                        break;
 
-		case 'create':
-			// CODE HERE
-			break;
-
-		case 'read':
-			// CODE HERE
-			break;
-
-		case 'update':
-			// CODE HERE
-			break;
-
-		case 'delete':
-			// CODE HERE
-			break;
-
-		case 'list':
-			// CODE HERE
-			break;
-
-		default:
-			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
-			break;
-
+		case 'viewAvailability':
+                default:
+                    
+                        getVolunteerAvailability($vid);
+                        break;
 
 	}// end switch
+        
+        $page = $dir . '/view/' . $sub. '.php';
 
 ?>

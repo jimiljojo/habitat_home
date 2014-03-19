@@ -8,7 +8,9 @@
 	switch ($act) {
 
 		case 'search':
-			// CODE HERE
+			$_SESSION['eventType'] = isset($_GET['eventType']) ? $_GET['eventType'] : '';
+			include 'office/model/event.php';
+			$page = $dir . '/view/searchEvent.php';
 			break;
 
 		case 'create':
@@ -16,7 +18,8 @@
 			break;
 
 		case 'read':
-			// CODE HERE
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEvent.php';
 			break;
 
 		case 'update':
@@ -32,6 +35,7 @@
 			break;
 
 		default:
+			include 'office/model/event.php';
 			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 

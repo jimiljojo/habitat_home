@@ -2,7 +2,7 @@
     // FILE: Volunteer Interests Controller
     // AUTHOR: des301
     
-    $personId = 99;
+    $personId = 7;
     
     switch ($act) {
 	   

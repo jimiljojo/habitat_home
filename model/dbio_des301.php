@@ -16,9 +16,9 @@ class DBIO {
 		// METHODS ////////////////////////////////////////////////////////////////////////////////
 		
 		function open() {
-			$hostname="127.0.0.1:8889";
-			$username="root";
-			$password="root";
+			$hostname="128.118.31.16:3306";
+			$username="remote";
+			$password="password";
 			$dbname="homes_db";
 			
 			 global $con;
@@ -56,6 +56,23 @@ class DBIO {
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 		
+		public function getLogin($user,$pw){
+
+			global $con;
+
+			$sql='SELECT username,password FROM Account WHERE username="'.$user.'" AND password="'.$pw.'"';
+			$this->open();
+			$results=mysql_query($sql,$con);
+			$final=mysql_fetch_row($results);
+			$status=$final[0];
+			$this->close();
+			return $status;
+		}
+	   
+
+
+
+
 	   public function getAllInterests() {
 		  $interests = $this->getAllInts();
 		  return $interests;
@@ -77,7 +94,7 @@ class DBIO {
 		
 	   private function getIntTypes() {
 		  global $con;
-		  $sql = 'SELECT type_id, title FROM interest_type';
+		  $sql = 'SELECT type_id, title FROM Interest_Type';
 		  $types = array();
 		  $this->open();		
 		  $results = mysql_query($sql, $con);
@@ -90,7 +107,7 @@ class DBIO {
 		
 	   private function getVolInts($vid) {
 		  global $con;
-		  $sql = 'SELECT interest_id FROM Interested_In WHERE volunteer_id = ' . $vid;
+		  $sql = 'SELECT Interest_interest_id FROM Volunteer_has_Interest WHERE Volunteer_Person_person_id= ' . $vid;
 		  $volIntIds = array();
 		  $ints = array();
 		  $this->open();
@@ -105,7 +122,7 @@ class DBIO {
 
 	   private function getAllInts() {
 		  global $con;
-		  $sql = 'SELECT interest_id, title, type_id FROM interest';
+		  $sql = 'SELECT interest_id, title, type_id FROM Interest';
 		  $ints = array();
 		  $this->open();
 		  $results = mysql_query($sql, $con);
@@ -119,6 +136,211 @@ class DBIO {
 		  $this->close();
 		  return $ints;
 	   }// end function
-                                
-	}// end class
+
+	   public function readAccount($id) {
+			global $con;
+			$sql = 'SELECT * FROM Account WHERE account_id = ' . $id;
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if ($result) {
+				$result = mysql_fetch_array($result);
+				$account = new Account();
+				$account->setAccount_id($result[0]);
+				$account->setUsername($result[1]);
+				$account->setPassword($result[2]);
+				$account->setDate($result[3]);
+				$account->setStatus($result[4]);
+				$account->setIsOffice($result[5]);
+				$account->setIsVolunteer($result[6]);
+				$account->setPerson($result[7]);
+			} else {
+				echo " DB error";
+			}
+			return $account;
+		}// end function
+
+		public function readPerson($id) {
+			global $con;
+			$sql = 'SELECT * FROM Person WHERE person_id = ' . $id;
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if ($result) {
+				$result = mysql_fetch_array($result);
+				$person = new Person();
+				$person->setPerson_id($result[0]);
+				$person->setTitle($result[1]);
+				$person->setFirst_name($result[2]);
+				$person->setLast_name($result[3]);
+				$person->setGender($result[4]);
+				$person->setDob($result[5]);
+				$person->setMarital_status($result[6]);
+				$person->setContact($result[7]);
+				$person->setIsActive($result[8]);
+				$person->setLastActive($result[9]);
+				$person->setPrefEmail($result[10]);
+				$person->setPrefMail($result[11]);
+				$person->setPrefPhone($result[12]);
+			} else {
+				echo "DB error";
+			}
+			return $person;
+		}// end function
+
+			public function readContact($id) {
+		global $con;
+		$sql = 'SELECT * FROM Contact WHERE contact_id = ' . $id;
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$this->close();
+		if ($result) {
+				$result = mysql_fetch_array($result);
+				$contact = new Contact();
+				$contact->setContact_id($result[0]);
+				$contact->setAddress($result[1]);
+				$contact->setPhone($result[2]);
+				$contact->setEmail($result[3]);
+				$contact->setPhone2($result[4]);
+				$contact->setExtension($result[5]);
+		} else {
+			echo "DB eroor";
+		}
+		return $contact;
+	}// end function
+
+
+	public function readAddress($id) {
+		global $con;
+		$sql = 'SELECT * FROM Address where address_id = ' . $id;
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$this->close();
+		if ($result) {
+			$result = mysql_fetch_array($result);
+			$address = new Address();
+			$address->setAddress_id($result[0]);
+			$address->setStreet1($result[1]);
+			$address->setStreet2($result[2]);
+			$address->setCity($result[3]);
+			$address->setState($result[4]);
+			$address->setZip($result[5]);
+		} else {
+			echo "DB eroor";
+		}
+		return $address;
+	}// end function
+
+	public function readAccounts() {
+		global $con;
+		$sql = 'SELECT * FROM Account';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$accounts =array();
+		while($rows = mysql_fetch_array($result)){
+			$account = new Account();
+			$account->setAccount_id($rows[0]);
+			$account->setUsername($rows[1]);
+			$account->setPassword($rows[2]);
+			$account->setDate($rows[3]);
+			$account->setStatus($rows[4]);
+			$account->setIsOffice($rows[5]);
+			$account->setIsVolunteer($rows[6]);
+			$account->setPerson($rows[7]);
+			$accounts[] = $account;
+		}
+		$this->close();
+		return $accounts;
+	}// end function
+
+	public function updateInfo($accid,$person,$contact,$address) {
+		global $con;
+		
+		$sql = "update Person set title='" . $person->getTitle() ."', first_name='" . $person->getFirst_name() . "' , last_name='" . $person->getLast_name() . "' where person_id=(select person_id from Account where account_id=" . $accid . ");" ;
+		//$sql2 = "update Contact set phone='" . $contact->getPhone() . "', email='" . $contact->getEmail() . "', phone2='" . $contact->getPhone2() . "' , extension='" . $contact->getExtension() "' where contact_id=(select Contact_contact_id from Person where person_id=(select person_id from Account where account_id=" . $accid . "));"
+		$this->open();
+		$result = mysql_query($sql, $con);
+	//	$result2 = mysql_query($sql2, $con);
+		if($result)// && $result2)
+			echo "UPDATED";
+	}
+
+
+	public function readAllEvent() {
+		global $con;
+		$sql = 'SELECT * FROM Event';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$events= array();
+		
+		while($rows = mysql_fetch_array($result)){
+			$event = new Event();
+			$event->setEvent_id($rows[0]);
+			$event->setTitle($rows[1]);
+			$event->setDate($rows[2]);
+			$event->setTime($rows[3]);
+			$event->setType($rows[4]);
+			$event->setAddress($rows[5]);
+			$event->setCommittee($rows[7]);
+			$event->setSponsoredBy($rows[8]);
+			$events[]=$event;
+		} 
+		$this->close();
+		return $events;
+	}// end function
+
+
+	public function readAllEvent_Type() {
+		global $con;
+		$sql = 'SELECT * FROM Event_Type';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$event_types=array();
+		
+		while($rows = mysql_fetch_array($result)) {
+			$event_type = new Event_type();
+			$event_type->setType_id($rows[0]);
+			$event_type->setTitle($rows[1]);
+			$event_type->setDescription($rows[2]);
+			$event_types[]=$event_type;
+		} 
+		$this->close();
+		return $event_types;
+	}// end function
+
+	public function countEventGuests($event_id) {
+		global $con;
+		$sql = "Select Count(*) from Person_relates_to_Event where Event_event_id=".$event_id. " And onGuestList=1";
+		$this->open();
+		$result = mysql_query($sql, $con); 
+		$this->close();
+		$row=mysql_fetch_array($result);
+		return $row[0];
+	}// end function	
+ 
+
+	public function searchEventByType($eventTypeId) {
+		global $con;
+		$sql = 'SELECT * FROM Event Where type_id='.$eventTypeId;
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$events= array();
+		
+		while($rows = mysql_fetch_array($result)){
+			$event = new Event();
+			$event->setEvent_id($rows[0]);
+			$event->setTitle($rows[1]);
+			$event->setDate($rows[2]);
+			$event->setTime($rows[3]);
+			$event->setType($rows[4]);
+			$event->setAddress($rows[5]);
+			$event->setCommittee($rows[7]);
+			$event->setSponsoredBy($rows[8]);
+			$events[]=$event;
+		} 
+		$this->close();
+		return $events;
+	}// end function
+	                               
+}// end class
 ?>

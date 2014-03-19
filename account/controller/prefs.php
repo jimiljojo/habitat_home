@@ -32,6 +32,7 @@
 			break;
 
 		default:
+			include 'account/model/info.php';
 			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 

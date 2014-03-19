@@ -1,11 +1,8 @@
 <?php
     // echo $person = $dbio->getPerson($personId);
     // echo $address = $dbio->getAddress(echo $personId);
-
-    global $dir;
-    global $sub;
-    global $act;
-    global $msg;
+    // echo $contact = $dbio->getContact(echo $personId);
+    
 /*
     mysql_connect("localhost", "root", "");
     mysql_select_db("rkcpfk");
@@ -16,28 +13,29 @@
     $info = mysql_fetch_array($allInfo);
 */
     
-    $title = 'Mr';//$info["Title"];
-    $fName = 'John';//$info["FirstName"];
-    $lName = 'Doe';//$info["LastName"];
-    $street1 = '123 SMain Street';//$info["Street1"];
-    $street2 = '';//$info["Street2"];
-    $city = 'Anytown';//$info["City"];
-    $state = 'PA';//$info["State"];
-    $zip = '17402';//$info["ZIP"];
-    $phone = '717-555-5309';//$info["Phone"];
-    $email = 'jdoe@abc.com';//$info["Email"];
-    $employer = 'Best Company';//$info["Employer"];
-    $workPhone = '717-555-9874';//$info["WorkPhone"];
-    $workExt = '102';
-    $jobTitle = 'Manager';//$info["Title/Occupation"];
-
+    $title = $person->getTitle();
+    $fName = $person->getFirst_name();
+    $lName = $person->getLast_name();
+    $street1 = $address->getStreet1();
+    $street2 = $address->getStreet2();
+    $city = $address->getCity();
+    $state = $address->getState();
+    $zip = $address->getZip();
+    $phone = $contact->getPhone();
+    $email = $contact->getEmail();
+    $employer = 'abc company';
+    $workPhone = $contact->getPhone2();
+    $workExt = $contact->getExtension();
+    $jobTitle = 'engineer';
 ?>
 <h4>Personal Information</h4>
+
 <hr>
 <form action="index.php" method="GET">
     <input name="id" type="hidden" value="0" >
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+    <input name="accid" type="hidden" value="<?php echo $accountid; ?>" >
     <input name="act" type="hidden" value="infoUpdate" >
     <table>
 	<tr>
@@ -48,10 +46,10 @@
 	<tr>
 	    <td>
 		<select name="title" type="text">
-		    <option value="0" selected="selected">Mr.</option>;
-		    <option value="1">Mrs.</option>;
-		    <option value="2">Ms.</option>;
-		    <option value="3">Dr.</option>;
+		    <option value="Mr" selected="selected">Mr.</option>;
+		    <option value="Mrs">Mrs.</option>;
+		    <option value="Ms">Ms.</option>;
+		    <option value="Dr">Dr.</option>;
 		</select>
 		<span class="required">*</span>
 		<br>
@@ -98,6 +96,6 @@
 	    </td>
 	</tr>
     </table>
-    <input type="submit" value="Update" disabled="disabled">
+    <input type="submit" value="Update">
 </form>
 <hr>

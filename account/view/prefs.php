@@ -7,8 +7,10 @@
 
 ?>
 <?php
-    /* this files is the Donor section index View */
-    
+ 
+    $email = $person->getPrefEmail();
+    $mail = $person->getPrefMail();
+    $phone = $person->getPrefPhone();
 ?>
 <h4>Preferences</h4>
 

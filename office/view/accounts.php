@@ -73,15 +73,16 @@ break;
 }// end function
 </script>
 <br><br/>
-<form name="input" action="/habitat/office/model/accounts.php" method="post"> <!-- view all button -->
+<form name="input" action="index.php" method="get">
+<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+<input name="act" type="hidden" value="read" > <!-- view all button -->
 <input type="submit" value="View All">
 </form><br/>
 
-<form name="input" action="/habitat/office/model/accounts.php" method="post"> <!-- create new button -->
+<form name="input" action="register/index.php" method="get"> <!-- create new button -->
 <input type="submit" value="Create New">
 </form><br><br/>
-
-
 <form class='searchBy' method="GET" action="index.php"> <!-- search by, drop down menu, and input boxes -->
    <input type="hidden" name="dir" value="office">
    <input type="hidden" name="sub" value="accounts">
@@ -105,6 +106,7 @@ break;
 <br><br/>An administrator will be able to create an account for donors, homeowners, etc.
 <h6/>
 <br><br/>
+
 
 
 <!-- end-->

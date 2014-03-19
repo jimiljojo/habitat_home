@@ -3,7 +3,7 @@
 	// TITLE: Office Interests View
 	// FILE: office/view/interests.php
 	// AUTHOR: Brandon Willis; bmw5285
-require_once '/office/model/interests.php';
+require_once 'office/model/interests.php';
 $officeInterest = new officeInterest();
 ?>
 
