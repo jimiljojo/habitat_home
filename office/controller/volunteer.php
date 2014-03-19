@@ -65,8 +65,10 @@
                     
 			break;
 
-		default:
-			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+                case 'index':
+                    
+                    default:
+			$page = $dir . '/view/index' . ucfirst($sub) . '.php';
 			break;
 
 
