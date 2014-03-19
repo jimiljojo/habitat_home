@@ -16,9 +16,9 @@
                     $value2 = $_GET['i2'];
                   
                     
-                    include $dir . '/model' . $sub . '.php;';
+                    include $dir . '/model/' . $sub . '.php;';
                     $volunteers = searchVolunteerBy($parameters);
-                    $page = $dir . '/view/search' . ucfirst($sub) . '.php';
+                    $page = $dir . '/view/searchVolunteer' . ucfirst($sub) . '.php';
  
 			break;
 
@@ -40,7 +40,7 @@
                     
                     include $dir . '/model' . $sub . '.php';
                     $volunteers = createVolunteerBy($parameters);
-                    $page = $dir . '/view/create' . ucfirst($sub) . '.php';
+                    $page = $dir . '/view/createVolunteer' . ucfirst($sub) . '.php';
                     
                     
 			break;
@@ -57,11 +57,11 @@
                     
 			break;
 
-		case 'list':
+		case 'listVolunteer':
                                       
-                    include $dir . '/model' . $sub . '.php;';
+                    include $dir . '/model/' . $sub . '.php;';
                     $volunteers = listVolunteer();
-                    $page = $dir . '/view/list' . ucfirst($sub) . '.php';
+                    $page = $dir . '/view/listVolunteer' . ucfirst($sub) . '.php';
                     
 			break;
 
