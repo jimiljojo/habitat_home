@@ -63,12 +63,10 @@
 				</select></td>
 		</tr>
 
-		<!--
-		Date: <input type="text" name="date">
-		Time: <input type="text" name="time"><br><br> -->
-
-		<!-- Need to ask how to combine Address/city/state/zipcode -->
 		
+		<tr><td>Date: <span class="mandatory">*</span></td><td><input type="text" name="date"> <label>YYYY-MM-DD</label></td></tr>
+		<tr><td>Time: <span class="mandatory">*</span></td><td><input type="text" name="time"> <label>24:59</label></td></tr>
+
 		<tr><td>Street 1: <span class="mandatory">*</span></td><td><input type="text" name="street1" id="street2"></td></tr>
 		<tr><td>Street 2: </td><td><input type="text" name="street2" id="street2"></td></tr>
 		<tr><td>City: <span class="mandatory">*</span></td><td><input type="text" name="city" id="city"></td></tr>
