@@ -5,7 +5,6 @@
 	$isAdmin = true;
 	$isOffice = true;
 	$isVolunteer = true;
-
 	//----- SESSION
 
 	require_once 'root/config.php'; // CONFIG
