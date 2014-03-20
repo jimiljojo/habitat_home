@@ -1,6 +1,7 @@
 <?php
 
 /* 
+ * File: /controller/volunteer.php
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -16,9 +17,9 @@
                     $value2 = $_GET['i2'];
                   
                     
-                    include $dir . '/model/' . $sub . '.php;';
-                    $volunteers = searchVolunteerBy($parameters);
-                    $page = $dir . '/view/searchVolunteer' . ucfirst($sub) . '.php';
+                    include $dir . '/model/' . $sub . '.php';
+                    $volunteers = indexVolunteerBy($value1, $value2);
+                    $page = $dir . '/view/search' . ucfirst($sub) . '.php';
  
 			break;
 
