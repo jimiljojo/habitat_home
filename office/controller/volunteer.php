@@ -41,7 +41,7 @@
                     
                     include $dir . '/model' . $sub . '.php';
                     $volunteers = createVolunteerBy($parameters);
-                    $page = $dir . '/view/createVolunteer' . ucfirst($sub) . '.php';
+                    $page = $dir . '/view/create' . ucfirst($sub) . '.php';
                     
                     
 			break;

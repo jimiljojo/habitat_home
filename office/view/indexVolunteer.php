@@ -53,10 +53,8 @@
     var msg = "This part is under construction"
 </script>
 
-<button type="Submit" onclick="alert(msg);">Create New</button>
-<!--
-<button type="Submit" onclick="window.location=\'index.php?dir=&act=createVolunteer\';">Create New</button>
--->
+
+<button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=createVolunteer';">Create New</button>
 <hr>
 <div>
     Here you can search for a volunteer by:
