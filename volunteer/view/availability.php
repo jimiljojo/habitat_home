@@ -1,6 +1,6 @@
 <h2>volunteer/view/availability.php</h2>
 <hr>
-<form>
+<form action="index.php">
     <h5><strong>I am available to work: </strong></h5>
 
 <?php
@@ -16,6 +16,7 @@
         global $checkedDay;
         global $checkedEvening;
         global $checkedWeekend;
+        $act='updateAvailability';
 
          $avail=getAvailability();
 
@@ -54,11 +55,11 @@
         $checkedWeekend = ($checkedWeekend == 'Yes') ? 'checked= "checked"' : '';
 
 ?>
-
+    <input name="act" type="hidden" value="updateAvailability" >
     <input name="day" type="checkbox" value="0" <?php echo $checkedDay; ?> /> Days<br>
     <input name="evening" type="checkbox" value="1" <?php echo $checkedEvening; ?> /> Evenings<br>
     <input name="weekend" type="checkbox" value="2" <?php echo $checkedWeekend; ?> /> Weekends<br><br>
-    <button onclick="validate();">Save Changes</button>
+    <button>Save Changes</button>
 </form>
 <hr>
 <span class="note">

@@ -89,6 +89,19 @@ class DBIO {
 		  return $ava;
 
 		}
+
+		public function setVolunteerAvailability($personID,$day,$eve,$wend){
+			global $con;
+			$sql='UPDATE Volunteer SET availDay="'.$day.'",availEve="'.$eve.'",availWend="'.$wend.'" WHERE Person_person_id="'.$personID.'"';
+			$this->open();
+			$result=mysql_query($sql,$con);
+			if (!$result) {
+  			echo mysql_error("Some error occured while processing your request");
+			}
+			$this->close();
+			return $result;
+
+		}
 		
 	   
 
