@@ -61,7 +61,7 @@
                                       
                     include $dir . '/model/' . $sub . '.php';
                     $volunteers = listVolunteer();
-                    $page = $dir . '/view/listVolunteer' . ucfirst($sub) . '.php';
+                    $page = $dir . '/view/list' . ucfirst($sub) . '.php';
                     
 			break;
 
