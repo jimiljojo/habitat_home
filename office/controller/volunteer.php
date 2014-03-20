@@ -19,7 +19,7 @@
                     
                     include $dir . '/model/' . $sub . '.php';
                     $volunteers = indexVolunteerBy($value1, $value2);
-                    $page = $dir . '/view/search' . ucfirst($sub) . '.php';
+                    $page = $dir . '/view/list' . ucfirst($sub) . '.php';
  
 			break;
 
