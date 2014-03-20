@@ -15,11 +15,11 @@
 
 function indexVolunteerBy($value1, $value2) {}
 
-function createVolunteer($title,$gender,$marital_status,$fname,$lname,$addr,$city,$state,$zip,$phone,$dob){}
+function createVolunteer($parameter){}
 
 function listVolunteer(){}
 
- 
+function editVolunteer(){} 
 
 
 //test

@@ -39,15 +39,17 @@
                     $phone = $_GET['pn'];
                     $dob = $_GET['dob'];
                     
-                    include $dir . '/model' . $sub . '.php';
-                    $volunteers = createVolunteerBy($parameters);
+                    include $dir . '/model/' . $sub . '.php';
+                    $volunteers = createVolunteerBy($parameter);
                     $page = $dir . '/view/create' . ucfirst($sub) . '.php';
                     
                     
 			break;
 
-		case 'edit':
-                    
+		case 'editVolunteer':
+                    include $dir . '/model/' . $sub . '.php';
+                    //$volunteers = editVolunteer();
+                    $page = $dir . '/view/edit' . ucfirst($sub) . '.php';
 			break;
 
 		case 'update':
