@@ -59,7 +59,7 @@
 
 		case 'listVolunteer':
                                       
-                    include $dir . '/model/' . $sub . '.php;';
+                    include $dir . '/model/' . $sub . '.php';
                     $volunteers = listVolunteer();
                     $page = $dir . '/view/listVolunteer' . ucfirst($sub) . '.php';
                     
