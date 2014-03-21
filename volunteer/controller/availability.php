@@ -7,39 +7,63 @@
         //$vid = $_GET['vid'];
         global $act;
         global $msg;
+        global $dir;
+         
         $act = (isset($_GET['act'])) ? $_GET['act'] : '';
         $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
         
         $personId= 20;
         
-        include ($dir . '/model/availability.php');
+        //include ($dir . '/model/availability.php');
 
 	switch ($act) {
 
 		case 'updateAvailability':
                             
                     
-                    $day = $_GET['day'];
-                    $eve = $_GET['evening'];
-                    $wend = $_GET['weekend'];
-                    var_dump($day);
-                    var_dump($eve);
-                    var_dump($wend);
-                    $page = 'volunteer/view/availability.php';
-                    var_dump($day);
-                    var_dump($eve);
-                    var_dump($wend);
-                    $updateVolunteerAvailability= $dbio->setVolunteerAvailability($personId,$day,$eve,$wend);
-                    var_dump($updateVolunteerAvailability);
+                    $day = (isset($_GET['day'])) ? $_GET['day'] : '';
+                    if($day=="0"){
+                        $dayChecked="1";
+                    }
+                    else{
+                        $dayChecked="0";
+                    }
+
+                    $eve = (isset($_GET['evening'])) ? $_GET['evening'] : '';
+                    if($eve=="1"){
+                        $eveChecked="1";
+                    }
+                    else{
+                        $eveChecked="0";
+                    }
+
+                    $wend = (isset($_GET['weekend'])) ? $_GET['weekend'] : '';
+                    if($wend=="2"){
+                        $wendChecked="1";
+                    }
+                    else{
+                        $wendChecked="0";
+                    }
+
+                    $updateVolunteerAvailability= $dbio->setVolunteerAvailability($personId,$dayChecked,$eveChecked,$wendChecked);
+                    if($updateVolunteerAvailability==true){
+                        include ($dir . '/model/availability.php');
+                        $page = 'volunteer/view/availability.php';
+                        print '<script type="text/javascript">'; 
+                        print 'alert("You Account is updated with the changes")'; 
+                        print '</script>';
+                    }
+                    
 
 
                                          
                        
                         break;
 
-		case 'viewAvailability':
+		//case 'viewAvailability':
                    // $page = $dir . '/view/interests.php';
                 default:
+                    include ($dir . '/model/availability.php');
                     $page = $dir . '/view/' . $sub. '.php';
                        // getVolunteerAvailability($vid);
                         break;

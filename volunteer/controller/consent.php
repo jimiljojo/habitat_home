@@ -17,6 +17,7 @@
                     $photo = $_GET['photo'];
                     $agree = $_GET['agree'];
                     $video = $_GET['video'];
+                    var_dump($age);
                                          
                         //setVolunteerConsent($vid, $age, $photo, $agree, $video);
                         break;

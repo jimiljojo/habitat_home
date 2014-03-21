@@ -1,5 +1,7 @@
 <h2>volunteer/view/consent.php</h2>
-<hr
+<hr>
+<form action"index.php">
+    <h5><strong>I consent the following: </strong></h5>
     
     
 <?php
@@ -88,10 +90,11 @@
 
 
 ?>
-    <form action"index.php">
-    <h5><strong>I consent the following: </strong></h5>
+    
     
     <input name="act" type="hidden" value="updateConsent" >
+    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
     <input type="checkbox" name="less18" value="1" <?php echo $less18; ?> <?php if ($less18 == 'checked="checked"') echo 'disabled' ?> /> I am less than 18 years of age and have read the Minor Waiver<br>
     <input type="checkbox" name="greater18" value="2" <?php echo $greater18; ?> <?php if ($greater18 == 'checked="checked"') echo 'disabled' ?> /> I am greater than 18 years of age<br>
     <input type="checkbox" name="photo" value="3" <?php echo $checkedPhoto; ?> <?php if ($checkedPhoto == 'checked="checked"') echo 'disabled' ?> /> I consent for my photo to be used by Habitat<br>

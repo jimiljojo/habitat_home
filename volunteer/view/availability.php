@@ -56,6 +56,8 @@
 
 ?>
     <input name="act" type="hidden" value="updateAvailability" >
+    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
     <input name="day" type="checkbox" value="0" <?php echo $checkedDay; ?> /> Days<br>
     <input name="evening" type="checkbox" value="1" <?php echo $checkedEvening; ?> /> Evenings<br>
     <input name="weekend" type="checkbox" value="2" <?php echo $checkedWeekend; ?> /> Weekends<br><br>
