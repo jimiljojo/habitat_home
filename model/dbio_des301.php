@@ -90,6 +90,29 @@ class DBIO {
 
 		}
 
+		public function getVolunteerConsent($ppid){
+			global $con;
+			$sql='SELECT consentMinor,consentAge,consentPhoto,consentSafety,consentVideo,consentWaiver,emergencyName,emergencyPhone from Volunteer where Person_person_id="'.$ppid.'"';
+			$this->open();
+			$volunteerConsent=array();
+			$results=mysql_query($sql,$con);
+			while($result = mysql_fetch_array($results)){
+			$volunteerConsent= new Consent();
+			$volunteerConsent->setMinor($result[0]);
+			$volunteerConsent->setMajor($result[1]);
+			$volunteerConsent->setPhoto($result[2]);
+			$volunteerConsent->setSafety($result[3]);
+			$volunteerConsent->setVideo($result[4]);
+			$volunteerConsent->setWaiver($result[5]);
+			$volunteerConsent->setName($result[6]);
+			$volunteerConsent->setPhone($result[7]);
+
+			}
+			$this->close();
+			return $volunteerConsent;
+		}
+
+
 		public function setVolunteerAvailability($personID,$day,$eve,$wend){
 			global $con;
 			$sql='UPDATE Volunteer SET availDay="'.$day.'",availEve="'.$eve.'",availWend="'.$wend.'" WHERE Person_person_id="'.$personID.'"';

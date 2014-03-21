@@ -19,13 +19,64 @@
         global $checkLiability;
         global $consent;
         $act='updateConsent';
+
+        $dbconsent=getVolunteerConsent();
+        $dbMinor=$dbconsent->getMinor();
+        $dbMajor=$dbconsent->getMajor();
+        $dbPhoto=$dbconsent->getPhoto();
+        $dbSafety=$dbconsent->getSafety();
+        $dbVideo=$dbconsent->getVideo();
+        $dbWaiver=$dbconsent->getWaiver();
+        $dbName=$dbconsent->getName();
+        $dbPhone=$dbconsent->getPhone();
         
-        $less18 = 'Yes';
-        $greater18='No';
-        $checkedPhoto = 'Yes';
-        $safetyGuidelines = 'Yes';
-        $checkedVideo = 'Yes';
-        $checkLiability= 'Yes';
+        if($dbMinor=="1"){
+            $less18='Yes';
+        }
+        else{
+            $less18='No';
+        }
+
+        if($dbMajor=="1"){
+            $greater18='Yes';
+        }
+        else{
+            $greater18='No';
+        }
+
+        if($dbPhoto=="1"){
+            $checkedPhoto='Yes';
+        }
+        else{
+            $checkedPhoto='No';
+        }
+
+        if($dbSafety=="1"){
+            $safetyGuidelines='Yes';
+        }
+        else{
+            $safetyGuidelines='No';
+        }
+
+        if($dbVideo=="1"){
+            $checkedVideo='Yes';
+        }
+        else{
+            $checkedVideo='No';
+        }
+
+        if($dbWaiver=="1"){
+            $checkLiability='Yes';
+        }
+        else{
+            $checkLiability='No';
+        }
+        // $less18 = 'Yes';
+        // $greater18='No';
+        // $checkedPhoto = 'Yes';
+        // $safetyGuidelines = 'Yes';
+        // $checkedVideo = 'Yes';
+        // $checkLiability= 'Yes';
         
         $less18 = ($less18 == 'Yes') ? 'checked="checked"' : '';
         $greater18 = ($greater18 == 'Yes') ? 'checked="checked"' : '';
@@ -50,9 +101,9 @@
     
     <h5><strong>Emergency Contact Information: </strong></h5>
     <table>
-    <tr><td> Emergency Name: </td><td> <input type="text" name="emergencyName"></td></tr><br>
+    <tr><td> Emergency Name: </td><td> <input type="text" name="emergencyName" value="<?php echo $dbName; ?>"></td></tr><br>
     
-    <tr><td>Phone Number: </td><td> <input type="text" name="phone"></td><tr></table><br><br>
+    <tr><td>Phone Number: </td><td> <input type="text" name="phone" value="<?php echo $dbPhone; ?>"></td><tr></table><br><br>
     <button value="submit">Save Changes</button>
 </form>
 <hr>

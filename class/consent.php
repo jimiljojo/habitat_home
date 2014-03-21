@@ -1,17 +1,20 @@
-<?php>
+<?php
 	
 	class Consent{
 
 		//Attributes
+//consentMinor,consentAge,consentPhoto,consentSafety,consentVideo,consentWaiver,emergencyName,emergencyPhone
+		
+		private $consentMinor;
+		private $consentMajor;
+		private $consentPhoto;
+		private $consentSafety;
+		private $consentVideo;
+		private $consentWaiver;
 
-		private $age;
-		private $video;
-		private $waiver;
-		private $photo;
-
-		private $firstName;
-		private $lastName;
-		private $phone
+		private $emergencyName;
+		
+		private $emergencyPhone;
 
 		//private $updateButton;
 		
@@ -23,21 +26,23 @@
 
 		//Method
 
-		public function getAge() {return $this->age;}
-		public function getVideo() {return $this->video;}
-		public function getWaiver() {return $this->waiver;}
-		public function getPhoto() {return $this->photo;}
-		public function getFirstName() {return $this->firstName;}
-		public function getLastName() {return $this->lastName;}
-		public function getPhone() {return $this->phone;}
+		public function getMinor() {return $this->consentMinor;}
+		public function getMajor() {return $this->consentMajor;}
+		public function getPhoto() {return $this->consentPhoto;}
+		public function getSafety() {return $this->consentSafety;}
+		public function getVideo() {return $this->consentVideo;}
+		public function getWaiver() {return $this->consentWaiver;}
+		public function getName() {return $this->emergencyName;}
+		public function getPhone() {return $this->emergencyPhone;}
 
-		public function setAge($age) {$this->age = $age;}
-		public function setVideo($video) {$this->video = $video;}
-		public function setWaiver($waiver) {$this->waiver = $waiver;}
-		public function setPhoto($photo) {$this->photo = $photo;}
-		public function setFirstName($firstName) {$this->firstName = $firstName;}
-		public function setLastName($lastName) ($this->lastName = $lastName;)
-		public function setPhone($phone) ($this->phone - $phone;)
+		public function setMinor($consentMinor) {$this->consentMinor = $consentMinor;}
+		public function setMajor($consentMajor) {$this->consentMajor = $consentMajor;}
+		public function setPhoto($consentPhoto) {$this->consentPhoto = $consentPhoto;}
+		public function setSafety($consentSafety) {$this->consentSafety = $consentSafety;}
+		public function setVideo($consentVideo) {$this->consentVideo = $consentVideo;}
+		public function setWaiver($consentWaiver) {$this->consentWaiver = $consentWaiver;}
+		public function setName($emergencyName) {$this->emergencyName = $emergencyName;}
+		public function setPhone($emergencyPhone) {$this->emergencyPhone = $emergencyPhone;}
 
 	}//end class
 ?>

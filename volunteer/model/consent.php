@@ -12,9 +12,13 @@
         $dbio->setVolunteerConsent($vid, $age, $photo, $agree, $video);
 
     }
-    function getVolunteerConsent($vid) {
+    function getVolunteerConsent() {
         
-        return $dbConsent = $dbio->getVolunteerConsentBy($vid);
+        global $dbio;
+        $ppid="20";
+        $dbConsent = $dbio->getVolunteerConsent($ppid);
+        
+        return $dbConsent;
      
     
     }
