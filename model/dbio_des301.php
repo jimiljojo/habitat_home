@@ -468,6 +468,18 @@ class DBIO {
 		$this->close();
 	}
 
+	public function getEventId($person_id){
+		global $con;
+		$sql='SELECT Event_event_id from Person_relates_to_Event where Person_person_id="'.$person_id.'"'; 
+		$this->open();
+		$result=mysql_query($sql,$con);
+		if (!$result) {
+  		echo mysql_error("Some error occured while processing your request");
+		}
+		$this->close();
+		return $result;
+	}
+
 
 
 }// end class

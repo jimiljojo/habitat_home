@@ -5,6 +5,11 @@
 	// AUTHOR: rwg5215
 
 
+    function getEventId(){
+    	$event_id=$dbio->getEventId($person_id);
+    	return $event_id;
+    }
+
     function setVolunteerHistory($vid, $association, $date, $start, $end, $auth) {
     
    

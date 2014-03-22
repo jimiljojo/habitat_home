@@ -2,7 +2,9 @@
 <hr>
 
 <?php
-
+    
+    $abc=getEventId();
+    var_dump($abc);
 	// TITLE: Volunteer Work History View
 	// FILE: volunteer/view/history.php
 	// AUTHOR: Logan Gurreri
