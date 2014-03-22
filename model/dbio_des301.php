@@ -94,7 +94,7 @@ class DBIO {
 			global $con;
 			$sql='SELECT consentMinor,consentAge,consentPhoto,consentSafety,consentVideo,consentWaiver,emergencyName,emergencyPhone from Volunteer where Person_person_id="'.$ppid.'"';
 			$this->open();
-			$volunteerConsent=array();
+			
 			$results=mysql_query($sql,$con);
 			while($result = mysql_fetch_array($results)){
 			$volunteerConsent= new Consent();
@@ -110,6 +110,20 @@ class DBIO {
 			}
 			$this->close();
 			return $volunteerConsent;
+		}
+
+		public function setVolunteerConsent($personid,$consentMinor,$consentAge,$consentPhoto,$consentSafety,$consentVideo,$consentWaiver,$emergencyName,$emergencyPhone)
+		{
+			global $con;
+			$sql='UPDATE Volunteer SET consentMinor="'.$consentMinor.'",consentAge="'.$consentAge.'",consentPhoto="'.$consentPhoto.'",consentSafety="'.$consentSafety.'",consentVideo="'.$consentVideo.'",consentWaiver="'.$consentWaiver.'",emergencyName="'.$emergencyName.'",emergencyPhone="'.$emergencyPhone.'" WHERE Person_person_id="'.$personid.'"';
+			$this->open();
+			$result=mysql_query($sql,$con);
+			if(!$result){
+				echo mysql_error("Some error occured while processing your request");
+			}
+			$this->close();
+			return $result;
+
 		}
 
 

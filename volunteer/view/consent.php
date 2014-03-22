@@ -95,19 +95,47 @@
     <input name="act" type="hidden" value="updateConsent" >
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input type="checkbox" name="less18" value="1" <?php echo $less18; ?> <?php if ($less18 == 'checked="checked"') echo 'disabled' ?> /> I am less than 18 years of age and have read the Minor Waiver<br>
-    <input type="checkbox" name="greater18" value="2" <?php echo $greater18; ?> <?php if ($greater18 == 'checked="checked"') echo 'disabled' ?> /> I am greater than 18 years of age<br>
-    <input type="checkbox" name="photo" value="3" <?php echo $checkedPhoto; ?> <?php if ($checkedPhoto == 'checked="checked"') echo 'disabled' ?> /> I consent for my photo to be used by Habitat<br>
-    <input type="checkbox" name="safetyGuidelines" value="4" <?php echo $safetyGuidelines; ?> <?php if ($safetyGuidelines == 'checked="checked"') echo 'disabled' ?> /> I have read the Construction Safety Guidelines<br>
-    <input type="checkbox" name="video" value="5" <?php echo $checkedVideo; ?> <?php if ($checkedVideo == 'checked="checked"') echo 'disabled' ?> /> I have viewed the Construction Safety video<br>
-    <input type="checkbox" name="liability" value="6" <?php echo $checkLiability; ?> <?php if ($checkLiability == 'checked="checked"') echo 'disabled' ?> /> I accep the terms of Liability Waiver Form<br><br>
+    <input type="checkbox" name="less18" value="1" <?php echo $less18; ?> <?php if ($less18 == 'checked="checked"') ?> /> I am less than 18 years of age and have read the Minor Waiver<br>
+    <input type="checkbox" name="greater18" value="1" <?php echo $greater18; ?> <?php if ($greater18 == 'checked="checked"') ?> /> I am greater than 18 years of age<br>
+    <input type="checkbox" name="photo" value="3" <?php echo $checkedPhoto; ?> <?php if ($checkedPhoto == 'checked="checked"') ?> /> I consent for my photo to be used by Habitat<br>
+    <input type="checkbox" name="safetyGuidelines" value="4" <?php echo $safetyGuidelines; ?> <?php if ($safetyGuidelines == 'checked="checked"') ?> /> I have read the Construction Safety Guidelines<br>
+    <input type="checkbox" name="video" value="5" <?php echo $checkedVideo; ?> <?php if ($checkedVideo == 'checked="checked"') ?> /> I have viewed the Construction Safety video<br>
+    <input type="checkbox" name="liability" value="6" <?php echo $checkLiability; ?> <?php if ($checkLiability == 'checked="checked"') ?> /> I accep the terms of Liability Waiver Form<br><br>
     
     <h5><strong>Emergency Contact Information: </strong></h5>
     <table>
     <tr><td> Emergency Name: </td><td> <input type="text" name="emergencyName" value="<?php echo $dbName; ?>"></td></tr><br>
     
     <tr><td>Phone Number: </td><td> <input type="text" name="phone" value="<?php echo $dbPhone; ?>"></td><tr></table><br><br>
-    <button value="submit">Save Changes</button>
+    <script type="text/javascript">
+    function check(){
+        if (document.getElementById('emergencyName').value==""
+                 || document.getElementById('emergencyName').value==undefined)
+                {
+                    alert ("Please enter the Emergency Name");
+                    return false;
+                }
+
+        else if (document.getElementById('phone').value==""
+                 || document.getElementById('phone').value==undefined)
+                {
+                    alert ("Please enter the Emergency Phone Number");
+                    return false;
+                }
+
+        else if (document.getElementById('less18').value == document.getElementById('greater18').value)
+                {
+                    alert ("Age cannot be less than 18 and greater than 18. Please select an appropriate option!");
+                    return false;
+                }
+
+        else{
+            return true;
+        }
+
+    }
+    </script>
+    <button value="submit" onclick="return check();">Save Changes</button>
 </form>
 <hr>
 <span class="note">
