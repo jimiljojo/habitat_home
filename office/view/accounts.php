@@ -84,12 +84,12 @@ break;
 <input type="submit" value="Create New">
 </form><br><br/>
 <form class='searchBy' method="GET" action="index.php"> <!-- search by, drop down menu, and input boxes -->
-   <input type="hidden" name="dir" value="office">
-   <input type="hidden" name="sub" value="accounts">
-   <input type="hidden" name="act" value="">
-   <input name="searchBy" type="submit" value="Search By" action="/habitat/office/model/accounts.php" method="post">
+   <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+   <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+   <input type="hidden" name="act" value="search">
+   <input name="searchBy" type="submit" value="Search By" action="index.php" method="get">
 
-<select id="searchBy" name="searchBy" action="/habitat/office/model/accounts.php" method="post" onclick='searchByHandler()'>
+<select id="searchBy" name="searchBy" action="/habitat/office/model/accounts.php" method="get" onclick='searchByHandler()'>
 <option value="name" selected="selected" >Name</option>
 <option value="organization" >Organization</option>
 </select>

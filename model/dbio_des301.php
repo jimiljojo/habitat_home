@@ -291,24 +291,37 @@ class DBIO {
 
 	public function readAccounts() {
 		global $con;
-		$sql = 'SELECT * FROM Account';
+		$sql = 'SELECT Account.username, Person.first_name, Person.last_name, Person.title, Person.dob, Contact.phone, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id';
 		$this->open();
 		$result = mysql_query($sql, $con);
+		$person = array();
 		$accounts =array();
+		$contacts =array();
+		$addresses =array();
 		while($rows = mysql_fetch_array($result)){
 			$account = new Account();
-			$account->setAccount_id($rows[0]);
-			$account->setUsername($rows[1]);
-			$account->setPassword($rows[2]);
-			$account->setDate($rows[3]);
-			$account->setStatus($rows[4]);
-			$account->setIsOffice($rows[5]);
-			$account->setIsVolunteer($rows[6]);
-			$account->setPerson($rows[7]);
+			$contact = new Contact();
+			$address = new Address();
+			$person = new Person();
+			$account->setUsername($rows[0]);
+			$person->setFirst_name($rows[1]);
+			$person->setLast_name($rows[2]);
+			$person->setTitle($rows[3]);
+			$person->setDob($rows[4]);
+			$contact->setPhone($rows[5]);
+			$address->setStreet1($rows[6]);
+			$address->setStreet2($rows[7]);
+			$address->setCity($rows[8]);
+			$address->setState($rows[9]);
+			$address->setZip($rows[10]);
 			$accounts[] = $account;
+			$persons[] = $person;
+			$contacts[] = $contact;
+			$addresses[] = $address;
 		}
+		$tableinfo = array($accounts,$persons,$contacts,$addresses);
 		$this->close();
-		return $accounts;
+		return $tableinfo;
 	}// end function
 
 	public function updateInfo($accid,$person,$contact,$address) {
