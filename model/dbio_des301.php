@@ -341,6 +341,132 @@ class DBIO {
 		$this->close();
 		return $events;
 	}// end function
-	                               
+	
+	 public function getAllSchedule() //view all 
+        {
+             
+			$sql = 'SELECT * FROM Schedule';
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$schedules =array();
+			while($rows = mysql_fetch_array($result))
+                        {
+                
+				$schedule = new Schedule();
+				$schedule->setId($rows[0]);
+				$schedule->settimeStart($rows[1]);
+				$schedule->settimeEnd($rows[2]);
+				$schedule->setEvent_event_id($rows[3]);
+				$schedule->setDescription($rows[4]);
+				$schedule->setInterest_interest_id($rows[5]);
+				$schedules[] = $schedule;
+                        } 
+                $this->close();
+			return $schedules;
+        }
+		
+        public function getScheduleFromUserName ($Fname,$Lname) // search by user, might need a better way to write it
+        {
+				  
+				$sql= "SELECT Person.person_id, Person.last_name, Person.first_name, Schedule.timeStart, Schedule.timeEnd, Schedule.Event_event_id, Schedule.description FROM Person
+				JOIN Schedule_slot On Person.person_id = Schedule_slot.Volunteer_Person_person_id
+				JOIN Schedule ON Schedule_slot.Schedule_id = Schedule.id 
+				WHERE Person.last_name ='{.$Lname}' && Person.first_name ='{.$FName}'"; //SQL subject to change to adjust to PHP, but work in mySQL AS IS. 
+
+				$this->open();
+				$result = mysql_query($sql, $con);
+				$userSchedule = array();
+				while($rows = mysql_fetch_array($result))
+				{
+                
+				$uSchedule = new userSchedule();
+				$uSchedule->setPerson_person_id($rows[0]);
+				$uSchedule->setLast_name($rows[1]);
+				$uSchedule->setFirst_name($rows[2]);
+				$uSchedule->setTimeStart($rows[3]);
+				$uSchedule->setScheduleEvent_Event_id($row[4]);
+				$uSchedule->setScheduleDescription($row[5]);
+							$uSchedules[] = $uSchedule; 
+                } 
+                $this->close();
+				return $uSchedules;
+                    
+        }
+		
+		  public function getEventSchedule($title) //view all 
+        {
+             
+			$sql = "SELECT Event.event_id, Event.title, Schedule.timeStart, Schedule.timeEnd, Schedule.description FROM Event
+					JOIN Schedule ON Event.event_id = Schedule.Event_event_id
+					WHERE Event.title = '{.$title}'"; // SQL code works, not sure why how timeStart supposed to be incremented 
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$schedules =array();
+			while($rows = mysql_fetch_array($result))
+                        {
+                
+						$ScheduleEvent = $SEvent;
+						$ScheduleEvent->setEvent_id(row[0]); 
+						$ScheduleEvent->setTitle($rows[1]);
+						$ScheduleEvent->setTimeStart($rows[2]);
+						$ScheduleEvent->setTimeEnd($rows[3]);
+						$ScheduleEvent->setDescription($row[4]);
+						$ScheduleEvents[] = $ScheduleEvent;
+                        } 
+                $this->close();
+			return $ScheduleEvents;
+        }
+		
+		public function getEventFromInterest($title) //view all 
+        {
+             
+			$sql = "SELECT Schedule.Event_Event_id, Interest.title, Interest.description, Schedule.timeStart, Schedule.timeEnd, Schedule.description FROM Interest
+					JOIN Schedule ON Interest.interest_id= Schedule.Interest_interest_id
+					WHERE Interest.title = '{.$title}'"; // work when tested. Initially no schedule was create to perform query
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$schedules =array();
+			while($rows = mysql_fetch_array($result))
+                        {
+						$ScheduleEvent = $SEvent;
+						$ScheduleEvent->setEvent.Event_id(row[0]); 
+						$ScheduleEvent->setTitle($rows[1]);
+						$ScheduleEvent->setInterest.Description($row[2]);
+						$ScheduleEvent->setTimeStart($rows[3]);
+						$ScheduleEvent->setTimeEnd($rows[4]);
+						$ScheduleEvent->setScheduleDescription(row[5]);
+						$ScheduleEvents[] = $ScheduleEvent;
+                        } 
+                $this->close();
+			return $ScheduleEvents;
+        }
+		
+		
+        public function updateSchedule($sid,$timeStart,$timeEnd, $description) //unsure about $schedule, if declared elsewhere, also might need to declare get...() variables else where to initialize them
+		{
+				 
+				
+				$sql = "UPDATE Schedule SET timeStart='" . $schedule->gettimeStart() . "', timeEnd='" . $schedule->gettimeEnd() . "', '"description=$schedule->getdescription(). "'
+				WHERE id=(select id from Schedule where id =" . $sid  ");" ; // SQL statement works, unsure about PHP adaption
+				$this->open();
+				$result = mysql_query($sql, $con);
+			//	$result2 = mysql_query($sql2, $con);
+				if($result)// && $result2)
+					echo "A SCHEDULE IS UPDATED";
+				$this->close();
+	} // not yet completed 
+	
+		public function createANewSchedule ($timeStart, $timeEnd, $Event_event_id, $description, $Interest_interest_id) 
+        {
+			$sql = " INSERT INTO Schedule(timeStart, timeEnd, Event_event_id, description, Interest_interest_id)
+			VALUES ('$_POST[timeStart]','$_POST[timeEnd]', '$_POST[Event_event_id]', '$_POST[description]', '$_POST[Interest_interest_id]')";
+			// Not 100% sure if this is a good way to create a new row. But it work in mySQL with manual 'POST' entry.  
+			$this->open(); 
+			$result = mysql_query($sql, $con);
+			if ($result)
+			echo "ONE NEW SCHEDULE CREATED" ;
+			$this->close();
+		} 
+		                              
 }// end class
 ?>
