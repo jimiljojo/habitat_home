@@ -44,7 +44,7 @@
 		$tableName = "Interest";
 		$sql = "INSERT INTO {$tableName} (type_id, title, description) VALUES ('{$type_id}', '{$title}', '{$description}')";
 		//$this->readInterestType();
-		mysqli_query($con,$sql);
+		mysql_query($sql,$con);
 		$dbio->close();
 		echo "You have created a new {$tableName} its interest type is {$type_id} named {$title} with the following description: <br> {$description}";
 	}
@@ -57,7 +57,7 @@
 		$dbio->open();
 		$tableName = "Interest_Type";
 		$sql = "INSERT INTO {$tableName} (title, description) VALUES ('{$title}', '{$description}')";
-		mysqli_query($con,$sql);
+		mysql_query($sql,$con);
 		$dbio->close();
 		echo "You have created a new {$tableName} named {$title} with the following description: <br> {$description}";
 	}
