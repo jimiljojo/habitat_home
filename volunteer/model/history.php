@@ -16,9 +16,11 @@
         $dbio->setVolunteerHistory($vid, $association, $date, $start, $end, $auth);
 
     }
-    function getVolunteerHistory($vid) {
+    function getEventDate() {
         
-        return $dbConsent = $dbio->getVolunteerHistory($vid);
+        $dbConsent = $dbio->getEventDate(getEventId());
+        //var_dump($dbConsent);
+        return $dbConsent;
      
     
     }

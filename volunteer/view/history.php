@@ -3,8 +3,7 @@
 
 <?php
     
-    $abc=getEventId();
-    var_dump($abc);
+    
 	// TITLE: Volunteer Work History View
 	// FILE: volunteer/view/history.php
 	// AUTHOR: Logan Gurreri
@@ -14,9 +13,9 @@
         
         $association = array('Penn State Build', 'Charity Event', 'Dinner', 'Meeting', 'Fundraiser');
         $date = array('20140305', '20140309', '20140313', '20140315','20140401');
-        $start = array ('1100', '0800', '0800', '0700','0700');
-        $end = array ('1230', '0830', '0900', '0830', '0800');
-        $auth = array ('No', 'No', 'No', 'Yes', 'Yes');
+        $start = array('1100', '0800', '0800', '0700','0700');
+        $end = array('1230', '0830', '0900', '0830', '0800');
+        $auth = array('No', 'No', 'No', 'Yes', 'Yes');
         
         $month;
         $day;
@@ -62,6 +61,8 @@
     </tr>
     <?php
         global $col;
+        $abc=getEventDate();
+        var_dump($abc);
                 
         $col = count($workHistory);
         

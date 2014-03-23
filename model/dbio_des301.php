@@ -583,6 +583,24 @@ class DBIO {
 	    	}	
 
 
+	    public function getEventDate($eventId){
+	    	global $con;
+			$this->open();
+			$sql = 'SELECT title,date FROM Event where event_id="'.$eventId.'"';
+			$result = mysql_query($sql,$con);
+			$ints = array();
+			while ($row = mysql_fetch_array($result))
+			{
+				//$int = new Interest();
+				$int->setId($row[0]);
+				$int->setTypeId($row[1]);
+				$ints[] = $int;
+			}
+			return $ints;
+			$this->close();
+	    }
+
+
 
 }// end class
 ?>
