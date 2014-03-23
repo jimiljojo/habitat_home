@@ -7,30 +7,49 @@
 
 	switch ($act) {
 
-		case 'readInterests':
-			// CODE HERE
+		case 'listInterests':
+			include 'office/model/interests.php';
+			$page = $dir . '/view/listInterests.php';
+			break;
+			
+		case 'listInterestTypes':
+			include 'office/model/interests.php';
+			$page = $dir . '/view/listInterests.php';
 			break;
 
-		case 'createInterests':
-			// CODE HERE
+		case 'createInterest':
+			include 'office/model/interests.php';
+			$page = $dir . '/view/createInterests.php';
 			break;
-                case 'createInterestTypes':
-                        break;
+                
+		case 'createInterestType':
+			include 'office/model/interests.php';
+			$page = $dir . '/view/createInterests.php';
+			break;
+			
+		case 'readInterest':
+			include 'office/model/interests.php';
+			$page = $dir . '/view/readInterests.php';
+			break;
+			
+		case 'readInterestType':
+			include 'office/model/interests.php';
+			$page = $dir . '/view/readInterests.php';
+			break;
 
 		case 'updateInterests':
-			// CODE HERE
+			include 'office/model/interests.php';
+			$page = $dir . '/view/listInterests.php';
 			break;
           
 		case 'updateInterestTypes':
-			// CODE HERE
+			include 'office/model/interests.php';
+			$page = $dir . '/view/listInterests.php';
 			break;
-
-
-		case 'listInterests':
 	
 		default:
-			$page = $dir . '/view/interests.php';
-                break;
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			break;
 
 	}// end switch
 
