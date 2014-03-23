@@ -479,6 +479,107 @@ class DBIO {
 		$this->close();
 		return $result;
 	}
+	
+/////////////////////////////////////Interests/////////////////////////////////////////////////////////////////	   
+//////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
+	    public function listInterests()
+	    {
+			global $con;
+			$this->open();
+			$sql = 'SELECT * FROM Interest';
+			$result = mysqli_query($con,$sql);
+			while ($row = mysqli_fetch_array($result))
+			{
+				$int = new Interest();
+				$int->setId($row[0]);
+				$int->setTypeId($row[1]);
+				$int->setTitle($row[2]);
+				$int->setDescription($row[3]);
+				$ints[] = $int;
+			}
+			return $ints;
+			$this->close();
+	    }
+		
+		public function listInterestTypes()
+		{
+		  global $con;
+		  $intTypes = array();
+		  $sql = 'SELECT type_id, title FROM Interest_Type';
+		  //global $types;
+		  //$types = array();
+		  $this->open();		
+		  $result = mysqli_query($con, $sql);
+		  while($row = mysqli_fetch_array($result))
+		  {
+			 //$types[$row[0]] = new Item($row[0], $row[1]);
+			 $intType = new Item();
+			 $intType->setId($row[0]);
+			 $intType->setTitle($row[1]);
+			 $intTypes[] = $intType;
+		  }// end while
+		  $this->close();
+		  return $intTypes;
+		}// end function
+		
+		public function readInterest($title)
+		{
+			require_once '/class/volunteerInterest.php';
+			global $con;
+			$this->open();
+			//global $volInts;
+			$volInts = array();
+			$sql = "SELECT Person.first_name, Person.last_name, Interest_Type.title, Interest.title
+				FROM Person
+				JOIN Volunteer on Person.Person_id = Volunteer.Person_person_id
+				JOIN Volunteer_has_Interest on Volunteer.Person_person_id = Volunteer_has_Interest.Volunteer_Person_person_id
+				JOIN Interest on Volunteer_has_Interest.Interest_interest_id = Interest.interest_id
+				JOIN Interest_Type on Interest.type_id = Interest_Type.type_id
+				WHERE Interest.title = '{$title}'";
+			$result = mysqli_query($con,$sql);
+			while ($row = mysqli_fetch_array($result))
+			{
+				$volInt = new volunteerInterest();
+				$volInt->setFirst_name($row[0]);
+				$volInt->setLast_name($row[1]);
+				$volInt->setType_title($row[2]);
+				$volInt->setInterest_title($row[3]);
+				$volInts[] = $volInt;
+			}
+			//return $int;
+			$this->close();
+			return $volInts;
+	    	}
+		
+		
+		public function readInterestType($title)
+		{
+			require_once '/class/volunteerInterest.php';
+			global $con;
+			$this->open();
+			//global $volInts;
+			$volInts = array();
+			$sql = "SELECT Person.first_name, Person.last_name, Interest_Type.title, Interest.title
+				FROM Person
+				JOIN Volunteer on Person.Person_id = Volunteer.Person_person_id
+				JOIN Volunteer_has_Interest on Volunteer.Person_person_id = Volunteer_has_Interest.Volunteer_Person_person_id
+				JOIN Interest on Volunteer_has_Interest.Interest_interest_id = Interest.interest_id
+				JOIN Interest_Type on Interest.type_id = Interest_Type.type_id
+				WHERE Interest_Type.title = '{$title}'";
+			$result = mysqli_query($con,$sql);
+			while ($row = mysqli_fetch_array($result))
+			{
+				$volInt = new volunteerInterest();
+				$volInt->setFirst_name($row[0]);
+				$volInt->setLast_name($row[1]);
+				$volInt->setType_title($row[2]);
+				$volInt->setInterest_title($row[3]);
+				$volInts[] = $volInt;
+			}
+			//return $int;
+			$this->close();
+			return $volInts;
+	    	}	
 
 
 
