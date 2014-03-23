@@ -487,8 +487,9 @@ class DBIO {
 			global $con;
 			$this->open();
 			$sql = 'SELECT * FROM Interest';
-			$result = mysqli_query($con,$sql);
-			while ($row = mysqli_fetch_array($result))
+			$result = mysql_query($sql,$con);
+			$ints = array();
+			while ($row = mysql_fetch_array($result))
 			{
 				$int = new Interest();
 				$int->setId($row[0]);
@@ -509,8 +510,8 @@ class DBIO {
 		  //global $types;
 		  //$types = array();
 		  $this->open();		
-		  $result = mysqli_query($con, $sql);
-		  while($row = mysqli_fetch_array($result))
+		  $result = mysql_query($sql,$con);
+		  while($row = mysql_fetch_array($result))
 		  {
 			 //$types[$row[0]] = new Item($row[0], $row[1]);
 			 $intType = new Item();
@@ -536,8 +537,8 @@ class DBIO {
 				JOIN Interest on Volunteer_has_Interest.Interest_interest_id = Interest.interest_id
 				JOIN Interest_Type on Interest.type_id = Interest_Type.type_id
 				WHERE Interest.title = '{$title}'";
-			$result = mysqli_query($con,$sql);
-			while ($row = mysqli_fetch_array($result))
+			$result = mysql_query($sql,$con);
+			while ($row = mysql_fetch_array($result))
 			{
 				$volInt = new volunteerInterest();
 				$volInt->setFirst_name($row[0]);
@@ -566,8 +567,8 @@ class DBIO {
 				JOIN Interest on Volunteer_has_Interest.Interest_interest_id = Interest.interest_id
 				JOIN Interest_Type on Interest.type_id = Interest_Type.type_id
 				WHERE Interest_Type.title = '{$title}'";
-			$result = mysqli_query($con,$sql);
-			while ($row = mysqli_fetch_array($result))
+			$result = mysql_query($sql,$con);
+			while ($row = mysql_fetch_array($result))
 			{
 				$volInt = new volunteerInterest();
 				$volInt->setFirst_name($row[0]);
