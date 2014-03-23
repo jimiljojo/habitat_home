@@ -3,8 +3,8 @@
 	// TITLE: Office Interests View
 	// FILE: office/view/interests.php
 	// AUTHOR: Brandon Willis; bmw5285
-require_once 'office/model/interests.php';
-$officeInterest = new officeInterest();
+
+
 ?>
 
 <style> /* css */ 
@@ -25,28 +25,18 @@ $officeInterest = new officeInterest();
 		width: 125px;
 	}
 	
-	input[name=update]
-	{
-		height: 30px;
-		width: 62.5px;
-	}
-	
-	input[name=delete]
-	{
-		height: 30px;
-		width: 62.5px;
-	}
-	
 	#update
 	{
+		position:relative;
+		top:18px;
 		display:inline;
-		padding-right: 5px;
 	}
 	
 	#delete
 	{
+		position:relative;
+		top:18px;
 		display:inline;
-		padding-left: 5px;
 	}
 	
 	form
@@ -174,12 +164,12 @@ function dropDownMenu()
 	
 	switch (v)
 	{			
-		case "Interest":
+		case "readInterest":
 			i1.style.display = show;
 			i2.style.display = hide;
 		break;
 		
-		case "Interest Type":
+		case "readInterestType":
 			i1.style.display = hide;
 			i2.style.display = show;
 		break;
@@ -195,243 +185,80 @@ function dropDownMenu()
 
 <!--/////////////////////////////////////////			HTML			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 <div>
-	<form action="" method="post"> <!-- view all form -->
-		<input type="submit" name="viewAll" value="View All"> <!-- view all button -->
-		<select id="viewAll" name="viewAll" action="" method="post"> <!-- drop down menu -->
+	<form name="list" action="index.php" method="GET"> <!-- view all form -->
+		<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+		<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+		<input type="submit" value="View All"> <!-- view all button -->
+		<select id="viewAll" name="act" action="listInterests.php" method="GET"> <!-- drop down menu -->
 			<option value="" disabled selected="selected">-Select-</option> <!-- drop down menu option; default -->
-			<option name="interests" value="interests">Interests</option> <!-- drop down menu option -->
-			<option name="interestTypes" value="interestTypes">Interest Types</option> <!-- drop down menu option -->
+			<option name="interests" value="listInterests">Interests</option> <!-- drop down menu option -->
+			<option name="interestTypes" value="listInterestTypes">Interest Types</option> <!-- drop down menu option -->
 		</select> <!-- end drop down menu -->
-	</form><hr> <!-- end view all form -->
-</div>
+	</form> <!-- end view all form -->
+</div><br>
 
 <div>
-	<form class='searchBy' method="post" action=""> <!-- search by form -->
-		<input name="searchBy" type="submit" value="Search By" action="" method="post"> <!-- search by button -->
-		<!--<input name="searchByVolunteer" type="text" readonly="readonly" value="Volunteer">--> <!-- uneditable text box -->
-		<select id="searchby" name="searchby" action="" method="post" onclick='dropDownMenu()'>
+	<form action="" method="GET"> <!-- create new form-->
+		<form name="create" action="index.php" method="GET"> <!-- view all form -->
+		<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+		<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+		<input type="submit" value="Create New"> <!-- create button -->
+		<select id="create" name="act"> <!-- drop down menu -->
+			<option value="" disabled selected="selected">-Select-</option> <!-- drop down menu option; default -->
+			<option name="interest" value="createInterest">Interest</option> <!-- drop down menu option -->
+			<option name="interestType" value="createInterestType">Interest Type</option> <!-- drop down menu option -->
+		</select> <!--end drop down menu options-->
+	</form>
+</div><br><br>
+
+<div>
+	<form name="read" action="index.php" method="GET"> <!-- view all form -->
+		<input name="dir" type="hidden" value="<?php echo $dir; ?>">
+		<input name="sub" type="hidden" value="<?php echo $sub; ?>">
+		<input type="submit" value="Search By"> <!-- search by button -->
+		<select id="searchby" name="act" onclick='dropDownMenu()' >
 			<option value="" disabled selected>-Select-</option>--> <!-- drop down menu option; default -->
-			<option value="Interest" name="Interest">Interest</option>
-			<option value="Interest Type" name="Interest Type">Interest Type</option>
+			<option value="readInterest" name="Interest">Interest</option>
+			<option value="readInterestType" name="Interest Type">Interest Type</option>
 		</select>
-		<select id="vol1" name="vol1" action="" method="post" style="display:none"> <!-- drop down menu -->
+		<select id="vol1" name="vol1" action="/model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
 			<option value="" disabled selected>-Select Interest-</option> <!-- drop down menu option; default -->
 			<?php //creates drop down menu options AND alphabetizes 
 				require_once '/class/interest.php';
-				$dbio->getAllInts();
-				require_once '/class/item.php';
-				$dbio->getIntTypes();
+				$ints = $dbio->listInterests();
 				$hold = array();
 				foreach($ints as &$int)
 				{
 					$interest = $int->getTitle();
-					$hold[] = $interest;
-					//echo "<option value = '{$interest}' name = '{$interest}'>{$interest}</option>";
+					$holdInterest[] = $interest;
 				}
-				sort($hold);
-				$i = 0;
-				foreach($hold as &$val)
+				sort($holdInterest);
+				foreach($holdInterest as &$val)
 				{
-					$sortedInt = $hold[$i];
+					$sortedInt = $val;
 					echo "<option value = '{$sortedInt}' name = '{$sortedInt}'>{$sortedInt}</option>";
-					$i++;
 				}
 			?>
 		</select>
-		<select id='vol2' name='vol2' action='' method='post' style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
+		<select id='vol2' name="vol2" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
 		<option value="" disabled selected>-Select Interest Type-</option> <!-- drop down menu option; default -->
 			<?php
-				foreach ($types as &$value)
+				//require_once '/class/item.php';
+				$intTypes = $dbio->listInterestTypes();
+				foreach ($intTypes as &$intType)
 				{
-					//$id = $value->getId();
-					$title = $value->getTitle();
-					/*echo "<div>";
-						echo "<form class='searchBy' method='post' action=''>"; //search by result form
-							echo "<input name='{$id}' type='text' readonly='readonly' value='{$id}'>"; //html, uneditable input boxes based on sql results
-							echo "<input name='{$title}' type='text' readonly='readonly' value='{$title}'>"; //html, uneditable input boxes based on sql results
-						echo "</form>";
-					echo "<div>";*/
-					$hold1[] = $title;
+					$interestType = $intType->getTitle();
+					$holdInterestType[] = $interestType;
 				}
-				sort($hold1);
-				$i = 0;
-				foreach($hold1 as &$val)
+				sort($holdInterestType);
+				foreach($holdInterestType as &$val)
 				{
-					$sortedInt = $hold1[$i];
-					echo "<option value = '{$sortedInt}' name = '{$sortedInt}'>{$sortedInt}</option>";
-					$i++;
+					$sortedIntType = $val;
+					echo "<option value = '{$sortedIntType}' name = '{$sortedIntType}'>{$sortedIntType}</option>";
 				}
 			?> <!--end drop down menu options-->
-			
-			<!--<option value="name" selected="selected" >Name</option> 					<!-- this code is used if using changeable (javascript) input boxes-->
-			<!--<option value="interest" >Interest</option>--> 								<!-- this code is used if using changeable (javascript) input boxes-->
 		</select> <!-- end drop down menu -->
-			<!--<input id="input1" name="input1" placeholder="first name" type="text">		<!-- this code is used if using changeable (javascript) input boxes-->
-			<!--<input id="input2" name="input2" placeholder="last name" type="text">-->	<!-- this code is used if using changeable (javascript) input boxes-->
-	</form><hr> <!-- end search by form -->
+	</form> <!-- end search by form -->
 </div>
 
-<div>
-	<form action="" method="post"> <!-- create new form-->
-		<input type="submit" name="createNew" value="Create New"> <!-- create button -->
-		<select id="create" name="createNew" action="" method="post"> <!-- drop down menu -->
-			<option value="" disabled selected="selected">-Select-</option> <!-- drop down menu option; default -->
-			<option name="interests" value="interests">Interest</option> <!-- drop down menu option -->
-			<option name="interestTypes" value="interestTypes">Interest Type</option> <!-- drop down menu option -->
-		</select> <!--end drop down menu options-->
-	</form>
-</div>
-
-
-<!--/////////////////////////////////////////			Controller/model calls			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--/////////////////////////////////////////			this code will need to be moved to appropriate locations (controller or model) once working			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--/////////////////////////////////////////			model located in /habitat_home/model/dbio_des301.php			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<?php
-if (isset($_POST['viewAll'])) //checks if "view all" button has been clicked
-{
-	//echo $_POST['viewAll'];
-	echo "<br>";
-	if ($_POST['viewAll'] == "interests") //checks viewAll form's drop down menu result
-	{
-		$officeInterest->listVolunteerInterest(); //model call
-		foreach($volInts as $volInt) //loop which goes through each interest and pulls data (Interest() class call)
-		{
-			$type_title = $volInt->getType_title(); //Interest() class call
-			$interest_title = $volInt->getInterest_title(); //Interest() class call
-			echo "<div>";
-				echo "<form class='searchBy' method='post' action=''>"; //search by result form
-					echo "<div id='update'>";
-					echo "<input name='update' type='submit' value='update'>";
-					echo "</div>";
-					echo "<input name='{$type_title}' type='text' readonly='readonly' value='{$type_title}'>"; //html, uneditable input boxes based on sql results
-					echo "<input name='{$interest_title}' type='text' readonly='readonly' value='{$interest_title}'>"; //html, uneditable input boxes based on sql results
-					//echo "<input name='{$title}' type='text' readonly='readonly' value='{$title}'>"; //html, uneditable input boxes based on sql results
-					//echo "<input name='{$description}' type='text' readonly='readonly' value='{$description}'>"; //html, uneditable input boxes based on sql results
-					echo "<div id='delete'>";
-					echo "<input name='delete' type='submit' value='delete'>";
-					echo "</div>";
-				echo "</form>"; //search by result form end
-			echo "</div>";
-			echo"<hr>";
-			
-		}
-	}
-	elseif ($_POST['viewAll'] == "interestTypes") //checks viewAll form's drop down menu
-	{
-		require_once '/class/item.php';
-		$dbio->getIntTypes();
-		foreach ($types as &$value)
-		{
-			$id = $value->getId();
-			$title = $value->getTitle();
-			echo "<div>";
-				echo "<form class='searchBy' method='post' action=''>"; //search by result form
-					echo "<input name='{$id}' type='text' readonly='readonly' value='{$id}'>"; //html, uneditable input boxes based on sql results
-					echo "<input name='{$title}' type='text' readonly='readonly' value='{$title}'>"; //html, uneditable input boxes based on sql results
-				echo "</form>";
-			echo "<div>";
-		}
-			
-	}
-	else
-	{
-		return null;
-	}
-}
-if (isset($_POST['searchby'])) //checks if "search by" button has been clicked
-{
-	echo "<br>";
-	if ($_POST['searchby'] == "Interest")
-	{
-		if (isset($_POST['vol1']) == null)
-		{
-			echo "<div>You have to select an Interest!</div>";
-		}
-		else
-		{
-			$searchBy = $_POST['vol1'];
-			$officeInterest->readVolunteerInterest($searchBy); //model call
-			if ($volInts == null)
-			{
-				echo "<br>";
-				echo "No volunteer with this interest";
-			}
-			else
-			{
-				foreach($volInts as $volInt) //loop which goes through each interest and pulls data (Interest() class call)
-				{
-					//if ($searchBy == $volInt->getInterest_title())
-					//{
-						$first_name = $volInt->getFirst_name(); //Interest() class call
-						$last_name = $volInt->getLast_name(); //Interest() class call
-						$type_title = $volInt->getType_title(); //Interest() class call
-						$interest_title = $volInt->getInterest_title(); //Interest() class call
-						echo "<div>";
-							echo "<form class='searchBy' method='post' action=''>"; //search by result form
-								echo "<input name='{$first_name}' type='text' readonly='readonly' value='{$first_name}, {$last_name}'>"; //html, uneditable input boxes based on sql results
-								echo "<input name='{$type_title}' type='text' readonly='readonly' value='{$type_title}'>"; //html, uneditable input boxes based on sql results
-								echo "<input name='{$interest_title}' type='text' readonly='readonly' value='{$interest_title}'>"; //html, uneditable input boxes based on sql results
-								//echo "<input name='{$description}' type='text' readonly='readonly' value='{$description}'>"; //html, uneditable input boxes based on sql results
-							echo "</form>"; //search by result form end
-						echo "</div>";
-					//}
-				}
-			}
-		}
-	}
-	elseif ($_POST['searchby'] == "Interest Type")
-	{
-		if (isset($_POST['vol2']) == null)
-		{
-			echo "<div>You have to select an Interest Type!</div>";
-		}
-		else
-		{
-			$title = $_POST['vol2'];
-			$officeInterest->readVolunteerInterestType($title);
-			if ($volInts == null)
-			{
-				echo "<br>";
-				echo "No volunteer with this interest";
-			}
-			else
-			{
-				foreach($volInts as $volInt) //loop which goes through each interest and pulls data (Interest() class call)
-				{
-					//if ($searchBy == $volInt->getInterest_title())
-					//{
-						$first_name = $volInt->getFirst_name(); //Interest() class call
-						$last_name = $volInt->getLast_name(); //Interest() class call
-						$type_title = $volInt->getType_title(); //Interest() class call
-						$interest_title = $volInt->getInterest_title(); //Interest() class call
-						echo "<div>";
-							echo "<form class='searchBy' method='post' action=''>"; //search by result form
-								echo "<input name='{$first_name}' type='text' readonly='readonly' value='{$first_name}, {$last_name}'>"; //html, uneditable input boxes based on sql results
-								echo "<input name='{$type_title}' type='text' readonly='readonly' value='{$type_title}'>"; //html, uneditable input boxes based on sql results
-								echo "<input name='{$interest_title}' type='text' readonly='readonly' value='{$interest_title}'>"; //html, uneditable input boxes based on sql results
-								//echo "<input name='{$description}' type='text' readonly='readonly' value='{$description}'>"; //html, uneditable input boxes based on sql results
-							echo "</form>"; //search by result form end
-						echo "</div>";
-					//}
-				}
-			}
-		}
-	}
-}
-if (isset($_POST['createNew'])) //checks if "create new" button has been clicked
-{
-	echo "<br>";
-	if ($_POST['createNew'] == "interests") //checks createNew form's drop down menu
-	{
-		return null;
-	}
-	elseif ($_POST['createNew'] == "interestTypes") //checks createNew form's drop down menu
-	{
-		return null;
-	}
-	else
-	{
-		return null;
-	}
-}
-?>
+<?php //echo $intTypes; ?>
