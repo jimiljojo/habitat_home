@@ -4,9 +4,9 @@
 	// FILE: account/model/info.php
 	// AUTHOR: AUTOGEN
 	
-	$accountid = 5;
+	$pid = 2;
 	$account = new Account();
-	$account= $dbio->readAccount($accountid);
+	$account= $dbio->readAccountInfo($pid);
 
 
 	//read person from account

@@ -3,7 +3,7 @@
 	// TITLE: Account Preferences Controller
 	// FILE: account/controller/prefs.php
 	// AUTHOR: AUTOGEN
-
+	$update = false;
 
 	switch ($act) {
 
@@ -20,7 +20,8 @@
 			break;
 
 		case 'update':
-			// CODE HERE
+			include 'account/model/updateprefs.php';
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 
 		case 'delete':

@@ -12,7 +12,7 @@
     $allInfo = mysql_query($query);
     $info = mysql_fetch_array($allInfo);
 */
-    
+ 
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
     $lName = $person->getLast_name();
@@ -27,16 +27,18 @@
     $workPhone = $contact->getPhone2();
     $workExt = $contact->getExtension();
     $jobTitle = 'engineer';
+
+    if($update)
+		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 ?>
 <h4>Personal Information</h4>
 
 <hr>
 <form action="index.php" method="GET">
-    <input name="id" type="hidden" value="0" >
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="accid" type="hidden" value="<?php echo $accountid; ?>" >
-    <input name="act" type="hidden" value="infoUpdate" >
+    <input name="pid" type="hidden" value="<?php echo $pid; ?>" >
+    <input name="act" type="hidden" value="update" >
     <table>
 	<tr>
 	    <th>Name Info</th>

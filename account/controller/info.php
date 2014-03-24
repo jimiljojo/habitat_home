@@ -3,7 +3,7 @@
 	// TITLE: Account Personal Info Controller
 	// FILE: account/controller/info.php
 	// AUTHOR: AUTOGEN
-
+	$update = false;
 
 	switch ($act) {
 
@@ -20,15 +20,12 @@
 			break;
 
 		case 'update':
-			// CODE HERE
+			include 'account/model/updateinfo.php';
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 
 		case 'delete':
 			// CODE HERE
-			break;
-
-		case 'infoUpdate':
-			include 'account/model/updateinfo.php';
 			break;
 
 		default:

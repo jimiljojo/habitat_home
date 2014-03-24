@@ -5,7 +5,7 @@
 	$address = new Address();
 
 
-	$accid = $_GET['accid'];
+	$pid = $_GET['pid'];
 	$person->setTitle($_GET['title']);
 	$person->setFirst_name($_GET['fName']);
 	$person->setLast_name($_GET['lName']);
@@ -21,6 +21,7 @@
 	$address->setState($_GET['state']);
 	$address->setZip($_GET['zip']);
 
-	$dbio->updateInfo($accid,$person,$contact,$address);
+	$update = $dbio->updateInfo($pid,$person,$contact,$address);
+
 
 ?>
