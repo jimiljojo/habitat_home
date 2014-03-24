@@ -580,7 +580,7 @@ class DBIO {
 			$ints = array();
 			while ($row = mysql_fetch_array($result))
 			{
-				//$int = new Interest();
+				$int = new volunteerEvents();
 				$int->setId($row[0]);
 				$int->setTypeId($row[1]);
 				$ints[] = $int;

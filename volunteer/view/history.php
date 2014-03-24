@@ -61,7 +61,7 @@
     </tr>
     <?php
         global $col;
-        $abc=getEventDate();
+        $abc=array(getEventDate());
         var_dump($abc);
                 
         $col = count($workHistory);
