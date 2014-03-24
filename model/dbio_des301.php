@@ -305,37 +305,12 @@ class DBIO {
 
 	public function readAccounts() {
 		global $con;
-		$sql = 'SELECT Account.username, Person.first_name, Person.last_name, Person.title, Person.dob, Contact.phone, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id';
+		$sql = 'SELECT Account.username, Person.title, Person.first_name, Person.last_name, Person.dob, Contact.phone, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id';
 		$this->open();
 		$result = mysql_query($sql, $con);
-		$person = array();
-		$accounts =array();
-		$contacts =array();
-		$addresses =array();
-		while($rows = mysql_fetch_array($result)){
-			$account = new Account();
-			$contact = new Contact();
-			$address = new Address();
-			$person = new Person();
-			$account->setUsername($rows[0]);
-			$person->setFirst_name($rows[1]);
-			$person->setLast_name($rows[2]);
-			$person->setTitle($rows[3]);
-			$person->setDob($rows[4]);
-			$contact->setPhone($rows[5]);
-			$address->setStreet1($rows[6]);
-			$address->setStreet2($rows[7]);
-			$address->setCity($rows[8]);
-			$address->setState($rows[9]);
-			$address->setZip($rows[10]);
-			$accounts[] = $account;
-			$persons[] = $person;
-			$contacts[] = $contact;
-			$addresses[] = $address;
-		}
-		$tableinfo = array($accounts,$persons,$contacts,$addresses);
+		$tableinfo = array();
 		$this->close();
-		return $tableinfo;
+		return $result;
 	}// end function
 
 	public function updateInfo($pid,$person,$contact,$address) {
@@ -482,6 +457,7 @@ class DBIO {
 			return true;
 		else
 			return false;
+	}
 	public function getEventId($person_id){
 		global $con;
 		$sql='SELECT Event_event_id from Person_relates_to_Event where Person_person_id="'.$person_id.'"'; 
@@ -567,8 +543,7 @@ class DBIO {
 	    	}
 		
 		
-		public function readInterestType($title)
-		{
+		public function readInterestType($title){
 			require_once '/class/volunteerInterest.php';
 			global $con;
 			$this->open();
@@ -594,9 +569,8 @@ class DBIO {
 			//return $int;
 			$this->close();
 			return $volInts;
-	    	}	
-
-	}        
+	    }	
+        
 
 	    public function getEventDate($eventId){
 	    	global $con;
@@ -615,7 +589,24 @@ class DBIO {
 			$this->close();
 	    }
 
+	    public function searchAccountname($fname,$lname){
+	    	global $con;
+			$this->open();
+			$sql = "SELECT Account.username, Person.title, Person.first_name, Person.last_name, Person.dob, Contact.phone, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id where Person.first_name = '" . $fname . "' OR Person.last_name = '" . $lname ."'";
+			$result = mysql_query($sql,$con);
+			$ints = array();
+			$this->close();
+			return $result;			
+	    }
 
-
+	    public function searchAccountorg($org){
+	    	global $con;
+			$this->open();
+			$sql = "SELECT Account.username, Person.title, Person.first_name, Person.last_name, Person.dob, Contact.phone, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id where Person.person_id = 2";
+			$result = mysql_query($sql,$con);
+			$ints = array();
+			$this->close();
+			return $result;			
+	    }
 }// end class
 ?>

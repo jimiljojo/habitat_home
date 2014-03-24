@@ -6,13 +6,21 @@
 	
 	
 
-	function readAccounts(){
+	function read(){
 		global $dbio;
-		$accounts = $dbio->readAccounts();
-		return $accounts;
+		$tableinfo = $dbio->readAccounts();
+		return $tableinfo;
 	}
 
-	function search() {}
+	function search() {
+		global $dbio;
+		if($_GET['searchBy'] == 'name')
+			$tableinfo = $dbio->searchAccountname($fname,$lname);
+
+		elseif ($_GET['searchBy'] == 'organization') 
+			$tableinfo = $dbio->searchAccountorg($org);
+		return $tableinfo;
+	}
 	function create() {}
 	function update() {}
 	function delete() {}

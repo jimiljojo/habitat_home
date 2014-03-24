@@ -4,7 +4,8 @@
 	// FILE: office/controller/accounts.php
 	// AUTHOR: AUTOGEN
 
-
+	$tableinfo = null;
+	
 	switch ($act) {
 
 		case 'search':
@@ -16,7 +17,8 @@
 			elseif ($_GET['searchBy'] == 'organization') {
 				$org = $_GET['input1'];
 			}
-			include 'office/view/searchAccount.php';
+			$tableinfo = search();
+			$page = $dir . '/view/viewAccounts.php';
 			break;
 
 		case 'create':
@@ -24,6 +26,7 @@
 
 		case 'read':
 			include 'office/model/accounts.php';
+			$tableinfo = read();
 			$page = $dir . '/view/viewAccounts.php';
 			break;
 

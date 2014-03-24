@@ -5,39 +5,26 @@
 
 <br><br>
 <?php 
-	$tableinfo = readAccounts();
-	$count = 0;
-	foreach ($tableinfo[0] as $account) {
-		$count++;
-	}
-
 	
-	// foreach ($tableinfo[0] as $account) {
-	// 	$uname[] = $account->getUsername();
-	// }
 
-	// foreach ($tableinfo[1] as $person) {
-	// 		$title[] = $person->getTitle();
-	// 		$fname[] = $person->getFirst_name();
-	// 		$lname[] = $person->getLast_name();
-	// 		$dob[] = $person->getDob();
-	//	}
-	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Account ID  </th><th>Username</th><th>Password</th><th>Date</th><th>Status</th><thIsOffice></th><th>isAdmin</th><th>isVol</th><th>Person ID</th></tr>';
-	echo '<tr>';
-	// for ($i=0; $i < $count; $i++) { 
-	// 	echo '<td>' . $tableinfo[0]->getUsername() . '</td>';
-	// }
-		// foreach ($uname as $i) {
-		// 	 echo '<tr><td>' . $title[] . '</td>';
-		// 	// echo '<td>' . $ ccount->getUsername() . '</td>';
-			// echo '<td>' . $account->getPassword() . '</td>';
-			// echo '<td>' . $account->getDate() . '</td>';
-			// echo '<td>' . $account->getStatus() . '</td>';
-			// echo '<td>' . $account->getIsOffice() . '</td>';
-			// echo '<td>' . $account->getIsVolunteer() . '</td>';
-			// echo '<td>' . $account->getPerson() .'</td></tr>';
-	//	}
+	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Username </th><th>Title</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>State</th><th>City</th><th>Zip</th></tr>';
+	
+	while($rows = mysql_fetch_array($tableinfo)){
+		echo '<tr>';
+		echo '<td>' . $rows[0] . '</td>';
+		echo '<td>' . $rows[1] . '</td>';
+		echo '<td>' . $rows[2] . '</td>';
+		echo '<td>' . $rows[3] . '</td>';
+		echo '<td>' . $rows[4] . '</td>';
+		echo '<td>' . $rows[5] . '</td>';
+		echo '<td>' . $rows[6] . '</td>';
+		echo '<td>' . $rows[7] . '</td>';
+		echo '<td>' . $rows[8] . '</td>';
+		echo '<td>' . $rows[9] . '</td>';
+		echo '<td>' . $rows[10] . '</td>';
 		echo '</tr>';
+	}	
+		
 		echo '</table>';
 ?>
 <!--results can be listed here, pushing text down.-->
