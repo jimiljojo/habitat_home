@@ -9,8 +9,13 @@
  
 	// The commands
 	$commands = array(
-		'git checkout .',
+		'echo $PWD',
 		'whoami',
+		'git pull',
+		'git status',
+		'git submodule sync',
+		'git submodule update',
+		'git submodule status',
 	);
  
 	// Run the commands for output
@@ -36,7 +41,7 @@
  .  ____  .    ____________________________
  |/      \|   |                            |
 [| <span style="color: #FF0000;">&hearts;    &hearts;</span> |]  | Git Deployment Script v0.1 |
- |___==___|  /              &copy; habitat for humanity |
+ |___==___|  /              &copy; oodavid 2012 |
               |____________________________|
  
 <?php echo $output; ?>
