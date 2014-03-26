@@ -2,14 +2,15 @@
 
 	// TITLE: Office Office Model
 	// FILE: office/model/office.php
-	// AUTHOR: AUTOGEN
+	// AUTHOR: rwg5215
 
 
-	function search() {}
-	function create() {}
-	function read() {}
-	function update() {}
-	function delete() {}
-	function list() {}
+function indexEmployeeBy($value1, $value2) {}
+
+function createEmployee($parameter){}
+
+function listEmployee(){}
+
+function editEmployee(){} 
 
 ?>
