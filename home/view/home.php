@@ -68,9 +68,7 @@
 <hr>
 <h4>Clearance</h4>
 <table class="debug">
-	<tr><td>Admin</td><td><?php echo ($isAdmin) ? $true : $false; ?></td></tr>
+	<tr><td>Admin</td><td><?php echo ($isAdmin) ? $false : $true; ?></td></tr>
 	<tr><td>Office</td><td><?php echo ($isOffice) ? $true : $false; ?></td></tr>
 	<tr><td>Volunteer</td><td><?php echo ($isVolunteer) ? $true : $false; ?></td></tr>	
-	<tr><td>Home Owner</td><td><?php echo ($isHomeowner) ? $true : $false; ?></td></tr>
-	<tr><td>Donor</td><td><?php echo ($isDonor) ? $true : $false; ?></td></tr>
 </table>
