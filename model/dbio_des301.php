@@ -484,6 +484,30 @@ class DBIO {
 		$this->close();
 		return $id;
 	}// end function
+        
+   public function updateDonation ($date, $time, $detail, $donType, $value, $eventId, $donId) {
+        global $con;
+               $sql = "update Donation set date='" . $date->getDate() . "', time='" . $time->getTime() . "', details='" . $details->getDetails() . "', DonationType_idDonationType='" . $donType->getDonationType() . "', value='" . $value->getValue() . "' , Event_event_id='" . $eventId->getEventId() . "' where donation_id=" . $donId . '"';
+		$this->open(); 
+		$result = mysql_query($sql, $con);
+		if ($result)
+		echo "DONATION UPDATED" ;
+		$this->close();
+		return $result; 
+		}
+                
+    public function createNewDonation ($donId, $date, $time, $detail, $donType, $value, $eventId, $adminId, $enteredById) {
+        global $con;
+                $sql = 
+                'INSERT INTO Donation (donation_id, date, time, details, value, Event_event_id, Admin_idAdmin, entered_by_id)
+		 VALUES ("' . $donId . '","' . $date . '","' . $time . '","' . $details . '","' . $donType . '","' . $value . '","' . $eventId . '","' . $adminId . '","' . $enteredById . '")';
+		$this->open(); 
+		$result = mysql_query($sql, $con);
+		if ($result)
+		echo "DONATION CREATED" ;
+		$this->close();
+		return $result; 
+		} 
 	
 	 public function getAllSchedule() //view all 
         {
