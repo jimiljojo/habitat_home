@@ -1,6 +1,8 @@
 <?php
 
 	global $act;
+	global $dir;
+	global $sub;
     global $msg;
     
 
@@ -14,10 +16,11 @@
 	switch($act)
 	{
 		case 'loginCheck':
-	    session_start();
+	    //session_start();
 	    $user=($_GET['userid']);
 	    $pw=($_GET['password']);
 	    $dbCheck=$dbio->getLogin($user,$pw);
+	    
 	    if($user != $dbCheck)
 	    {
 	    	include ('view/loginpage.php');
@@ -27,7 +30,11 @@
 	    }
 
 	    else
-	    {
+	    {	
+	    	$dir='';
+	    	$sub='';
+	    	$_SESSION['dir']=(isset($_GET['dir'])) ? false : false;
+	    	$act=(isset($_GET['act'])) ? false : false;
 	    	$_SESSION['userid'] = (isset($_GET['userid'])) ? $_GET['userid'] : '';
 	    	$_SESSION['password'] = (isset($_GET['password'])) ? $_GET['password'] : '';
 	    	include('../index.php');
