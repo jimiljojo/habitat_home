@@ -466,8 +466,11 @@ class DBIO {
 		if (!$result) {
   		echo mysql_error("Some error occured while processing your request");
 		}
+		while ($row = mysql_fetch_array($result)){
+				$eventId=$row[0];
+			}
 		$this->close();
-		return $result;
+		return $eventId;
 	}
 	
 /////////////////////////////////////Interests/////////////////////////////////////////////////////////////////	   
@@ -575,10 +578,11 @@ class DBIO {
 	    public function getEvent($eventId){
 	    	global $con;
 			$this->open();
+			$eventName=array();
 			$sql = 'SELECT title FROM Event where event_id="'. $eventId .'"';
 			$result = mysql_query($sql,$con);
 			while ($row = mysql_fetch_array($result)){
-				$eventName=$row[0];
+				$eventName[]=$row[0];
 			}
 			//$ints = array();
 			$this->close();
@@ -589,41 +593,32 @@ class DBIO {
 	    public function getDate($eventId){
 	    	global $con;
 			$this->open();
+			$eventDate=array();
 			$sql = 'SELECT date FROM Event where event_id="'. $eventId .'"';
 			$result = mysql_query($sql,$con);
 			while ($row = mysql_fetch_array($result)){
-				$eventDate=$row[0];
+				$eventDate[]=$row[0];
 			}
 			//$ints = array();
 			$this->close();
 			return $eventDate;
 	    }
 
-	    public function getStartTime($eventId){
+	    public function getHours($eventId){
 	    	global $con;
 			$this->open();
-			$sql = 'SELECT timeStart FROM Schedule where Event_event_id="'.$eventId.'"';
+			$eventHours=array();
+			$sql = 'SELECT amount from Work where Event_event_id="'.$eventId.'"';
 			$result = mysql_query($sql,$con);
 			while ($row = mysql_fetch_array($result)){
-				$eventStartTime=$row[0];
+				$eventHours[]=$row[0];
 			}
 			//$ints = array();
 			$this->close();
-			return $eventStartTime;
+			return $eventHours;
 	    }
 
-	    public function getEndTime($eventId){
-	    	global $con;
-			$this->open();
-			$sql = 'SELECT timeEnd FROM Schedule where Event_event_id="'.$eventId.'"';
-			$result = mysql_query($sql,$con);
-			while ($row = mysql_fetch_array($result)){
-				$eventEndTime=$row[0];
-			}
-			//$ints = array();
-			$this->close();
-			return $eventEndTime;
-	    }
+	    
 
 	    public function searchAccountname($fname,$lname){
 	    	global $con;

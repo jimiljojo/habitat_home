@@ -6,12 +6,14 @@
         global $sub;
         global $act;
         global $msg;
-        $event_id=$dbio->getEventId($person_id);
-        $event=$event_id;
-        $dbevent= $dbio->getEvent($event);
-        $dbdate= $dbio->getDate($event);
-        $dbStartTime= $dbio->getStartTime($event);
-        $dbEndTime= $dbio->getEndTime($event);
+        
+       // $dbevent = getEvent();
+        $dbevent= getEvents();
+        $dbdate = getDates();
+        $dbHours = getHours();
+
+
+        
         
 
        
@@ -26,13 +28,20 @@
         global $workHistory2;
         
         //$association = array('Penn State Build', 'Charity Event', 'Dinner', 'Meeting', 'Fundraiser');
-        $association = array($dbevent);
+
+       // $association = array($dbevent);
+
         //$date = array('20140305', '20140309', '20140313', '20140315','20140401');
+
         $date = array($dbdate);
+
         // $start = array('1100', '0800', '0800', '0700','0700');
-        $start = array($dbStartTime);
+
+       // $start = array($dbStartTime);
+
         // $end = array('1230', '0830', '0900', '0830', '0800');
-        $end = array($dbEndTime);
+
+       // $end = array($dbEndTime);
 
         $auth = array('No', 'No', 'No', 'Yes', 'Yes');
         
@@ -74,8 +83,8 @@
     <tr>
         <th>Event/Project</th>
         <th>Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
+        <th>Hours Worked</th>
+        
         <th>Authorized</th>
     </tr>
     
@@ -121,8 +130,8 @@
                 // echo '<td>' . $auth[$i] . '</td>';
                 echo '<td>' . $dbevent . '</td>';
                 echo '<td>' . $dbdate . '</td>';
-                echo '<td>' . $dbStartTime . '</td>';
-                echo '<td>' . $dbEndTime . '</td>';
+                echo '<td>' . $dbHours . '</td>';
+                
                 echo '<td>' . "Yes" . '</td>';
             echo '</tr>';
             
