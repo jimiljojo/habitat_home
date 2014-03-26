@@ -30,9 +30,9 @@
 <hr>
 
 <dl>
-    <dt class="list"><a href="/habitat_home/index.php?dir=account&sub=info">Personal Information</a></dt>
+    <dt class="list"><a href="/index.php?dir=account&sub=info">Personal Information</a></dt>
         <dd class="list">Edit/View your personal info in your Habitat account</dd>
-    <dt class="list"><a href="/habitat_home/index.php?dir=account&sub=prefs">Preferences</a></dt>
+    <dt class="list"><a href="/index.php?dir=account&sub=prefs">Preferences</a></dt>
         <dd class="list">Edit the preferences of your Habitat Account</dd>
     <!--<dt class="list">Status</dt>
     <dd class="list">View the status of your Habitat account. Account may be deactivated here.</dd>-->

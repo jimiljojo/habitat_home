@@ -26,7 +26,7 @@
     
     .cItem dd {border: 1px solid #000;}
 </style>
-<h3>Welcome Jimil Doe</h3>
+<h3>Welcome John Doe</h3>
 <hr>
 <?php if ($isAdmin) { ?>
 <h4>Admin</h4>
@@ -68,9 +68,7 @@
 <hr>
 <h4>Clearance</h4>
 <table class="debug">
-	<tr><td>Admin</td><td><?php echo ($isAdmin) ? $true : $false; ?></td></tr>
+	<tr><td>Admin</td><td><?php echo ($isAdmin) ? $false : $true; ?></td></tr>
 	<tr><td>Office</td><td><?php echo ($isOffice) ? $true : $false; ?></td></tr>
 	<tr><td>Volunteer</td><td><?php echo ($isVolunteer) ? $true : $false; ?></td></tr>	
-	<tr><td>Home Owner</td><td><?php echo ($isHomeowner) ? $true : $false; ?></td></tr>
-	<tr><td>Donor</td><td><?php echo ($isDonor) ? $true : $false; ?></td></tr>
 </table>
