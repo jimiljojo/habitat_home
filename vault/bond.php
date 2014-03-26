@@ -1,13 +1,5 @@
 <?php
-	/**
-	 * GIT DEPLOYMENT SCRIPT
-	 *
-	 * Used for automatically deploying websites via github or bitbucket, more deets here:
-	 *
-	 *		https://gist.github.com/1809044
-	 */
- 
-	// The commands
+	
 	$commands = array(
 		'echo $PWD',
 		'whoami',
@@ -38,12 +30,18 @@
 </head>
 <body style="background-color: #000000; color: #FFFFFF; font-weight: bold; padding: 0 10px;">
 <pre>
- .  ____  .    ____________________________
- |/      \|   |                            |
-[| <span style="color: #FF0000;">&hearts;    &hearts;</span> |]  | Git Deployment Script v0.1 |
- |___==___|  /              &copy; oodavid 2012 |
-              |____________________________|
- 
+        0000             0000        7777777777777777/========___________
+     00000000         00000000      7777^^^^^^^7777/ || ||   ___________
+    000    000       000    000     777       7777/=========//
+   000      000     000      000             7777// ((     //
+  0000      0000   0000      0000           7777//   \\   //
+  0000      0000   0000      0000          7777//========//
+  0000      0000   0000      0000         7777
+  0000      0000   0000      0000        7777
+   000      000     000      000        7777
+    000    000       000    000       77777
+     00000000         00000000       7777777
+       0000             0000        777777777
 <?php echo $output; ?>
 </pre>
 </body>
