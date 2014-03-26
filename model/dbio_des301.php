@@ -232,7 +232,7 @@ class DBIO {
 			return $account;
 		}// end function
 
-		public function readPerson($id) {
+		/*public function readPerson($id) {
 			global $con;
 			$sql = 'SELECT * FROM Person WHERE person_id = ' . $id;
 			$this->open();
@@ -258,7 +258,7 @@ class DBIO {
 				echo "DB error";
 			}
 			return $person;
-		}// end function
+		}// end function*/
 
 			public function readContact($id) {
 		global $con;
