@@ -6,7 +6,8 @@
         global $sub;
         global $act;
         global $msg;
-        $event="1";
+        $event_id=$dbio->getEventId($person_id);
+        $event=$event_id;
         $dbevent= $dbio->getEvent($event);
         $dbdate= $dbio->getDate($event);
         $dbStartTime= $dbio->getStartTime($event);
@@ -104,7 +105,7 @@
         //     $timeOfDay = ($startHours > 11) ? 'PM' : 'AM';
         //     $timeOfDay2 = ($endHours > 11) ? 'PM' : 'AM';
             
-        //     $totalHours = $totalHours+($endHours - $startHours);
+           // $totalHours = $totalHours+($dbEndTime - $dbStartTime);
         //     $totalEndMin = $totalEndMin+($endMins);
         //     $totalStartMin = $totalStartMin+($startMins);
         
