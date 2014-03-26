@@ -232,7 +232,7 @@ class DBIO {
 			return $account;
 		}// end function
 
-		public function readPerson($id) {
+		/*public function readPerson($id) {
 			global $con;
 			$sql = 'SELECT * FROM Person WHERE person_id = ' . $id;
 			$this->open();
@@ -258,7 +258,7 @@ class DBIO {
 				echo "DB error";
 			}
 			return $person;
-		}// end function
+		}// end function*/
 
 			public function readContact($id) {
 		global $con;
@@ -639,5 +639,225 @@ class DBIO {
 			$this->close();
 			return $result;			
 	    }
+
+	    ///////////////////////////////////////////////////////////////////////////////////////
+		//Person section - NM not tested. create person not done
+///////////////////////////////////////////////////////////////////////////////////////
+		//this section:
+		//--read a Person record
+		//--list all person records
+		//--create a new person record - (calls createAddress and createContact prior to creating the new person record)
+		//--create a new contact record
+		//--find the contact id of a given contact record
+		//--create a new address record
+		//--find the address id of a given address record
+
+		//read one person record
+		public function readPerson($id) {
+			global $con;
+			$sql = 'SELECT * FROM Person WHERE person_id = ' . $id;
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if ($result) {
+				$result = mysql_fetch_array($result);
+				$person = new Person();
+				$person->setPerson_id($result[0]);
+				$person->setTitle($result[1]);
+				$person->setFirst_name($result[2]);
+				$person->setLast_name($result[3]);
+				$person->setGender($result[4]);
+				$person->setDob($result[5]);
+				$person->setMarital_status($result[6]);
+				$person->setContact($result[7]);
+				$person->setIsActive($result[8]);
+				$person->setLastActive($result[9]);
+				$person->setPrefEmail($result[10]);
+				$person->setPrefMail($result[11]);
+				$person->setPrefPhone($result[12]);
+			} else {
+				echo "DB error readPerson";
+			}
+			return $person;
+		}// end function
+
+		//list all persons
+		public function listPersons() {
+			global $con;
+			$sql = 'SELECT * FROM Person';
+			$this->open();
+			$results = mysql_query($sql, $con);
+			$this->close();
+			$persons = array();
+			if($results)
+				{
+					while ($result = mysql_fetch_array($results)) 
+					{
+						
+						$person = new Person();
+						$person->setPerson_id($result[0]);
+						$person->setTitle($result[1]);
+						$person->setFirst_name($result[2]);
+						$person->setLast_name($result[3]);
+						$person->setGender($result[4]);
+						$person->setDob($result[5]);
+						$person->setMarital_status($result[6]);
+						$person->setContact($result[7]);
+						$person->setIsActive($result[8]);
+						$person->setLastActive($result[9]);
+						$person->setPrefEmail($result[10]);
+						$person->setPrefMail($result[11]);
+						$person->setPrefPhone($result[12]);
+						$persons[] = $person;
+					} 
+				}
+			else
+			{
+				echo "DB error listPersons";
+			}
+			return $persons;
+		}// end function
+
+		//create new person - done - not tested
+		public function createPerson($person, $contact, $address)
+		{
+			$addressID = createAddress($address);
+			if ($addressID)  //if address is created
+			{
+				$contactID = createContact($contact, $addressID);
+				if($contactID)	//if contact is created
+				{
+					//echo 'banana';
+					//insert row into peson table with relavent shit
+					global $con;
+					$sql = 'INSERT INTO Person VALUES (' . $person->getTitle() . ' , ' .$person->getFirst_name(). ', ' .$person->getLast_name(). ', ' .$person->getGender(). ', ' .$person->getDob(). ', ' .$person->getMarital_status(). ', '  .$contactID. ', ' .$person->getIsActive(). ', ' .$person->getLastActive(). ', ' .$person->getPrefEmail(). ', ' .$person->getPrefMail(). ', '  .$person->getPrefPhone(). ')';
+					$this->open();
+					$result = mysql_query($sql, $con);
+					$this->close();
+					if($result)
+					{
+						echo 'person created';
+					}
+					else
+					{
+						echo 'error creating person';
+						return false;
+					}
+
+				}
+			}
+
+		}
+
+		//create contact - done - not tested
+		public function createContact($contact, $addressID)
+		{
+			global $con;
+			$sql = 'INSERT INTO Contact VALUES (' . $contact->getStreet1() . ' , ' .$contact->getStreet2(). ', ' .$contact->getCity(). ', ' .$contact->getState(). ', ' .$contact->getZip(). ')';
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if($result)
+			{
+				echo 'contact created';
+				//return findContactID($addressID);
+				return last_insert_id();
+			}
+			else
+			{
+				echo 'error creating contact';
+				return false;
+			}
+		}
+
+		/*//find contact id by address id - done - not tested - removed for better method, last_insert_id()
+		public function findContactID($addressID)
+		{
+			global $con;
+
+			$sql = "SELECT contact_id FROM Contact WHERE (address_id = " .$addressID.")";
+
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if($result)	//if there is a result , return the contact id
+			{
+				$id = $result[0];
+				return $id;	
+				
+			}
+			else //else return false
+			{
+				echo 'error finding contact id';
+				return false;
+			}
+		}
+*/
+
+		//create address - done - not tested
+		public function createAddress($address)
+		{
+			global $con;
+			$sql = 'INSERT INTO Address VALUES (' . $address->getStreet1() . ' , ' .$address->getStreet2(). ', ' .$address->getCity(). ', ' .$address->getState(). ', ' .$address->getZip(). ')';
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if($result)
+			{
+				echo 'address created';
+				//return findAddressID($address);
+				return last_insert_id();
+			}
+			else
+			{
+				echo 'error creating address';
+				return false;
+			}
+		}
+
+	/*	//find address id - done - not tested - removed for better method, see last_insert_id()
+		public function findAddressID($address)
+		{
+			global $con;
+
+			//$sql = "SELECT address_id FROM Address WHERE ( street1 = '" . $address->getStreet1() . "' AND street2 =  '" .$address->getStreet2(). "' AND city = '" .$address->getCity(). "' AND state = '" .$address->getState(). "' AND zip = '" .$address->getZip(). " ')";
+
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if($result) //if result exists return address id
+			{
+				$id = $result[0];
+				return $id;
+				
+			}
+			else
+			{
+				echo 'error finding address id';
+				return false;
+			}
+		}
+*/
+		public function last_insert_id()
+		{
+			global $con;
+
+			$sql = "LAST_INSERT_ID()";
+
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if($result)	//if there is a result , return the contact id
+			{
+				$id = $result[0];
+				return $id;	
+			}
+			else //else return false
+			{
+				echo 'error finding last_insert_id';
+				return false;
+			}
+		}
+///////////////////////////////////////////////////////////////////////////////////////
 }// end class
 ?>
