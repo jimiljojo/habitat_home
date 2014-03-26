@@ -245,7 +245,7 @@ function dropDownMenu()
 		<select id='interestType' name="vol2" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
 			<option value="" disabled selected>-Select Interest Type-</option> <!-- drop down menu option; default -->
 			<?php
-				//require_once '/class/item.php';
+				require_once '/class/item.php';
 				$intTypes = $dbio->listInterestTypes();
 				foreach ($intTypes as &$intType)
 				{
