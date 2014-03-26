@@ -18,9 +18,10 @@
     }
     function getEventDate() {
         
-        $dbConsent = $dbio->getEventDate(getEventId());
+        $event=getEventId();
+        $dbevent = $dbio->getEventDate($event);
         //var_dump($dbConsent);
-        return $dbConsent;
+        return $dbevent;
      
     
     }

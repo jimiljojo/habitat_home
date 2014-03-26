@@ -572,21 +572,57 @@ class DBIO {
 	    }	
         
 
-	    public function getEventDate($eventId){
+	    public function getEvent($eventId){
 	    	global $con;
 			$this->open();
-			$sql = 'SELECT title,date FROM Event where event_id="'.$eventId.'"';
+			$sql = 'SELECT title FROM Event where event_id="'. $eventId .'"';
 			$result = mysql_query($sql,$con);
-			$ints = array();
-			while ($row = mysql_fetch_array($result))
-			{
-				$int = new volunteerEvents();
-				$int->setId($row[0]);
-				$int->setTypeId($row[1]);
-				$ints[] = $int;
+			while ($row = mysql_fetch_array($result)){
+				$eventName=$row[0];
 			}
-			return $ints;
+			//$ints = array();
 			$this->close();
+			return $eventName;
+			
+	    }
+
+	    public function getDate($eventId){
+	    	global $con;
+			$this->open();
+			$sql = 'SELECT date FROM Event where event_id="'. $eventId .'"';
+			$result = mysql_query($sql,$con);
+			while ($row = mysql_fetch_array($result)){
+				$eventDate=$row[0];
+			}
+			//$ints = array();
+			$this->close();
+			return $eventDate;
+	    }
+
+	    public function getStartTime($eventId){
+	    	global $con;
+			$this->open();
+			$sql = 'SELECT timeStart FROM Schedule where Event_event_id="'.$eventId.'"';
+			$result = mysql_query($sql,$con);
+			while ($row = mysql_fetch_array($result)){
+				$eventStartTime=$row[0];
+			}
+			//$ints = array();
+			$this->close();
+			return $eventStartTime;
+	    }
+
+	    public function getEndTime($eventId){
+	    	global $con;
+			$this->open();
+			$sql = 'SELECT timeEnd FROM Schedule where Event_event_id="'.$eventId.'"';
+			$result = mysql_query($sql,$con);
+			while ($row = mysql_fetch_array($result)){
+				$eventEndTime=$row[0];
+			}
+			//$ints = array();
+			$this->close();
+			return $eventEndTime;
 	    }
 
 	    public function searchAccountname($fname,$lname){

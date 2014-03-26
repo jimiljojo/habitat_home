@@ -9,7 +9,7 @@
     
     
 
-   // $schedules = $dbio->getVolunteerEvents(2); //getAllEvents() //$personId hard set
+   $schedules = $dbio->getVolunteerEvents(2); //getAllEvents() //$personId hard set
 	
 
     //Code has been tested using a database

@@ -2,7 +2,20 @@
 <hr>
 
 <?php
-    
+        global $dir;
+        global $sub;
+        global $act;
+        global $msg;
+        $event="1";
+        $dbevent= $dbio->getEvent($event);
+        $dbdate= $dbio->getDate($event);
+        $dbStartTime= $dbio->getStartTime($event);
+        $dbEndTime= $dbio->getEndTime($event);
+        
+
+       
+        //$dbevent = $dbio->getEventDate($event);
+        //var_dump($dbevent);
     
 	// TITLE: Volunteer Work History View
 	// FILE: volunteer/view/history.php
@@ -11,10 +24,15 @@
         $workHistory = array('1', '2', '3', '4', '5');
         global $workHistory2;
         
-        $association = array('Penn State Build', 'Charity Event', 'Dinner', 'Meeting', 'Fundraiser');
-        $date = array('20140305', '20140309', '20140313', '20140315','20140401');
-        $start = array('1100', '0800', '0800', '0700','0700');
-        $end = array('1230', '0830', '0900', '0830', '0800');
+        //$association = array('Penn State Build', 'Charity Event', 'Dinner', 'Meeting', 'Fundraiser');
+        $association = array($dbevent);
+        //$date = array('20140305', '20140309', '20140313', '20140315','20140401');
+        $date = array($dbdate);
+        // $start = array('1100', '0800', '0800', '0700','0700');
+        $start = array($dbStartTime);
+        // $end = array('1230', '0830', '0900', '0830', '0800');
+        $end = array($dbEndTime);
+
         $auth = array('No', 'No', 'No', 'Yes', 'Yes');
         
         $month;
@@ -59,49 +77,57 @@
         <th>End Time</th>
         <th>Authorized</th>
     </tr>
+    
     <?php
-        global $col;
-        $abc=array(getEventDate());
-        var_dump($abc);
+        // global $col;
+        
                 
-        $col = count($workHistory);
+        // $col = count($workHistory);
         
-        for ($i = 0; $i < $col;)
-        {
-            $workHistory2 = $workHistory[$i];
+        // for ($i = 0; $i < $col;)
+        // {
+        //     $workHistory2 = $workHistory[$i];
             
-            $month = substr($date[$i],4,2);
-            $day = substr($date[$i],6,8);
-            $year = substr($date[$i],0,4);
+        //     // $month = substr($date[$i],4,2);
+        //     // $day = substr($date[$i],6,8);
+        //     // $year = substr($date[$i],0,4);
+        //     $month = substr($date[$i]);
+        //     $day = substr($date[$i]);
+        //     $year = substr($date[$i]);
 
-            $startHours = substr($start[$i],0,2);
-            $startMins = substr($start[$i],2,5);
+        //     $startHours = substr($start[$i],0,2);
+        //     $startMins = substr($start[$i],2,5);
             
-            $endHours = substr($end[$i],0,2);
-            $endMins = substr($end[$i],2,4);
+        //     $endHours = substr($end[$i],0,2);
+        //     $endMins = substr($end[$i],2,4);
             
-            $timeOfDay = ($startHours > 11) ? 'PM' : 'AM';
-            $timeOfDay2 = ($endHours > 11) ? 'PM' : 'AM';
+        //     $timeOfDay = ($startHours > 11) ? 'PM' : 'AM';
+        //     $timeOfDay2 = ($endHours > 11) ? 'PM' : 'AM';
             
-            $totalHours = $totalHours+($endHours - $startHours);
-            $totalEndMin = $totalEndMin+($endMins);
-            $totalStartMin = $totalStartMin+($startMins);
+        //     $totalHours = $totalHours+($endHours - $startHours);
+        //     $totalEndMin = $totalEndMin+($endMins);
+        //     $totalStartMin = $totalStartMin+($startMins);
         
             
-            if ($startHours > 12) {$startHours = strval($startHours-12);}
-            if ($endHours > 12) {$endHours = strval($endHours-12);}
+        //     if ($startHours > 12) {$startHours = strval($startHours-12);}
+        //     if ($endHours > 12) {$endHours = strval($endHours-12);}
             
             echo '<tr>';
-                echo '<td>' . $association[$i] . '</td>';
-                echo '<td>' . $month . '/' . $day . '/' . $year . '</td>';
-                echo '<td>' . $startHours . ':' . $startMins . ' ' . $timeOfDay . '</td>';
-                echo '<td>' . $endHours . ':' . $endMins . ' ' . $timeOfDay2 . '</td>';
-                echo '<td>' . $auth[$i] . '</td>';
+                // echo '<td>' . $association[$i] . '</td>';
+                // echo '<td>' . $day . '/' . $month . '/' . $year . '</td>';
+                // echo '<td>' . $startHours . ':' . $startMins . ' ' . $timeOfDay . '</td>';
+                // echo '<td>' . $endHours . ':' . $endMins . ' ' . $timeOfDay2 . '</td>';
+                // echo '<td>' . $auth[$i] . '</td>';
+                echo '<td>' . $dbevent . '</td>';
+                echo '<td>' . $dbdate . '</td>';
+                echo '<td>' . $dbStartTime . '</td>';
+                echo '<td>' . $dbEndTime . '</td>';
+                echo '<td>' . "Yes" . '</td>';
             echo '</tr>';
             
-            $i++;
+        //     $i++;
             
-        }
+        // }
         
         $totalMin = $totalMin+($totalEndMin-$totalStartMin);
         
