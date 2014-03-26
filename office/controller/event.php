@@ -20,11 +20,12 @@
 
 		case 'read':
 			include 'office/model/event.php';
-			$page = $dir . '/view/viewEvent.php';
+			$page = $dir . '/view/viewEvents.php';
 			break;
 
 		case 'update':
-			// CODE HERE
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
 			break;
 
 		case 'delete':
