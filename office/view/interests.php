@@ -159,8 +159,8 @@ function dropDownMenu()
 	var hide = "none";
 	
 	var v = document.getElementById("searchby").value;
-	var i1 = document.getElementById("vol1");
-	var i2 = document.getElementById("vol2");
+	var i1 = document.getElementById("interest");
+	var i2 = document.getElementById("interestType");
 	
 	switch (v)
 	{			
@@ -221,7 +221,8 @@ function dropDownMenu()
 			<option value="readInterest" name="Interest">Interest</option>
 			<option value="readInterestType" name="Interest Type">Interest Type</option>
 		</select>
-		<select id="vol1" name="vol1" action="/model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
+		
+		<select id="interest" name="vol1" action="/model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
 			<option value="" disabled selected>-Select Interest-</option> <!-- drop down menu option; default -->
 			<?php //creates drop down menu options AND alphabetizes 
 				require_once '/class/interest.php';
@@ -240,8 +241,9 @@ function dropDownMenu()
 				}
 			?>
 		</select>
-		<select id='vol2' name="vol2" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
-		<option value="" disabled selected>-Select Interest Type-</option> <!-- drop down menu option; default -->
+		
+		<select id='interestType' name="vol2" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
+			<option value="" disabled selected>-Select Interest Type-</option> <!-- drop down menu option; default -->
 			<?php
 				//require_once '/class/item.php';
 				$intTypes = $dbio->listInterestTypes();
