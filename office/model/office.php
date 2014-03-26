@@ -1,16 +1,15 @@
 <?php
 
-	// TITLE: Office Office Model
-	// FILE: office/model/office.php
-	// AUTHOR: rwg5215
+	// TITLE: Office Donations Model
+	// FILE: office/model/donations.php
+	// AUTHOR: AUTOGEN
 
 
-function indexEmployeeBy($value1, $value2) {}
-
-function createEmployee($parameter){}
-
-function listEmployee(){}
-
-function editEmployee(){} 
+	function search() {}
+	function create() {}
+	function read() {}
+	function update() {}
+	function delete() {}
+	function list() {}
 
 ?>
