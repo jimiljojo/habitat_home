@@ -32,8 +32,10 @@
 			// CODE HERE
 			break;
 
-		case 'list':
-			// CODE HERE
+		case 'viewEvent':
+			$_SESSION['Id'] = isset($_GET['Id']) ? $_GET['Id'] : '';
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
 			break;
 
 		case 'confirmCreate':

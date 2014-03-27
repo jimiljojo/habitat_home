@@ -355,6 +355,30 @@ class DBIO {
 		return $events;
 	}// end function
 
+	public function readEvent($event_id){
+		global $con;
+		$this->open();
+		$eventName=array();
+		$sql = 'SELECT * FROM Event where event_id="'. $event_id .'"';
+		$result = mysql_query($sql,$con);
+
+		while ($rows = mysql_fetch_array($result)){
+			$event = new Event();
+			$event->setEvent_id($rows[0]);
+			$event->setTitle($rows[1]);
+			$event->setDate($rows[2]);
+			$event->setTime($rows[3]);
+			$event->setType($rows[4]);
+			$event->setAddress($rows[5]);
+			$event->setCommittee($rows[7]);
+			$event->setSponsoredBy($rows[8]);
+			$eventName[]=$event;
+		}
+		//$ints = array();
+		$this->close();
+		return $eventName;
+		}	
+
 
 	public function readAllEvent_Type() {
 		global $con;

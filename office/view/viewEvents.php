@@ -15,12 +15,13 @@
 
 <script type="text/javascript">
 	function retrieve(n) {
-		var dir = "&dir=" + document.getElementById("dir").value;
-		var sub = "&sub=" + document.getElementById("sub").value;
-		var act = "&act=" + document.getElementById("act").value;
-		var url = "index.php?id=" + n + dir + sub + act;
-		alert(url);
-		// window.location = url;
+		//var dir = "&dir=" + document.getElementById("dir").value;
+		//var sub = "&sub=" + document.getElementById("sub").value;
+		//var act = "&act=" + document.getElementById("act").value;
+		document.getElementById("Id").value=n;
+		//var url = "index.php?id=" + n + dir + sub + act;
+		//alert(document.getElementById("Id").value);
+		document.getElementById("viewEventForm").submit();
 			}
 </script>
 
@@ -28,11 +29,14 @@
 
 <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
 
+<form id="viewEventForm" action="Index.php" method="GET">
 	<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
 	<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
 	<input name="act" id="act" type="hidden" value="viewEvent" >
 
 <br/><br/>
+
+	<input type="hidden" name="Id" id="Id" value="0">
 
 <table>
 	<tr>
@@ -51,7 +55,7 @@
 
 	foreach ($Event as $EventItem) { ?>
 
-	<tr onclick="retrieve(<?php echo $EventItem->getEvent_id(); ?>);"> 
+	<tr onclick="retrieve(<?php echo $EventItem->getEvent_id(); ?>);">
 
 		<td style="hover:background-color: gold;"><?php echo $EventItem->getTitle(); ?></td>
 		<td><?php echo $EventItem->getDate(); ?></td>
@@ -81,4 +85,5 @@
 	</tr>
 	<?php }// end foreach ?>
 </table> 
+</form>
 
