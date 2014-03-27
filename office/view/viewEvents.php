@@ -18,7 +18,7 @@
 		//var dir = "&dir=" + document.getElementById("dir").value;
 		//var sub = "&sub=" + document.getElementById("sub").value;
 		//var act = "&act=" + document.getElementById("act").value;
-		document.getElementById("Id").value=n;
+		document.getElementById("eventId").value=n;
 		//var url = "index.php?id=" + n + dir + sub + act;
 		//alert(document.getElementById("Id").value);
 		document.getElementById("viewEventForm").submit();
@@ -36,7 +36,7 @@
 
 <br/><br/>
 
-	<input type="hidden" name="Id" id="Id" value="0">
+	<input type="hidden" name="eventId" id="eventId" value="0">
 
 <table>
 	<tr>

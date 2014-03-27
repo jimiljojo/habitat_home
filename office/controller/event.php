@@ -24,6 +24,27 @@
 			break;
 
 		case 'update':
+		
+		$_SESSION['eventId'] = isset($_GET['eventId']) ? $_GET['eventId'] : '';
+		$addressObj = new Address();
+			$addressObj->setAddress_id(isset($_GET['addressId']) ? $_GET['addressId'] : '');
+			$addressObj->setStreet1(isset($_GET['street1']) ? $_GET['street1'] : '');
+			$addressObj->setStreet2(isset($_GET['street2']) ? $_GET['street2'] : '');
+			$addressObj->setCity(isset($_GET['city']) ? $_GET['city'] : '');
+			$addressObj->setState(isset($_GET['state']) ? $_GET['state'] : '');
+			$addressObj->setZip(isset($_GET['zipcode']) ? $_GET['zipcode'] : '');
+
+			$eventObj = new Event();
+			$eventObj->setEvent_id(isset($_GET['eventId']) ? $_GET['eventId'] : '');
+			$eventObj->setTitle(isset($_GET['title']) ? $_GET['title'] : '');
+			$eventObj->setDate(isset($_GET['date']) ? $_GET['date'] : '');
+			$eventObj->setTime(isset($_GET['time']) ? $_GET['time'] : '');
+			$eventObj->setType(isset($_GET['type']) ? $_GET['type'] : '');
+			$eventObj->setCommittee(isset($_GET['committee']) ? $_GET['committee'] : '');
+			$eventObj->setSponsoredBy(isset($_GET['sponsor']) ? $_GET['sponsor'] : '');
+
+			$dbio->updateEvent($eventObj,$addressObj);
+
 			include 'office/model/event.php';
 			$page = $dir . '/view/viewEventInfo.php';
 			break;
@@ -33,7 +54,7 @@
 			break;
 
 		case 'viewEvent':
-			$_SESSION['Id'] = isset($_GET['Id']) ? $_GET['Id'] : '';
+			$_SESSION['eventId'] = isset($_GET['eventId']) ? $_GET['eventId'] : '';
 			include 'office/model/event.php';
 			$page = $dir . '/view/viewEventInfo.php';
 			break;
