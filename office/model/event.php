@@ -41,6 +41,11 @@
 		return $address;
 	}
 
+	function readEventByID($event_id){
+		global $dbio;
+		$event= $dbio->readEvent($event_id);
+		return $event;
+	}
 	function create() {}
 
 	

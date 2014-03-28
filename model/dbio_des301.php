@@ -355,6 +355,30 @@ class DBIO {
 		return $events;
 	}// end function
 
+	public function readEvent($event_id){
+		global $con;
+		$this->open();
+		$eventName=array();
+		$sql = 'SELECT * FROM Event where event_id="'. $event_id .'"';
+		$result = mysql_query($sql,$con);
+
+		while ($rows = mysql_fetch_array($result)){
+			$event = new Event();
+			$event->setEvent_id($rows[0]);
+			$event->setTitle($rows[1]);
+			$event->setDate($rows[2]);
+			$event->setTime($rows[3]);
+			$event->setType($rows[4]);
+			$event->setAddress($rows[5]);
+			$event->setCommittee($rows[7]);
+			$event->setSponsoredBy($rows[8]);
+			$eventName[]=$event;
+		}
+		//$ints = array();
+		$this->close();
+		return $eventName;
+		}	
+
 
 	public function readAllEvent_Type() {
 		global $con;
@@ -373,6 +397,44 @@ class DBIO {
 		$this->close();
 		return $event_types;
 	}// end function
+
+
+	public function updateEvent($eventObj, $addressObj) {
+		global $con;
+		
+		$sql = "UPDATE Event SET title='" . $eventObj->getTitle() ."', date=CAST('" . $eventObj->getDate()."' As Date) , time=CAST('" . $eventObj->getTime()."' As Time), type_id=" . $eventObj->getType() .", Address_address_id=" . $addressObj->getAddress_id() .", Committee_committee_id=" . $eventObj->getCommittee() .", sponsoredBy='" . $eventObj->getSponsoredBy()."' Where event_id=" . $eventObj->getEvent_id() . ";" ;
+		
+		$sql2 = "UPDATE Address SET street1='" . $addressObj->getStreet1() . "', street2='" . $addressObj->getStreet2() . "', city='" . $addressObj->getCity() . "', state='" . $addressObj->getState() . "' WHERE address_id=". $addressObj->getAddress_id() .";";
+
+		$this->open();
+		mysql_query($sql, $con);
+	 	mysql_query($sql2,$con);
+		//if($result && $result2)
+		$this->close();
+			return true;
+		//else
+		//	return false;
+	}      
+
+	public function createEvent($addressObj , $eventObj){
+		global $con;
+		$this->open();
+
+		$sql =	"INSERT INTO Address
+				(street1,street2,city,state,zip)
+				VALUES
+				('" .$addressObj->getStreet1(). "','" .$addressObj->getStreet2(). "','" .$addressObj->getCity(). "','" .$addressObj->getState(). "','" .$addressObj->getZip(). "');";
+		mysql_query($sql, $con);
+
+
+		$sql= 	"INSERT INTO Event
+				(title,date,time,type_id,Address_address_id,Project_project_id,Committee_committee_id,sponsoredBy)
+				SELECT 
+				 '" .$eventObj->getTitle(). "' , CAST('" . $eventObj->getDate()."' As Date) , CAST('" . $eventObj->getTime()."' As Time) ," .$eventObj->getType(). " , Max(address_id), Null ," .$eventObj->getCommittee()." ,'" .$eventObj->getSponsoredBy(). "' From Address;" ;
+		mysql_query($sql, $con);			
+
+		$this->close();
+	}
 
 	public function countEventGuests($event_id) {
 		global $con;
@@ -427,25 +489,7 @@ class DBIO {
 	}// end function
 
 
-	public function createEvent($addressObj , $eventObj){
-		global $con;
-		$this->open();
-
-		$sql =	"INSERT INTO Address
-				(street1,street2,city,state,zip)
-				VALUES
-				('" .$addressObj->getStreet1(). "','" .$addressObj->getStreet2(). "','" .$addressObj->getCity(). "','" .$addressObj->getState(). "','" .$addressObj->getZip(). "');";
-		mysql_query($sql, $con);
-
-
-		$sql= 	"INSERT INTO Event
-				(title,date,time,type_id,Address_address_id,Project_project_id,Committee_committee_id,sponsoredBy)
-				SELECT 
-				 '" .$eventObj->getTitle(). "' , CAST('" . $eventObj->getDate()."' As Date) , CAST('" . $eventObj->getTime()."' As Time) ," .$eventObj->getType(). " , Max(address_id), Null ," .$eventObj->getCommittee()." ,'" .$eventObj->getSponsoredBy(). "' From Address;" ;
-		mysql_query($sql, $con);			
-
-		$this->close();
-	}
+	
 
 	public function updatePrefs($person) {
 		global $con;

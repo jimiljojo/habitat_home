@@ -159,17 +159,17 @@ function dropDownMenu()
 	var hide = "none";
 	
 	var v = document.getElementById("searchby").value;
-	var i1 = document.getElementById("interest");
-	var i2 = document.getElementById("interestType");
+	var i1 = document.getElementById("vol1");
+	var i2 = document.getElementById("vol2");
 	
 	switch (v)
 	{			
-		case "readInterest":
+		case "viewInterest":
 			i1.style.display = show;
 			i2.style.display = hide;
 		break;
 		
-		case "readInterestType":
+		case "viewInterestType":
 			i1.style.display = hide;
 			i2.style.display = show;
 		break;
@@ -218,11 +218,10 @@ function dropDownMenu()
 		<input type="submit" value="Search By"> <!-- search by button -->
 		<select id="searchby" name="act" onclick='dropDownMenu()' >
 			<option value="" disabled selected>-Select-</option>--> <!-- drop down menu option; default -->
-			<option value="readInterest" name="Interest">Interest</option>
-			<option value="readInterestType" name="Interest Type">Interest Type</option>
+			<option value="viewInterest" name="Interest">Interest</option>
+			<option value="viewInterestType" name="Interest Type">Interest Type</option>
 		</select>
-		
-		<select id="interest" name="vol1" action="/model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
+		<select id="vol1" name="vol1" action="/model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
 			<option value="" disabled selected>-Select Interest-</option> <!-- drop down menu option; default -->
 			<?php //creates drop down menu options AND alphabetizes 
 				require_once '/class/interest.php';
@@ -241,11 +240,10 @@ function dropDownMenu()
 				}
 			?>
 		</select>
-		
-		<select id='interestType' name="vol2" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
-			<option value="" disabled selected>-Select Interest Type-</option> <!-- drop down menu option; default -->
+		<select id='vol2' name="vol2" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
+		<option value="" disabled selected>-Select Interest Type-</option> <!-- drop down menu option; default -->
 			<?php
-				require_once '/class/item.php';
+				//require_once '/class/item.php';
 				$intTypes = $dbio->listInterestTypes();
 				foreach ($intTypes as &$intType)
 				{
@@ -262,5 +260,4 @@ function dropDownMenu()
 		</select> <!-- end drop down menu -->
 	</form> <!-- end search by form -->
 </div>
-
-<?php //echo $intTypes; ?>
+<?php //if(empty($_GET['vol1']) || empty($_GET['vol2'])) {return null;} ?>
