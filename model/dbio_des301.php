@@ -385,6 +385,7 @@ class DBIO {
 
 // end function
 
+//Reads all donations 
     public function readAllDonations() {
         global $con;
         $sql = 'SELECT * FROM Donation';
@@ -411,7 +412,8 @@ class DBIO {
 
 // end function
 
-    public function readDonation($id) {
+// Reads single donation by Id
+    public function readDonationById($id) {
         global $con;
         $sql = 'SELECT * FROM Donation WHERE donation_id = "' . $id . '"';
         $this->open();
@@ -435,9 +437,71 @@ class DBIO {
         }
         return $donation;
     }
-
+// end function
+    
+// Reads all donations made by an organization
+        public function readDonationByOrg($name) {
+        global $con;
+        $sql = 
+            'SELECT *
+            FROM Donation
+            JOIN Donation_has_Organization on Donation.donation_id=Donation_has_Organization.Donation_donation_id
+            JOIN Organization on Donation_has_Organization.Organization_organization_id=Organization.organization_id
+            WHERE name = "' . $name . '"';
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $donations = array();
+        while ($rows = mysql_fetch_array($result)) {
+            $donation = new Donation();
+            $donation->setDonation_id($rows[0]);
+            $donation->setDate($rows[1]);
+            $donation->setTime($rows[2]);
+            $donation->setDetails($rows[3]);
+            $donation->setWhen_entered($rows[4]);
+            $donation->setDonationType_idDonationType($rows[5]);
+            $donation->setValue($rows[6]);
+            $donation->setEvent_event_id($rows[7]);
+            $donation->setAdmin_idAdmin($rows[8]);
+            $donation->setEntered_by_id($rows[9]);
+            $donations[] = $donation;
+        }
+        $this->close();
+        return $donations;
+    }
+// end function
+    
+//Reads all donations made by a person using first and last name    
+    public function readDonationByPerson($fName, $lName) {
+        global $con;
+        $sql = 
+            'SELECT *
+            FROM Donation
+            JOIN Donation_has_Person on Donation.donation_id=Donation_has_Person.Donation_donation_id
+            JOIN Person on Donation_has_Person.Person_person_id=Person.Person_id
+            WHERE first_name = "' . $fName . '" AND last_name = "' . $lName . '" ';
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $donations = array();
+        while ($rows = mysql_fetch_array($result)) {
+            $donation = new Donation();
+            $donation->setDonation_id($rows[0]);
+            $donation->setDate($rows[1]);
+            $donation->setTime($rows[2]);
+            $donation->setDetails($rows[3]);
+            $donation->setWhen_entered($rows[4]);
+            $donation->setDonationType_idDonationType($rows[5]);
+            $donation->setValue($rows[6]);
+            $donation->setEvent_event_id($rows[7]);
+            $donation->setAdmin_idAdmin($rows[8]);
+            $donation->setEntered_by_id($rows[9]);
+            $donations[] = $donation;
+        }
+        $this->close();
+        return $donations;
+    }
 // end function
 
+//Reads all donations based on two amounts entered    
     public function readAmount($amount1, $amount2) {
         global $con;
         $sql = 'SELECT * FROM Donation WHERE value BETWEEN "' . $amount1 . '" AND "' . $amount2 . '"';
@@ -464,27 +528,8 @@ class DBIO {
     }
 
 // end function
-
-    public function getOrganizationId($orgName) {
-        global $con;
-        $sql = 'SELECT organization_id FROM Organization WHERE name = "' . $orgName . '"';
-        $this->open();
-        $id = mysql_query($sql, $con);
-        $this->close();
-        return $id;
-    }
-
-// end function
-
-    public function getPersonId($firstName, lastName) {
-        global $con;
-        $sql = 'SELECT person_id FROM Person WHERE first_name = "' . $firstName . '" and last_name = "' . $lastName . '"';
-		$this->open();
-		$id = mysql_query($sql, $con);
-		$this->close();
-		return $id;
-	}// end function
         
+ //Updates a donation(single)    
    public function updateDonation ($date, $time, $detail, $donType, $value, $eventId, $donId) {
         global $con;
                $sql = "update Donation set date='" . $date->getDate() . "', time='" . $time->getTime() . "', details='" . $details->getDetails() . "', DonationType_idDonationType='" . $donType->getDonationType() . "', value='" . $value->getValue() . "' , Event_event_id='" . $eventId->getEventId() . "' where donation_id=" . $donId . '"';
@@ -496,6 +541,9 @@ class DBIO {
 		return $result; 
 		}
                 
+ //end function               
+        
+//Creates a new donation                
     public function createNewDonation ($donId, $date, $time, $detail, $donType, $value, $eventId, $adminId, $enteredById) {
         global $con;
                 $sql = 
@@ -508,6 +556,7 @@ class DBIO {
 		$this->close();
 		return $result; 
 		} 
+ //end function               
 	
 	 public function getAllSchedule() //view all 
         {
