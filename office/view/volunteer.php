@@ -2,7 +2,7 @@
 
 // TITLE: Office Accounts View
 // FILE: office/view/accounts.php
-// AUTHOR: Martin Arabi; mva5164
+// AUTHOR: rwg5215
 
 
 ?>
@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
 
-	<link rel="stylesheet" href="css/alpha.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu">	
+		
 	    <style>
 		    body {font-family: 'Ubuntu', sans-serif;}
 	    </style>

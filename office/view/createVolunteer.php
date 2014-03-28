@@ -8,7 +8,7 @@
  * Author: rwg5215
  */
 ?>
-<!--<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">-->
+
 <div style="margin-left:50px; margin-right:auto;">
 
 <div class="navbar navbar-inverse">
