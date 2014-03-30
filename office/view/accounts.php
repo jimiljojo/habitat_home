@@ -87,7 +87,7 @@ break;
    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
    <input type="hidden" name="act" value="search">
-   <input name="searchBy" type="submit" value="Search By" action="index.php" method="get">
+   <input name="searchBtn" type="submit" action="index.php" method="get">
 
 <select id="searchBy" name="searchBy" action="/habitat/office/model/accounts.php" method="get" onclick='searchByHandler()'>
 <option value="name" selected="selected" >Name</option>

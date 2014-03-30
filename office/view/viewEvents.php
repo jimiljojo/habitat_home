@@ -29,7 +29,7 @@
 
 <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
 
-<form id="viewEventForm" action="Index.php" method="GET">
+<form id="viewEventForm" action="index.php" method="GET">
 	<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
 	<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
 	<input name="act" id="act" type="hidden" value="viewEvent" >
