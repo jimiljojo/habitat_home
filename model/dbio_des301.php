@@ -69,7 +69,22 @@ class DBIO {
 			return $status;
 		}
 
+		public function getPersonid($accid){
+
+			global $con;
+
+			$sql='SELECT person_id FROM Account WHERE account_id="'. $accid .'"';
+			$this->open();
+			$result=mysql_query($sql,$con);
+			while($row = mysql_fetch_array($result)) {
+				$pid = $row[0];
+			}
+			$this->close();
+			return $pid;
+		}
+
 		public function getVolunteerAvailability($ppid){
+
 
 			global $con;
 
@@ -232,33 +247,6 @@ class DBIO {
 			return $account;
 		}// end function
 
-		/*public function readPerson($id) {
-			global $con;
-			$sql = 'SELECT * FROM Person WHERE person_id = ' . $id;
-			$this->open();
-			$result = mysql_query($sql, $con);
-			$this->close();
-			if ($result) {
-				$result = mysql_fetch_array($result);
-				$person = new Person();
-				$person->setPerson_id($result[0]);
-				$person->setTitle($result[1]);
-				$person->setFirst_name($result[2]);
-				$person->setLast_name($result[3]);
-				$person->setGender($result[4]);
-				$person->setDob($result[5]);
-				$person->setMarital_status($result[6]);
-				$person->setContact($result[7]);
-				$person->setIsActive($result[8]);
-				$person->setLastActive($result[9]);
-				$person->setPrefEmail($result[10]);
-				$person->setPrefMail($result[11]);
-				$person->setPrefPhone($result[12]);
-			} else {
-				echo "DB error";
-			}
-			return $person;
-		}// end function*/
 
 		public function readContact($id) {
 			global $con;
@@ -311,7 +299,6 @@ class DBIO {
 		$person = array();
 		$accounts =array();
 		$contacts =array();
-		$addresses =array();
 		while($rows = mysql_fetch_array($result)){
 			$account = new Account();
 			$contact = new Contact();
@@ -344,6 +331,88 @@ class DBIO {
 		$this->close();
 		return $tableinfo;
 	}// end function
+
+	public function searchAccountname($fname,$lname){
+	    	global $con;
+			$this->open();
+			$sql = "SELECT Account.account_id, Account.username, Account.person_id, Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id where Person.first_name = '" . $fname . "' OR Person.last_name = '" . $lname ."'";
+			$result = mysql_query($sql,$con);
+			$person = array();
+			$accounts =array();
+			$contacts =array();
+			while($rows = mysql_fetch_array($result)){
+				$account = new Account();
+				$contact = new Contact();
+				$address = new Address();
+				$person = new Person();
+				$account->setAccount_id($rows[0]);
+				$account->setUsername($rows[1]);
+				$account->setPerson($rows[2]);
+				$person->setPerson_id($rows[3]);
+				$person->setTitle($rows[4]);
+				$person->setFirst_name($rows[5]);
+				$person->setLast_name($rows[6]);
+				$person->setDob($rows[7]);
+				$person->setContact($rows[8]);
+				$contact->setContact_id($rows[9]);
+				$contact->setPhone($rows[10]);
+				$contact->setAddress($rows[11]);
+				$address->setAddress_id($rows[12]);
+				$address->setStreet1($rows[13]);
+				$address->setStreet2($rows[14]);
+				$address->setCity($rows[15]);
+				$address->setState($rows[16]);
+				$address->setZip($rows[17]);
+				$contact->setAddress($address);
+				$accounts[] = $account;
+				$persons[] = $person;
+				$contacts[] = $contact;
+		}
+		$tableinfo = array($accounts,$persons,$contacts);
+		$this->close();
+		return $tableinfo;		
+	    }
+
+	    public function searchAccountorg($org){
+	    	global $con;
+			$this->open();
+			$sql = "SELECT Account.account_id, Account.username, Account.person_id, Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id where Person.person_id = 2";
+			$result = mysql_query($sql,$con);
+			$person = array();
+			$accounts =array();
+			$contacts =array();
+			while($rows = mysql_fetch_array($result)){
+				$account = new Account();
+				$contact = new Contact();
+				$address = new Address();
+				$person = new Person();
+				$account->setAccount_id($rows[0]);
+				$account->setUsername($rows[1]);
+				$account->setPerson($rows[2]);
+				$person->setPerson_id($rows[3]);
+				$person->setTitle($rows[4]);
+				$person->setFirst_name($rows[5]);
+				$person->setLast_name($rows[6]);
+				$person->setDob($rows[7]);
+				$person->setContact($rows[8]);
+				$contact->setContact_id($rows[9]);
+				$contact->setPhone($rows[10]);
+				$contact->setAddress($rows[11]);
+				$address->setAddress_id($rows[12]);
+				$address->setStreet1($rows[13]);
+				$address->setStreet2($rows[14]);
+				$address->setCity($rows[15]);
+				$address->setState($rows[16]);
+				$address->setZip($rows[17]);
+				$contact->setAddress($address);
+				$accounts[] = $account;
+				$persons[] = $person;
+				$contacts[] = $contact;
+		}
+		$tableinfo = array($accounts,$persons,$contacts);
+		$this->close();
+		return $tableinfo;			
+	    }
 
 	public function updateInfo($pid,$person,$contact,$address) {
 		global $con;
@@ -694,27 +763,7 @@ class DBIO {
 			return $eventHours;
 	    }
 
-	    
-
-	    public function searchAccountname($fname,$lname){
-	    	global $con;
-			$this->open();
-			$sql = "SELECT Account.username, Person.title, Person.first_name, Person.last_name, Person.dob, Contact.phone, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id where Person.first_name = '" . $fname . "' OR Person.last_name = '" . $lname ."'";
-			$result = mysql_query($sql,$con);
-			$ints = array();
-			$this->close();
-			return $result;			
-	    }
-
-	    public function searchAccountorg($org){
-	    	global $con;
-			$this->open();
-			$sql = "SELECT Account.username, Person.title, Person.first_name, Person.last_name, Person.dob, Contact.phone, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id where Person.person_id = 2";
-			$result = mysql_query($sql,$con);
-			$ints = array();
-			$this->close();
-			return $result;			
-	    }
+	
 
 	    ///////////////////////////////////////////////////////////////////////////////////////
 		//Person section NM not tested. create person not done

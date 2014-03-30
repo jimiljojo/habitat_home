@@ -9,7 +9,7 @@
 	switch ($act) {
 
 		case 'search':
-			include 'office/model/accounts.php';
+			include_once 'office/model/accounts.php';
 			$tableinfo = search();
 			$page = $dir . '/view/viewAccounts.php';
 			break;
@@ -18,13 +18,15 @@
 			break;
 
 		case 'read':
-			include 'office/model/accounts.php';
+			include_once 'office/model/accounts.php';
 			$tableinfo = read();
 			$page = $dir . '/view/viewAccounts.php';
 			break;
 
-		case 'update':
-			// CODE HERE
+		case 'viewAccount':
+			include_once 'office/model/accounts.php';
+			$tableinfo = update();
+			$page = $dir . '/view/editAccount.php';
 			break;
 
 		case 'delete':
