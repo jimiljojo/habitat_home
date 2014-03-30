@@ -37,7 +37,7 @@ class DBIO {
 			requires: array of values, left char, right char: most often the left and right chars will be the same
 			returns: sring of CSV
 			the $l and $r are the left and right chars that will contain the data
-			EXAMPLE: 'a', 'b', 'c', 'd' -OR- 1, 2, 3, 4 -OR- ('a'), ('b'), ('c'), ('d')
+			EXAMPLE: 'a', 'b', 'c', 'd'OR- 1, 2, 3, 4OR- ('a'), ('b'), ('c'), ('d')
 			use '\'' to enclose the data in single quotes
 		*/
 		function superStringIt($values, $l, $r) {
@@ -260,23 +260,23 @@ class DBIO {
 			return $person;
 		}// end function*/
 
-			public function readContact($id) {
-		global $con;
-		$sql = 'SELECT * FROM Contact WHERE contact_id = ' . $id;
-		$this->open();
-		$result = mysql_query($sql, $con);
-		$this->close();
-		if ($result) {
-				$result = mysql_fetch_array($result);
-				$contact = new Contact();
-				$contact->setContact_id($result[0]);
-				$contact->setAddress($result[1]);
-				$contact->setPhone($result[2]);
-				$contact->setEmail($result[3]);
-				$contact->setPhone2($result[4]);
-				$contact->setExtension($result[5]);
-		} else {
-			echo "DB eroor";
+		public function readContact($id) {
+			global $con;
+			$sql = 'SELECT * FROM Contact WHERE contact_id = ' . $id;
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			if ($result) {
+					$result = mysql_fetch_array($result);
+					$contact = new Contact();
+					$contact->setContact_id($result[0]);
+					$contact->setAddress($result[1]);
+					$contact->setPhone($result[2]);
+					$contact->setEmail($result[3]);
+					$contact->setPhone2($result[4]);
+					$contact->setExtension($result[5]);
+			} else {
+				echo "DB eroor";
 		}
 		return $contact;
 	}// end function
@@ -305,12 +305,44 @@ class DBIO {
 
 	public function readAccounts() {
 		global $con;
-		$sql = 'SELECT Account.username, Person.title, Person.first_name, Person.last_name, Person.dob, Contact.phone, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id';
+		$sql = 'SELECT Account.account_id, Account.username, Account.person_id, Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Account inner join Person on Account.person_id = Person.person_id inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id';
 		$this->open();
 		$result = mysql_query($sql, $con);
-		$tableinfo = array();
+		$person = array();
+		$accounts =array();
+		$contacts =array();
+		$addresses =array();
+		while($rows = mysql_fetch_array($result)){
+			$account = new Account();
+			$contact = new Contact();
+			$address = new Address();
+			$person = new Person();
+			$account->setAccount_id($rows[0]);
+			$account->setUsername($rows[1]);
+			$account->setPerson($rows[2]);
+			$person->setPerson_id($rows[3]);
+			$person->setTitle($rows[4]);
+			$person->setFirst_name($rows[5]);
+			$person->setLast_name($rows[6]);
+			$person->setDob($rows[7]);
+			$person->setContact($rows[8]);
+			$contact->setContact_id($rows[9]);
+			$contact->setPhone($rows[10]);
+			$contact->setAddress($rows[11]);
+			$address->setAddress_id($rows[12]);
+			$address->setStreet1($rows[13]);
+			$address->setStreet2($rows[14]);
+			$address->setCity($rows[15]);
+			$address->setState($rows[16]);
+			$address->setZip($rows[17]);
+			$contact->setAddress($address);
+			$accounts[] = $account;
+			$persons[] = $person;
+			$contacts[] = $contact;
+		}
+		$tableinfo = array($accounts,$persons,$contacts);
 		$this->close();
-		return $result;
+		return $tableinfo;
 	}// end function
 
 	public function updateInfo($pid,$person,$contact,$address) {
@@ -685,12 +717,12 @@ class DBIO {
 	    }
 
 	    ///////////////////////////////////////////////////////////////////////////////////////
-		//Person section - NM not tested. create person not done
+		//Person section NM not tested. create person not done
 ///////////////////////////////////////////////////////////////////////////////////////
 		//this section:
 		//--read a Person record
 		//--list all person records
-		//--create a new person record - (calls createAddress and createContact prior to creating the new person record)
+		//--create a new person record (calls createAddress and createContact prior to creating the new person record)
 		//--create a new contact record
 		//--find the contact id of a given contact record
 		//--create a new address record
@@ -762,7 +794,7 @@ class DBIO {
 			return $persons;
 		}// end function
 
-		//create new person - done - not tested
+		//create new person done not tested
 		public function createPerson($person, $contact, $address)
 		{
 			$addressID = createAddress($address);
@@ -793,7 +825,7 @@ class DBIO {
 
 		}
 
-		//create contact - done - not tested
+		//create contact done not tested
 		public function createContact($contact, $addressID)
 		{
 			global $con;
@@ -814,7 +846,7 @@ class DBIO {
 			}
 		}
 
-		/*//find contact id by address id - done - not tested - removed for better method, last_insert_id()
+		/*//find contact id by address id done not tested removed for better method, last_insert_id()
 		public function findContactID($addressID)
 		{
 			global $con;
@@ -838,7 +870,7 @@ class DBIO {
 		}
 */
 
-		//create address - done - not tested
+		//create address done not tested
 		public function createAddress($address)
 		{
 			global $con;
@@ -859,7 +891,7 @@ class DBIO {
 			}
 		}
 
-	/*	//find address id - done - not tested - removed for better method, see last_insert_id()
+	/*	//find address id done not tested removed for better method, see last_insert_id()
 		public function findAddressID($address)
 		{
 			global $con;

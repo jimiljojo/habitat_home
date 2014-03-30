@@ -10,13 +10,6 @@
 
 		case 'search':
 			include 'office/model/accounts.php';
-			if($_GET['searchBy'] == 'name'){
-				$fname = $_GET['input1'];
-				$lname =  $_GET['input2'];	
-			}
-			elseif ($_GET['searchBy'] == 'organization') {
-				$org = $_GET['input1'];
-			}
 			$tableinfo = search();
 			$page = $dir . '/view/viewAccounts.php';
 			break;
