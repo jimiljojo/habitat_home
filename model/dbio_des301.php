@@ -672,6 +672,20 @@ class DBIO {
 				return $result;
 	} // not yet completed 
 	
+	     public function updateScheduleSlot($ssid,$VolPID, $ScheduleID) //unsure about $schedule, if declared elsewhere, also might need to declare get...() variables else where to initialize them
+		{
+				 
+				
+				$sql = 'UPDATE Schedule_slot SET Volunteer_Person_person_id="' . $scheduleSlot->getVolPID() . '", Schedule_id= "'. $schedule->getScheduleID() . '" . 
+				'WHERE id=(select id from Schedule_slot where id =" . $ssid  ");' ; // SQL statement works, unsure about PHP adaption
+				$this->open();
+				$result = mysql_query($sql, $con);
+			//	$result2 = mysql_query($sql2, $con);
+				if($result)// && $result2)
+					echo "A SCHEDULE IS UPDATED";
+				$this->close();
+				return $result;
+	} // not yet completed 
 		public function createANewSchedule ($timeStart, $timeEnd, $Event_event_id, $description, $Interest_interest_id) 
         {
 			$sql = 'INSERT INTO Schedule(timeStart, timeEnd, Event_event_id, description, Interest_interest_id) .
