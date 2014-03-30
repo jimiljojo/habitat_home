@@ -5,7 +5,7 @@
 	// AUTHOR: AUTOGEN
 
 	$tableinfo = null;
-	
+	$updated = false;
 	switch ($act) {
 
 		case 'search':
@@ -25,12 +25,13 @@
 
 		case 'viewAccount':
 			include_once 'office/model/accounts.php';
-			$tableinfo = update();
+			$tableinfo = edit();
 			$page = $dir . '/view/editAccount.php';
 			break;
 
-		case 'delete':
-			// CODE HERE
+		case 'update':
+			include_once 'office/model/accounts.php';
+			$updated = update();
 			break;
 
 		case 'list':
