@@ -57,7 +57,7 @@
 
 	<tr onclick="retrieve(<?php echo $EventItem->getEvent_id(); ?>);">
 
-		<td style="hover:background-color: gold;"><?php echo $EventItem->getTitle(); ?></td>
+		<td><?php echo $EventItem->getTitle(); ?></td>
 		<td><?php echo $EventItem->getDate(); ?></td>
 		<td><?php echo $EventItem->getTime(); ?></td>
 			
