@@ -1028,7 +1028,7 @@ class DBIO {
 			$results = mysql_query($sql, $con);
 			$this->close();
                         $fohs = array();
-			if($results)	//if there is a result , return the contact id
+			if($results)	//if there is a result , return them
 			{
                             while ($result = mysql_fetch_array($results)) 
                             {
