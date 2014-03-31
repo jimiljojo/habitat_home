@@ -1014,5 +1014,37 @@ class DBIO {
 			}
 		}
 ///////////////////////////////////////////////////////////////////////////////////////
+                public function listFOH()
+		{
+			global $con;
+
+			$sql = "SELECT Person.person_id, Person.first_name, Person.last_name, Event.event_id, Event.title
+                                FROM Person INNER JOIN FOH
+                                ON Person.person_id = FOH.Person_person_id
+                                INNER JOIN Event
+                                ON FOH.Event_event_id = Event.event_id";
+
+			$this->open();
+			$results = mysql_query($sql, $con);
+			$this->close();
+                        $fohs = array();
+			if($results)	//if there is a result , return the contact id
+			{
+                            while ($result = mysql_fetch_array($results)) 
+                            {
+                                $foh = new foh();
+                                $foh->setPersonFName($result[0]);
+                                $foh->setPersonLName($result[1]);
+                                $foh->setEvent($result[2]);
+                                $fohs[] = $foh;
+                            } 
+                            return $fohs;
+			}
+			else //else return false
+			{
+                            echo 'error finding FOH data';
+                            return false;
+			}
+		}
 }// end class
 ?>
