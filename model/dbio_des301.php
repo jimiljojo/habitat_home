@@ -431,7 +431,8 @@ class DBIO {
 
 	}                                
 
-
+////////////////////////////////////Events/////////////////////////////////////////////////////////////////////	   
+//////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
 
 	public function readAllEvent() {
 		global $con;
@@ -547,6 +548,35 @@ class DBIO {
 		return $row[0];
 	}// end function	
  
+	
+	 public function readGuestsByEvent($eventId) {
+			global $con;
+			$sql = 'SELECT * FROM Person WHERE person_id IN (Select Person_person_id FROM Person_relates_to_Event WHERE Event_event_id=' . $eventId . ' AND onGuestList=1);';
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$guests=array();
+			
+			while($rows = mysql_fetch_array($result)) {
+				$person = new Person();
+				$person->setPerson_id($rows[0]);
+				$person->setTitle($rows[1]);
+				$person->setFirst_name($rows[2]);
+				$person->setLast_name($rows[3]);
+				$person->setGender($rows[4]);
+				$person->setDob($rows[5]);
+				$person->setMarital_status($rows[6]);
+				$person->setContact($rows[7]);
+				$person->setIsActive($rows[8]);
+				$person->setLastActive($rows[9]);
+				$person->setPrefEmail($rows[10]);
+				$person->setPrefMail($rows[11]);
+				$person->setPrefPhone($rows[12]);
+				$guests[]=$person;
+			} 
+			$this->close();
+			return $guests;
+		}// end function
+
 
 	public function searchEventByType($eventTypeId) {
 		global $con;

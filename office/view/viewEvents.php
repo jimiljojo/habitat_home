@@ -15,12 +15,7 @@
 
 <script type="text/javascript">
 	function retrieve(n) {
-		//var dir = "&dir=" + document.getElementById("dir").value;
-		//var sub = "&sub=" + document.getElementById("sub").value;
-		//var act = "&act=" + document.getElementById("act").value;
 		document.getElementById("eventId").value=n;
-		//var url = "index.php?id=" + n + dir + sub + act;
-		//alert(document.getElementById("Id").value);
 		document.getElementById("viewEventForm").submit();
 			}
 </script>

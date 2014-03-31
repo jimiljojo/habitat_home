@@ -46,6 +46,12 @@
 		$event= $dbio->readEvent($event_id);
 		return $event;
 	}
+
+	function readGuestsByEvent($event_id){
+		global $dbio;
+		$guests= $dbio->readGuestsByEvent($event_id);
+		return $guests;
+	}
 	function create() {}
 
 	

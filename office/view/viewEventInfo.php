@@ -90,5 +90,33 @@
 	</table>
 
 	<input type="submit" value="Update">
+</br></br></br>
+
+<h4> <b><u>GUEST INFORMATION </u></b></h4>
+</br>
+<table class="table table-striped table-hover " style="width:100%">
+	<tr>
+		<th>Title </th>
+		<th>First Name </th>
+		<th>Last Name </th>
+		<th>Gender </th>
+		<th>Dob </th>
+	</tr>
+		
+	<?php $Guests = readGuestsByEvent($event_id);
+	foreach($Guests as $guests){
+		?>
+		<tr>
+			<td><?php echo $guests->getTitle(); ?> </td>
+			<td><?php echo $guests->getFirst_name(); ?> </td>
+			<td><?php echo $guests->getLast_name(); ?> </td>
+			<td><?php echo $guests->getGender(); ?> </td>
+			<td><?php echo $guests->getDob(); ?> </td>
+
+		</tr>
+	<?php } ?>
+</table>
 
 </form>	
+
+
