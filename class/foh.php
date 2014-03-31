@@ -9,7 +9,8 @@
 
 		// ATTRIBUTES //
 
-		private $person;
+		private $personFName;
+                private $personLName;
 		private $event;
 
 
@@ -20,12 +21,14 @@
 
 		// METHODS //
 
-		public function getPerson() {return $this->person;}
+		public function getPersonFName() {return $this->personFName;}
+                public function getPersonLName() {return $this->personLName;}
 		public function getEvent() {return $this->event;}
 
-		public function setPerson($person) {$this->person = $person;}
+		public function setPersonFName($FName) {$this->personFName = $FName;}
+                public function setPersonLName($LName) {$this->personFName = $LName;}
 		public function setEvent($event) {$this->event = $event;}
 
 	}// end class
 
-?>
+?>s
