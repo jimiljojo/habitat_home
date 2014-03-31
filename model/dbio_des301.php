@@ -1046,5 +1046,26 @@ class DBIO {
                             return false;
 			}
 		}
+                
+                public function createFOH($personID, $eventID)
+		{
+			global $con;
+
+			$sql = "INSERT INTO FOH VALUES(' . $personID .', ' . $eventID . ')";
+
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+                        
+			if($result)	//if there is a result , return them
+			{
+                            return true;
+			}
+			else //else return false
+			{
+                            echo 'error creating FOH entry';
+                            return false;
+			}
+		}
 }// end class
 ?>
