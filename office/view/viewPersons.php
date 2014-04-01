@@ -19,8 +19,10 @@
 <?php 
 	$persons = $tableinfo[0];
 	$contacts = $tableinfo[1];
+	$fohs = $tableinfo[2];
+	$events = $tableinfo[3];
 
-	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>State</th><th>City</th><th>Zip</th></tr>';
+	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>State</th><th>City</th><th>Zip</th><th>FOH</th></tr>';
 		
 		foreach ($persons as $person) {
 				echo '<tr onclick="retrieve(' . $person->getPerson_id() . ');">';
@@ -37,6 +39,15 @@
 						echo '<td>' . $address->getState() . '</td>';
 						echo '<td>' . $address->getCity() . '</td>';
 						echo '<td>' . $address->getZip() . '</td>';
+						foreach ($fohs as $foh) {
+							if($foh->getPerson() == $person->getPerson_id()){
+								foreach ($events as $event) {
+									echo '<td>' . $event->getTitle() . '</td>';
+								}
+							}
+							else
+								echo '<td> NULL </td>';
+						}
 					}
 				}
 			echo '</tr>';		
