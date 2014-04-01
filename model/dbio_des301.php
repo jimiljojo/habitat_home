@@ -431,7 +431,8 @@ class DBIO {
 
 	}                                
 
-
+////////////////////////////////////Events/////////////////////////////////////////////////////////////////////	   
+//////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
 
 	public function readAllEvent() {
 		global $con;
@@ -547,6 +548,35 @@ class DBIO {
 		return $row[0];
 	}// end function	
  
+	
+	 public function readGuestsByEvent($eventId) {
+			global $con;
+			$sql = 'SELECT * FROM Person WHERE person_id IN (Select Person_person_id FROM Person_relates_to_Event WHERE Event_event_id=' . $eventId . ' AND onGuestList=1);';
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$guests=array();
+			
+			while($rows = mysql_fetch_array($result)) {
+				$person = new Person();
+				$person->setPerson_id($rows[0]);
+				$person->setTitle($rows[1]);
+				$person->setFirst_name($rows[2]);
+				$person->setLast_name($rows[3]);
+				$person->setGender($rows[4]);
+				$person->setDob($rows[5]);
+				$person->setMarital_status($rows[6]);
+				$person->setContact($rows[7]);
+				$person->setIsActive($rows[8]);
+				$person->setLastActive($rows[9]);
+				$person->setPrefEmail($rows[10]);
+				$person->setPrefMail($rows[11]);
+				$person->setPrefPhone($rows[12]);
+				$guests[]=$person;
+			} 
+			$this->close();
+			return $guests;
+		}// end function
+
 
 	public function searchEventByType($eventTypeId) {
 		global $con;
@@ -1019,5 +1049,126 @@ class DBIO {
 		return $tableinfo;
 	}// end function
 ///////////////////////////////////////////////////////////////////////////////////////
+                public function listFOH()
+		{
+			global $con;
+
+			$sql = "SELECT Person.person_id, Person.first_name, Person.last_name, Event.event_id, Event.title
+                                FROM Person INNER JOIN FOH
+                                ON Person.person_id = FOH.Person_person_id
+                                INNER JOIN Event
+                                ON FOH.Event_event_id = Event.event_id";
+
+			$this->open();
+			$results = mysql_query($sql, $con);
+			$this->close();
+                        $fohs = array();
+			if($results)	//if there is a result , return them
+			{
+                            while ($result = mysql_fetch_array($results)) 
+                            {
+                                $foh = new foh();
+                                $foh->setPersonFName($result[0]);
+                                $foh->setPersonLName($result[1]);
+                                $foh->setEvent($result[2]);
+                                $fohs[] = $foh;
+                            } 
+                            return $fohs;
+			}
+			else //else return false
+			{
+                            echo 'error finding FOH data';
+                            return false;
+			}
+		}
+                
+                public function createFOH($personID, $eventID)
+		{
+			global $con;
+
+			$sql = "INSERT INTO FOH VALUES(" . $personID .", " . $eventID . ")";
+
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+                        
+			if($result)	//if there is a result , return them
+			{
+                            return true;
+			}
+			else //else return false
+			{
+                            echo 'error creating FOH entry';
+                            return false;
+			}
+		}
+                
+                public function searchFOHByPerson($personID)
+                {
+                    global $con;
+                    
+                    $sql = "SELECT Person.person_id, Person.first_name, Person.last_name, Event.event_id, Event.title
+                                FROM Person INNER JOIN FOH
+                                ON Person.person_id = FOH.Person_person_id
+                                AND Person.person_id = " . $personID ."
+                                INNER JOIN Event
+                                ON FOH.Event_event_id = Event.event_id";
+
+                    $this->open();
+                    $results = mysql_query($sql, $con);
+                    $this->close();
+                    $fohs = array();
+                    if($results)	//if there is a result , return them
+                    {
+                        while ($result = mysql_fetch_array($results)) 
+                        {
+                            $foh = new foh();
+                            $foh->setPersonFName($result[0]);
+                            $foh->setPersonLName($result[1]);
+                            $foh->setEvent($result[2]);
+                            $fohs[] = $foh;
+                        } 
+                        return $fohs;
+                    }
+                    else //else return false
+                    {
+                        echo 'error finding FOH data';
+                        return false;
+                    }
+                }
+                
+                public function searchFOHByEvent($eventID)
+                {
+                    global $con;
+                    
+                    $sql = "SELECT Person.person_id, Person.first_name, Person.last_name, Event.event_id, Event.title
+                                FROM Person INNER JOIN FOH
+                                ON Person.person_id = FOH.Person_person_id
+                                INNER JOIN Event
+                                ON FOH.Event_event_id = Event.event_id
+                                AND Event.event_id = " . $eventID ."";
+
+                    $this->open();
+                    $results = mysql_query($sql, $con);
+                    $this->close();
+                    $fohs = array();
+                    if($results)	//if there is a result , return them
+                    {
+                        while ($result = mysql_fetch_array($results)) 
+                        {
+                            $foh = new foh();
+                            $foh->setPersonFName($result[0]);
+                            $foh->setPersonLName($result[1]);
+                            $foh->setEvent($result[2]);
+                            $fohs[] = $foh;
+                        } 
+                        return $fohs;
+                    }
+                    else //else return false
+                    {
+                        echo 'error finding FOH data';
+                        return false;
+                    }
+                }
 }// end class
 ?>
