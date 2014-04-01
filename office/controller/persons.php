@@ -28,7 +28,9 @@
 			break;
 
 		case 'list':
-			// CODE HERE
+			include_once 'office/model/persons.php';
+			$tableinfo = read();
+			$page = $dir . '/view/viewPersons.php';
 			break;
 
 		default:

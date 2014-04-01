@@ -983,6 +983,41 @@ class DBIO {
 				return false;
 			}
 		}
+
+		public function readPersons() {
+		global $con;
+		$sql = 'SELECT Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip FROM Person inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$person = array();
+		$contacts =array();
+		while($rows = mysql_fetch_array($result)){
+			$contact = new Contact();
+			$address = new Address();
+			$person = new Person();
+			$person->setPerson_id($rows[0]);
+			$person->setTitle($rows[1]);
+			$person->setFirst_name($rows[2]);
+			$person->setLast_name($rows[3]);
+			$person->setDob($rows[4]);
+			$person->setContact($rows[5]);
+			$contact->setContact_id($rows[6]);
+			$contact->setPhone($rows[7]);
+			$contact->setAddress($rows[8]);
+			$address->setAddress_id($rows[9]);
+			$address->setStreet1($rows[10]);
+			$address->setStreet2($rows[11]);
+			$address->setCity($rows[12]);
+			$address->setState($rows[13]);
+			$address->setZip($rows[14]);
+			$contact->setAddress($address);
+			$persons[] = $person;
+			$contacts[] = $contact;
+		}
+		$tableinfo = array($persons,$contacts);
+		$this->close();
+		return $tableinfo;
+	}// end function
 ///////////////////////////////////////////////////////////////////////////////////////
 }// end class
 ?>
