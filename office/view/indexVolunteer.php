@@ -13,9 +13,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
 
-	<link rel="stylesheet" href="css/alpha.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu">	
+		
 	    <style>
-		    body {font-family: 'Ubuntu', sans-serif;}
+		    
 	    </style>
 	<script src="https://www.google.com/jsapi"></script><script src="js/googleChart.js"></script><script src="js/omniload.js"></script><script src="js/swap.js"></script><script src="js/searchBy.js"></script>
 
