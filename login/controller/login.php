@@ -33,11 +33,12 @@
 	    else
 	    {	
 	    	$dir='home';
-	    	$page = $dir . '/view/home.php';
-	    	
-	    	
 	    	$_SESSION['userid'] = (isset($_GET['userid'])) ? $_GET['userid'] : '';
 	    	$_SESSION['password'] = (isset($_GET['password'])) ? $_GET['password'] : '';
+	    	//include 'home/model/home.php';
+	    	$page = $dir . '/view/home.php';
+
+
 	    }
 
 

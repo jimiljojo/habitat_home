@@ -3,7 +3,7 @@
 	// TITLE: Home Home View
 	// FILE: home/view/home.php
 	// AUTHOR: AUTOGEN
-
+include 'home/model/home.php';
 
 ?>
 <style>
@@ -26,7 +26,14 @@
     
     .cItem dd {border: 1px solid #000;}
 </style>
-<h3>Welcome John Doe</h3>
+
+<?php 
+$userName= isset($_SESSION['userid']) ? $_SESSION['userid'] : 'null';
+ $person=getPerson($userName);
+ ?>
+
+ 
+<h3>Welcome <?php echo $person->getTitle() . ' ' . $person->getFirst_name() . ' ' . $person->getLast_name(); ?></h3>
 <hr>
 <?php if ($isAdmin) { ?>
 <h4>Admin</h4>

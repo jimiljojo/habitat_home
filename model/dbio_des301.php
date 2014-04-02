@@ -69,11 +69,25 @@ class DBIO {
 			return $status;
 		}
 
-		public function getPersonid($accid){
+		public function getPersonId($accid){
 
 			global $con;
 
 			$sql='SELECT person_id FROM Account WHERE account_id="'. $accid .'"';
+			$this->open();
+			$result=mysql_query($sql,$con);
+			while($row = mysql_fetch_array($result)) {
+				$pid = $row[0];
+			}
+			$this->close();
+			return $pid;
+		}
+
+		public function getPersonIdByUserName($userName){
+
+			global $con;
+
+			$sql='SELECT person_id FROM Account WHERE username="'. $userName .'"';
 			$this->open();
 			$result=mysql_query($sql,$con);
 			while($row = mysql_fetch_array($result)) {
