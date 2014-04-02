@@ -1135,5 +1135,45 @@ class DBIO {
                         return false;
                     }
                 }
+////////////////////////////////////////////////////////////////////////////////
+// Volunteer stuff
+////////////////////////////////////////////////////////////////////////////////
+                //list all volunteers - returns person data on volunteers
+		public function listVolunteers() {
+			global $con;
+			$sql = 'SELECT Person.* FROM Person INNER JOIN Volunteer ON Person.person_id = Volunteer.Person_person_id;';
+			$this->open();
+			$results = mysql_query($sql, $con);
+			$this->close();
+			$persons = array();
+			if($results)
+				{
+					while ($result = mysql_fetch_array($results)) 
+					{
+						
+						$person = new Person();
+						$person->setPerson_id($result[0]);
+						$person->setTitle($result[1]);
+						$person->setFirst_name($result[2]);
+						$person->setLast_name($result[3]);
+						$person->setGender($result[4]);
+						$person->setDob($result[5]);
+						$person->setMarital_status($result[6]);
+						$person->setContact($result[7]);
+						$person->setIsActive($result[8]);
+						$person->setLastActive($result[9]);
+						$person->setPrefEmail($result[10]);
+						$person->setPrefMail($result[11]);
+						$person->setPrefPhone($result[12]);
+						$persons[] = $person;
+					} 
+				}
+			else
+			{
+				echo "DB error listVolunteers";
+			}
+			return $persons;
+		}// end function
+                
 }// end class
 ?>
