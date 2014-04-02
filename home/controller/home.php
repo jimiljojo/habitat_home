@@ -32,6 +32,7 @@
 			break;
 
 		default:
+			
 			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 

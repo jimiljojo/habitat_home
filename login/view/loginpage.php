@@ -18,11 +18,15 @@ $act='loginCheck';
     a:hover {color: crimson}
     .habitatGreen {color: rgb(115, 180, 28);}
     .habitatBlue {color: rgb(2, 71, 138);}
-    body {
+    
+    div.body {
+    margin-left: auto;
+    margin-right: auto; 
 	text-align: center;
 	font-family: arial;
 	background-color: rgb(253, 253, 253);
     }
+
     label {font-weight: bold;}
     #loginBox {
 	margin: 25px auto;
@@ -55,14 +59,14 @@ $act='loginCheck';
                 else{
                 	
                 	document.getElementById('loginUser').submit();
-           			alert ("trial");
                 }
 
             }
 
 		</script>
 
-	<img src="habitat_logo.jpg" alt="Habitat for Humanity Logo" height="198px" width="600px" />
+	<div class="body">
+	<img src="img/habitat_logo.jpg" alt="Habitat for Humanity Logo" height="198px" width="600px" />
 
 	<h2> Developers and testers can use </br> username= habitat and password=ist440 </h2>
 	<div id="loginBox">
@@ -83,6 +87,7 @@ $act='loginCheck';
 		</div>
 	    </form>
 	</div>
+</div>
 <!-- Hosting24 Analytics Code -->
 <!--<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script> -->
 <!-- End Of Analytics Code -->

@@ -83,7 +83,8 @@
 				
 			</header>
 			<div id="body">
-				<?php include 'root/nav.php'; ?>
+				<?php 
+				if ($dir!='login') {include 'root/nav.php';} ?>
 				<?php //if (file_exists($dir . '/menu.php')) {include 'root/subNav.php';} ?>
 				<div id="content">
 					<?php include $page; // view call ?>
