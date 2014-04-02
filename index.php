@@ -12,6 +12,7 @@
 	
 	// REQUIRES/INCLUDES
 	require_once('class/accnt.php');
+	require_once('class/foh.php');
 	require_once('class/person.php');
 	require_once('class/contact.php');
 	require_once('class/address.php');
