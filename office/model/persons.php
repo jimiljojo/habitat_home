@@ -7,9 +7,12 @@
 
 	function search() {}
 	function create() {}
-	function read() {}
+	function read() {
+		global $dbio;
+		$tableinfo = $dbio->readPersons();
+		return $tableinfo;
+	}
 	function update() {}
 	function delete() {}
-	function list() {}
 
 ?>
