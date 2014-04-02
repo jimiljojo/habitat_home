@@ -1,10 +1,9 @@
 <?php
-
+	
+	
 	global $act;
-	global $dir;
-	global $sub;
     global $msg;
-    
+    global $dir;
 
     $act = (isset($_GET['act'])) ? $_GET['act'] : '';
     $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
@@ -23,7 +22,9 @@
 	    
 	    if($user != $dbCheck)
 	    {
-	    	include ('view/loginpage.php');
+
+	    	//include ('view/loginpage.php');
+	    	$page = $dir . '/view/loginpage.php';
 	    	print '<script type="text/javascript">'; 
 			print 'alert("Not a valid Username or Password")'; 
 			print '</script>';
@@ -31,13 +32,12 @@
 
 	    else
 	    {	
-	    	$dir='';
-	    	$sub='';
-	    	$_SESSION['dir']=(isset($_GET['dir'])) ? false : false;
-	    	$act=(isset($_GET['act'])) ? false : false;
+	    	$dir='home';
+	    	$page = $dir . '/view/home.php';
+	    	
+	    	
 	    	$_SESSION['userid'] = (isset($_GET['userid'])) ? $_GET['userid'] : '';
 	    	$_SESSION['password'] = (isset($_GET['password'])) ? $_GET['password'] : '';
-	    	include('../index.php');
 	    }
 
 
@@ -45,7 +45,7 @@
 	    break;
 
 	    default:
-	    include ('view/loginpage.php');
+	   	$page = $dir . '/view/loginpage.php';
 	    break;
 	}
 

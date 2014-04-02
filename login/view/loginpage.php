@@ -36,44 +36,46 @@ $act='loginCheck';
     .center {text-align: center;}
     .aForgot {font-size: 10pt; color: indianred;}
 </style>
-<div id="body">
+
+<script type="text/javascript">
+		function verify()
+            {
+            	if (document.getElementById('userid').value=="" || document.getElementById('userid').value==undefined)
+                {
+                    alert ("Please Enter your 'User Id'");
+                    //return false;
+                }
+
+               else if (document.getElementById('password').value=="" || document.getElementById('password').value==undefined)
+                {
+                    alert ("Please Enter your 'Password'");
+                    //return false;
+                }
+
+                else{
+                	
+                	document.getElementById('loginUser').submit();
+           			alert ("trial");
+                }
+
+            }
+
+		</script>
+
 	<img src="habitat_logo.jpg" alt="Habitat for Humanity Logo" height="198px" width="600px" />
-		<div id="loginBox">
-	    <form id="loginForm" name="loginForm" action="index.php" method="get">
+
+	<h2> Developers and testers can use </br> username= habitat and password=ist440 </h2>
+	<div id="loginBox">
+	    <form id="loginUser" name="loginUser" action="index.php" method="get">
+	    
 	    <input name="dir" type="hidden" value="<?php echo $dir;?>" >
 	    <input name="act" type="hidden" value="<?php echo $act;?>" >
 		<h2 class="center habitatBlue">Login</h2>
 		<input id="userid" name="userid" type="text"><label> User Id</label><br>
 		<input id="password" name="password" type="password"><label> Password</label><br>
 		<br>
-		
 
-		<script type="text/javascript">
-		function verify()
-            {
-            	if (document.getElementById('userid').value==""
-                 || document.getElementById('userid').value==undefined)
-                {
-                    alert ("Please Enter your 'User Id'");
-                    return false;
-                }
-
-                if (document.getElementById('password').value==""
-                 || document.getElementById('password').value==undefined)
-                {
-                    alert ("Please Enter your 'Password'");
-                    return false;
-                }
-
-                
-                return true;
-
-
-            }
-
-		</script>
-
-		<input name="submit" type="submit" value="submit" onclick="verify();"> &nbsp &nbsp <a href="index.php?div=recovery" class="aForgot">Forgot Password?</a><br>
+		<input type="button" value="submit" onclick="verify();"> &nbsp &nbsp <a href="index.php?div=recovery" class="aForgot">Forgot Password?</a><br>
 		<br>
 		<br>
 		<div class="center">
@@ -81,7 +83,6 @@ $act='loginCheck';
 		</div>
 	    </form>
 	</div>
-</div>
 <!-- Hosting24 Analytics Code -->
 <!--<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script> -->
 <!-- End Of Analytics Code -->
