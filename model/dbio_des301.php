@@ -1185,7 +1185,7 @@ class DBIO {
                 //list all volunteers - returns person data on volunteers
 		public function listVolunteers() {
 			global $con;
-			$sql = 'SELECT Person.* FROM Person INNER JOIN Volunteer ON Person.person_id = Volunteer.Person_person_id;';
+			$sql = 'SELECT Person.* FROM Person INNER JOIN Volunteer ON Person.person_id = Volunteer.Person_person_id';
 			$this->open();
 			$results = mysql_query($sql, $con);
 			$this->close();
