@@ -9,7 +9,7 @@
     
     
 
-   $schedules = $dbio->getVolunteerEvents(2); //getAllEvents() //$personId hard set
+  // $schedules = $dbio->getVolunteerEvents(2); //getAllEvents() //$personId hard set
 	
 
     //Code has been tested using a database
@@ -87,37 +87,10 @@ foreach($schedules as $schedule) {
  }// end foreach
 
  ?>
-    </table>
+    
 
-    <h4 class='other'>Other Events</h4>
-    <table class="VolSchedule">
-    <tr><th>Status</th><th>Event Name</th><th>Event Date</th><th>Event Time</th><th>Event Location</th><th>Event Type</th></tr>
 
-<?php
- foreach($schedules as $schedule)
- {
-    if($schedule->getEventStatus() == 1)
-    {
-    echo '<form action="index.php" method="GET">';
-    echo '<input type="hidden" name="dir" value="' . $dir . '"/>';
-    echo '<input type="hidden" name="sub" value="' . $sub . '"/>';
-    echo '<input type="hidden" name="act" value="' . $act . '"/>';
-    echo '<input type="hidden" name="changeStatus" class="Signedup" value="0"/>';
-    echo '<input type="hidden" name="eventId" class="Signedup" value="' . $schedule->getEventId() . '"/>';
-    echo '<tr>';
-    echo '<td><input type="submit" name="update" class="notSignedUp" value="Add Event" /></td>';
-echo '<td class="eventName"><a href="index.php?dir=' .$dir . '&sub=' . $sub . '&act=eventDescription&eventId=' . $schedule->getEventId(). '">' . $schedule->getEventTitle() . '</a></td>';
-    echo '<td>' . $schedule->getEventDate() . '</td>';
-	echo '<td  style="width: 100px;">' . $schedule->getEventTime() . '</td>';
-	echo '<td>' . $schedule->getEventLocation() . '</td>';
-	echo '<td style="width: 100px;">' . $dbio->getEventType($schedule->getEventType_Id()) . '</td>';
-    echo '</tr>';
-    echo '</form>';
-    }
- }
- 
- ?>
-</table>
+
 <hr/>
 <span class="note">
     Here is the list of events you are signed up for <br>

@@ -55,6 +55,97 @@
 <hr>
 <form  action="index.php" method="get">
     <input name="act" type="hidden" value="<?php echo '' . $act;?>" >
+    <table>
+        
+        <tr><td><b>Username:</td><td> <?php echo $fname ?> </td></tr>
+
+        <tr><td><b>Personal Information:<b></td></tr>
+        <tr><td>Title:</td><td> <input type="text" value="<?php echo $title ?>"></td></tr>
+        <tr><td>First Name:</td><td> <input type="text" value="<?php echo $fname ?>"></td></tr>
+        <tr><td>Last Name:</td><td> <input type="text" value="<?php echo $lname ?>"></td></tr>
+        <tr><td>Date of Birth:</td><td> <input type="text" value="<?php echo $dob ?>"></td></tr>
+        <tr><td>Gender:</td><td> <input type="text" value="<?php echo $gender ?>"></td></tr>
+
+        <tr><td><b>Address:</b></td></tr>
+        <tr><td>Street 1:</td><td> <input type="text" value="<?php echo $street1 ?>"></td></tr>
+        <tr><td>Street2:</td><td> <input type="text" value="<?php echo $street2 ?>"></td></tr>
+        <tr><td>City:</td><td> <input type="text" value="<?php echo $city ?>"></td></tr>
+        <tr><td>State:</td><td> <input type="text" value="<?php echo $state ?>"></td></tr>
+        <tr><td>Zip:</td><td> <input type="text" value="<?php echo $zip ?>"></td></tr>
+
+        <tr><td><b>Contact Information:</b></td></tr>
+        <tr><td>Phone:</td><td> <input type="text" value="<?php echo $phone ?>"></td></tr>
+        <tr><td>Sec. Phone:</td><td> <input type="text" value="<?php echo $phone2 ?>"></td><td>&nbsp ext.</td><td><input type="text" value="<?php echo $extension ?>"></td></tr>
+        <tr><td>Email Address:</td><td> <input type="text" value="<?php echo $email ?>"></td></tr>
+        <tr><td>Emergency Contact Name:</td><td> <input type="text" value="<?php echo $emergencyname ?>"></td></tr>
+        <tr><td>Emergency Contact Phone:</td><td> <input type="text" value="<?php echo $emergencyphone ?>"></td></tr>
+
+        <?php $maritialstatus=$dbio->getMaritialStatus($maritial); ?>
+        <tr><td><b>Maritial Status: </b></td><td> <?php echo $maritialstatus ?> </td></tr>
+
+        <tr><td><b>Interests:</b></td></tr>
+
+    </table>
+        <?php
+            $count=1;
+            $interestIds='';
+
+            foreach ($interests as $i) {
+                
+                If($count==1){
+                $interestIds= $interestIds . $i;
+                }
+
+                else{
+                   $interestIds= $interestIds . ',' . $i; 
+                }
+
+                $count++;
+                }
+
+            $selectedInterests = $dbio->getInterestsByIds($interestIds);
+            foreach($selectedInterests as $int){
+            echo $int->getTitle().'<br>';
+            
+            }
+
+    ?>
+
+    <table>
+        <tr><td><b>General Information:</b></td></tr>
+        <tr><td>Church or Group Affiliate:</td><td> <input type="text" value="<?php echo $church ?>"></td></tr>
+        <tr><td>Are you a Church Ambassador?:</td><td> <input type="text" value="<?php echo $ambassador ?>"></td></tr>
+        <tr><td><b>Contact Preference:</b></td></tr>
+        <?
+        if($checkPhone=="0"){
+        echo 'day <br>';
+    }
+
+    if($checkMail=="0"){
+        echo 'eve <br>';
+    }
+    
+    if($checkEmail=="0"){
+        echo 'weekend <br>';
+    }
+    ?>
+
+        <tr><td><?php echo $checkPhone ?></td></tr>
+        <tr><td><?php echo $checkMail ?></td></tr>
+        <tr><td><?php echo $checkEmail ?></td></tr>
+
+
+
+
+    </table>
+
+
+        
+
+
+    
+
+
 <?php
     echo '<b>Username:</b>'.$userName.'<br>';
     echo '<br><b>Personal Information:</b><br>';
@@ -105,6 +196,7 @@
     $selectedInterests = $dbio->getInterestsByIds($interestIds);
     foreach($selectedInterests as $int){
         echo $int->getTitle().'<br>';
+
     }
 
     ?>

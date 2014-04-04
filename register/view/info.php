@@ -81,7 +81,7 @@
 		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname"></label>
 		</td></tr>
 		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname"></label></td></tr>
-		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp yyyy-mm-dd)</td></tr>
+		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp mm-dd-yyyy)</td></tr>
 		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
 		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr></table></div>
 
