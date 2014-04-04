@@ -62,6 +62,12 @@
             <option value=1>Yes</option>
             <option value=0>No</option>
         </select></td></tr>
+
+    <tr><td><span class="mandatory">*</span>Organization Affiliation:</td><td>
+        <select name="ambassador" id="ambassador">
+            <option></option>
+            <option value=1>None</option>
+        </select></td></tr>
 </table></div>
     <h4 class="show" onclick="swap(this);">Contact Preference<span class="mandatory">*</span></h4><div><table class="intTable">
     <!-- <input type="radio" name="receive" value="none" selected="selected"><label>Phone</label>

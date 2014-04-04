@@ -84,6 +84,15 @@ class DBIO {
 			return $status;
 		}
 
+		public function getOrganization(){
+			global $con;
+			$sql='SELECT name from Organization';
+			$this->open();
+			$results=mysql_query($sql,$con);
+			$this->close();
+			
+		}
+
 
 	   public function getAllInterestTypes() {
 		  global $con;
