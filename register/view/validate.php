@@ -81,9 +81,9 @@
         <tr><td>Emergency Contact Phone:</td><td> <input type="text" value="<?php echo $emergencyphone ?>"></td></tr>
 
         <?php $maritialstatus=$dbio->getMaritialStatus($maritial); ?>
-        <tr><td><b>Maritial Status: </b></td><td> <?php echo $maritialstatus ?> </td></tr>
+        <tr><td><b>Maritial Status: </b></td><td> <?php echo $maritialstatus ?> </td></tr><br>
 
-        <tr><td><b>Interests:</b></td></tr>
+        <br><tr><td><b>Interests:</b></td></tr>
 
     </table>
         <?php
@@ -114,8 +114,8 @@
     <table>
         <tr><td><b>General Information:</b></td></tr>
         <tr><td>Church or Group Affiliate:</td><td> <input type="text" value="<?php echo $church ?>"></td></tr>
-        <tr><td>Are you a Church Ambassador?:</td><td> <input type="text" value="<?php echo $ambassador ?>"></td></tr>
-        <tr><td><b>Contact Preference:</b></td></tr>
+        <tr><td>Are you a Church Ambassador?</td><td> <input type="text" value="<?php if($ambassador=="1"){echo 'Yes';} else{echo 'No';} ?>"></td></tr>
+        <br><br><tr><td><b>Contact Preference:</b></td></tr>
     </table>
 
         <?php
@@ -125,7 +125,7 @@
             }
 
             if($checkMail=="1"){
-            echo 'eve <br>';
+            echo 'evening <br>';
             }
         
             if($checkEmail=="1"){
@@ -134,7 +134,52 @@
         ?>
 
         
+    <table>
+        <br><tr><td><b>Volunteer Availability:</b></td></tr>
+        <tr><td>I am available to volunteer in :-</td></tr>
+    </table>
+        <?php
 
+            if($day=="on"){
+            echo 'day <br>';
+            }
+
+            if($eve=="on"){
+            echo 'evening <br>';
+            }
+        
+            if($wend=="on"){
+            echo 'weekend <br>';
+            }
+
+        ?>
+
+    <table>
+        <br><tr><td><b>Consent:</b></td></tr>
+    </table>
+
+    <?php
+
+        if($age=="1"){
+        echo 'I am Less than 18 years of age and have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/YorkHabitatMinorWaiverRelease.pdf" target="_blank">Minor Waiver</a><br>';
+        }
+
+        else{
+        echo 'I am Greater than 18 years of age <br>';
+        } 
+
+        echo 'I understand a personal photograph may be used in appropriate newspapers and/or newsletters. <br>';
+        echo 'I have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/ConstructionSafety.pdf" target="_blank">Construction Safety Guidelines</a> <br>';
+        echo 'I have watched the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/ConstructionVideo.html" target="_blank">Construction Safety Video</a> <br>';
+        echo 'I accept the terms of the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/waiverform20120711.pdf" target="_blank">Liability Waiver Form</a> <br>';
+        
+
+    ?>
+
+    <table>
+        <tr><td>Signature:</td><td><input type="text" value="<?php echo $signature ?>"></td></tr><br>
+        <br><tr><td>Date:</td><td><input type="text" value="<?php echo $date ?>" disabled="disabled"></td></tr>
+    </table>
 
 
 
@@ -147,106 +192,8 @@
     
 
 
-<?php
-    echo '<b>Username:</b>'.$userName.'<br>';
-    echo '<br><b>Personal Information:</b><br>';
-    echo 'Title:' .$title . '<br>';
-    echo 'first name: ' . $fname . '<br>';
-    echo 'last name: ' . $lname . '<br>';
-    echo 'Date of Birth:'.$dob.'<br>';
-    echo 'Gender:'.$gender.'<br>';
 
-    echo '<br><b>Address:</b><br>';
-    echo 'Street1: ' . $street1 . '<br>';
-    echo 'Street2:'.$street2.'<br>';
-    echo 'City: ' . $city . '<br>';
-    echo 'State: ' . $state . '<br>';
-    echo 'Zip: ' . $zip . '<br>';
 
-    echo '<br><b>Contact Information:</b><br>';
-    echo 'Phone: ' . $phone . '<br>';
-    echo 'Sec. Phone:'.$phone2.'&nbsp &nbsp ext. :'.$extension.'<br>';
-    echo 'Email Address: ' . $email . '<br>';
-    echo 'Emergency Contact Name: ' . $emergencyname . '<br>';
-    echo 'Emergency Contact Phone: ' . $emergencyphone . '<br>';
-    
-    $maritialstatus=$dbio->getMaritialStatus($maritial);
-    echo '<br><b>Maritial Status:</b> ' . $maritialstatus . '<br>';
-     '<br><br><br>';
-
-    
-    //Displaying Interest
-    echo '<br><b>Interests:</b><br>';
-      
-    $count=1;
-    $interestIds='';
-
-    foreach ($interests as $i) {
-                
-                If($count==1){
-                $interestIds= $interestIds . $i;
-                }
-
-                else{
-                   $interestIds= $interestIds . ',' . $i; 
-                }
-
-                $count++;
-                }
-
-    $selectedInterests = $dbio->getInterestsByIds($interestIds);
-    foreach($selectedInterests as $int){
-        echo $int->getTitle().'<br>';
-
-    }
-
-    ?>
-    
-    
-    
-    <?php
-    echo '<br><b>General Information:</b><br>';
-    echo 'Church or Group Affiliate: '.$church.'<br>';
-    echo 'Are you a Church Ambassador? &nbsp &nbsp'.$ambassador.'<br>';
-
-    echo '<br><b>Contact Preference:</b><br>';
-    echo $checkPhone.'<br>';
-    echo $checkMail.'<br>';
-    echo $checkEmail.'<br>';
-
-    echo '<b>Volunteer Availability</b><br>I am available to volunteer in:<br>';
-    if($day=="on"){
-        echo 'day <br>';
-    }
-
-    if($eve=="on"){
-        echo 'eve <br>';
-    }
-    
-    if($wend=="on"){
-        echo 'weekend <br>';
-    }
-    
-
-    echo '<br><b>Consent</b><br>';
-    if($age=="1"){
-        echo 'I am Less than 18 years of age and have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/YorkHabitatMinorWaiverRelease.pdf" target="_blank">Minor Waiver</a><br>';
-    }
-
-    else{
-    echo 'I am Greater than 18 years of age <br>';
-    }
-
-    if($photo=="1"){
-    echo 'I understand a personal photograph may be used in appropriate newspapers and/or newsletters. <br>';
-    }   
-
-    echo 'I have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/ConstructionSafety.pdf" target="_blank">Construction Safety Guidelines</a> <br>';
-    echo 'I have watched the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/ConstructionVideo.html" target="_blank">Construction Safety Video</a> <br>';
-    echo 'I accept the terms of the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/waiverform20120711.pdf" target="_blank">Liability Waiver Form</a> <br>';
-    echo '<br><br><b>Signature:</b> ' . $signature . '<br>';
-    echo '<b>Date:</b> ' . $date . '<br>';
-?>
     <br>
     <input class="btn btn-success" name="submit" type="submit" value="submit" >
     <br>
