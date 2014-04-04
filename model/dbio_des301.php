@@ -388,7 +388,11 @@ class DBIO {
 //Reads all donations 
     public function readAllDonations() {
         global $con;
-        $sql = 'SELECT * FROM Donation';
+        $sql = '
+            SELECT donation_id,Donation.date,Donation.time,when_entered,details,value,DonationType.typeName,Event.title
+            FROM Donation
+            JOIN DonationType on Donation.DonationType_idDonationType = DonationType.idDonationType
+            JOIN Event on Donation.Event_event_id = Event.event_id';
         $this->open();
         $result = mysql_query($sql, $con);
         $donations = array();
@@ -412,7 +416,7 @@ class DBIO {
 
 // end function
 
-// Reads single donation by Id
+// Reads single donation by Id ***I didnt get to work on this yet. Needs work***
     public function readDonationById($id) {
         global $con;
         $sql = 'SELECT * FROM Donation WHERE donation_id = "' . $id . '"';
@@ -443,10 +447,12 @@ class DBIO {
         public function readDonationByOrg($name) {
         global $con;
         $sql = 
-            'SELECT *
+            'SELECT donation_id,Donation.date,Donation.time,when_entered,details,value,DonationType.typeName,Event.title
             FROM Donation
             JOIN Donation_has_Organization on Donation.donation_id=Donation_has_Organization.Donation_donation_id
             JOIN Organization on Donation_has_Organization.Organization_organization_id=Organization.organization_id
+            JOIN DonationType on Donation.DonationType_idDonationType = DonationType.idDonationType
+            JOIN Event on Donation.Event_event_id = Event.event_id
             WHERE name = "' . $name . '"';
         $this->open();
         $result = mysql_query($sql, $con);
@@ -456,13 +462,11 @@ class DBIO {
             $donation->setDonation_id($rows[0]);
             $donation->setDate($rows[1]);
             $donation->setTime($rows[2]);
-            $donation->setDetails($rows[3]);
-            $donation->setWhen_entered($rows[4]);
-            $donation->setDonationType_idDonationType($rows[5]);
-            $donation->setValue($rows[6]);
-            $donation->setEvent_event_id($rows[7]);
-            $donation->setAdmin_idAdmin($rows[8]);
-            $donation->setEntered_by_id($rows[9]);
+            $donation->setWhen_entered($rows[3]);
+            $donation->setDetails($rows[4]);
+            $donation->setValue($rows[5]);
+            $donation->setDonation_type($rows[6]);
+            $donation->setEvent_name($rows[7]);
             $donations[] = $donation;
         }
         $this->close();
@@ -474,11 +478,13 @@ class DBIO {
     public function readDonationByPerson($fName, $lName) {
         global $con;
         $sql = 
-            'SELECT *
+            'SELECT donation_id,Donation.date,Donation.time,when_entered,details,value,DonationType.typeName,Event.title
             FROM Donation
             JOIN Donation_has_Person on Donation.donation_id=Donation_has_Person.Donation_donation_id
             JOIN Person on Donation_has_Person.Person_person_id=Person.Person_id
-            WHERE first_name = "' . $fName . '" AND last_name = "' . $lName . '" ';
+            JOIN DonationType on Donation.DonationType_idDonationType = DonationType.idDonationType
+            JOIN Event on Donation.Event_event_id = Event.event_id
+            WHERE first_name = "' . $fName . '" AND last_name = "' . $lName . '"';
         $this->open();
         $result = mysql_query($sql, $con);
         $donations = array();
@@ -487,13 +493,11 @@ class DBIO {
             $donation->setDonation_id($rows[0]);
             $donation->setDate($rows[1]);
             $donation->setTime($rows[2]);
-            $donation->setDetails($rows[3]);
-            $donation->setWhen_entered($rows[4]);
-            $donation->setDonationType_idDonationType($rows[5]);
-            $donation->setValue($rows[6]);
-            $donation->setEvent_event_id($rows[7]);
-            $donation->setAdmin_idAdmin($rows[8]);
-            $donation->setEntered_by_id($rows[9]);
+            $donation->setWhen_entered($rows[3]);
+            $donation->setDetails($rows[4]);
+            $donation->setValue($rows[5]);
+            $donation->setDonation_type($rows[6]);
+            $donation->setEvent_name($rows[7]);
             $donations[] = $donation;
         }
         $this->close();
@@ -504,41 +508,41 @@ class DBIO {
 //Reads all donations based on two amounts entered    
     public function readAmount($amount1, $amount2) {
         global $con;
-        $sql = 'SELECT * FROM Donation WHERE value BETWEEN "' . $amount1 . '" AND "' . $amount2 . '"';
+        $sql = '            
+            SELECT donation_id,Donation.date,Donation.time,when_entered,details,value,DonationType.typeName,Event.title
+            FROM Donation
+            JOIN DonationType on Donation.DonationType_idDonationType = DonationType.idDonationType
+            JOIN Event on Donation.Event_event_id = Event.event_id
+            WHERE value Between "' . $amount1 . '" AND "' . $amount2 . '"';
         $this->open();
         $result = mysql_query($sql, $con);
-        $this->close();
-        if ($result) {
-            $result = mysql_fetch_array($result);
+        $donations = array();
+        while ($rows = mysql_fetch_array($result)) {
             $donation = new Donation();
-            $donation->setDonation_id($result[0]);
-            $donation->setDate($result[1]);
-            $donation->setTime($result[2]);
-            $donation->setDetails($result[3]);
-            $donation->setWhen_entered($result[4]);
-            $donation->setDonationType_idDonationType($result[5]);
-            $donation->setValue($result[6]);
-            $donation->setEvent_event_id($result[7]);
-            $donation->setAdmin_idAdmin($result[8]);
-            $donation->setEntered_by_id($result[9]);
-        } else {
-            echo "DB error";
+            $donation->setDonation_id($rows[0]);
+            $donation->setDate($rows[1]);
+            $donation->setTime($rows[2]);
+            $donation->setWhen_entered($rows[3]);
+            $donation->setDetails($rows[4]);
+            $donation->setValue($rows[5]);
+            $donation->setDonation_type($rows[6]);
+            $donation->setEvent_name($rows[7]);
+            $donations[] = $donation;
         }
-        return $donation;
+        $this->close();
+        return $donations;
     }
 
 // end function
         
- //Updates a donation(single)    
+ //Updates a donation    
    public function updateDonation ($date, $time, $detail, $donType, $value, $eventId, $donId) {
         global $con;
                $sql = "update Donation set date='" . $date->getDate() . "', time='" . $time->getTime() . "', details='" . $details->getDetails() . "', DonationType_idDonationType='" . $donType->getDonationType() . "', value='" . $value->getValue() . "' , Event_event_id='" . $eventId->getEventId() . "' where donation_id=" . $donId . '"';
 		$this->open(); 
-		$result = mysql_query($sql, $con);
-		if ($result)
-		echo "DONATION UPDATED" ;
+		mysql_query($sql, $con);
 		$this->close();
-		return $result; 
+		return true; 
 		}
                 
  //end function               
@@ -550,11 +554,8 @@ class DBIO {
                 'INSERT INTO Donation (donation_id, date, time, details, value, Event_event_id, Admin_idAdmin, entered_by_id)
 		 VALUES ("' . $donId . '","' . $date . '","' . $time . '","' . $details . '","' . $donType . '","' . $value . '","' . $eventId . '","' . $adminId . '","' . $enteredById . '")';
 		$this->open(); 
-		$result = mysql_query($sql, $con);
-		if ($result)
-		echo "DONATION CREATED" ;
+		mysql_query($sql, $con);
 		$this->close();
-		return $result; 
 		} 
  //end function               
 	
