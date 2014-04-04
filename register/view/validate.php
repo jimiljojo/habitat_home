@@ -116,28 +116,29 @@
         <tr><td>Church or Group Affiliate:</td><td> <input type="text" value="<?php echo $church ?>"></td></tr>
         <tr><td>Are you a Church Ambassador?:</td><td> <input type="text" value="<?php echo $ambassador ?>"></td></tr>
         <tr><td><b>Contact Preference:</b></td></tr>
-        <?
-        if($checkPhone=="0"){
-        echo 'day <br>';
-    }
-
-    if($checkMail=="0"){
-        echo 'eve <br>';
-    }
-    
-    if($checkEmail=="0"){
-        echo 'weekend <br>';
-    }
-    ?>
-
-        <tr><td><?php echo $checkPhone ?></td></tr>
-        <tr><td><?php echo $checkMail ?></td></tr>
-        <tr><td><?php echo $checkEmail ?></td></tr>
-
-
-
-
     </table>
+
+        <?php
+
+            if($checkPhone=="1"){
+            echo 'day <br>';
+            }
+
+            if($checkMail=="1"){
+            echo 'eve <br>';
+            }
+        
+            if($checkEmail=="1"){
+            echo 'weekend <br>';
+            }
+        ?>
+
+        
+
+
+
+
+    
 
 
         
