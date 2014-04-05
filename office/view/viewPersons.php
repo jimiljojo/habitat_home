@@ -14,7 +14,7 @@
 <form id="viewPersonsForm" action="index.php" method="GET">
 <input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
 <input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
-<input name="act" id="act" type="hidden" value="viewPerson" >
+<input name="act" id="act" type="hidden" value="read" >
 <input name="pid" id="pid" type="hidden" value="0">
 <?php 
 	$persons = $tableinfo[0];
@@ -22,7 +22,7 @@
 	$fohs = $tableinfo[2];
 	$events = $tableinfo[3];
 
-	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>State</th><th>City</th><th>Zip</th><th>FOH</th></tr>';
+	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>State</th><th>City</th><th>Zip</th><th>Friends From</th></tr>';
 		
 		foreach ($persons as $person) {
 			echo '<tr onclick="retrieve(' . $person->getPerson_id() . ');">';

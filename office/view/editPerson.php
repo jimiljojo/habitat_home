@@ -13,11 +13,10 @@
     $info = mysql_fetch_array($allInfo);
 */
  
- 	  $account = $tableinfo[0];
- 	  $person = $tableinfo[1];
- 	  $contact = $tableinfo[2];
- 	  $address = $tableinfo[3];
-    $uname = $account->getUsername();
+ 
+ 	$person = $tableinfo[0];
+ 	$contact = $tableinfo[1];
+ 	$address = $tableinfo[2];
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
     $lName = $person->getLast_name();
@@ -44,7 +43,7 @@
     <input name="pid" type="hidden" value="<?php echo $person->getPerson_id(); ?>" >
     <input name="act" type="hidden" value="update" >
     <fieldset>
-    <legend>Account Info</legend>
+    <legend>Person Info</legend>
 	<div class="form-group">
       <label for="inputTitle" class="col-lg-2 control-label">Title</label>
       <div class="col-lg-10">
@@ -55,13 +54,6 @@
 		    <option value="Dr">Dr.</option>;
 		    <span class="required">*</span>
 		</select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputuName" class="col-lg-2 control-label">Username :</label>
-      <div class="col-lg-10">
-        <input name="uName" type="text" placeholder="first name" value="<?php echo $uname; ?>" >
-		<span class="required">*</span>
       </div>
     </div>
 	<div class="form-group">

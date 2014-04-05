@@ -29,7 +29,6 @@ alignment: bottom;
 
 </style>
 
-<h4>Accounts Search</h4>
 
 <script type="text/javascript" src="js/searchByHandler.js"></script>  <!-- I cant get this to work externally --> <!--This script changes the input boxes after drop down menu-->
 <script type="text/javascript">
@@ -74,6 +73,7 @@ break;
 </script>
 <br><br/>
 <form name="input" action="index.php" method="get">
+	<legend>Accounts Search</legend>
 <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
 <input name="act" type="hidden" value="read" > <!-- view all button -->
