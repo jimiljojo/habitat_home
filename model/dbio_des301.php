@@ -1061,13 +1061,13 @@ class DBIO {
 			$foh->setPerson($rows[15]);
 			$foh->setEvent($rows[16]);
 			$event->setTitle($rows[17]);
-			$contact->setAddress($address,$fohs,$events);
+			$contact->setAddress($address);
 			$persons[] = $person;
 			$contacts[] = $contact;
 			$fohs[] = $foh;
 			$events[] = $event;
 		}
-		$tableinfo = array($persons,$contacts,$foh,$events);
+		$tableinfo = array($persons,$contacts,$fohs,$events);
 		$this->close();
 		return $tableinfo;
 	}// end function

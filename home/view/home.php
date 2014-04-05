@@ -28,8 +28,8 @@ include 'home/model/home.php';
 </style>
 
 <?php 
-$userName= isset($_SESSION['userid']) ? $_SESSION['userid'] : 'null';
- $person=getPerson($userName);
+ $userName= isset($_SESSION['userid']) ? $_SESSION['userid'] : 'null';
+ $person = getPerson($userName);
  ?>
 
  

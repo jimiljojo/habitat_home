@@ -9,7 +9,7 @@
 
 	require_once 'root/config.php'; // CONFIG
 	
-	
+
 	// REQUIRES/INCLUDES
 	require_once('class/accnt.php');
 	require_once('class/foh.php');

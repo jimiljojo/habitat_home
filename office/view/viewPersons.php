@@ -25,33 +25,32 @@
 	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>State</th><th>City</th><th>Zip</th><th>FOH</th></tr>';
 		
 		foreach ($persons as $person) {
-				echo '<tr onclick="retrieve(' . $person->getPerson_id() . ');">';
-				echo '<td>' . $person->getTitle() . '</td>';
-				echo '<td>' . $person->getFirst_name() . '</td>';
-				echo '<td>' . $person->getLast_name() . '</td>';
-				echo '<td>' . $person->getDob() . '</td>';
-				foreach ($contacts as $contact) {
-					if($person->getContact() == $contact->getContact_id()){
-						echo '<td>' . $contact->getPhone() . '</td>';
-						$address = $contact->getAddress();
-						echo '<td>' . $address->getStreet1() . '</td>';
-						echo '<td>' . $address->getStreet2() . '</td>';
-						echo '<td>' . $address->getState() . '</td>';
-						echo '<td>' . $address->getCity() . '</td>';
-						echo '<td>' . $address->getZip() . '</td>';
-						foreach ($fohs as $foh) {
-							if($foh->getPerson() == $person->getPerson_id()){
-								foreach ($events as $event) {
-									echo '<td>' . $event->getTitle() . '</td>';
-								}
+			echo '<tr onclick="retrieve(' . $person->getPerson_id() . ');">';
+			echo '<td>' . $person->getTitle() . '</td>';
+			echo '<td>' . $person->getFirst_name() . '</td>';
+			echo '<td>' . $person->getLast_name() . '</td>';
+			echo '<td>' . $person->getDob() . '</td>';
+			foreach ($contacts as $contact) {
+				if($person->getContact() == $contact->getContact_id()){
+					echo '<td>' . $contact->getPhone() . '</td>';
+					$address = $contact->getAddress();
+					echo '<td>' . $address->getStreet1() . '</td>';
+					echo '<td>' . $address->getStreet2() . '</td>';
+					echo '<td>' . $address->getState() . '</td>';
+					echo '<td>' . $address->getCity() . '</td>';
+					echo '<td>' . $address->getZip() . '</td>';
+					$length = count($fohs);
+					$i = 0;
+					for ($i = 0; $i < $length; $i++) {
+							if($fohs[$i]->getPerson() == $person->getPerson_id()){
+								echo '<td>' . $events[$i]->getTitle() . '</td>';
 							}
-							else
-								echo '<td> NULL </td>';
-						}
 					}
 				}
+			}
 			echo '</tr>';		
 		}
+			
 		
 		echo '</table>';
 ?>
