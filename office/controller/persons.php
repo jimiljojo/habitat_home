@@ -9,7 +9,9 @@
 	switch ($act) {
 
 		case 'search':
-			// CODE HERE
+			include_once 'office/model/persons.php';
+			$tableinfo = search();
+			$page = $dir . '/view/viewPersons.php';
 			break;
 
 		case 'create':

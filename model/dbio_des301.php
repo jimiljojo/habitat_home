@@ -1232,6 +1232,93 @@ class DBIO {
 			}
 			return $persons;
 		}// end function
+
+		public function searchPersonByName($fname,$lname){
+		global $con;
+		$sql = 'SELECT Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip, FOH.Person_person_id, FOH.Event_event_id, Event.title FROM Person inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id left outer join FOH on Person.person_id = FOH.Person_person_id left outer join Event on FOH.Event_event_id = Event.event_id where Person.first_name = "' . $fname . '" or Person.last_name = "' . $lname . '"';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$persons = array();
+		$contacts =array();
+		$fohs = array();
+		$events = array();
+		while($rows = mysql_fetch_array($result)){
+			$contact = new Contact();
+			$address = new Address();
+			$person = new Person();
+			$foh = new foh();
+			$event = new Event();
+			$person->setPerson_id($rows[0]);
+			$person->setTitle($rows[1]);
+			$person->setFirst_name($rows[2]);
+			$person->setLast_name($rows[3]);
+			$person->setDob($rows[4]);
+			$person->setContact($rows[5]);
+			$contact->setContact_id($rows[6]);
+			$contact->setPhone($rows[7]);
+			$contact->setAddress($rows[8]);
+			$address->setAddress_id($rows[9]);
+			$address->setStreet1($rows[10]);
+			$address->setStreet2($rows[11]);
+			$address->setCity($rows[12]);
+			$address->setState($rows[13]);
+			$address->setZip($rows[14]);
+			$foh->setPerson($rows[15]);
+			$foh->setEvent($rows[16]);
+			$event->setTitle($rows[17]);
+			$contact->setAddress($address);
+			$persons[] = $person;
+			$contacts[] = $contact;
+			$fohs[] = $foh;
+			$events[] = $event;
+		}
+		$tableinfo = array($persons,$contacts,$fohs,$events);
+		$this->close();
+		return $tableinfo;
+	}// end function
                 
+     	public function searchPersonByOrg($org){
+		global $con;
+		$sql = 'SELECT Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip, FOH.Person_person_id, FOH.Event_event_id, Event.title FROM Person inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id left outer join FOH on Person.person_id = FOH.Person_person_id left outer join Event on FOH.Event_event_id = Event.event_id';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$person = array();
+		$contacts =array();
+		$fohs = array();
+		$events = array();
+		while($rows = mysql_fetch_array($result)){
+			$contact = new Contact();
+			$address = new Address();
+			$person = new Person();
+			$foh = new foh();
+			$event = new Event();
+			$person->setPerson_id($rows[0]);
+			$person->setTitle($rows[1]);
+			$person->setFirst_name($rows[2]);
+			$person->setLast_name($rows[3]);
+			$person->setDob($rows[4]);
+			$person->setContact($rows[5]);
+			$contact->setContact_id($rows[6]);
+			$contact->setPhone($rows[7]);
+			$contact->setAddress($rows[8]);
+			$address->setAddress_id($rows[9]);
+			$address->setStreet1($rows[10]);
+			$address->setStreet2($rows[11]);
+			$address->setCity($rows[12]);
+			$address->setState($rows[13]);
+			$address->setZip($rows[14]);
+			$foh->setPerson($rows[15]);
+			$foh->setEvent($rows[16]);
+			$event->setTitle($rows[17]);
+			$contact->setAddress($address);
+			$persons[] = $person;
+			$contacts[] = $contact;
+			$fohs[] = $foh;
+			$events[] = $event;
+		}
+		$tableinfo = array($persons,$contacts,$fohs,$events);
+		$this->close();
+		return $tableinfo;
+	}// end function
 }// end class
 ?>
