@@ -7,9 +7,13 @@
 
 	function search() {}
 	function create() {}
-	function read() {}
+	function read() {
+		global $dbio;
+		$tableinfo = $dbio->listOrgs();
+		return $tableinfo;
+	}
 	function update() {}
 	function delete() {}
-	function list() {}
+	
 
 ?>

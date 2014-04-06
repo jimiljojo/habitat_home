@@ -14,9 +14,9 @@
 */
  
  
- 	$person = $tableinfo[0];
- 	$contact = $tableinfo[1];
- 	$address = $tableinfo[2];
+ 	  $person = $tableinfo[0];
+ 	  $contact = $tableinfo[1];
+ 	  $address = $tableinfo[2];
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
     $lName = $person->getLast_name();

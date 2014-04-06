@@ -16,7 +16,9 @@
 			break;
 
 		case 'read':
-			// CODE HERE
+			include_once 'office/model/orgs.php';
+			$tableinfo = read();
+			$page = $dir . '/view/viewOrgs.php';
 			break;
 
 		case 'update':

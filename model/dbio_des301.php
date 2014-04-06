@@ -1451,7 +1451,7 @@ class DBIO {
 		$sql = 'SELECT Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip, FOH.Person_person_id, FOH.Event_event_id, Event.title FROM Person inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id left outer join FOH on Person.person_id = FOH.Person_person_id left outer join Event on FOH.Event_event_id = Event.event_id';
 		$this->open();
 		$result = mysql_query($sql, $con);
-		$person = array();
+		$persons = array();
 		$contacts =array();
 		$fohs = array();
 		$events = array();
@@ -1533,23 +1533,23 @@ class DBIO {
 						$person->setPrefPhone($result[12]);
 						$persons[] = $person;
                                                 
-                                                $volunteer = new Volunteer();
-                                                $volunteer->setConsentAge($result[13]);
-                                                $volunteer->setConsentVideo($result[14]);
-                                                $volunteer->setConsentWaiver($result[15]);
-                                                $volunteer->setConsentPhoto($result[16]);
-                                                $volunteer->setAvailDay($result[17]);
-                                                $volunteer->setAvailEve($result[18]);
-                                                $volunteer->setAvailWend($result[19]);
-                                                $volunteer->setPerson($result[20]);
-                                                $volunteer->setIsBoardMember($result[21]);
-                                                $volunteer->setConsentMinor($result[22]);
-                                                $volunteer->setConsentSafety($result[23]);
-                                                $volunteer->setEmergencyName($result[24]);
-                                                $volunteer->setEmergencyPhone($result[25]);
-                                                $volunteer->setChurchAmbassador($result[26]);
-                                                $volunteer->setAffiliation($result[27]);
-                                                $volunteers[] = $volunteer;                                                 
+                        $volunteer = new Volunteer();
+                        $volunteer->setConsentAge($result[13]);
+                        $volunteer->setConsentVideo($result[14]);
+                        $volunteer->setConsentWaiver($result[15]);
+                        $volunteer->setConsentPhoto($result[16]);
+                        $volunteer->setAvailDay($result[17]);
+                        $volunteer->setAvailEve($result[18]);
+                        $volunteer->setAvailWend($result[19]);
+                        $volunteer->setPerson($result[20]);
+                        $volunteer->setIsBoardMember($result[21]);
+                        $volunteer->setConsentMinor($result[22]);
+                        $volunteer->setConsentSafety($result[23]);
+                        $volunteer->setEmergencyName($result[24]);
+                        $volunteer->setEmergencyPhone($result[25]);
+                        $volunteer->setChurchAmbassador($result[26]);
+                        $volunteer->setAffiliation($result[27]);
+                        $volunteers[] = $volunteer;                                                 
 					} 
                                         $returnArray = array($results, $volunteers);
 				}
@@ -1559,5 +1559,36 @@ class DBIO {
 			}
 			return $returnArray;
         }
+	    public function listOrgs(){
+			global $con;
+			$sql = 'select Organization.organization_id, Organization.name, Address.street1, Address.street2, Address.city, Address.state, Address.zip, Contact.email, Contact.phone , Contact.phone2, Contact.extension from Organization inner join Contact on Organization.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id';
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$orgs = array();
+			$contacts =array();
+			while($rows = mysql_fetch_array($result)){
+				$contact = new Contact();
+				$address = new Address();
+				$org = new Organization();
+				$org->setOrganization_id($rows[0]);
+				$org->setName($rows[1]);
+				$address->setStreet1($rows[2]);
+				$address->setStreet2($rows[3]);
+				$address->setCity($rows[4]);
+				$address->setState($rows[5]);
+				$address->setZip($rows[6]);
+				$contact->setEmail($rows[7]);
+				$contact->setPhone($rows[8]);
+				$contact->setPhone2($rows[9]);
+				$contact->setExtension($rows[10]);
+				$contact->setAddress($address);
+				$orgs[] = $org;
+				$contacts[] = $contact;
+			}
+			$tableinfo = array($orgs,$contacts);
+			$this->close();
+			return $tableinfo;
+		}// end function
+
 }// end class
 ?>
