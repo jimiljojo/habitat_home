@@ -110,6 +110,13 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="inputzip" class="col-lg-2 control-label">Zip :</label>
+      <div class="col-lg-10">
+        <input name="zip" type="text" placeholder="zip" value="<?php echo $zip; ?>" >
+    <span class="required">*</span></label>
+      </div>
+    </div>
+    <div class="form-group">
       <label for="inputphone" class="col-lg-2 control-label">Phone :</label>
       <div class="col-lg-10">
         <input name="phone" type="text" placeholder="phone" value="<?php echo $phone; ?>" >

@@ -433,7 +433,7 @@ class DBIO {
 		
 		$sql = "update Person set title='" . $person->getTitle() ."', first_name='" . $person->getFirst_name() . "' , last_name='" . $person->getLast_name() . "' where person_id=" . $pid . ";" ;
 		$sql2 = "update Contact set phone='" . $contact->getPhone() . "', email='" . $contact->getEmail() . "', phone2='" . $contact->getPhone2() . "' , extension='" . $contact->getExtension() . "' where contact_id=(select Contact_contact_id from Person where person_id=" . $pid . ");";
-		$sql3 = "UPDATE Address SET street1='" . $address->getStreet1() . "', street2='" . $address->getStreet2() . "', city='" . $address->getCity() . "', state='" . $address->getState() . "' WHERE address_id=(SELECT address_id FROM Contact WHERE contact_id=(SELECT Contact_contact_id FROM Person WHERE person_id=" . $pid ."));";
+		$sql3 = "UPDATE Address SET street1='" . $address->getStreet1() . "', street2='" . $address->getStreet2() . "', city='" . $address->getCity() . "', state='" . $address->getState() . "', zip='" . $address->getZip() ."' WHERE address_id=(SELECT address_id FROM Contact WHERE contact_id=(SELECT Contact_contact_id FROM Person WHERE person_id=" . $pid ."));";
 		$this->open();
 		$result = mysql_query($sql, $con);
 	 	$result2 = mysql_query($sql2, $con);
@@ -1588,6 +1588,38 @@ class DBIO {
 			$tableinfo = array($orgs,$contacts);
 			$this->close();
 			return $tableinfo;
+		}// end function
+
+		public function getOrgById($oid){
+			global $con;
+			$sql = 'select Organization.organization_id, Organization.name, Address.street1, Address.street2, Address.city, Address.state, Address.zip, Contact.email, Contact.phone , Contact.phone2, Contact.extension from Organization inner join Contact on Organization.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id where Organization.organization_id= ' . $oid . '';
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$orgs = array();
+			$contacts =array();
+			$addresses =array();
+			while($rows = mysql_fetch_array($result)){
+				$contact = new Contact();
+				$address = new Address();
+				$org = new Organization();
+				$org->setOrganization_id($rows[0]);
+				$org->setName($rows[1]);
+				$address->setStreet1($rows[2]);
+				$address->setStreet2($rows[3]);
+				$address->setCity($rows[4]);
+				$address->setState($rows[5]);
+				$address->setZip($rows[6]);
+				$contact->setEmail($rows[7]);
+				$contact->setPhone($rows[8]);
+				$contact->setPhone2($rows[9]);
+				$contact->setExtension($rows[10]);
+				$addresses[] = $address;
+				$orgs[] = $org;
+				$contacts[] = $contact;
+			}
+			$orginfo = array($orgs,$contacts,$addresses);
+			$this->close();
+			return $orginfo;
 		}// end function
 
 }// end class
