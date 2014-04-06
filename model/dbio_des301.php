@@ -1489,5 +1489,75 @@ class DBIO {
 		$this->close();
 		return $tableinfo;
 	}// end function
+        
+        //function viewVolunteersWhereCertifiedOrNot($boolean)
+        //this takes a boolean and returns an array object containing a persons array and volunteers array
+        //depending on the boolean
+        //TRUE: returns the people and volunteer info for peoplethat have completed all the require consent tasks
+        //FALSE: returns the people and volunteer info for people that have not completed all the required consent tasks
+        public function viewVolunteersWhereCertifiedOrNot($boolean)
+        {
+            global $con;
+                        if($boolean == TRUE)
+                        {
+                            $sql = 'SELECT * FROM Person INNER JOIN Volunteer ON Person.person_id = Volunteer.Person_person_id WHERE Volunteer.consentAge = TRUE AND Volunteer.consentVideo = TRUE AND Volunteer.consentWaiver = TRUE AND Volunteer.consentSafety = TRUE AND Volunteer.emergencyName IS NOT NULL AND Volunteer.emergencyPhone IS NOT NULL';
+                        }
+                        else
+                        {
+                            $sql = 'SELECT * FROM Person INNER JOIN Volunteer ON Person.person_id = Volunteer.Person_person_id WHERE Volunteer.consentAge = FALSE OR Volunteer.consentVideo = FALSE OR Volunteer.consentWaiver = FALSE OR Volunteer.consentSafety = FALSE OR Volunteer.emergencyName IS NULL OR Volunteer.emergencyPhone IS NULL';
+                        }
+			$this->open();
+			$results = mysql_query($sql, $con);
+			$this->close();
+			$persons = array();
+                        $volunteers = array();
+                        
+			if($results)
+				{
+					while ($result = mysql_fetch_array($results)) 
+					{
+						
+						$person = new Person();
+						$person->setPerson_id($result[0]);
+						$person->setTitle($result[1]);
+						$person->setFirst_name($result[2]);
+						$person->setLast_name($result[3]);
+						$person->setGender($result[4]);
+						$person->setDob($result[5]);
+						$person->setMarital_status($result[6]);
+						$person->setContact($result[7]);
+						$person->setIsActive($result[8]);
+						$person->setLastActive($result[9]);
+						$person->setPrefEmail($result[10]);
+						$person->setPrefMail($result[11]);
+						$person->setPrefPhone($result[12]);
+						$persons[] = $person;
+                                                
+                                                $volunteer = new Volunteer();
+                                                $volunteer->setConsentAge($result[13]);
+                                                $volunteer->setConsentVideo($result[14]);
+                                                $volunteer->setConsentWaiver($result[15]);
+                                                $volunteer->setConsentPhoto($result[16]);
+                                                $volunteer->setAvailDay($result[17]);
+                                                $volunteer->setAvailEve($result[18]);
+                                                $volunteer->setAvailWend($result[19]);
+                                                $volunteer->setPerson($result[20]);
+                                                $volunteer->setIsBoardMember($result[21]);
+                                                $volunteer->setConsentMinor($result[22]);
+                                                $volunteer->setConsentSafety($result[23]);
+                                                $volunteer->setEmergencyName($result[24]);
+                                                $volunteer->setEmergencyPhone($result[25]);
+                                                $volunteer->setChurchAmbassador($result[26]);
+                                                $volunteer->setAffiliation($result[27]);
+                                                $volunteers[] = $volunteer;                                                 
+					} 
+                                        $returnArray = array($results, $volunteers);
+				}
+			else
+			{
+				echo "DB error viewVolunteersWhereCertifiedOrNot";
+			}
+			return $returnArray;
+        }
 }// end class
 ?>
