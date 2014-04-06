@@ -4,6 +4,8 @@
 	// FILE: office/controller/event.php
 	// AUTHOR: sbkedia
 
+	$_SESSION['userid'] = (isset($_GET['userid'])) ? $_GET['userid'] : '';
+	$_SESSION['password'] = (isset($_GET['password'])) ? $_GET['password'] : '';
 
 	switch ($act) {
 

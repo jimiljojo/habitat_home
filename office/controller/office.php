@@ -4,6 +4,7 @@
 	// FILE: office/controller/schedules.php
 	// AUTHOR: AUTOGEN
 
+	//$_SESSION['userid'] = $_SESSION['userid'];
 
 	switch ($act) {
 
@@ -32,6 +33,7 @@
 			break;
 
 		default:
+			$_SESSION['userid'] = $_SESSION['userid'];
 			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 

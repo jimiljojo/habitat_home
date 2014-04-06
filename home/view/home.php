@@ -27,12 +27,16 @@ include 'home/model/home.php';
     .cItem dd {border: 1px solid #000;}
 </style>
 
-<?php 
- $userName= isset($_SESSION['userid']) ? $_SESSION['userid'] : 'null';
+<?php
+	
+ $userName= $_SESSION['userName'];
  $person = getPerson($userName);
+ $personId= getPersonid($userName);
+ 
  ?>
 
  
+
 <h3>Welcome <?php echo $person->getTitle() . ' ' . $person->getFirst_name() . ' ' . $person->getLast_name(); ?></h3>
 <hr>
 <?php if ($isAdmin) { ?>

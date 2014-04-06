@@ -44,7 +44,7 @@ $act='loginCheck';
 <script type="text/javascript">
 		function verify()
             {
-            	if (document.getElementById('userid').value=="" || document.getElementById('userid').value==undefined)
+            	if (document.getElementById('userName').value=="" || document.getElementById('userName').value==undefined)
                 {
                     alert ("Please Enter your 'User Id'");
                     //return false;
@@ -75,7 +75,7 @@ $act='loginCheck';
 	    <input name="dir" type="hidden" value="<?php echo $dir;?>" >
 	    <input name="act" type="hidden" value="<?php echo $act;?>" >
 		<h2 class="center habitatBlue">Login</h2>
-		<input id="userid" name="userid" type="text"><label> User Id</label><br>
+		<input id="userName" name="userName" type="text"><label> User Id</label><br>
 		<input id="password" name="password" type="password"><label> Password</label><br>
 		<br>
 
