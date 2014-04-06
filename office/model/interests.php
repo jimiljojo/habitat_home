@@ -65,16 +65,20 @@
 	function readInterest()
 	{
 			$dbio = new DBIO();
-			$title = $_GET['vol1'];
-			$volInts = $dbio->readInterest($title);
+			$id = $_GET['id'];
+			$volInts = $dbio->readInterest($id);
 			echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Name</th><th>Interest Type</th><th>Interest</th></tr>';
 			foreach($volInts as $volInt) //loop which goes through each interest and pulls data (Interest() class call)
 				{
+						echo '<input id="dir" type="hidden" value="office">';
+						echo '<input id="sub" type="hidden" value="interests">';
+						echo '<input id="act" type="hidden" value="viewInterest">';
+						$id = $volInt->getId();
 						$first_name = $volInt->getFirst_name(); //Interest() class call
 						$last_name = $volInt->getLast_name(); //Interest() class call
 						$type_title = $volInt->getType_title(); //Interest() class call
 						$interest_title = $volInt->getInterest_title(); //Interest() class call
-						echo "<tr>";
+						echo '<tr onclick="retreive(' . $id . ');">';
 								echo "<td>{$first_name}, {$last_name}</td>";
 								//echo "<td>{$last_name}</td>";
 								echo "<td>{$type_title}</td>";
@@ -87,8 +91,8 @@
 	function readInterestType()
 	{
 		$dbio = new DBIO();
-		$title = $_GET['vol2'];
-		$volInts = $dbio->readInterestType($title);
+		$id = $_GET['id'];
+		$volInts = $dbio->readInterestType($id);
 		echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Name</th><th>Interest Type</th><th>Interest</th></tr>';
 		if (is_null($volInts))
 		{
@@ -96,20 +100,95 @@
 		}
 		else
 		{
-		foreach($volInts as $volInt) //loop which goes through each interest and pulls data (Interest() class call)
+			//$i=0;
+			foreach($volInts as $volInt) //loop which goes through each interest and pulls data (Interest() class call)
 			{
-					$first_name = $volInt->getFirst_name(); //Interest() class call
-					$last_name = $volInt->getLast_name(); //Interest() class call
-					$type_title = $volInt->getType_title(); //Interest() class call
-					$interest_title = $volInt->getInterest_title(); //Interest() class call
-					echo "<tr>";
-							echo "<td>{$first_name}, {$last_name}</td>";
-							//echo "<td>{$last_name}</td>";
-							echo "<td>{$type_title}</td>";
-							echo "<td>{$interest_title}</td>";
-							//echo "<td>'{$description}'</td>";
-					echo "</tr>";
+				echo '<input id="dir" type="hidden" value="office">';
+				echo '<input id="sub" type="hidden" value="interests">';
+				echo '<input id="act" type="hidden" value="viewInterestType">';
+				$id = $volInt->getId();
+				$first_name = $volInt->getFirst_name(); //Interest() class call
+				$last_name = $volInt->getLast_name(); //Interest() class call
+				$type_title = $volInt->getType_title(); //Interest() class call
+				$interest_title = $volInt->getInterest_title(); //Interest() class call
+				echo '<tr onclick="retreive(' . $id . ');">';
+						echo "<td>{$first_name}, {$last_name}</td>";
+						//echo "<td>{$last_name}</td>";
+						echo "<td>{$type_title}</td>";
+						echo "<td>{$interest_title}</td>";
+						//echo "<td>'{$description}'</td>";
+				echo "</tr>";
+				//$i++;
 			}
+		}
+	}
+	
+	function viewInterest()
+	{
+		$dbio = new DBIO();
+		$id = $_GET['id'];
+		$ints = $dbio->readInterest($id);
+		if (is_null($ints))
+		{
+			return null;
+		}
+		else
+		{
+			echo "<table><form name='viewInterest' action='' method='post'";
+				echo "<tr><th>Interest Type</th><th>Interest</th><th>Description</th></tr>";
+				echo '<tr>';
+				//echo "<td><input name = 'typeTitle' type='text' placeholder='{$ints[0]->getType_title()}'></td>";
+				echo "<td><select>";
+				echo "<option value='{$ints[0]->getTypeId()}'>{$ints[0]->getTypeId()}, {$ints[0]->getInterest_title()}</option>";
+				$intTypes = $dbio->listInterestTypes();
+				foreach ($intTypes as &$intType)
+				{
+					$interestType = $intType->getTitle();
+					$interestId = $intType->getId();
+					echo "<option value = '{$interestId}' name = '{$interestType}'>{$interestId}, {$interestType}</option>";
+				}
+				echo "<select></td>";
+				echo '<td><input name = "title" type="text" value="' . $ints[0]->getInterest_title() . '"></td>';
+				echo "<td><input name = 'description' type='text' value='{$ints[0]->getDescription()}'></td>";
+				echo "<td><input name='viewInterest' value='update' type='submit'></td>";
+				echo '</tr>';
+			echo '</form></table>';
+			if(isset($_POST['viewInterest']))
+			{
+				global $con;
+				$dbio = new DBIO();
+				$dbio->open();
+				$sql = "UPDATE Interest
+						SET Interest.type_id='{$interestId}', Interest.title='{$_POST['title']}', Interest.description='{$_POST['description']}'
+						WHERE interest_id = '{$id}'";
+				$result = mysql_query($sql,$con);
+				echo $interestId, $_POST['title'], $_POST['description'];
+				
+			}
+		}
+	}
+	
+	function viewInterestType()
+	{
+		$dbio = new DBIO();
+		$id = $_GET['id'];
+		$intTypes = $dbio->viewInterestType($id);
+		echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>ID</th><th>Interest Type</th><th>Description</th></tr>';
+		if (is_null($intTypes))
+		{
+			return null;
+		}
+		else
+		{
+			foreach($intTypes as $intType)
+			{
+				echo '<tr>';
+				echo '<td>' . $intType->getType_id() . '</td>';
+				echo '<td>' . $intType->getTitle() . '</td>';
+				echo '<td>' . $intType->getDescription() . '</td>';
+				echo '</tr>';
+			}
+			echo '</table>';
 		}
 	}
 ?>

@@ -29,12 +29,12 @@
 			
 		case 'readInterest':
 			include 'office/model/interests.php';
-			$page = $dir . '/view/readInterests.php';
+			$page = $dir . '/view/listInterests.php';
 			break;
 			
 		case 'readInterestType':
 			include 'office/model/interests.php';
-			$page = $dir . '/view/readInterests.php';
+			$page = $dir . '/view/listInterests.php';
 			break;
 
 		case 'updateInterests':
@@ -45,6 +45,16 @@
 		case 'updateInterestTypes':
 			include 'office/model/interests.php';
 			$page = $dir . '/view/listInterests.php';
+			break;
+			
+		case 'viewInterest':
+			include 'office/model/interests.php';
+			$page = $dir . '/view/viewInterests.php';
+			break;	
+			
+		case 'viewInterestType':
+			include 'office/model/interests.php';
+			$page = $dir . '/view/viewInterests.php';
 			break;
 	
 		default:

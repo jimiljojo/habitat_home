@@ -21,20 +21,20 @@
   echo '<center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>';
   echo "<br><br>";
   
-  if($_GET['act'] == "listInterests")
+  if($_GET['act'] == "listSchedule")
   {
-  	listInterests();
+  	listSchedule();
   }
-  elseif($_GET['act'] == "listInterestTypes")
+  elseif($_GET['act'] == "listScheduleSlot")
   {
-  	listInterestTypes();
+  	listScheduleSlot();
   }
-  elseif($_GET['act'] == "readInterest")
+  elseif($_GET['act'] == "readScheduleByEvent")
   {
-  	readInterest();
+  	readScheduleByEvent();
   }
-  elseif($_GET['act'] == "readInterestType")
+  elseif($_GET['act'] == "readScheduleByName")
   {
-  	readInterestType();
+  	readScheduleByName();
   }
 ?>

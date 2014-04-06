@@ -5,12 +5,12 @@
 
 		// ATTRIBUTES //
 
-		private $status;
-		private $eventName;
-		private $eventDate;
-		private $eventTime;
-		private $eventLocation;
-		private $eventType;
+		private $id;
+		private $timeStart;
+		private $timeEnd;
+		private $eventId;
+		private $description;
+		private $interestId;
 
 
 		// CONSTRUCTOR //
@@ -20,19 +20,19 @@
 
 		// METHOD //
 
-		public function getStatus() {return $this->status;}
-		public function getEventName() {return $this->eventName;}
-		public function getEventDate() {return $this->eventDate;}
-		public function getEventTime() {return $this->eventTime;}
-		public function getEventLocation() {return $this->eventLocation;}
-		public function getEventType() {return $this->eventType;}
+		public function getId() {return $this->id;}
+		public function gettimeStart() {return $this->timeStart;}
+		public function gettimeEnd() {return $this->timeEnd;}
+		public function getEvent_event_id() {return $this->eventId;}
+		public function getDescription() {return $this->description;}
+		public function getInterest_interest_id() {return $this->interestId;}
 
-		public function setStatus($status) {$this->status = $status;}
-		public function setEventName($eventName) {$this->eventName = $eventName;}
-		public function setEventDate($eventDate) {$this->eventDate = $eventDate;}
-		public function setEventTime($eventTime) {$this->eventTime = $eventTime;}
-		public function setEventLocation($eventLocation) {$this->eventLocation = $eventLocation;}
-		public function setEventType($eventType) {$this->eventType = $eventType;}
+		public function setId($id) {$this->id = $id;}
+		public function settimeStart($timeStart) {$this->timeStart = $timeStart;}
+		public function settimeEnd($timeEnd) {$this->timeEnd = $timeEnd;}
+		public function setEvent_event_id($eventId) {$this->eventId = $eventId;}
+		public function setDescription($description) {$this->description = $description;}
+		public function setInterest_interest_id($interestId) {$this->interestId = $interestId;}
 
 	}// end class
 ?>	    

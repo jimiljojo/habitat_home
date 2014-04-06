@@ -87,10 +87,18 @@ class DBIO {
 		public function getOrganization(){
 			global $con;
 			$sql='SELECT name from Organization';
+			$orgName=array();
 			$this->open();
 			$results=mysql_query($sql,$con);
+			while($result= mysql_fetch_array($results)){
+				$int_type=new Organization();
+				$int_type->setOrgName($result[0]);
+				$orgName[]=$int_type;
+
+			}
 			$this->close();
-			
+			return $orgName;
+
 		}
 
 

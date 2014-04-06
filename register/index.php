@@ -14,6 +14,7 @@
 	require_once('class/item.php');
 	require_once('class/interest.php');
 	require_once ('model/dbio_register.php');
+	require_once('class/organization.php');
 	$dbio= new DBIO();
 
 		

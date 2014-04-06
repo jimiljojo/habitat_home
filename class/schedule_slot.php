@@ -9,9 +9,9 @@
 
 		// ATTRIBUTES //
 
-		private $Person_person;
 		private $id;
-		private $;
+		private $volunteer_Person_person_id;
+		private $schedule_id;
 
 
 		// CONSTRUCTOR //
@@ -21,13 +21,13 @@
 
 		// METHODS //
 
-		public function getPerson_person() {return $this->Person_person;}
 		public function getId() {return $this->id;}
-		public function get() {return $this->;}
+		public function getVolunteerPersonPersonId() {return $this->Volunteer_Person_person_id;}
+		public function getScheduleId() {return $this->schedule_id;}
 
-		public function setPerson_person($Person_person) {$this->Person_person = $Person_person;}
 		public function setId($id) {$this->id = $id;}
-		public function set($) {$this-> = $;}
+		public function setVolunteerPersonPersonId($Volunteer_Person_person_id) {$this->Volunteer_Person_person_id = $Volunteer_Person_person_id;}
+		public function setScheduleId($schedule_id) {$this->schedule_id = $schedule_id;}
 
 	}// end class
 
