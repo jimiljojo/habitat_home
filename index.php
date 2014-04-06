@@ -1,6 +1,7 @@
 <?php
 
 	//----- TEMPORARY VALUES
+	session_start();
 	
 	$isAdmin = true;
 	$isOffice = true;

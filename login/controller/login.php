@@ -4,6 +4,7 @@
 	global $act;
     global $msg;
     global $dir;
+    global $user;
 
     $act = (isset($_GET['act'])) ? $_GET['act'] : '';
     $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
@@ -14,11 +15,14 @@
 
 	switch($act)
 	{
-		case 'loginCheck':
+		case 'loginCheck';
 	    //session_start();
 	    $user=($_GET['userid']);
 	    $pw=($_GET['password']);
 	    $dbCheck=$dbio->getLogin($user,$pw);
+	    global $personid;
+	    $personid= $dbio->getPersonIdByUserName($user);
+
 	    
 	    if($user != $dbCheck)
 	    {
@@ -33,12 +37,10 @@
 	    else
 	    {	
 	    	$dir='home';
-	    	$_SESSION['userid'] = (isset($_GET['userid'])) ? $_GET['userid'] : '';
-	    	$_SESSION['password'] = (isset($_GET['password'])) ? $_GET['password'] : '';
-	    	//include 'home/model/home.php';
+	    	
+	    	$_SESSION['personid']=$personid;
+	    	$_SESSION['userName'] = (isset($_GET['userName'])) ? $_GET['userName'] : '';
 	    	$page = $dir . '/view/home.php';
-
-
 	    }
 
 

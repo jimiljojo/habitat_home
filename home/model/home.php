@@ -21,4 +21,11 @@
 		
 	}
 	
+	function getPersonid($userName){
+
+	global $dbio;
+	$personId=$dbio->getPersonIdByUserName($userName);
+	$_SESSION['personid'] = $personId;
+	return $personId;	
+	}
 ?>
