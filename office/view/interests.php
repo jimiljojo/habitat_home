@@ -164,12 +164,12 @@ function dropDownMenu()
 	
 	switch (v)
 	{			
-		case "viewInterest":
+		case "readInterest":
 			i1.style.display = show;
 			i2.style.display = hide;
 		break;
 		
-		case "viewInterestType":
+		case "readInterestType":
 			i1.style.display = hide;
 			i2.style.display = show;
 		break;
@@ -218,10 +218,10 @@ function dropDownMenu()
 		<input type="submit" value="Search By"> <!-- search by button -->
 		<select id="searchby" name="act" onclick='dropDownMenu()' >
 			<option value="" disabled selected>-Select-</option>--> <!-- drop down menu option; default -->
-			<option value="viewInterest" name="Interest">Interest</option>
-			<option value="viewInterestType" name="Interest Type">Interest Type</option>
+			<option value="readInterest" name="Interest">Interest</option>
+			<option value="readInterestType" name="Interest Type">Interest Type</option>
 		</select>
-		<select id="vol1" name="vol1" action="/model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
+		<select id="vol1" name="id" action="/model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
 			<option value="" disabled selected>-Select Interest-</option> <!-- drop down menu option; default -->
 			<?php //creates drop down menu options AND alphabetizes 
 				require_once '/class/interest.php';
@@ -229,33 +229,32 @@ function dropDownMenu()
 				$hold = array();
 				foreach($ints as &$int)
 				{
+					$interestId = $int->getId();
 					$interest = $int->getTitle();
-					$holdInterest[] = $interest;
+					//$holdInterest[] = $interest;
+					//$holdArray = array($interest, $interestId);
+					//$holdInterest[] = $holdArray;
+					echo "<option value = '{$interestId}' name = '{$interest}'>{$interest}</option>";
 				}
-				sort($holdInterest);
-				foreach($holdInterest as &$val)
+				//array_multisort($interest, SORT_DESC, $holdInterest);
+				//foreach($holdInterest as &$val)
 				{
-					$sortedInt = $val;
-					echo "<option value = '{$sortedInt}' name = '{$sortedInt}'>{$sortedInt}</option>";
+					//$sortedInt = $val;
+					//echo "<option value = '{$interestId}' name = '{$sortedInt}'>{$sortedInt}</option>";
 				}
 			?>
 		</select>
-		<select id='vol2' name="vol2" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
+		<select id='vol2' name="id" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
 		<option value="" disabled selected>-Select Interest Type-</option> <!-- drop down menu option; default -->
 			<?php
-				//require_once '/class/item.php';
 				$intTypes = $dbio->listInterestTypes();
 				foreach ($intTypes as &$intType)
 				{
 					$interestType = $intType->getTitle();
-					$holdInterestType[] = $interestType;
+					$interestId = $intType->getId();
+					echo "<option value = '{$interestId}' name = '{$interestType}'>{$interestType}</option>";
 				}
-				sort($holdInterestType);
-				foreach($holdInterestType as &$val)
-				{
-					$sortedIntType = $val;
-					echo "<option value = '{$sortedIntType}' name = '{$sortedIntType}'>{$sortedIntType}</option>";
-				}
+
 			?> <!--end drop down menu options-->
 		</select> <!-- end drop down menu -->
 	</form> <!-- end search by form -->
