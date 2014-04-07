@@ -1622,5 +1622,32 @@ class DBIO {
 			return $orginfo;
 		}// end function
 
+		public function createOrg($organization,$contact,$address){
+		global $con;
+		$this->open();
+
+		$sql =	"INSERT INTO Address
+				(street1,street2,city,state,zip)
+				VALUES
+				('" .$address->getStreet1(). "','" .$address->getStreet2(). "','" .$address->getCity(). "','" .$address->getState(). "','" .$address->getZip(). "');";
+		$result1 =mysql_query($sql, $con);
+
+
+		$sql=	"INSERT INTO Contact
+				(address_id,phone,email,phone2,extension)
+				Select Max(address_id),'" . $contact->getPhone() . "','" . $contact->getEmail() . "','" . $contact->getPhone2() . "','" . $contact->getExtension() . "' From homes_db.Address;";
+		$result2 = mysql_query($sql, $con);	
+
+		$sql=	"insert into Organization 
+				(name,Contact_contact_id) 
+				values ('" . $organization->getName() . "', (select contact_id from Contact where email = '" . $contact->getEmail() ."'))";
+		$result3 = mysql_query($sql, $con);			
+		$this->close();
+		if($result1 && $result2 && $result3)
+			return true;
+		else
+			return false;
+	}
+
 }// end class
 ?>

@@ -12,7 +12,8 @@
 			break;
 
 		case 'create':
-			// CODE HERE
+			include_once 'office/model/orgs.php';
+			$page = $dir . '/view/createOrg.php';
 			break;
 
 		case 'read':
@@ -27,8 +28,10 @@
 			echo $updated;
 			break;
 
-		case 'delete':
-			// CODE HERE
+		case 'confirmCreate':
+			include_once 'office/model/orgs.php';
+			$updated = create();
+			$page = $dir . '/view/createOrg.php';
 			break;
 
 		case 'edit':

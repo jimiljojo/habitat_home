@@ -11,7 +11,7 @@
 	switch ($act) {
 
 		case 'updateConsent':
-                    $personid="20";      
+                    $personid=$_SESSION['personid'];
                     $minor= (isset($_GET['less18'])) ? $_GET['less18'] : '';
                     if($minor=="1"){
                         $consentMinor="1";

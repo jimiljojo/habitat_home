@@ -12,7 +12,7 @@
         $act = (isset($_GET['act'])) ? $_GET['act'] : '';
         $msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
         
-        $personId= 20;
+        $personId= $_SESSION['personid'];
         
         //include ($dir . '/model/availability.php');
 

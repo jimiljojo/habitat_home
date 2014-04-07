@@ -4,7 +4,7 @@
 	// FILE: account/model/info.php
 	// AUTHOR: AUTOGEN
 	
-	$pid = 2;
+	$pid = $_SESSION['personid'];
 	$account = new Account();
 	$account= $dbio->readAccountInfo($pid);
 

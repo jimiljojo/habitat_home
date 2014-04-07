@@ -15,7 +15,7 @@
     function getVolunteerConsent() {
         
         global $dbio;
-        $ppid="20";
+        $ppid=$_SESSION['personid'];
         $dbConsent = $dbio->getVolunteerConsent($ppid);
         
         return $dbConsent;
