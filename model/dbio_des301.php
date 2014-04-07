@@ -677,6 +677,7 @@ class DBIO {
 	public function getEventId($person_id){
 		global $con;
 		$sql='SELECT Event_event_id from Person_relates_to_Event where Person_person_id="'.$person_id.'"'; 
+		//$eventId=array();
 		$this->open();
 		$result=mysql_query($sql,$con);
 		if (!$result) {
@@ -684,6 +685,7 @@ class DBIO {
 		}
 		while ($row = mysql_fetch_array($result)){
 				$eventId=$row[0];
+
 			}
 		$this->close();
 		return $eventId;

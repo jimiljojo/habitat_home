@@ -17,9 +17,15 @@ function indexVolunteerBy($value1, $value2) {}
 
 function createVolunteer($parameter){}
 
-function listVolunteer(){}
+function listVolunteer(){
+    global $dbio;
+    $volunteers = $dbio->listVolunteers();
+    return $volunteers;
+}
 
 function editVolunteer(){} 
+
+
 
 
 //test

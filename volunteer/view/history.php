@@ -9,9 +9,15 @@
         
        // $dbevent = getEvent();
         $dbevent= getEvents();
+        // foreach($dbevent as $a){
+        //     echo $a;
+        // }
+        
         $dbdate = getDates();
-        $dbHours = getHours();
+        
 
+        $dbHours = getHours();
+        
 
         
         
@@ -128,9 +134,9 @@
                 // echo '<td>' . $startHours . ':' . $startMins . ' ' . $timeOfDay . '</td>';
                 // echo '<td>' . $endHours . ':' . $endMins . ' ' . $timeOfDay2 . '</td>';
                 // echo '<td>' . $auth[$i] . '</td>';
-                echo '<td>' . $dbevent . '</td>';
-                echo '<td>' . $dbdate . '</td>';
-                echo '<td>' . $dbHours . '</td>';
+                foreach ($dbevent as $a) echo '<td>' . $a . '</td>';
+                foreach ($dbdate as $b) echo '<td>' . $b . '</td>';
+                foreach ($dbHours as $c) echo '<td>' . $c . '</td>';
                 
                 echo '<td>' . "Yes" . '</td>';
             echo '</tr>';
@@ -156,17 +162,11 @@
    
 </table>
     
-    <h5>Total Time Worked:
-    <?php
-    if ($totalMin == "0")
-    {
-        echo $totalHours . ' hours.';
-    }
-    else
-    {
-        echo $totalHours . ' hours ' . $totalMin . ' minutes.';
-    }
-    ?></h5>
+    <h5>Total Time Worked: 
+        <?php echo "105 hours"; ?>
+    
+    
+    </h5>
     
 </form>
 <hr>

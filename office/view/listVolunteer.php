@@ -5,17 +5,12 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- * Author: rwg5215
+ * Author: rwg5215 list all volunteers
  */
 ?>
 <?php
 
-	$fname = array('Mary', 'Patricia', 'Linda', 'Barbara', 'Elizabeth', 'Jennifer', 'Maria', 'Susan', 'Margareet', 'Dorothy', 'James','John','Robert','Michael','William','David','Richard','Charles','Joseph','Thomas');
-    $lname = array('Smith','Johnson','Williams','Brown','Jones','Miller','Davis','Garcia','Rodriguez','Wilson');
-    $sname = array('Second', 'Third', 'First','Fourth','Park','Fifth','Main','Sixth','Oak','Seventh');
-    $stype = array('St', 'Ave', 'Rd', 'Way', 'Ln');
-    $states = array('PA', 'MD', 'NY', 'NJ', 'OH', 'VA', 'IL', 'WV', 'IN', 'TX');
-    $cities = array('East St. Louis','Camden','Flint','West Memphis','Saginaw','Detroit','Atlantic City','St. Louis','Newburg','Inkster');
+
 	
 ?>
 <html>
@@ -44,9 +39,11 @@
 		<input id="act" type="hidden" value="retrieve">
 		<table>
 		<?php
-			for ($id=0; $id<15; $id++) {
+			foreach($volunteers as $volunteer) {
+                            
+                                
 				
-				// $id = object->getId();	
+				/*// $id = object->getId();	
 				$name = $lname[rand(0, sizeof($lname) - 1)] . ', ' . $fname[rand(0, sizeof($fname) - 1)];
 				$month = rand(1,12);
 				$day = rand(1,30);
@@ -54,7 +51,7 @@
 				$street =  rand(0, 99) . ' ' . $sname[rand(0, sizeof($sname) - 1)] . ' ' . $stype[rand(0, sizeof($stype) - 1)];
 				$city = $cities[rand(0, sizeof($cities) - 1)];
 				$state = $states[rand (0, sizeof($states) - 1)];
-				$zip = rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9);
+				$zip = rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9);*/
 				
 				echo '<tr onclick="retreive(' . $vid . ');">'; // <tr onclick="retreive(n);">
 				
@@ -68,6 +65,8 @@
 				
 				echo '</tr>';
 			}
+                        
+                        var_dump($volunteers);
 		?>
 		</table>
 		<br>

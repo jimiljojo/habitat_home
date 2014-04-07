@@ -1,7 +1,7 @@
 <?php
 
 
-	class volunteerEvents {
+	class VolunteerEvents {
 
 		// ATTRIBUTES //
 
