@@ -22,6 +22,7 @@ function listVolunteer(){
     $volunteers = $dbio->listVolunteers();
     return $volunteers;
 }
+//function readContact($id){}
 
 function editVolunteer(){} 
 

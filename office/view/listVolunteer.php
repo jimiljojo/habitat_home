@@ -41,7 +41,26 @@
 		<?php
 			foreach($volunteers as $volunteer) {
                             
-                                
+                            $person_id = $volunteer->getPerson_id();
+                            $title = $volunteer->getTitle();
+                            $first_name = $volunteer->getFirst_name();
+                            $last_name = $volunteer->getLast_name();
+                            $contact = $volunteer->getContact();
+                            
+                           
+                            $contacts = $dbio->readContact($contact);
+                            $phone = $contacts->getPhone();
+                            $email = $contacts->getEmail();
+                            $address = $contacts->getAddress();
+                            
+                            $addresses = $dbio->readAddress($address);
+                            $address_id = $addresses->setAddress_id;
+                            $street1 = $addresses->setStreet1;
+                            $street2 = $addresses->setStreet2;
+                            $city = $addresses->setCity;
+                            $state = $addresses->setState;
+                            $zip = $addresses->setZip;
+                           
 				
 				/*// $id = object->getId();	
 				$name = $lname[rand(0, sizeof($lname) - 1)] . ', ' . $fname[rand(0, sizeof($fname) - 1)];
@@ -53,16 +72,21 @@
 				$state = $states[rand (0, sizeof($states) - 1)];
 				$zip = rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9);*/
 				
-				echo '<tr onclick="retreive(' . $vid . ');">'; // <tr onclick="retreive(n);">
+				echo '<tr onclick="retreive(' . $person_id . ');">'; // <tr onclick="retreive(n);">
 				
-				echo '<td>' . $name .'</td>';
-				echo '<td>Dr.</td>';
-				echo '<td class="right">' . $month . '-' . $day . '-' . $year . '</td>';
-				echo '<td class="right">' . $street . '</td>';
-				echo '<td>' . $city . '</td>';
-				echo '<td class="right">' . $state . '</td>';
-				echo '<td>' . $zip . '</td>';
+				echo '<td>' . $title .'</td>';
+                                echo '<td>' . $first_name .'</td>';
+                                echo '<td>' . $last_name .'</td>';
 				
+				echo '<td class="right">' . $phone . '</td>';
+				echo '<td class="right">' . $address . '</td>';
+                                echo '<td class="right">' . $street1 . '</td>';
+                                echo '<td class="right">' . $street2 . '</td>';
+                                echo '<td class="right">' . $city . '</td>';
+                                echo '<td class="right">' . $state . '</td>';
+                                echo '<td class="right">' . $zip . '</td>';
+				echo '<td>' . $email . '</td>';
+							
 				echo '</tr>';
 			}
                         
