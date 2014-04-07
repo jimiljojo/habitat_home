@@ -46,6 +46,9 @@
 		$address->setCity($_GET['city']);
 		$address->setState($_GET['state']);
 		$address->setZip($_GET['zip']);
+		global $dbio;
+		$updated = $dbio->updateOrg($oid,$organization,$contact,$address);
+		return $updated;
 	}
 	function edit() {
 		$oid = $_GET['oid'];

@@ -3,7 +3,8 @@
 // TITLE: Office Persons View
 // FILE: office/view/persons.php
 
-
+if($updated)
+      echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 
 ?>
 
@@ -92,12 +93,9 @@ break;
    <input type="hidden" name="act" value="search">
    <input name="searchBtn" type="submit" value="Search" action="index.php" method="get">
 
-<select id="searchBy" name="searchBy" action="/habitat/office/model/accounts.php" method="get" onclick='searchByHandler()'>
-<option value="name" selected="selected" >Name</option>
-<option value="organization" >Organization</option>
+<label>Organization name :</label>
 </select>
-<input id="input1" name="input1" placeholder="first name" type="text">
-<input id="input2" name="input2" placeholder="last name" type="text">
+<input id="orgname" name="orgname" placeholder="Organization Name" type="text">
 </form><br><br/> 
 
 <!--results can be listed here, pushing text down.-->

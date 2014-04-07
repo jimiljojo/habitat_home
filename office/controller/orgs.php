@@ -25,7 +25,7 @@
 		case 'update':
 			include_once 'office/model/orgs.php';
 			$updated = update();
-			echo $updated;
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 
 		case 'confirmCreate':

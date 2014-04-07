@@ -1623,31 +1623,47 @@ class DBIO {
 		}// end function
 
 		public function createOrg($organization,$contact,$address){
-		global $con;
-		$this->open();
+			global $con;
+			$this->open();
 
-		$sql =	"INSERT INTO Address
-				(street1,street2,city,state,zip)
-				VALUES
-				('" .$address->getStreet1(). "','" .$address->getStreet2(). "','" .$address->getCity(). "','" .$address->getState(). "','" .$address->getZip(). "');";
-		$result1 =mysql_query($sql, $con);
+			$sql =	"INSERT INTO Address
+					(street1,street2,city,state,zip)
+					VALUES
+					('" .$address->getStreet1(). "','" .$address->getStreet2(). "','" .$address->getCity(). "','" .$address->getState(). "','" .$address->getZip(). "');";
+			$result1 =mysql_query($sql, $con);
 
 
-		$sql=	"INSERT INTO Contact
-				(address_id,phone,email,phone2,extension)
-				Select Max(address_id),'" . $contact->getPhone() . "','" . $contact->getEmail() . "','" . $contact->getPhone2() . "','" . $contact->getExtension() . "' From homes_db.Address;";
-		$result2 = mysql_query($sql, $con);	
+			$sql=	"INSERT INTO Contact
+					(address_id,phone,email,phone2,extension)
+					Select Max(address_id),'" . $contact->getPhone() . "','" . $contact->getEmail() . "','" . $contact->getPhone2() . "','" . $contact->getExtension() . "' From homes_db.Address;";
+			$result2 = mysql_query($sql, $con);	
 
-		$sql=	"insert into Organization 
-				(name,Contact_contact_id) 
-				values ('" . $organization->getName() . "', (select contact_id from Contact where email = '" . $contact->getEmail() ."'))";
-		$result3 = mysql_query($sql, $con);			
-		$this->close();
-		if($result1 && $result2 && $result3)
-			return true;
-		else
-			return false;
-	}
+			$sql=	"insert into Organization 
+					(name,Contact_contact_id) 
+					values ('" . $organization->getName() . "', (select contact_id from Contact where email = '" . $contact->getEmail() ."'))";
+			$result3 = mysql_query($sql, $con);			
+			$this->close();
+			if($result1 && $result2 && $result3)
+				return true;
+			else
+				return false;
+	  	}
+
+	  	public function updateOrg($oid,$organization,$contact,$address){
+	  		global $con;
+			$this->open();
+			$sql = "UPDATE Organization set name = '" . $organization->getName() . "' where organization_id = " . $oid ."";
+			$sql2 = "update Contact set phone='" . $contact->getPhone() . "', email='" . $contact->getEmail() . "', phone2 = '" . $contact->getPhone2() . "', extension = '" . $contact->getExtension() . "' where contact_id=(select Contact_contact_id from Organization where organization_id='" . $oid . "')";
+			$sql3 = "update Address set street1='" . $address->getStreet1() . "', street2='" . $address->getStreet2() . "', city='" . $address->getCity() . "', state='" . $address->getState() . "', zip = '" . $address->getZip() . "' where address_id=(select address_id from Contact where contact_id=(select Contact_contact_id from Organization where organization_id=" . $oid . "))";
+			$result1 = mysql_query($sql, $con);			
+			$result2 = mysql_query($sql2, $con);			
+			$result3 = mysql_query($sql3, $con);			
+			$this->close();
+			if($result1 && $result2 && $result3)
+				return true;
+			else
+				return false;
+	  	}
 
 }// end class
 ?>
