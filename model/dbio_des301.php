@@ -1131,35 +1131,14 @@ class DBIO {
 		}// end function
 
 		//create new person done not tested
-		public function createPerson($person, $contact, $address)
-		{
-			$addressID = createAddress($address);
-			if ($addressID)  //if address is created
-			{
-				$contactID = createContact($contact, $addressID);
-				if($contactID)	//if contact is created
-				{
-					//echo 'banana';
-					//insert row into peson table with relavent shit
-					global $con;
-					$sql = 'INSERT INTO Person VALUES (' . $person->getTitle() . ' , ' .$person->getFirst_name(). ', ' .$person->getLast_name(). ', ' .$person->getGender(). ', ' .$person->getDob(). ', ' .$person->getMarital_status(). ', '  .$contactID. ', ' .$person->getIsActive(). ', ' .$person->getLastActive(). ', ' .$person->getPrefEmail(). ', ' .$person->getPrefMail(). ', '  .$person->getPrefPhone(). ')';
-					$this->open();
-					$result = mysql_query($sql, $con);
-					$this->close();
-					if($result)
-					{
-						return true;
-					}
-					else
-					{
-						echo 'error creating person';
-						return false;
-					}
-
-				}
-			}
-
+		public function createPerson($person, $contact, $address){
+			global $con;
+			$sql = "INSERT INTO Contact SET phone='" . $contact->getPhone() ."', email='" . $contact->getEmail() ."', '" . $contact->getPhone2() . "', '" . $contact->getExtension() . "'  ";
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
 		}
+		
 
 		//create contact done not tested
 		public function createContact($contact, $addressID)
