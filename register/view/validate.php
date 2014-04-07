@@ -58,7 +58,7 @@
     <input name="act" type="hidden" value="<?php echo '' . $act;?>" >
     <table>
         
-        <tr><td><b>Username:</td><td> <?php echo $fname ?> </td></tr>
+        <tr><td><b>Username:</td><td> <?php echo $userName ?> </td></tr>
 
         <tr><td><b>Personal Information:<b></td></tr>
         <tr><td>Title:</td><td> <input type="text" value="<?php echo $title ?>"></td></tr>
