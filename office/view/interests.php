@@ -221,10 +221,10 @@ function dropDownMenu()
 			<option value="readInterest" name="Interest">Interest</option>
 			<option value="readInterestType" name="Interest Type">Interest Type</option>
 		</select>
-		<select id="vol1" name="id" action="/model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
+		<select id="vol1" name="id" action="model/interests.php" method="POST" style="display:none"> <!-- drop down menu -->
 			<option value="" disabled selected>-Select Interest-</option> <!-- drop down menu option; default -->
 			<?php //creates drop down menu options AND alphabetizes 
-				require_once '/class/interest.php';
+				require_once 'class/interest.php';
 				$ints = $dbio->listInterests();
 				$hold = array();
 				foreach($ints as &$int)
@@ -244,7 +244,7 @@ function dropDownMenu()
 				}
 			?>
 		</select>
-		<select id='vol2' name="id" action="/model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
+		<select id='vol2' name="id" action="model/interests.php" method="POST" style="display:none">" <!--watch difference between double and single quotes; 3hr+ wasted-->
 		<option value="" disabled selected>-Select Interest Type-</option> <!-- drop down menu option; default -->
 			<?php
 				$intTypes = $dbio->listInterestTypes();

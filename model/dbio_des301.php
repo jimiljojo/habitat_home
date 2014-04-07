@@ -711,7 +711,7 @@ class DBIO {
 		
 		public function readInterest($id)
 		{
-			require_once '/class/volunteerInterest.php';
+			require_once 'class/volunteerInterest.php';
 			global $con;
 			$this->open();
 			//global $volInts;
@@ -743,7 +743,7 @@ class DBIO {
 		
 		
 		public function readInterestType($id){
-			require_once '/class/volunteerInterest.php';
+			require_once 'class/volunteerInterest.php';
 			global $con;
 			$this->open();
 			//global $volInts;
@@ -773,7 +773,7 @@ class DBIO {
 		
 		public function viewInterestType($id)
 		{
-			include_once "/class/interest_type.php";
+			include_once "class/interest_type.php";
 			global $con;
 		  $intTypes = array();
 		  //$sql = 'SELECT type_id, title FROM Interest_Type ORDER BY "title"';
@@ -801,7 +801,7 @@ class DBIO {
 
 		public function listSchedule() //view all 
         {
-			include_once "/class/schedule.php";
+			include_once "class/schedule.php";
             global $con;
 			$sql = 'SELECT id, "rime start", timeEnd, Event_event_id, description, Interest_interest_id FROM Schedule';
 			$this->open();
@@ -825,7 +825,7 @@ class DBIO {
 		
 		public function listScheduleSlot()
 		{
-			include_once "/class/schedule_slot.php";
+			include_once "class/schedule_slot.php";
             global $con;
 			$sql = 'SELECT id, Volunteer_person_person_id, Schedule_id FROM Schedule_slot';
 			$this->open();
@@ -845,7 +845,7 @@ class DBIO {
 		
 		public function readSchedule($eventId) //view all 
         {
-			include_once "/class/eventHasSchedule.php";
+			include_once "class/eventHasSchedule.php";
             global $con; 
 			$sql = "SELECT Event.event_id, Schedule.id, Event.title, Schedule.timeStart, Schedule.timeEnd, Schedule.description FROM Event
 					JOIN Schedule ON Event.event_id = Schedule.Event_event_id
@@ -893,7 +893,7 @@ class DBIO {
 		
         public function readScheduleByName($personId) // search by user, might need a better way to write it
         {
-				include_once "/class/schedule.php";
+				include_once "class/schedule.php";
 				global $con;
 				/*$sql= 'SELECT Person.person_id, Person.last_name, Person.first_name, Schedule.timeStart, Schedule.timeEnd, Schedule.Event_event_id, Schedule.description FROM Person
 				JOIN Schedule_slot On Person.person_id = Schedule_slot.Volunteer_Person_person_id

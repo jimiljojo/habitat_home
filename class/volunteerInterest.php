@@ -1,5 +1,5 @@
 <?php //bmw5285
-	include_once "/class/person.php";
+	include_once "class/person.php";
 	class VolunteerInterest{
 		  
 		// ATTRIBUTES //
