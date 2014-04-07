@@ -3,7 +3,8 @@
 // TITLE: Office Persons View
 // FILE: office/view/persons.php
 // AUTHOR: Martin Arabi; mv5164
-
+if($updated)
+      echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 
 ?>
 
@@ -80,8 +81,11 @@ break;
 <input type="submit" value="View All">
 </form><br/>
 
-<form name="input" action="register/index.php" method="get"> <!-- create new button -->
-<input type="submit" value="Create New">
+<form name="input" action="index.php" method="get"> 
+	<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+	<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+	<input name="act" type="hidden" value="create" >
+	<input type="submit" value="Create New">
 </form><br><br/>
 <form class='searchBy' method="GET" action="index.php"> <!-- search by, drop down menu, and input boxes -->
    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >

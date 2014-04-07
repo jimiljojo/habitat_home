@@ -15,7 +15,8 @@
 			break;
 
 		case 'create':
-			// CODE HERE
+			include_once 'office/model/persons.php';
+			$page = $dir . '/view/createPerson.php';
 			break;
 
 		case 'read':
@@ -27,10 +28,13 @@
 		case 'update':
 			include_once 'office/model/persons.php';
 			$updated = update();
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 
-		case 'delete':
-			// CODE HERE
+		case 'confirmCreate':
+			include_once 'office/model/persons.php';
+			$updated = create();
+			$page = $dir . '/view/createPerson.php';
 			break;
 
 		case 'list':
