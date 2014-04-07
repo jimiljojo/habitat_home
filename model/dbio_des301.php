@@ -1299,28 +1299,25 @@ class DBIO {
                 {
                     global $con;
                     
-                    $sql = "SELECT Person.person_id, Person.first_name, Person.last_name, Event.event_id, Event.title
+                    $sql = "SELECT Person.person_id, Event.title
                                 FROM Person INNER JOIN FOH
                                 ON Person.person_id = FOH.Person_person_id
-                                AND Person.person_id = " . $personID ."
+                                AND Person.person_id = " . $personID . "
                                 INNER JOIN Event
                                 ON FOH.Event_event_id = Event.event_id";
 
                     $this->open();
                     $results = mysql_query($sql, $con);
                     $this->close();
-                    $fohs = array();
                     if($results)	//if there is a result , return them
                     {
                         while ($result = mysql_fetch_array($results)) 
                         {
                             $foh = new foh();
-                            $foh->setPersonFName($result[0]);
-                            $foh->setPersonLName($result[1]);
-                            $foh->setEvent($result[2]);
-                            $fohs[] = $foh;
+                            $foh->setPerson($result[0]);
+                            $foh->setEvent($result[1]);
                         } 
-                        return $fohs;
+                        return $foh;
                     }
                     else //else return false
                     {

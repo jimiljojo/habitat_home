@@ -17,6 +17,8 @@
  	  $person = $tableinfo[0];
  	  $contact = $tableinfo[1];
  	  $address = $tableinfo[2];
+    $event = $tableinfo[3];
+
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
     $lName = $person->getLast_name();
@@ -27,7 +29,7 @@
     $zip = $address->getZip();
     $phone = $contact->getPhone();
     $email = $contact->getEmail();
-    $employer = 'abc company';
+    $eventname = $event->getTitle();
     $workPhone = $contact->getPhone2();
     $workExt = $contact->getExtension();
     $jobTitle = 'engineer';
@@ -35,6 +37,17 @@
     if($updated)
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 ?>
+
+<script type="text/javascript">
+  function enterEvent() {
+    var chkBox = document.getElementById("isFOH");
+    var txtBox = document.getElementById("events");
+    if(chkBox.checked)
+      txtBox.style.visibility = "visible";
+    else
+      txtBox.style.visibility = "hidden";
+      }
+</script>
 
 <hr>
 <form action="index.php" method="GET" class="form-horizontal">
@@ -102,6 +115,13 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="inputzip" class="col-lg-2 control-label">Zip :</label>
+      <div class="col-lg-10">
+        <input name="zip" type="text" placeholder="zip" value="<?php echo $zip; ?>" >
+    <span class="required">*</span></label>
+      </div>
+    </div>
+    <div class="form-group">
       <label for="inputphone" class="col-lg-2 control-label">Phone :</label>
       <div class="col-lg-10">
         <input name="phone" type="text" placeholder="phone" value="<?php echo $phone; ?>" >
@@ -134,13 +154,56 @@
 		<span class="required">*</span>
       </div>
     </div>
-    <div class="form-group">
-      <label for="inputjobTitle" class="col-lg-2 control-label">Job Title :</label>
+    <?php
+    if($eventname){
+      echo '<div class="form-group">
+      <label for="inputjobTitle" class="col-lg-2 control-label">Friends From :</label>
+      <div class="col-lg-10">';
+      
+        $events = $dbio->readAllEvent();
+        echo '<select name="list" id="namelist" type="text">';
+        foreach($events as &$event)
+        {
+          $eventId = $event->getEvent_id();
+          $eventTitle = $event->getTitle();
+          if($eventname == $eventTitle)
+            echo "<option value = '" . $eventId . "' name = '" . $eventTitle . "' selected='selected'>" . $eventTitle . "</option>";
+          else
+            echo "<option value = '" . $eventId . "' name = '" . $eventTitle . "'>" . $eventTitle . "</option>";
+        } 
+        echo '</select></div></div>';
+    }
+    else{
+     ?>
+     <div class="form-group">
+      <label for="foh" class="col-lg-2 control-label">Is this person a Friend of Habitat ? </label>
       <div class="col-lg-10">
-       <input name="jobTitle" type="text" placeholder="job title" value="<?php echo $jobTitle; ?>" >
-		<span class="required">*</span>
+    <input type="checkbox" id="isFOH" name="isFOH" OnChange="enterEvent()">
+  </div>
+  </div>
+
+    <div class="form-group" id="events" style="visibility: hidden;">
+      <label for="inputTitle" class="col-lg-2 control-label">Where did you meet :</label>
+      <div class="col-lg-10">
+        <select name="events" id="eventlist" type="text">
+        <?php //creates drop down menu options AND alphabetizes 
+        //require_once '/class/interest.php';
+        $events = $dbio->readAllEvent();
+        //$hold = array();
+        foreach($events as &$event)
+        {
+          $eventId = $event->getEvent_id();
+          $eventTitle = $event->getTitle();
+          echo "<option value = '{$eventId}' name = '{$eventTitle}'>{$eventTitle}</option>";
+        }
+      ?>
+        <span class="required">*</span>
+    </select>
       </div>
     </div>
+    <?php
+    }
+    ?>
     <input type="submit" value="Update">
 </form>
 <hr>
