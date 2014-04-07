@@ -234,6 +234,13 @@ public function createNewAccount($consentAge, $consentVideo , $consentWaiver, $c
 		return True;
 	}//end function
 
+	public function createNewOrganization($organization){
+		global $con;
+		$this->open();
+
+		
+	}
+
 
 	}// end class
 ?>

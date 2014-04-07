@@ -53,6 +53,50 @@
         padding-bottom: 3px;
     }
     </style>
+
+
+    <script type="text/javascript">
+    
+       function showTextBox(){
+        var select = document.getElementById("AddrType");
+        var divv = document.getElementById("container");
+        if(document.getElementById("AddrType").value=="none"){
+        //$('stateText').css({'visibility':'visible'});
+        document.getElementById('AddrType').disabled=true;
+        toAppend = "Enter the Organization you are affiliated with: <input type='textbox' name='organization'>"; divv.innerHTML=toAppend; return;
+               
+        }
+
+        }
+    
+
+    // switch (v) {
+
+    //    case "name":
+    // i1.placeholder = "first name";
+    // i2.placeholder = "last name";
+    // i2.style.display = show;
+    // break;
+
+       
+    //    case "organization":
+    // i1.placeholder = "organization name";
+    // i2.placeholder = "organization name";
+    // i2.style.display = hide;
+    // break;
+
+    //    default:
+    // i1.placeholder = "input 1";
+    // i2.placeholder = "input 2";
+    // i2.style.display = show;
+    // break;
+
+    // }// end switch
+
+    // }// end function
+    </script>
+
+
 <h4>Other Information</h4>
 <br/>
 <?php include 'progress.php'; ?>
@@ -69,15 +113,23 @@
         </select></td></tr>
 
     <tr><td><span class="mandatory">*</span>Organization Affiliation:</td><td>
-        <select name="ambassador" id="ambassador">
+        <select id="AddrType" name="organization" onchange="showTextBox();">
             <option></option>
-            <option value=1>None</option>
+            <option value="none">None of these</option>
             <?php 
             foreach($org as $name){
             echo '<option value="' . $name->getOrgName(). '">'.$name->getOrgName(). '</option>';
     }
     ?>
-        </select></td></tr>
+        </select></td><td>
+        
+        <div id="container"></div>
+
+    </td>
+</tr>
+    
+
+        
 
 </table></div>
     <h4 class="show" onclick="swap(this);">Contact Preference<span class="mandatory">*</span></h4><div><table class="intTable">
@@ -129,6 +181,13 @@
                  || document.getElementById('ambassador').value==undefined)
                 {
                     alert ("Please Select whether you are a Church Ambassador or not!");
+                    return false;
+                }
+
+        if (document.getElementById('AddrType').value==""
+                 || document.getElementById('AddrType').value==undefined)
+                {
+                    alert ("Please select one of the organization Affiliations");
                     return false;
                 }
 

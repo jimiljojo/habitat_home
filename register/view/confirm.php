@@ -32,6 +32,7 @@
     
     $affiliation = isset($_SESSION['church']) ? $_SESSION['church'] : 'null';
     $churchAmbassador = isset($_SESSION['ambassador']) ? $_SESSION['ambassador'] : 'null';
+    $organization = isset($_SESSION['organization']) ? $_SESSION['organization'] : 'null';
     $checkPhone = isset($_SESSION['checkPhone']) ? $_SESSION['checkPhone'] : 0;
     $checkMail = isset($_SESSION['checkMail']) ? $_SESSION['checkMail'] : 0;
     $checkEmail = isset($_SESSION['checkEmail']) ? $_SESSION['checkEmail'] : 0;
@@ -66,6 +67,8 @@
     if($flag){
         $flag2=$dbio->createNewAccount($consentAge, $consentVideo , $consentWaiver, $consentPhoto , $availDay , $availEve, $availWend, $consentMinor, $consentSafety, $emergencyName, $emergencyPhone, $churchAmbassador, $affiliation,$interestIds, $userName, $password);
     }
+
+    $dbio->createNewOrganization($organization);
 ?>
 	<h4>Confirmation</h4>
 	<?php include 'progress.php'; ?>

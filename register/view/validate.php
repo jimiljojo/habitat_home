@@ -28,6 +28,7 @@
     
     $church = isset($_SESSION['church']) ? $_SESSION['church'] : 'null';
     $ambassador = isset($_SESSION['ambassador']) ? $_SESSION['ambassador'] : 'null';
+    $organization = isset($_SESSION['organization']) ? $_SESSION['organization'] : 'null';
     $checkPhone = isset($_SESSION['checkPhone']) ? $_SESSION['checkPhone'] : '0';
     $checkMail = isset($_SESSION['checkMail']) ? $_SESSION['checkMail'] : '0';
     $checkEmail = isset($_SESSION['checkEmail']) ? $_SESSION['checkEmail'] : '0';
@@ -115,6 +116,7 @@
         <tr><td><b>General Information:</b></td></tr>
         <tr><td>Church or Group Affiliate:</td><td> <input type="text" value="<?php echo $church ?>"></td></tr>
         <tr><td>Are you a Church Ambassador?</td><td> <input type="text" value="<?php if($ambassador=="1"){echo 'Yes';} else{echo 'No';} ?>"></td></tr>
+        <tr><td>Organization Affiliation</td><td> <input type="text" value="<?php echo $organization ?>"></td></tr>
         <br><br><tr><td><b>Contact Preference:</b></td></tr>
     </table>
 

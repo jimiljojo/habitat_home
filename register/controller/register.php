@@ -72,6 +72,7 @@
 	    // session_start();
 	    $_SESSION['church'] = isset($_GET['church']) ? $_GET['church'] : '';
 	    $_SESSION['ambassador'] = isset($_GET['ambassador']) ? $_GET['ambassador'] : '';
+	    $_SESSION['organization'] = isset($_GET['organization']) ? $_GET['organization'] : '';
 	    $_SESSION['checkPhone'] = isset($_GET['checkPhone']) ? $_GET['checkPhone'] : 0;
 	    $_SESSION['checkMail'] = isset($_GET['checkMail']) ? $_GET['checkMail'] : 0;
 	    $_SESSION['checkEmail'] = isset($_GET['checkEmail']) ? $_GET['checkEmail'] : 0;
