@@ -4,8 +4,12 @@
   echo '<center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>';
   echo "<br><br>";
   
-if($_GET['act'] == "viewInterestType")
+if($_GET['act'] == "viewSchedule")
   {
-  	viewInterestType();
+  	viewSchedule();
   }
+if($_GET['act'] == "viewScheduleSlot")
+	{
+		viewScheduleSlot();
+	}
 ?>
