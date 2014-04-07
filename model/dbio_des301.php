@@ -171,7 +171,8 @@ class DBIO {
 		
 	   
 
-
+////////////////////////////////////Interests/////////////////////////////////////////////////////////////////////	   
+//////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
 
 
 	   public function getAllInterests() {
@@ -237,6 +238,32 @@ class DBIO {
 		  $this->close();
 		  return $ints;
 	   }// end function
+
+
+	   public function deleteInterestsByVolunteer($personid){
+	   	global $con;
+	   	$sql= 'Delete from Volunteer_has_Interest Where Volunteer_Person_person_id='. $personid ;
+	   	$this->open();
+	   	mysql_query($sql,$con);
+	   	$this->close();
+	   	return true;
+
+	   }
+
+	   public function addInterestByVolunteer($personid, $interestIds){
+
+	   	global $con;
+	   	$this->open();
+	   	
+	   	foreach ($interestIds as $interestId) {
+		$sql=	"INSERT INTO Volunteer_has_Interest(Volunteer_Person_person_id,Interest_interest_id) 
+			  	VALUES(" .$personid. "," . $interestId. ");" ; 
+
+		mysql_query($sql, $con);
+		}	  	
+		$this->close();
+		return true;
+	   }
 
 	   public function readAccountInfo($pid) {
 			global $con;

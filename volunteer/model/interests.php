@@ -3,9 +3,16 @@
     // FILE: Volunteer Interest Model
     // AUTHOR: des301
     
-    global $msg;
-    global $dbio;
-    
+   
+   function update() {
+        global $dbio;
+
+        $deleteAll = $dbio->deleteInterestsByVolunteer($_SESSION['personid']);
+        $updated = $dbio->addInterestByVolunteer($_SESSION['personid'], $_SESSION['interestVolunteer']);
+               
+        return $updated;
+    }
+   /* 
     $vid = $_GET['vid'];
     $userInterests = $_GET['int[]'];
     $dbInterests = $dbio->getVolunteerInterestsBy($vid);
@@ -32,6 +39,6 @@
 
     $name = $dbio->getVolunteerName($vid);
     
-    $msg = 'Volunteer, ' . $name . '\'s Interests have been updated.'
+    $msg = 'Volunteer, ' . $name . '\'s Interests have been updated.' */
 	    
 ?>

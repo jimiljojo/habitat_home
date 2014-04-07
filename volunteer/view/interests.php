@@ -17,19 +17,19 @@
     $interestTypes = $dbio->getInterestTypes();
     $interests = $dbio->getVolunteerInterests($personId);
 
-
+    if($updated)
+		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 ?>
     <h4>Your Volunteer Interests</h4>
     <hr>
     <button onclick="swapAll('show');">Show All</button>
     <button onclick="swapAll('hide');">Hide All</button>
     <br>
+
     <form action="index.php" method="GET">
-	<input name="id" type="hidden" value="' .  $personId . '">
 	<input name="dir" type="hidden" value="<?php echo $dir; ?>">
 	<input name="sub" type="hidden" value="<?php echo $sub; ?>">
-	<input name="act" type="hidden" value="<?php echo $act; ?>">
-	<input name="msg" type="hidden" value="<?php echo $msg; ?>">
+	<input name="act" type="hidden" value="updateInterests">
 <?php		
     foreach ($interestTypes as $it) {
 
@@ -57,7 +57,7 @@
 		$id = $typeInts[$n]->getId();
 		$title = $typeInts[$n]->getTitle();
 		$checked = ($typeInts[$n]->getIsInterest()) ? 'checked="checked"' : '';
-		echo '<td><input type="checkbox" name="interest[]" value="' . $id . '" ' . $checked . ' /><label>' . $title . '</label></td>';
+		echo '<td><input type="checkbox" name="interestVol[]" value="' . $id . '" ' . $checked . ' /><label>' . $title . '</label></td>';
 	    }// end for
 
 	    echo '</tr>';
@@ -74,7 +74,7 @@
 	    $title = $typeInts[$i]->getTitle();
 	    $checked = ($typeInts[$i]->getIsInterest()) ? 'checked="checked"' : '';
 
-	    echo '<td><input type="checkbox" name="interest[]" value="' . $id . '" ' . $checked . ' /><label>' . $title . '</label></td>';
+	    echo '<td><input type="checkbox" name="interestVol[]" value="' . $id . '" ' . $checked . ' /><label>' . $title . '</label></td>';
 
 	}// end for
 

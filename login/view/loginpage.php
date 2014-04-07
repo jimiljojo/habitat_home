@@ -68,7 +68,7 @@ $act='loginCheck';
 	<div class="body">
 	<img src="img/habitat_logo.jpg" alt="Habitat for Humanity Logo" height="198px" width="600px" />
 
-	<h2> Developers and testers can use </br> username= habitat and password=ist440 </h2>
+	<h2> Developers and testers can use </br> username= jimilpatel and password=habitat </h2>
 	<div id="loginBox">
 	    <form id="loginUser" name="loginUser" action="index.php" method="get">
 	    
