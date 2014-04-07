@@ -69,6 +69,7 @@
     }
 
     $dbio->createNewOrganization($organization);
+    //session_destroy();
 ?>
 	<h4>Confirmation</h4>
 	<?php include 'progress.php'; ?>
@@ -80,7 +81,7 @@
 	    An administrator must review and authorize your account in order for it to be activated<br>
 	    and for you to be able to log in.
 	    </p>		
-	    <a href="index.php">Home</a>
+	    <a href="../index.php">Home</a>
 	</form>
 	<br>
 	<hr>
