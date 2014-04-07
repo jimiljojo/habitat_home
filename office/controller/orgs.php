@@ -8,7 +8,9 @@
 	switch ($act) {
 
 		case 'search':
-			// CODE HERE
+			include_once 'office/model/orgs.php';
+			$tableinfo = search();
+			$page = $dir . '/view/viewOrgs.php';
 			break;
 
 		case 'create':

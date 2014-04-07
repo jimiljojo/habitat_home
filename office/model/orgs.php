@@ -5,7 +5,12 @@
 	// AUTHOR: AUTOGEN
 
 
-	function search() {}
+	function search() {
+		$orgname = $_GET['orgname'];
+		global $dbio;
+		$tableinfo = $dbio->searchOrgsByName($orgname);
+		return $tableinfo;
+	}
 	function create() {
 		$organization = new Organization();
 		$contact = new Contact();

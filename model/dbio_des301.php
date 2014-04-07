@@ -1665,5 +1665,36 @@ class DBIO {
 				return false;
 	  	}
 
+	  	public function searchOrgsByName($orgname){
+			global $con;
+			$sql = 'select Organization.organization_id, Organization.name, Address.street1, Address.street2, Address.city, Address.state, Address.zip, Contact.email, Contact.phone , Contact.phone2, Contact.extension from Organization inner join Contact on Organization.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id where Organization.name= "' . $orgname . '"';
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$orgs = array();
+			$contacts =array();
+			while($rows = mysql_fetch_array($result)){
+				$contact = new Contact();
+				$address = new Address();
+				$org = new Organization();
+				$org->setOrganization_id($rows[0]);
+				$org->setName($rows[1]);
+				$address->setStreet1($rows[2]);
+				$address->setStreet2($rows[3]);
+				$address->setCity($rows[4]);
+				$address->setState($rows[5]);
+				$address->setZip($rows[6]);
+				$contact->setEmail($rows[7]);
+				$contact->setPhone($rows[8]);
+				$contact->setPhone2($rows[9]);
+				$contact->setExtension($rows[10]);
+				$contact->setAddress($address);
+				$orgs[] = $org;
+				$contacts[] = $contact;
+			}
+			$tableinfo = array($orgs,$contacts);
+			$this->close();
+			return $tableinfo;
+		}// end function
+
 }// end class
 ?>

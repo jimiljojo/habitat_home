@@ -31,47 +31,8 @@ alignment: bottom;
 </style>
 
 
-<script type="text/javascript" src="js/searchByHandler.js"></script>  <!-- I cant get this to work externally --> <!--This script changes the input boxes after drop down menu-->
-<script type="text/javascript">
-function searchByHandler() {
 
-var show = "inline";
-var hide = "none";
 
-var v = document.getElementById("searchBy").value;
-var i1 = document.getElementById("input1");
-var i2 = document.getElementById("input2");
-
-// city, street, address, amount, municipality, bank, organization, zip code
-// mortgage number, interest, auction item, sponsor, event
-
-//alert(v);
-
-switch (v) {
-
-   case "name":
-i1.placeholder = "first name";
-i2.placeholder = "last name";
-i2.style.display = show;
-break;
-
-   
-   case "organization":
-i1.placeholder = "organization name";
-i2.placeholder = "organization name";
-i2.style.display = hide;
-break;
-
-   default:
-i1.placeholder = "input 1";
-i2.placeholder = "input 2";
-i2.style.display = show;
-break;
-
-}// end switch
-
-}// end function
-</script>
 <br><br/>
 <form name="input" action="index.php" method="get">
 	<legend> Organizations Search </legend>
