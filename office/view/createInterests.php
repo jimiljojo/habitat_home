@@ -13,7 +13,7 @@ if($_GET['act'] == "createInterest")
 				foreach ($intTypes as &$intType)
 				{
 					$interestType = $intType->getTitle();
-					$interestType_id = $intType->getId();
+					$interestType_id = $intType->getType_id();
 					echo "<option value = '{$interestTypeId}' name = '{$interestType}'>{$interestType}</option>";
 				}
 		echo "</select>";
@@ -39,7 +39,7 @@ if($_GET['act'] == "createInterest")
 
 
 
-elseif($_GET['act'] == "createInterestType")
+if($_GET['act'] == "createInterestType")
 {
 	echo "<form action='' method='post'>";
 		echo "Title: <input type='text' name='title'><br>";
