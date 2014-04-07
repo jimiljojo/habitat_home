@@ -54,12 +54,12 @@
                             $address = $contacts->getAddress();
                             
                             $addresses = $dbio->readAddress($address);
-                            $address_id = $addresses->setAddress_id;
-                            $street1 = $addresses->setStreet1;
-                            $street2 = $addresses->setStreet2;
-                            $city = $addresses->setCity;
-                            $state = $addresses->setState;
-                            $zip = $addresses->setZip;
+                            $address_id = $addresses->getAddress_id;
+                            $street1 = $addresses->getStreet1;
+                            $street2 = $addresses->getStreet2;
+                            $city = $addresses->getCity;
+                            $state = $addresses->getState;
+                            $zip = $addresses->getZip;
                            
 				
 				/*// $id = object->getId();	
@@ -72,7 +72,7 @@
 				$state = $states[rand (0, sizeof($states) - 1)];
 				$zip = rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9);*/
 				
-				echo '<tr onclick="retreive(' . $person_id . ');">'; // <tr onclick="retreive(n);">
+				echo '<tr onclick="retreive(' . $person_id . ');">';// <tr onclick="retreive(n);">
 				
 				echo '<td>' . $title .'</td>';
                                 echo '<td>' . $first_name .'</td>';
