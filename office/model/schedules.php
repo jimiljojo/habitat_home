@@ -73,7 +73,7 @@
 	
 	function readScheduleByEvent()
 	{
-		include_once "/class/eventHasSchedule.php";
+		include_once "class/eventHasSchedule.php";
 		$dbio = new DBIO();
 		$eventId = $_GET['id'];
 		echo $eventId;

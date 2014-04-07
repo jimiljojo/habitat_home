@@ -78,7 +78,7 @@
  }// end foreach*/
 //echo $_SESSION['id'];
 //$personSchedules = $dbio->readScheduleByName($_SESSION['id']);
-$personSchedules = $dbio->readScheduleByName(2);
+$personSchedules = $dbio->readScheduleByName($_SESSION['personid']);
 	foreach($personSchedules as $personSchedule)
 	{
 		for($i=0;$i<5;$i++)
