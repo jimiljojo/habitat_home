@@ -688,6 +688,7 @@ class DBIO {
 		
 		public function listInterestTypes()
 		{
+			include_once "/class/interest_type.php";
 		  global $con;
 		  $intTypes = array();
 		  //$sql = 'SELECT type_id, title FROM Interest_Type ORDER BY "title"';
@@ -700,18 +701,46 @@ class DBIO {
 		  while($row = mysql_fetch_array($result))
 		  {
 			 //$types[$row[0]] = new Item($row[0], $row[1]);
-			 $intType = new Item();
-			 $intType->setId($row[0]);
+			 $intType = new Interest_type();
+			 $intType->setType_id($row[0]);
 			 $intType->setTitle($row[1]);
+			 $intType->setDescription($row[2]);
 			 $intTypes[] = $intType;
 		  }// end while
 		  $this->close();
 		  return $intTypes;
 		}// end function
 		
+		public function readInterests($id)
+		{
+			require_once '/class/volunteerInterest.php';
+			global $con;
+			$this->open();
+			//global $volInts;
+			$volInts = array();
+			$sql = "SELECT Interest.Interest_id, Interest_Type.type_id, Interest_Type.title, Interest.title, Interest.description
+				FROM Interest
+				JOIN Interest_Type on Interest.type_id = Interest_Type.type_id
+				WHERE Interest.interest_id = '{$id}'";
+			$result = mysql_query($sql,$con);
+			while ($row = mysql_fetch_array($result))
+			{
+				$volInt = new volunteerInterest();
+				$volInt->setId($row[0]);
+				$volInt->setTypeId($row[1]);
+				$volInt->setType_title($row[2]);
+				$volInt->setInterest_title($row[3]);
+				$volInt->setDescription($row[4]);
+				$volInts[] = $volInt;
+			}
+			//return $int;
+			$this->close();
+			return $volInts;
+	    }
+		
 		public function readInterest($id)
 		{
-			require_once 'class/volunteerInterest.php';
+			require_once '/class/volunteerInterest.php';
 			global $con;
 			$this->open();
 			//global $volInts;
@@ -740,10 +769,9 @@ class DBIO {
 			$this->close();
 			return $volInts;
 	    	}
-		
-		
+
 		public function readInterestType($id){
-			require_once 'class/volunteerInterest.php';
+			require_once '/class/volunteerInterest.php';
 			global $con;
 			$this->open();
 			//global $volInts;
@@ -773,7 +801,7 @@ class DBIO {
 		
 		public function viewInterestType($id)
 		{
-			include_once "class/interest_type.php";
+			include_once "/class/interest_type.php";
 			global $con;
 		  $intTypes = array();
 		  //$sql = 'SELECT type_id, title FROM Interest_Type ORDER BY "title"';
@@ -801,7 +829,7 @@ class DBIO {
 
 		public function listSchedule() //view all 
         {
-			include_once "class/schedule.php";
+			include_once "/class/schedule.php";
             global $con;
 			$sql = 'SELECT id, "rime start", timeEnd, Event_event_id, description, Interest_interest_id FROM Schedule';
 			$this->open();
@@ -825,7 +853,7 @@ class DBIO {
 		
 		public function listScheduleSlot()
 		{
-			include_once "class/schedule_slot.php";
+			include_once "/class/schedule_slot.php";
             global $con;
 			$sql = 'SELECT id, Volunteer_person_person_id, Schedule_id FROM Schedule_slot';
 			$this->open();
@@ -845,9 +873,9 @@ class DBIO {
 		
 		public function readSchedule($eventId) //view all 
         {
-			include_once "class/eventHasSchedule.php";
+			include_once "/class/eventHasSchedule.php";
             global $con; 
-			$sql = "SELECT Event.event_id, Schedule.id, Event.title, Schedule.timeStart, Schedule.timeEnd, Schedule.description FROM Event
+			$sql = "SELECT Event.event_id, Schedule.id, Event.title, Schedule.timeStart, Schedule.timeEnd, Schedule.description, Schedule.Interest_interest_id FROM Event
 					JOIN Schedule ON Event.event_id = Schedule.Event_event_id
 					WHERE Event.event_id = '{$eventId}'"; // SQL code works, not sure why how timeStart supposed to be incremented 
 			$this->open();
@@ -863,6 +891,7 @@ class DBIO {
 				$scheduleEvent->setTimeStart($rows[3]);
 				$scheduleEvent->setTimeEnd($rows[4]);
 				$scheduleEvent->setDescription($rows[5]);
+				$scheduleEvent->setInterestId($rows[6]);
 				$scheduleEvents[] = $scheduleEvent;
 			} 
             $this->close();
@@ -872,7 +901,7 @@ class DBIO {
 		public function readScheduleSlot($scheduleId)
 		{
 			global $con;
-			$sql = "SELECT title, first_name, last_name FROM Schedule_slot 
+			$sql = "SELECT title, first_name, last_name, Person.person_id FROM Schedule_slot 
 						JOIN Volunteer on Volunteer.Person_person_id = Schedule_slot.Volunteer_Person_person_id
 						JOIN Person on Person.person_id = Volunteer.Person_person_id
 						WHERE Schedule_slot.Schedule_id = '{$scheduleId}'";
@@ -885,6 +914,7 @@ class DBIO {
 				$person->setTitle($row[0]);
 				$person->setFirst_name($row[1]);
 				$person->setLast_name($row[2]);
+				$person->setPerson_id($row[3]);
 				$persons[] = $person;
 			}
 			$this->close();
@@ -893,18 +923,25 @@ class DBIO {
 		
         public function readScheduleByName($personId) // search by user, might need a better way to write it
         {
-				include_once "class/schedule.php";
+				include_once "/class/schedule.php";
 				global $con;
 				/*$sql= 'SELECT Person.person_id, Person.last_name, Person.first_name, Schedule.timeStart, Schedule.timeEnd, Schedule.Event_event_id, Schedule.description FROM Person
 				JOIN Schedule_slot On Person.person_id = Schedule_slot.Volunteer_Person_person_id
 				JOIN Schedule ON Schedule_slot.Schedule_id = Schedule.id 
 				WHERE Person.last_name = "{$Lname}" && Person.first_name = "{$FName}"'; //SQL subject to change to adjust to PHP, but work in mySQL AS IS. 
 				*/
-				$sql = "SELECT Person.title, Person.first_name, Person.last_name, Event.title, Event.date, Event.time, Schedule.description, Schedule.timeStart, Schedule.timeEnd FROM Schedule_slot 
+				$sql = "SELECT Person.title, Person.first_name, Person.last_name, 
+						Event.event_id, Event.title, Event.date, Event.time, 
+						Schedule.id, Schedule.description, Schedule.timeStart, Schedule.timeEnd,
+						Address.street1, Address.street2, Address.city, Address.state, Address.zip,
+						Event_Type.title
+						FROM Schedule_slot 
 						JOIN Volunteer on Volunteer.Person_person_id = Schedule_slot.Volunteer_Person_person_id
 						JOIN Person on Person.person_id = Volunteer.Person_person_id
 						JOIN Schedule on Schedule.id = Schedule_slot.Schedule_id
 						JOIN Event on Event.event_id = Schedule.Event_event_id
+						JOIN Address on Address.address_id = Event.Address_address_id
+						JOIN Event_Type on Event_Type.type_id = Event.type_id
 						WHERE Person.Person_id = '{$personId}'";
 				$this->open();
 				$result = mysql_query($sql, $con);
@@ -914,23 +951,33 @@ class DBIO {
 					$person = new Person;
 					$event = new Event;
 					$schedule = new Schedule;
+					$address = new Address;
+					$eventType = new Event_Type;
 					$person->setTitle($rows[0]);
 					$person->setLast_name($rows[1]);
 					$person->setFirst_name($rows[2]);
-					$event->setTitle($rows[3]);
-					$event->setDate($rows[4]);
-					$event->setTime($rows[5]);
-					$schedule->setDescription($rows[6]);
-					$schedule->setTimeStart($rows[7]);
-					$schedule->setTimeEnd($rows[8]);
-					$hold = array($person, $event, $schedule);
+					$event->setEvent_id($rows[3]);
+					$event->setTitle($rows[4]);
+					$event->setDate($rows[5]);
+					$event->setTime($rows[6]);
+					$schedule->setId($rows[7]);
+					$schedule->setDescription($rows[8]);
+					$schedule->setTimeStart($rows[9]);
+					$schedule->setTimeEnd($rows[10]);
+					$address->setStreet1($rows[11]);
+					$address->setStreet2($rows[12]);
+					$address->setCity($rows[13]);
+					$address->setState($rows[14]);
+					$address->setZip($rows[15]);
+					$eventType->setTitle($rows[16]);
+					$hold = array($person, $event, $schedule, $address, $eventType);
 					$personSchedules[] = $hold; 
                 } 
                 $this->close();
 				return $personSchedules; 
         }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
         
 
 	    public function getEvent($eventId){

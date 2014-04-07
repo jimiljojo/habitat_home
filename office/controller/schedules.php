@@ -1,45 +1,4 @@
 <?php
-
-	// TITLE: Office Schedules Controller
-	// FILE: office/controller/schedules.php
-	// AUTHOR: AUTOGEN
-
-
-	switch ($act) {
-
-		case 'search':
-			// CODE HERE
-			break;
-
-		case 'create':
-			// CODE HERE
-			break;
-
-		case 'read':
-			// CODE HERE
-			break;
-
-		case 'update':
-			// CODE HERE
-			break;
-
-		case 'delete':
-			// CODE HERE
-			break;
-
-		case 'list':
-			// CODE HERE
-			break;
-
-		default:
-			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
-			break;
-
-
-	}// end switch
-
-?><?php
-
 	// TITLE: Office Interests Controller
 	// FILE: office/controller/interests.php
 	// AUTHOR: AUTOGEN
@@ -66,7 +25,7 @@
 			include 'office/model/schedules.php';
 			if(!isset($_GET['id']))
 			{
-				$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php'; echo "shit son";
+				$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			}
 			else
 			{
@@ -95,9 +54,14 @@
 			$page = $dir . '/view/listInterests.php';
 			break;
 			
-		case 'viewInterestType':
+		case 'viewSchedule':
 			include 'office/model/schedules.php';
-			$page = $dir . '/view/viewInterests.php';
+			$page = $dir . '/view/viewSchedule.php';
+			break;
+			
+		case 'viewScheduleSlot':
+			include 'office/model/schedules.php';
+			$page = $dir . '/view/viewSchedule.php';
 			break;
 	
 		default:

@@ -1,13 +1,5 @@
 <?php
-    //SCW5137
-	
-    global $dir;
-    global $sub;
-    global $act;
-    global $msg;
-    global $dbio;
-    
-    
+    //SCW5137, bmw5285
 
   // $schedules = $dbio->getVolunteerEvents(2); //getAllEvents() //$personId hard set
 	
@@ -62,10 +54,9 @@
 <h4>Your Volunteer Schedule</h4>
 <hr>
 <table class="VolSchedule">
-    <tr><th>Status</th><th>Event Name</th><th>Event Date</th><th>Event Time</th><th>Event Location</th><th>Event Type</th></tr>
+	<tr><th>Status</th><th>Event Name</th><th>Event Date</th><th>Event Time</th><th>Event Location</th><th>Event Type</th></tr>
 <?php 
-
-foreach($schedules as $schedule) {
+/*foreach($schedules as $schedule) {
     
     if($schedule->getEventStatus() == 0) {
 	echo '<form action="index.php" method="GET">';
@@ -84,13 +75,50 @@ foreach($schedules as $schedule) {
 	echo '</tr>';
 	echo '</form>';
     }// end if
- }// end foreach
+ }// end foreach*/
+//echo $_SESSION['id'];
+//$personSchedules = $dbio->readScheduleByName($_SESSION['id']);
+$personSchedules = $dbio->readScheduleByName(2);
+	foreach($personSchedules as $personSchedule)
+	{
+		for($i=0;$i<5;$i++)
+		{
+			$title = $personSchedule[$i]->getTitle();
+			$lastName = $personSchedule[$i]->getLast_name();
+			$firstName = $personSchedule[$i]->getFirst_name();
+			$i++;
+			$eventId = $personSchedule[$i]->getEvent_id();
+			$eventTitle = $personSchedule[$i]->getTitle();
+			$eventDate = $personSchedule[$i]->getDate();
+			$eventTime = $personSchedule[$i]->getTime();
+			$i++;
+			$scheduleId = $personSchedule[$i]->getId();
+			$scheduleDescription = $personSchedule[$i]->getDescription();
+			$scheduleTimeStart = $personSchedule[$i]->getTimeStart();
+			$scheduleTimeEnd = $personSchedule[$i]->getTimeEnd();
+			$i++;
+			$addressStreet1 = $personSchedule[$i]->getStreet1();
+			$addressStreet2 = $personSchedule[$i]->getStreet2();
+			$addressCity = $personSchedule[$i]->getCity();
+			$addressState = $personSchedule[$i]->getState();
+			$addessZip = $personSchedule[$i]->getZip();
+			$i++;
+			$eventType = $personSchedule[$i]->getTitle();
+			echo '<tr>';
+				echo "<td></td>";
+				echo "<td>{$eventTitle}</td>";
+				echo "<td>{$eventDate}</td>";
+				echo "<td>{$eventTime}</td>";
+				echo "<td>{$addressStreet1} {$addressStreet2} {$addressCity}, {$addressState}, {$addessZip}</td>";
+				echo "<td>{$eventType}</td>";
+				//echo "<td>{$interest_title}</td>";
+				//echo "<td>'{$description}'</td>";
+			echo "</tr>";
+		}
+	}
 
  ?>
-    
-
-
-
+</table>
 <hr/>
 <span class="note">
     Here is the list of events you are signed up for <br>

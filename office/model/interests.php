@@ -11,7 +11,10 @@
 		echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>ID</th><th>Type ID</th><th>Title</th><th>Description</th></tr>';
 		foreach ($ints as &$int)
 		{
-			echo '<tr>';
+			echo '<input id="dir" type="hidden" value="office">';
+			echo '<input id="sub" type="hidden" value="interests">';
+			echo '<input id="act" type="hidden" value="viewInterest">';
+			echo '<tr onclick="retreive(' . $int->getId() . ');">';
 			echo '<td>' . $int->getId() . '</td>';
 			echo '<td>' . $int->getTypeId() . '</td>';
 			echo '<td>' . $int->getTitle() . '</td>';
@@ -25,12 +28,16 @@
 	{
 		$dbio = new DBIO();
 		$intTypes = $dbio->listInterestTypes();
-		echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>ID</th><th>Title</th></tr>';
+		echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>ID</th><th>Title</th><th>Description</th></tr>';
 		foreach ($intTypes as &$intType)
 		{
-			echo '<tr>';
-			echo '<td>' . $intType->getId() . '</td>';
+			echo '<input id="dir" type="hidden" value="office">';
+			echo '<input id="sub" type="hidden" value="interests">';
+			echo '<input id="act" type="hidden" value="viewInterestType">';
+			echo '<tr onclick="retreive(' . $intType->getType_id() . ');">';
+			echo '<td>' . $intType->getType_id() . '</td>';
 			echo '<td>' . $intType->getTitle() . '</td>';
+			echo '<td>' . $intType->getDescription() . '</td>';
 			echo '</tr>';
 		}
 		echo '</table>';
@@ -127,7 +134,7 @@
 	{
 		$dbio = new DBIO();
 		$id = $_GET['id'];
-		$ints = $dbio->readInterest($id);
+		$ints = $dbio->readInterests($id);
 		if (is_null($ints))
 		{
 			return null;
@@ -139,12 +146,12 @@
 				echo '<tr>';
 				//echo "<td><input name = 'typeTitle' type='text' placeholder='{$ints[0]->getType_title()}'></td>";
 				echo "<td><select>";
-				echo "<option value='{$ints[0]->getTypeId()}'>{$ints[0]->getTypeId()}, {$ints[0]->getInterest_title()}</option>";
 				$intTypes = $dbio->listInterestTypes();
+				echo "<option value='{$ints[0]->getTypeId()}'>{$ints[0]->getTypeId()}, {$ints[0]->getType_title()}</option>";
 				foreach ($intTypes as &$intType)
 				{
 					$interestType = $intType->getTitle();
-					$interestId = $intType->getId();
+					$interestId = $intType->getType_id();
 					echo "<option value = '{$interestId}' name = '{$interestType}'>{$interestId}, {$interestType}</option>";
 				}
 				echo "<select></td>";
@@ -173,7 +180,8 @@
 		$dbio = new DBIO();
 		$id = $_GET['id'];
 		$intTypes = $dbio->viewInterestType($id);
-		echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>ID</th><th>Interest Type</th><th>Description</th></tr>';
+		echo "<table><form name='viewInterestType' action='' method='post'";
+		echo "<tr><th>Interest Type</th><th>Description</th></tr>";
 		if (is_null($intTypes))
 		{
 			return null;
@@ -183,12 +191,25 @@
 			foreach($intTypes as $intType)
 			{
 				echo '<tr>';
-				echo '<td>' . $intType->getType_id() . '</td>';
-				echo '<td>' . $intType->getTitle() . '</td>';
-				echo '<td>' . $intType->getDescription() . '</td>';
+				//echo '<td>' . $intType->getType_id() . '</td>';
+				echo '<td><input name = "title" type="text" value="' . $intType->getTitle() . '"></td>';
+				echo "<td><input name = 'description' type='text' value='{$intType->getDescription()}'></td>";
+				echo "<td><input name='viewInterestType' value='update' type='submit'></td>";
 				echo '</tr>';
 			}
-			echo '</table>';
+			echo '</form></table>';
+			if(isset($_POST['viewInterestType']))
+			{
+				global $con;
+				$dbio = new DBIO();
+				$dbio->open();
+				$sql = "UPDATE Interest_Type
+						SET Interest_Type.title='{$_POST['title']}', Interest_Type.description='{$_POST['description']}'
+						WHERE Interest_Type.type_id = '{$id}'";
+				$result = mysql_query($sql,$con);
+				echo $_POST['title'], $_POST['description'];
+				
+			}
 		}
 	}
 ?>
