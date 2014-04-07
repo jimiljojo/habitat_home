@@ -251,7 +251,7 @@ function dropDownMenu()
 				foreach ($intTypes as &$intType)
 				{
 					$interestType = $intType->getTitle();
-					$interestId = $intType->getId();
+					$interestId = $intType->getType_Id();
 					echo "<option value = '{$interestId}' name = '{$interestType}'>{$interestType}</option>";
 				}
 
