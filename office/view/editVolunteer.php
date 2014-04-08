@@ -57,12 +57,7 @@
         <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
         </table></div>
 
-		<h4 class="show" onclick="swap(this);">Maritial Status</h4><div><table class="intTable">
-		<input type="radio" name="maritial" value="1" id="maritial" required><label>Single</label><br>
-		<input type="radio" name="maritial" value="2" id="maritial" required><label>Married</label><br>
-		<input type="radio" name="maritial" value="3" id="maritial" required><label>Widow</label><br>
-        <input type="radio" name="maritial" value="4" id="maritial" required><label>Divorced</label><br>
-		</table></div>
+
 
 
 		
@@ -168,7 +163,7 @@
             }
 
         </script>
-		<input class="btn btn-success" name="submit" type="submit" value="submit" onclick="return check();" >
+		<input name="submit" type="submit" value="submit" onclick="return check();" >
 
 		<br>
 	</form>

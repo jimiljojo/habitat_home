@@ -18,24 +18,31 @@
 			tr:hover {background-color: gold;}
 			td {padding: 0px 10px;}
 		</style>
-		<script>
-			function retreive(n) {
+                
+
+		 <script>
+			function retreive($person_id) {
 				var dir = "&dir=" + document.getElementById("dir").value;
 				var sub = "&sub=" + document.getElementById("sub").value;
 				var act = "&act=" + document.getElementById("act").value;
-				var url = "index.php?id=" + n + dir + sub + act;
+				var url = "index.php?id=" + $person_id + dir + sub + act;
 				alert(url);
-				// window.location = url;
+				
 			}
-		</script>
+		</script> 
+ 
 	</head>
 	<body>
 		<input id="dir" type="hidden" value="A">
 		<input id="sub" type="hidden" value="B">
 		<input id="act" type="hidden" value="retrieve">
+                <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
+                <br/>
 		<table>
 		<?php
-			foreach($volunteers as $volunteer) {
+                echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th></tr>';
+			
+                    foreach($volunteers as $volunteer) {
                             
 
                             
@@ -62,15 +69,13 @@
 				
                                 
 				
-				echo '<tr onclick="retreive(' . $person_id . ');">';// <tr onclick="retreive(n);">
+				echo '<tr onclick="retreive(' . $person_id . ');">'; 
 				
 				echo '<td>' . $title .'</td>';
                                 echo '<td>' . $first_name .'</td>';
                                 echo '<td>' . $last_name .'</td>';
-				
 				echo '<td class="right">' . $phone . '</td>';
-				echo '<td class="right">' . $address . '</td>';
-                                echo '<td class="right">' . $street1 . '</td>';
+				echo '<td class="right">' . $street1 . '</td>';
                                 echo '<td class="right">' . $street2 . '</td>';
                                 echo '<td class="right">' . $city . '</td>';
                                 echo '<td class="right">' . $state . '</td>';
