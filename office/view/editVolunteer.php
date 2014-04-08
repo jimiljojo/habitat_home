@@ -16,6 +16,7 @@
 <div style="width:50%; margin-left:20px;">
 
 	<br>
+        <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
 	<form  action="index.php" method="get">
 
 		
