@@ -8,11 +8,7 @@
  * Author: rwg5215 list all volunteers
  */
 ?>
-<?php
 
-
-	
-?>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -41,6 +37,8 @@
 		<?php
 			foreach($volunteers as $volunteer) {
                             
+
+                            
                             $person_id = $volunteer->getPerson_id();
                             $title = $volunteer->getTitle();
                             $first_name = $volunteer->getFirst_name();
@@ -54,23 +52,15 @@
                             $address = $contacts->getAddress();
                             
                             $addresses = $dbio->readAddress($address);
-                            $address_id = $addresses->getAddress_id;
-                            $street1 = $addresses->getStreet1;
-                            $street2 = $addresses->getStreet2;
-                            $city = $addresses->getCity;
-                            $state = $addresses->getState;
-                            $zip = $addresses->getZip;
+                            $address_id = $addresses->getAddress_id();
+                            $street1 = $addresses->getStreet1();
+                            $street2 = $addresses->getStreet2();
+                            $city = $addresses->getCity();
+                            $state = $addresses->getState();
+                            $zip = $addresses->getZip();
                            
 				
-				/*// $id = object->getId();	
-				$name = $lname[rand(0, sizeof($lname) - 1)] . ', ' . $fname[rand(0, sizeof($fname) - 1)];
-				$month = rand(1,12);
-				$day = rand(1,30);
-				$year =  rand (19,20) . rand(0,9) . rand(0,9);
-				$street =  rand(0, 99) . ' ' . $sname[rand(0, sizeof($sname) - 1)] . ' ' . $stype[rand(0, sizeof($stype) - 1)];
-				$city = $cities[rand(0, sizeof($cities) - 1)];
-				$state = $states[rand (0, sizeof($states) - 1)];
-				$zip = rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9);*/
+                                
 				
 				echo '<tr onclick="retreive(' . $person_id . ');">';// <tr onclick="retreive(n);">
 				
@@ -90,7 +80,7 @@
 				echo '</tr>';
 			}
                         
-                        var_dump($volunteers);
+                        //var_dump($volunteers);
 		?>
 		</table>
 		<br>
