@@ -40,12 +40,10 @@
                 <br/>
 		<table>
 		<?php
-                echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th></tr>';
+                echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>Phone</th><th>Street 1</th><th>Address 2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th></tr>';
 			
                     foreach($volunteers as $volunteer) {
-                            
 
-                            
                             $person_id = $volunteer->getPerson_id();
                             $title = $volunteer->getTitle();
                             $first_name = $volunteer->getFirst_name();
