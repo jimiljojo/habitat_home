@@ -17,6 +17,7 @@
 		private $value;
 		private $event;
 		private $Person_person;
+		private $donationType;
 
 
 		// CONSTRUCTOR //
@@ -30,7 +31,7 @@
 		public function getDate() {return $this->date;}
 		public function getTime() {return $this->time;}
 		public function getDetails() {return $this->details;}
-		public function getWhen_entered() {return $this->when_entered;}
+		public function getType() {return $this->donationType;}
 		
 		public function getValue() {return $this->value;}
 		public function getEvent() {return $this->event;}
@@ -41,7 +42,7 @@
 		public function setDate($date) {$this->date = $date;}
 		public function setTime($time) {$this->time = $time;}
 		public function setDetails($details) {$this->details = $details;}
-		public function setWhen_entered($when_entered) {$this->when_entered = $when_entered;}
+		public function setType($donationType) {$this->donationType = $donationType;}
 		
 		public function setValue($value) {$this->value = $value;}
 		public function setEvent($event) {$this->event = $event;}

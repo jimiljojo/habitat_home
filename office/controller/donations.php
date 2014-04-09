@@ -29,7 +29,7 @@
 
 		case 'list':
 			include_once 'office/model/donations.php';
-			$tableinfo = read();
+			$donations = read();
 			$page = $dir . '/view/viewDonations.php';
 			break;
 

@@ -20,9 +20,16 @@
 	
 	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Type</th><th>Details</th><th>Value</th><th>Date</th><th>Time</th><th>From</th><th>Where</th></tr>';
 		
-		foreach ($tableinfo as $info) {
-			$info->getDetails();
-		}
+	foreach ($donations as $donation) {
+		echo '<tr>';
+		echo '<td>' . $donation->getType() . '</td>';
+		echo '<td>' . $donation->getDetails() . '</td>';
+		echo '<td>' . $donation->getValue() . '</td>';
+		echo '<td>' . $donation->getDate() . '</td>';
+		echo '<td>' . $donation->getTime() . '</td>';
+		echo '<td>' . $donation->getEvent() . '</td>';
+		echo '</tr>';
+	}
 			
 		
 		echo '</table>';

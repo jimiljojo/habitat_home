@@ -1784,12 +1784,9 @@ class DBIO {
             $donation->setDate($rows[1]);
             $donation->setTime($rows[2]);
             $donation->setDetails($rows[3]);
-            $donation->setWhen_entered($rows[4]);
-           // $donation->setDonationType_idDonationType($rows[5]);
-            $donation->setValue($rows[6]);
-          //  $donation->setEvent_event_id($rows[7]);
-           // $donation->setAdmin_idAdmin($rows[8]);
-           // $donation->setEntered_by_id($rows[9]);
+            $donation->setType($rows[4]);
+            $donation->setValue($rows[5]);
+            $donation->setEvent($rows[6]);
             $donations[] = $donation;
         }
         $this->close();
