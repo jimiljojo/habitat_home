@@ -13,6 +13,7 @@
 
 	// REQUIRES/INCLUDES
 	require_once('class/accnt.php');
+	require_once('class/donationtype.php');
 	require_once('class/organization.php');
 	require_once('class/foh.php');
 	require_once('class/person.php');

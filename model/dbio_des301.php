@@ -1817,6 +1817,67 @@ class DBIO {
         return $donors;
     }
 
+    public function getDonationById($did) {
+        global $con;
+        $sql = "select Donation.donation_id, Donation.date, Donation.time, Donation.details, DonationType.typeName, Donation.value, Event.title from Donation inner join Event on Donation.Event_event_id = Event.event_id inner join DonationType on Donation.donationType = DonationType.idDonationType where Donation.donation_id = " . $did ."";
+        $this->open();
+        $result = mysql_query($sql, $con);
+        while ($rows = mysql_fetch_array($result)) {
+            $donation = new Donation();
+            $donation->setDonation_id($rows[0]);
+            $donation->setDate($rows[1]);
+            $donation->setTime($rows[2]);
+            $donation->setDetails($rows[3]);
+            $donation->setType($rows[4]);
+            $donation->setValue($rows[5]);
+            $donation->setEvent($rows[6]);
+        }
+        $this->close();
+        return $donation;
+    }
+
+    public function getDonorById($did) {
+        global $con;
+        $sql = "select Donation.donation_id, Person.first_name from Donation inner join Donation_has_Person on Donation.donation_id = Donation_has_Person.Donation_donation_id inner join Person on Donation_has_Person.Person_person_id = Person.person_id where Donation.donation_id = " . $did ."";
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $donor = new Donatedby();
+        while ($rows = mysql_fetch_array($result)) {
+            $donor->setDonation_id($rows[0]);
+            $donor->setDonatedby($rows[1]);
+        }
+        if(mysql_num_rows($result) == 0){
+        	$sql = "select Donation.donation_id, Organization.name from Donation inner join Donation_has_Organization on Donation.donation_id = Donation_has_Organization.Donation_donation_id inner join Organization on Donation_has_Organization.Organization_organization_id = Organization.organization_id where Donation.donation_id = " . $did ."";
+        	$result = mysql_query($sql, $con);
+        	while ($rows = mysql_fetch_array($result)) {
+	            $donor->setDonation_id($rows[0]);
+	            $donor->setDonatedby($rows[1]);
+        	}
+        }
+        
+        $this->close();
+        return $donor;
+    }
+
+    public function readDonationtype() {
+		global $con;
+		$sql = 'SELECT * FROM DonationType';
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$this->close();
+		if ($result) {
+			$donationtypes = array();
+			while($rows = mysql_fetch_array($result)) {
+				$donationtype = new Donationtype();
+				$donationtype->setIdDonationType($rows[0]);
+				$donationtype->setTypeName($rows[1]);
+				$donationtypes[] = $donationtype;
+			}// end while
+		} else {
+			$donationtype = false;
+		}
+		return $donationtypes;
+	}// end function
 
 }// end class
 ?>

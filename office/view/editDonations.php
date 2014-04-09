@@ -6,88 +6,86 @@
 
     if($updated)
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
+
+    $donation = $donationInfo[0];
+    $donor = $donationInfo[1];
+    $donationtypes = $donationInfo[2];
+    $type = $donation->getType();
+    $details = $donation->getDetails();
+    $value = $donation->getValue();
+    $date = $donation->getDate();
+    $time = $donation->getTime();
+    $event = $donation->getEvent();
+    $donor = $donor->getDonatedby();
 ?>
 <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
 <hr>
 <form action="index.php" method="GET" class="form-horizontal">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="oid" type="hidden" value="<?php echo $org[0]->getOrganization_id(); ?>" >
+    <input name="oid" type="hidden" value="<?php echo $donation->getDonation_id() ?>" >
     <input name="act" type="hidden" value="update" >
     <fieldset>
     <legend>Donation Info</legend>
 	<div class="form-group">
-  <label for="inputname" class="col-lg-2 control-label">Organization Name :</label>
+    
+  <label for="inputtype" class="col-lg-2 control-label">Type :</label>
       <div class="col-lg-10">
-        <input name="orgname" type="text" placeholder="name" value="<?php echo $orgname; ?>" >
+      <select name="types" id="typelist" type="text">
+    <?php 
+    foreach ($donationtypes as $dt) {
+      if($dt->getTypeName() == $type)
+        echo "<option value = '" . $dt->getTypeName() . "' name = '" . $dt->getTypeName() . "' selected='selected'>" . $dt->getTypeName() . "</option>";   
+      else
+        echo "<option value = '" . $dt->getTypeName() . "' name = '" . $dt->getTypeName() . "'>" . $dt->getTypeName() . "</option>";   
+    }
+    ?>
+  </select>
     <span class="required">*</span>
       </div>
     </div>
     <div class="form-group">
-      <label for="inputstreet1" class="col-lg-2 control-label">Street :</label>
+      <label for="inputdetails" class="col-lg-2 control-label">Details :</label>
       <div class="col-lg-10">
-        <input name="street1" type="text" placeholder="street 1" value="<?php echo $street1; ?>" >
+        <input name="details" type="text" placeholder="Details" value="<?php echo $details; ?>" >
 		<span class="required">*</span>
       </div>
     </div>
     <div class="form-group">
-      <label for="inputstreet2" class="col-lg-2 control-label">Apt/Suit :</label>
+      <label for="inputvalue" class="col-lg-2 control-label">Value :</label>
       <div class="col-lg-10">
-        <input name="street2" type="text" placeholder="street 2" value="<?php echo $street2; ?>" >
+        <input name="value" type="text" placeholder="value" value="<?php echo $value; ?>" >
       </div>
     </div>
     <div class="form-group">
-      <label for="inputcity" class="col-lg-2 control-label">City :</label>
+      <label for="inputdate" class="col-lg-2 control-label">Date :</label>
       <div class="col-lg-10">
-        <input name="city" type="text" placeholder="city" value="<?php echo $city; ?>" >
-		<span class="required">*</span>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputState" class="col-lg-2 control-label">State :</label>
-      <div class="col-lg-10">
-        <select name="state">
-		    <option value="MD">MD</option>
-		    <option value="PA" selected="selected">PA</option>
-		    <option value="TX">TX</option>
-		</select>
+        <input name="date" type="text" placeholder="date" value="<?php echo $date; ?>" >
 		<span class="required">*</span>
       </div>
     </div>
      <div class="form-group">
-      <label for="inputzip" class="col-lg-2 control-label">Zip :</label>
+      <label for="inputtime" class="col-lg-2 control-label">Time :</label>
       <div class="col-lg-10">
-        <input name="zip" type="text" placeholder="zip" value="<?php echo $zip; ?>" >
+        <input name="time" type="text" placeholder="time" value="<?php echo $time; ?>" >
     <span class="required">*</span></label>
       </div>
     </div>
     <div class="form-group">
-      <label for="inputphone" class="col-lg-2 control-label">Phone :</label>
+      <label for="inputEvent" class="col-lg-2 control-label">Event :</label>
       <div class="col-lg-10">
-        <input name="phone" type="text" placeholder="phone" value="<?php echo $phone; ?>" >
+        <input name="Event" type="text" placeholder="Event" value="<?php echo $event; ?>" >
 		<span class="required">*</span></label>
       </div>
     </div>
 		<div class="form-group">
-      <label for="inputemail" class="col-lg-2 control-label">Email :</label>
+      <label for="inputdonor" class="col-lg-2 control-label">Donor :</label>
       <div class="col-lg-10">
-        <input name="email" type="text" placeholder="email" value="<?php echo $email; ?>" >
+        <input name="donor" type="text" placeholder="donor" value="<?php echo $donor; ?>" >
 		<span class="required">*</span>
       </div>
     </div>
-    <div class="form-group">
-      <label for="inputworkPhone" class="col-lg-2 control-label">Work Phone :</label>
-      <div class="col-lg-10">
-      	<input name="workPhone" type="text" placeholder="work phone" value="<?php echo $workPhone; ?>" >
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputworkExt" class="col-lg-2 control-label">Extension :</label>
-      <div class="col-lg-10">
-       <input name="workExt" type="text" placeholder="ext" value="<?php echo $workExt; ?>" >
-		<span class="required">*</span>
-      </div>
-    </div>
+    
     
     <input type="submit" value="update">
 </form>

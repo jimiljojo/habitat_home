@@ -20,6 +20,13 @@
 	function edit() {
 		global $dbio;
 		$did = $_GET['did'];
+		$donation = $dbio->getDonationById($did);
+		$donor = $dbio->getDonorById($did);
+		$donationtypes = $dbio->readDonationtype();
+		$donationInfo[] = $donation;
+		$donationInfo[] = $donor;
+		$donationInfo[] = $donationtypes;
+		return $donationInfo;
 	}
 	
 
