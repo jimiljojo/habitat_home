@@ -7,9 +7,13 @@
 
 	function search() {}
 	function create() {}
-	function read() {}
+	function read() {
+		global $dbio;
+		$donations = $dbio->readAllDonations();
+		return $donations;
+	}
 	function update() {}
 	function delete() {}
-	function list() {}
+	
 
 ?>
