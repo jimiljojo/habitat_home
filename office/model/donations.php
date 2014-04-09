@@ -9,11 +9,18 @@
 	function create() {}
 	function read() {
 		global $dbio;
+		$tableinfo = array();
 		$donations = $dbio->readAllDonations();
-		return $donations;
+		$donors = $dbio->getDonors();
+		$tableinfo[] = $donations;
+		$tableinfo[] = $donors;
+		return $tableinfo;
 	}
 	function update() {}
-	function delete() {}
+	function edit() {
+		global $dbio;
+		$did = $_GET['did'];
+	}
 	
 
 ?>

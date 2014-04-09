@@ -21,9 +21,9 @@
 		// METHODS //
 
 		public function getDonation_id() {return $this->donation_id;}
-		public function getDonatedby() {return $this->organization;}
+		public function getDonatedby() {return $this->donatedby;}
 
-		public function setDonation($donation) {$this->donation = $donation;}
+		public function setDonation_id($donation_id) {$this->donation_id = $donation_id;}
 		public function setDonatedby($donatedby) {$this->donatedby = $donatedby;}
 
 	}// end class

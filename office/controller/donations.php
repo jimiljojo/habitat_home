@@ -3,7 +3,7 @@
 	// TITLE: Office Donations Controller
 	// FILE: office/controller/donations.php
 	// AUTHOR: AUTOGEN
-
+	$updated = false;
 
 	switch ($act) {
 
@@ -23,13 +23,15 @@
 			// CODE HERE
 			break;
 
-		case 'delete':
-			// CODE HERE
+		case 'editDonation':
+			include_once 'office/model/donations.php';
+			$donationInfo = edit();
+			$page = $dir . '/view/editDonations.php';
 			break;
 
 		case 'list':
 			include_once 'office/model/donations.php';
-			$donations = read();
+			$tableinfo = read();
 			$page = $dir . '/view/viewDonations.php';
 			break;
 

@@ -1793,6 +1793,30 @@ class DBIO {
         return $donations;
     }
 
+    public function getDonors() {
+        global $con;
+        $sql = "select Donation.donation_id, Person.first_name from Donation inner join Donation_has_Person on Donation.donation_id = Donation_has_Person.Donation_donation_id inner join Person on Donation_has_Person.Person_person_id = Person.person_id";
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $donors = array();
+        while ($rows = mysql_fetch_array($result)) {
+        	$donor = new Donatedby();
+            $donor->setDonation_id($rows[0]);
+            $donor->setDonatedby($rows[1]);
+            $donors[] = $donor;
+        }
+        $sql = "select Donation.donation_id, Organization.name from Donation inner join Donation_has_Organization on Donation.donation_id = Donation_has_Organization.Donation_donation_id inner join Organization on Donation_has_Organization.Organization_organization_id = Organization.organization_id";
+        $result = mysql_query($sql, $con);
+        while ($rows = mysql_fetch_array($result)) {
+        	$donor = new Donatedby();
+            $donor->setDonation_id($rows[0]);
+            $donor->setDonatedby($rows[1]);
+            $donors[] = $donor;
+        }
+        $this->close();
+        return $donors;
+    }
+
 
 }// end class
 ?>

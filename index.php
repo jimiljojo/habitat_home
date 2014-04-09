@@ -16,6 +16,7 @@
 	require_once('class/organization.php');
 	require_once('class/foh.php');
 	require_once('class/person.php');
+	require_once('class/donatedby.php');
 	require_once('class/contact.php');
 	include_once ('class/donation.php');
 	require_once('class/address.php');
