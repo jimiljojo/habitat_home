@@ -12,11 +12,13 @@
 			break;
 
 		case 'create':
-			// CODE HERE
+			include_once 'office/model/donations.php';
+			$page = $dir . '/view/createDonation.php';
 			break;
 
-		case 'read':
-			// CODE HERE
+		case 'confirmCreate':
+			include_once 'office/model/donations.php';
+			
 			break;
 
 		case 'update':

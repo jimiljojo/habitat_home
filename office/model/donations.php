@@ -6,7 +6,17 @@
 
 
 	function search() {}
-	function create() {}
+	function create() {
+		$donor = $_GET['donor'];
+		$donation = new Donation();
+        $donation->setDate($_GET['date']);
+        $donation->setTime($_GET['time']);
+        $donation->setDetails($_GET['details']);
+        $donation->setType($_GET['type']);
+        $donation->setValue($_GET['value']));
+        $donation->setEvent($_GET['event']));
+		global $dbio;
+	}
 	function read() {
 		global $dbio;
 		$tableinfo = array();
