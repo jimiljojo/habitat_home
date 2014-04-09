@@ -20,7 +20,7 @@
 		</style>
                 
 
-		 <script>
+<!--		 <script>
 			function retreive($person_id) {
 				var dir = "&dir=" + document.getElementById("dir").value;
 				var sub = "&sub=" + document.getElementById("sub").value;
@@ -29,13 +29,21 @@
 				alert(url);
 				
 			}
-		</script> 
+		</script> -->
+                <script type="text/javascript">
+	function retrieve(n) {
+		document.getElementById("vid").value=n;
+		document.getElementById("listVolunteers").submit();
+			}
+</script>
  
 	</head>
 	<body>
-		<input id="dir" type="hidden" value="A">
-		<input id="sub" type="hidden" value="B">
-		<input id="act" type="hidden" value="retrieve">
+            <form id="listVolunteers" action="index.php" method="GET">
+		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
+                <input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
+                <input name="act" id="act" type="hidden" value="retrive" >
+                <input name="vid" id="vid" type="hidden" value="0">
                 <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
                 <br/>
 		<table>
@@ -67,7 +75,7 @@
 				
                                 
 				
-				echo '<tr onclick="retreive(' . $person_id . ');">'; 
+				echo '<tr onclick="retrieve(' . $person_id . ');">'; 
 				
 				echo '<td>' . $title .'</td>';
                                 echo '<td>' . $first_name .'</td>';
@@ -87,6 +95,7 @@
 		?>
 		</table>
 		<br>
+            </form>
 		<hr>
 		<br>
 		<div id="notes"></div>
