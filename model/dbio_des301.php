@@ -1774,11 +1774,7 @@ class DBIO {
 	//Reads all donations 
     public function readAllDonations() {
         global $con;
-        $sql = '
-            SELECT donation_id,Donation.date,Donation.time,when_entered,details,value,DonationType.typeName,Event.title
-            FROM Donation
-            JOIN DonationType on Donation.DonationType_idDonationType = DonationType.idDonationType
-            JOIN Event on Donation.Event_event_id = Event.event_id';
+        $sql = "select Donation.donation_id, Donation.date, Donation.time, Donation.details, DonationType.typeName, Donation.value, Event.title from Donation inner join Event on Donation.Event_event_id = Event.event_id inner join DonationType on Donation.donationType = DonationType.idDonationType";
         $this->open();
         $result = mysql_query($sql, $con);
         $donations = array();
@@ -1789,11 +1785,11 @@ class DBIO {
             $donation->setTime($rows[2]);
             $donation->setDetails($rows[3]);
             $donation->setWhen_entered($rows[4]);
-            $donation->setDonationType_idDonationType($rows[5]);
+           // $donation->setDonationType_idDonationType($rows[5]);
             $donation->setValue($rows[6]);
-            $donation->setEvent_event_id($rows[7]);
-            $donation->setAdmin_idAdmin($rows[8]);
-            $donation->setEntered_by_id($rows[9]);
+          //  $donation->setEvent_event_id($rows[7]);
+           // $donation->setAdmin_idAdmin($rows[8]);
+           // $donation->setEntered_by_id($rows[9]);
             $donations[] = $donation;
         }
         $this->close();

@@ -17,6 +17,7 @@
 	require_once('class/foh.php');
 	require_once('class/person.php');
 	require_once('class/contact.php');
+	include_once ('class/donation.php');
 	require_once('class/address.php');
 	require_once ('class/link.php');
 	require_once ('class/item.php');
