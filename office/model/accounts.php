@@ -60,6 +60,7 @@
 		$person->setTitle($_GET['title']);
 		$person->setFirst_name($_GET['fName']);
 		$person->setLast_name($_GET['lName']);
+		$person->setDob($_GET['dob']);
 
 		$contact->setPhone($_GET['phone']);
 		$contact->setEmail($_GET['email']);

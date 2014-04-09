@@ -21,6 +21,7 @@
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
     $lName = $person->getLast_name();
+    $dob = $person->getDob();
     $street1 = $address->getStreet1();
     $street2 = $address->getStreet2();
     $city = $address->getCity();
@@ -76,6 +77,13 @@
       <div class="col-lg-10">
         <input name="lName" type="text" placeholder="last name" value="<?php echo $lName; ?>"  >
 		<span class="required">*</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputdob" class="col-lg-2 control-label">DOB :</label>
+      <div class="col-lg-10">
+        <input name="dob" type="text" placeholder="Date of Birth" value="<?php echo $dob; ?>"  >
+    <span class="required">*</span>
       </div>
     </div>
     <div class="form-group">

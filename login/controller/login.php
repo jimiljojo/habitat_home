@@ -17,7 +17,7 @@
 	{
 		case 'loginCheck';
 	    //session_start();
-	    $user=($_GET['userid']);
+	    $user=($_GET['userName']);
 	    $pw=($_GET['password']);
 	    $dbCheck=$dbio->getLogin($user,$pw);
 	    global $personid;

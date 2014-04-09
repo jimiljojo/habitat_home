@@ -3,7 +3,8 @@
 // TITLE: Office Accounts View
 // FILE: office/view/accounts.php
 // AUTHOR: Martin Arabi; mva5164
-
+if($updated)
+      echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 
 ?>
 

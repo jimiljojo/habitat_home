@@ -32,6 +32,7 @@
 		case 'update':
 			include_once 'office/model/accounts.php';
 			$updated = update();
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 
 		case 'list':
