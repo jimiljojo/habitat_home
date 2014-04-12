@@ -477,7 +477,7 @@ class DBIO {
 
 	public function readAllEvent() {
 		global $con;
-		$sql = 'SELECT * FROM Event';
+		$sql = 'SELECT * FROM Event Order By date DESC';
 		$this->open();
 		$result = mysql_query($sql, $con);
 		$events= array();

@@ -5,13 +5,8 @@
 	// AUTHOR: sbkedia
 
 			//Title | Date | Type [may be hidden] | GuestList | Time | Address | Committee [may be hidden] | Sponsor
+
 	?>
-<style>
-	table {border-collapse: collapse;}
-	tr:nth-child(2n) {background-color: lavender;}
-	tr:hover {background-color: gold;}
-	td {padding: 0px 10px; width: auto;}
-</style>
 
 <script type="text/javascript">
 	function retrieve(n) {
@@ -32,8 +27,8 @@
 <br/><br/>
 
 	<input type="hidden" name="eventId" id="eventId" value="0">
-
-<table>
+<h3><u>Upcoming Events </u></hr></br>
+<table class="table table-striped table-hover " style="width:100%">
 	<tr>
 		<th>Title</th>
 		<th>Date</th>
@@ -47,8 +42,27 @@
 	<?php 
 	$Event= readEvents();
 	$Event_type= readEvent_Types();
+	$pastEventFlag=0;
 
-	foreach ($Event as $EventItem) { ?>
+	foreach ($Event as $EventItem) { 
+
+		if($pastEventFlag==0){
+			
+			if($EventItem->getDate()<date('Y-m-d')) {
+				echo '</table> <h3><u>Past Events </u></hr></br> <table class="table table-striped table-hover " style="width:100%">';
+				echo '<tr>
+						<th>Title</th>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Type</th>
+						<th>Guest List</th> <!-- make this a button to pull up  a table showing the guest list -->
+						<th>Address</th> 
+						<th>Sponsor</th>
+					</tr>';
+					
+				$pastEventFlag=1;
+			}
+		}?>
 
 	<tr onclick="retrieve(<?php echo $EventItem->getEvent_id(); ?>);">
 

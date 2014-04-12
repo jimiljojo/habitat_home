@@ -31,7 +31,7 @@
 <?php if($act=="update")
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>'; ?>
 
-<h3 class="bold">Create Event</h3>
+<h3 class="bold">Edit Event</h3>
 
 <?php 
 	$event_id= isset($_SESSION['eventId']) ? $_SESSION['eventId'] : 'null';

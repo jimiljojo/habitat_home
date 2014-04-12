@@ -4,7 +4,6 @@
 // FILE: office/view/events.php
 // AUTHOR: sbkedia
 
-
 ?>
 <style> /* css */ 
 
