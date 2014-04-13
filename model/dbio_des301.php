@@ -1942,7 +1942,7 @@ class DBIO {
 				}
 			else
 			{
-				echo "DB error viewVolunteersWhereCertifiedOrNot";
+				echo "DB error searVolunteers";
 			}
 			return $returnArray;
         }
