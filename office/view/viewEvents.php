@@ -16,6 +16,7 @@
 </script>
 
 <h2>All Events</h2>
+<hr>
 
 <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
 
@@ -27,7 +28,7 @@
 <br/><br/>
 
 	<input type="hidden" name="eventId" id="eventId" value="0">
-<h3><u>Upcoming Events </u></hr></br>
+<h3><u>Upcoming Events </u></hr></br></h3>
 <table class="table table-striped table-hover " style="width:100%">
 	<tr>
 		<th>Title</th>
