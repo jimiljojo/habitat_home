@@ -33,7 +33,8 @@
 	<tr>
 		<th>Title</th>
 		<th>Date</th>
-		<th>Time</th>
+		<th>Start Time</th>
+		<th>End Time</th>
 		<th>Type</th>
 		<th>Guest List</th> <!-- make this a button to pull up  a table showing the guest list -->
 		<th>Address</th> 
@@ -54,7 +55,8 @@
 				echo '<tr>
 						<th>Title</th>
 						<th>Date</th>
-						<th>Time</th>
+						<th>Start Time</th>
+						<th>End Time</th>
 						<th>Type</th>
 						<th>Guest List</th> <!-- make this a button to pull up  a table showing the guest list -->
 						<th>Address</th> 
@@ -70,6 +72,7 @@
 		<td><?php echo $EventItem->getTitle(); ?></td>
 		<td><?php echo $EventItem->getDate(); ?></td>
 		<td><?php echo $EventItem->getTime(); ?></td>
+		<td><?php echo $EventItem->getEndTime(); ?></td>
 			
 			<?php foreach ($Event_type as $EventTypeItem){ 					//Entering Event Type title from its ID
 				if($EventItem->getType()==$EventTypeItem->getType_id()){ ?>

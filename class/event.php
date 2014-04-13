@@ -13,6 +13,7 @@
 		private $address;
 		private $committee;
 		private $sponsoredBy;
+		private $maxNumGuests;
 		private $endTime;
 
 
@@ -31,6 +32,7 @@
 		public function getAddress() {return $this->address;}
 		public function getCommittee() {return $this->committee;}
 		public function getSponsoredBy() {return $this->sponsoredBy;}
+		public function getMaxNumGuests() {return $this->maxNumGuests;}
 		public function getEndTime() {return $this->endTime;}
 
 		public function setEvent_id($event_id) {$this->event_id = $event_id;}
@@ -41,6 +43,7 @@
 		public function setAddress($address) {$this->address = $address;}
 		public function setCommittee($committee) {$this->committee = $committee;}
 		public function setSponsoredBy($sponsoredBy) {$this->sponsoredBy = $sponsoredBy;}
+		public function setMaxNumGuests($maxNumGuests) {$this->maxNumGuests = $maxNumGuests;}
 		public function setEndTime($endTime) {$this->endTime = $endTime;}
 
 	}// end class

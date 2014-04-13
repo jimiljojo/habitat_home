@@ -492,7 +492,8 @@ class DBIO {
 			$event->setAddress($rows[5]);
 			$event->setCommittee($rows[7]);
 			$event->setSponsoredBy($rows[8]);
-			$event->setEndTime($rows[9]);
+			$event->setMaxNumGuests($rows[9]);
+			$event->setEndTime($rows[10]);
 			$events[]=$event;
 		} 
 		$this->close();
@@ -516,7 +517,8 @@ class DBIO {
 			$event->setAddress($rows[5]);
 			$event->setCommittee($rows[7]);
 			$event->setSponsoredBy($rows[8]);
-			$event->setEndTime($rows[9]);
+			$event->setMaxNumGuests($rows[9]);
+			$event->setEndTime($rows[10]);
 			$eventName[]=$event;
 		}
 		//$ints = array();
@@ -638,7 +640,8 @@ class DBIO {
 			$event->setAddress($rows[5]);
 			$event->setCommittee($rows[7]);
 			$event->setSponsoredBy($rows[8]);
-			$event->setEndTime($rows[8]);
+			$event->setMaxNumGuests($rows[9]);
+			$event->setEndTime($rows[10]);
 			$events[]=$event;
 		} 
 		$this->close();
@@ -677,7 +680,7 @@ class DBIO {
 		else
 			return false;
 	}
-	
+
 	public function getEventId($person_id){
 		global $con;
 		$sql='SELECT Event_event_id from Person_relates_to_Event where Person_person_id="'.$person_id.'"'; 
