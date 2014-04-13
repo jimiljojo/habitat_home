@@ -7,7 +7,8 @@
 
 <script type="text/javascript">
   function enterEvent() {
-    var chkBox = document.getElementById("isFOH");
+    var radio1 = document.getElementById("isFOH");
+    var radio1 = document.getElementById("isFOH");
     var txtBox = document.getElementById("events");
     if(chkBox.checked)
       txtBox.style.visibility = "visible";

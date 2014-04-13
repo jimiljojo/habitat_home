@@ -13,12 +13,15 @@
 
 		case 'create':
 			include_once 'office/model/donations.php';
+			$events = getEvents();
+			$people = getPeople();
 			$page = $dir . '/view/createDonation.php';
 			break;
 
 		case 'confirmCreate':
 			include_once 'office/model/donations.php';
-			
+			$updated = create();
+			$page = $dir . '/view/editDonations.php';
 			break;
 
 		case 'update':

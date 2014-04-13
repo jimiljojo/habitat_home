@@ -38,6 +38,17 @@
 		$donationInfo[] = $donationtypes;
 		return $donationInfo;
 	}
+
+	function getEvents() {
+		global $dbio;
+		$events = $dbio->readAllEvent();
+		return $events;
+	}
 	
+	function getPeople() {
+		global $dbio;
+		$people = $dbio->listPersons();
+		return $people;
+	}
 
 ?>

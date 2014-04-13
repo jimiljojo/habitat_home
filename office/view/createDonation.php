@@ -1,5 +1,29 @@
 <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
 <hr>
+
+<script type="text/javascript">
+  function enterPerson() {
+    document.getElementById("person").style.display = "block";
+    document.getElementById("organization").style.display = "none";
+  }
+  function enterOrg() {
+    document.getElementById("organization").style.display = "block";
+    document.getElementById("person").style.display = "none";
+  }
+
+  function showEvents(){
+    document.getElementById("events").style.display = "block";
+  }
+
+  function showPeople(){
+    alert('ola');
+    document.getElementById("people").style.display = "block";
+  }
+
+
+</script>
+
+
 <form action="index.php" method="GET" class="form-horizontal">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
@@ -55,16 +79,60 @@
       <label for="inputEvent" class="col-lg-2 control-label">Event :</label>
       <div class="col-lg-10">
         <input name="event" type="text" placeholder="event" value="" >
+        <button type="button" onclick="showEvents();">Show All</button>
+        <div id="events" style="display : none">
+          <table>
+          <?php
+          foreach ($events as $event) {
+            echo '<tr>';
+            echo '<td>' . $event->getTitle() . '</td>';
+            echo '</tr>';
+          }
+          ?>
+        </table>
+        </div>
 		<span class="required">*</span></label>
       </div>
     </div>
 		<div class="form-group">
-      <label for="inputdonor" class="col-lg-2 control-label">Donor :</label>
+      <label class="col-lg-2 control-label">Donor :</label>
       <div class="col-lg-10">
-        <input name="donor" type="text" placeholder="donor" value="" >
-		<span class="required">*</span>
+        <div class="radio">
+          <label>
+            <input type="radio" name="donoroption" id="optionPerson" value="person" checked="" onclick='enterPerson();'>
+            Person
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="donoroption" id="optionsOrganization" value="organization" onclick='enterOrg();'>
+            Organiation
+          </label>
+        </div>
       </div>
     </div>
+    <div id="person">
+      <input id="fname" name="fname" placeholder="first name" type="text">
+      <input id="lname" name="lname" placeholder="last name" type="text">
+       <button type="button" onlick='showPeople();'>Show All</button>
+       <div id="people" style="display : none">
+          <table>
+          <?php
+          foreach ($people as $person) {
+            echo '<tr>';
+            echo '<td>' . $person->getFirst_name() . '</td>';
+            echo '<td>' . $person->getLast_name() . '</td>';
+            echo '<td>' . $person->getDob() . '</td>';
+            echo '</tr>';
+          }
+          ?>
+        </table>
+        </div>
+    </div>
+    <div id="organization" style="display : none">
+    <input id="org" name="org" placeholder="Organization" type="text" >
+    <input type="button" value="Search">
+  </div><br>
     
     
     <input type="submit" value="Create">
