@@ -492,6 +492,7 @@ class DBIO {
 			$event->setAddress($rows[5]);
 			$event->setCommittee($rows[7]);
 			$event->setSponsoredBy($rows[8]);
+			$event->setEndTime($rows[9]);
 			$events[]=$event;
 		} 
 		$this->close();
@@ -515,6 +516,7 @@ class DBIO {
 			$event->setAddress($rows[5]);
 			$event->setCommittee($rows[7]);
 			$event->setSponsoredBy($rows[8]);
+			$event->setEndTime($rows[9]);
 			$eventName[]=$event;
 		}
 		//$ints = array();
@@ -545,7 +547,7 @@ class DBIO {
 	public function updateEvent($eventObj, $addressObj) {
 		global $con;
 		
-		$sql = "UPDATE Event SET title='" . $eventObj->getTitle() ."', date=CAST('" . $eventObj->getDate()."' As Date) , time=CAST('" . $eventObj->getTime()."' As Time), type_id=" . $eventObj->getType() .", Address_address_id=" . $addressObj->getAddress_id() .", Committee_committee_id=" . $eventObj->getCommittee() .", sponsoredBy='" . $eventObj->getSponsoredBy()."' Where event_id=" . $eventObj->getEvent_id() . ";" ;
+		$sql = "UPDATE Event SET title='" . $eventObj->getTitle() ."', date=CAST('" . $eventObj->getDate()."' As Date) , time=CAST('" . $eventObj->getTime()."' As Time), type_id=" . $eventObj->getType() .", Address_address_id=" . $addressObj->getAddress_id() .", Committee_committee_id=" . $eventObj->getCommittee() .", sponsoredBy='" . $eventObj->getSponsoredBy()."', endTime=CAST('" . $eventObj->getEndTime()."' As Time) Where event_id=" . $eventObj->getEvent_id() . ";" ;
 		
 		$sql2 = "UPDATE Address SET street1='" . $addressObj->getStreet1() . "', street2='" . $addressObj->getStreet2() . "', city='" . $addressObj->getCity() . "', state='" . $addressObj->getState() . "' WHERE address_id=". $addressObj->getAddress_id() .";";
 
@@ -571,9 +573,9 @@ class DBIO {
 
 
 		$sql= 	"INSERT INTO Event
-				(title,date,time,type_id,Address_address_id,Project_project_id,Committee_committee_id,sponsoredBy)
+				(title,date,time,type_id,Address_address_id,Project_project_id,Committee_committee_id,sponsoredBy,endTime)
 				SELECT 
-				 '" .$eventObj->getTitle(). "' , CAST('" . $eventObj->getDate()."' As Date) , CAST('" . $eventObj->getTime()."' As Time) ," .$eventObj->getType(). " , Max(address_id), Null ," .$eventObj->getCommittee()." ,'" .$eventObj->getSponsoredBy(). "' From Address;" ;
+				 '" .$eventObj->getTitle(). "' , CAST('" . $eventObj->getDate()."' As Date) , CAST('" . $eventObj->getTime()."' As Time) ," .$eventObj->getType(). " , Max(address_id), Null ," .$eventObj->getCommittee()." ,'" .$eventObj->getSponsoredBy(). "', CAST('" . $eventObj->getEndTime()."' As Time) From Address;" ;
 		mysql_query($sql, $con);			
 
 		$this->close();
@@ -636,6 +638,7 @@ class DBIO {
 			$event->setAddress($rows[5]);
 			$event->setCommittee($rows[7]);
 			$event->setSponsoredBy($rows[8]);
+			$event->setEndTime($rows[8]);
 			$events[]=$event;
 		} 
 		$this->close();
@@ -674,6 +677,7 @@ class DBIO {
 		else
 			return false;
 	}
+	
 	public function getEventId($person_id){
 		global $con;
 		$sql='SELECT Event_event_id from Person_relates_to_Event where Person_person_id="'.$person_id.'"'; 
@@ -1942,7 +1946,7 @@ class DBIO {
 				}
 			else
 			{
-				echo "DB error searVolunteers";
+				echo "DB error viewVolunteersWhereCertifiedOrNot";
 			}
 			return $returnArray;
         }

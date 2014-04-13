@@ -13,6 +13,7 @@
 		private $address;
 		private $committee;
 		private $sponsoredBy;
+		private $endTime;
 
 
 		// CONSTRUCTOR //
@@ -30,6 +31,7 @@
 		public function getAddress() {return $this->address;}
 		public function getCommittee() {return $this->committee;}
 		public function getSponsoredBy() {return $this->sponsoredBy;}
+		public function getEndTime() {return $this->endTime;}
 
 		public function setEvent_id($event_id) {$this->event_id = $event_id;}
 		public function setTitle($title) {$this->title = $title;}
@@ -39,6 +41,7 @@
 		public function setAddress($address) {$this->address = $address;}
 		public function setCommittee($committee) {$this->committee = $committee;}
 		public function setSponsoredBy($sponsoredBy) {$this->sponsoredBy = $sponsoredBy;}
+		public function setEndTime($endTime) {$this->endTime = $endTime;}
 
 	}// end class
 
