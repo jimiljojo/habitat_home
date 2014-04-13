@@ -39,16 +39,25 @@
 		return $donationInfo;
 	}
 
-	function getEvents() {
+	function getEvent() {
 		global $dbio;
-		$events = $dbio->readAllEvent();
-		return $events;
+		$eventid = $_GET['eventid'];
+		$event= $dbio->readEvent($eventid);
+		return $event;
 	}
 	
-	function getPeople() {
+	function getPerson() {
 		global $dbio;
-		$people = $dbio->listPersons();
-		return $people;
+		$pid = $_GET['pid'];
+		$person = $dbio->readPerson($pid);
+		return $person;
+	}
+
+	function getOrg() {
+		global $dbio;
+		$oid = $_GET['oid'];
+		$org = $dbio->getOrgById($oid);
+		return $org;
 	}
 
 ?>
