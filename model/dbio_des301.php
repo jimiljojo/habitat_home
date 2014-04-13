@@ -1946,5 +1946,25 @@ class DBIO {
 			}
 			return $returnArray;
         }
+
+        public function checkVolunteer($pid) {
+        global $con;
+        $sql = "select 1 from Volunteer where Person_person_id = " . $pid . "";
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $this->close();
+        if($result)
+        	return true;
+        else
+        	return false;
+    }
+
+    public function makeVolunteer($pid){
+    	global $con;
+        $sql = "select 1 from Volunteer where Person_person_id = " . $pid . "";
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $this->close();
+    }
 }// end class
 ?>

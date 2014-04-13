@@ -93,9 +93,16 @@
 		$event = new Event();
 		$title = $foh->getEvent();
 		$event->setTitle($title);
-
-		$tableinfo = array($person,$contact,$address,$event);
+		$isVol = $dbio->checkVolunteer($pid);
+		$tableinfo = array($person,$contact,$address,$event,$isVol);
 		return $tableinfo;
+	}
+
+	function migrate(){
+		global $dbio;
+		$pid = $_GET['pid'];
+		$updated = $dbio->makeVolunteer($pid);
+		return $updated;
 	}
 
 ?>

@@ -206,4 +206,16 @@
     ?>
     <input type="submit" value="Update">
 </form>
+
+<form action="index.php" method="GET" class="form-horizontal">
+    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+    <input name="pid" type="hidden" value="<?php echo $person->getPerson_id(); ?>" >
+    <input name="act" type="hidden" value="migrate" >
+    <?php 
+    if(!$tableinfo[4]){
+      echo 'Migrate Person to Volunteer : <input type="submit" value="Migrate">';
+    }
+    ?>
+    </form>
 <hr>

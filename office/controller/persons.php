@@ -19,6 +19,12 @@
 			$page = $dir . '/view/createPerson.php';
 			break;
 
+		case 'migrate':
+			include_once 'office/model/persons.php';
+			$update = migrate();
+			$page = $dir . '/view/editPerson.php';
+			break;
+
 		case 'read':
 			include_once 'office/model/persons.php';
 			$tableinfo = edit();
