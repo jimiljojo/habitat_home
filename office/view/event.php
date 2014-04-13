@@ -28,6 +28,7 @@ alignment: bottom;
 </style>
 
 <h2 class="bold"> EVENTS </h2>
+<hr>
 <br/><br/>
 
 <!-- View All button -->
