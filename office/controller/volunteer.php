@@ -23,7 +23,7 @@
  
 			break;
 
-		case 'create':
+		case 'createVolunteer':
                     
                     $parameter = $_GET['param'];
                     $title = $_GET['title'];
@@ -59,6 +59,9 @@
 		case 'delete':
                     
 			break;
+                    
+                case "retrieve":
+                    $page = $dir . '/view/edit' . ucfirst($sub) . '.php';
 
 		case 'listVolunteer':
                                       
