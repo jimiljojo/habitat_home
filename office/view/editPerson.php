@@ -17,7 +17,7 @@
  	  $person = $tableinfo[0];
  	  $contact = $tableinfo[1];
  	  $address = $tableinfo[2];
-    $event = $tableinfo[3];
+          $event = $tableinfo[3];
 
     $title = $person->getTitle();
     $fName = $person->getFirst_name();

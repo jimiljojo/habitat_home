@@ -9,7 +9,8 @@
 
 		// ATTRIBUTES //
 
-		private $consentAge;
+		private $id;
+                private $consentAge;
 		private $consentVideo;
 		private $consentWaiver;
 		private $consentPhoto;
@@ -33,7 +34,8 @@
 
 		// METHODS //
 
-		public function getConsentAge() {return $this->consentAge;}
+                public function getId() {return $this->id;}
+                public function getConsentAge() {return $this->consentAge;}
 		public function getConsentVideo() {return $this->consentVideo;}
 		public function getConsentWaiver() {return $this->consentWaiver;}
 		public function getConsentPhoto() {return $this->consentPhoto;}
@@ -49,7 +51,8 @@
 		public function getChurchAmbassador() {return $this->churchAmbassador;}
 		public function getAffiliation() {return $this->affiliation;}
 
-		public function setConsentAge($consentAge) {$this->consentAge = $consentAge;}
+                public function setId($id) {$this->id = $id;}
+                public function setConsentAge($consentAge) {$this->consentAge = $consentAge;}
 		public function setConsentVideo($consentVideo) {$this->consentVideo = $consentVideo;}
 		public function setConsentWaiver($consentWaiver) {$this->consentWaiver = $consentWaiver;}
 		public function setConsentPhoto($consentPhoto) {$this->consentPhoto = $consentPhoto;}

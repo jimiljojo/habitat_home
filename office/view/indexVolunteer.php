@@ -57,8 +57,8 @@
 <button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=editVolunteer';">Create New</button>
 <hr><!--
 <form name="input" action="register/index.php" method="get"> <!-- create new button -->
-<!--<input type="submit" value="Create New">-->
-</form><br><br/>
+<!--<input type="submit" value="Create New">
+</form><br><br/>  -->
 
 <div>
     Here you can search for a volunteer by:

@@ -1,5 +1,11 @@
 <?php
 
+global $dir;
+        global $sub;
+        global $act;
+        global $msg;
+        $person_id = $_GET['vid'];
+
 /* 
  * file: createVolunteer.php
  * To change this license header, choose License Headers in Project Properties.
@@ -10,19 +16,18 @@
 ?>
 
 
-    <html>
-        <body>
+<html>
 
-<div style="width:50%; margin-left:20px;">
+			
+		
 
-	<br>
-        <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
 	<form  action="index.php" method="get">
 
 		
 		
 		<input name="act" type="hidden" value="getInterests" >
-		<h4 class="show" onclick="swap(this);">Personal Information</h4><div><table class="intTable">
+		<h4 class="show" onclick="swap(this);">Personal Information</h4><div>
+               <table class="intTable">
 		<tr><td>
 		Title<span class="mandatory">* </span></td> 
 		<td><select name="title" id="title">
@@ -32,35 +37,31 @@
   		<option>Ms.</option>
   		<option>Dr.</option>
 		</select></label></td><tr><br>
-		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname"></label>
+		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname" value="<?php echo $first_name; ?>" ></label>
 		</td></tr>
 		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname"></label></td></tr>
 		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp yyyy-mm-dd)</td></tr>
 		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
-		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr></table>
-		  <p>&nbsp;</p>
-		</div>
+		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr>
+               </table></div>
 
-		<h4 class="show" onclick="swap(this);">Address</h4><div><table class="intTable">
+		<h4 class="show" onclick="swap(this);">Address</h4><div>
+               <table class="intTable">
 		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1"></td></tr><br>
 		<tr><td>Street 2</td><td><input name="street2" type="text"></label></td></tr>
 		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city"></label></td></tr>
 		<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" id="state"></label></td></tr>
-		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> </table>
-		  <p>&nbsp;</p>
-		</div>
+		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> 
+               </table></div>
 
-		<h4 class="show" onclick="swap(this);">Contact Information</h4><div><table class="intTable">
+		<h4 class="show" onclick="swap(this);">Contact Information</h4><div>
+               <table class="intTable">
 		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
 		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
 		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
-        <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
-        <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
-        </table></div>
-
-
-
-
+                <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
+                <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
+               </table></div>
 		
 		<br>
 		<script type="text/javascript">
@@ -164,7 +165,8 @@
             }
 
         </script>
-		<input name="submit" type="submit" value="submit" onclick="return check();" >
+        
+		<input type="submit" value="Create">
 
 		<br>
 	</form>
@@ -173,6 +175,5 @@
 	<span class="note"><span class="mandatory">*</span> Required<br>
 	Email address is essential in order to receive monthly updates and special invitations
 	</span>
-</div>
-</body>
+        
 </html>

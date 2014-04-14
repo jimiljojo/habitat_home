@@ -20,16 +20,7 @@
 		</style>
                 
 
-<!--		 <script>
-			function retreive($person_id) {
-				var dir = "&dir=" + document.getElementById("dir").value;
-				var sub = "&sub=" + document.getElementById("sub").value;
-				var act = "&act=" + document.getElementById("act").value;
-				var url = "index.php?id=" + $person_id + dir + sub + act;
-				alert(url);
-				
-			}
-		</script> -->
+
                 <script type="text/javascript">
 	function retrieve(n) {
 		document.getElementById("vid").value=n;

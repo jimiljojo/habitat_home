@@ -1505,7 +1505,7 @@ class DBIO {
 			}
 			return $persons;
 		}// end function
-
+                      
 		public function searchPersonByName($fname,$lname){
 		global $con;
 		$sql = 'SELECT Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip, FOH.Person_person_id, FOH.Event_event_id, Event.title FROM Person inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id left outer join FOH on Person.person_id = FOH.Person_person_id left outer join Event on FOH.Event_event_id = Event.event_id where Person.first_name = "' . $fname . '" or Person.last_name = "' . $lname . '"';

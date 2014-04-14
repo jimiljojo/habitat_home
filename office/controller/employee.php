@@ -1,6 +1,6 @@
 <?php
 
-	// TITLE: Office Office Controller
+	// TITLE: Office employee Controller
 	// FILE: office/controller/office.php
 	// AUTHOR: rwg5215
 
