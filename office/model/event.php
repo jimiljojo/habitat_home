@@ -52,6 +52,19 @@
 		$guests= $dbio->readGuestsByEvent($event_id);
 		return $guests;
 	}
+
+	function getEventSchedules($event_id){
+		global $dbio;
+		$eventSchedules= $dbio->readEventSchedule($event_id);
+		return $eventSchedules;
+	}
+
+	function getVolunteerSchedule($event_id){
+		global $dbio;
+		$volunteerSchedules= $dbio->readVolunteerScheduleByEvent($event_id);
+		return $volunteerSchedules;
+	}
+
 	function create() {}
 
 	

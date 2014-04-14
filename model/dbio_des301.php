@@ -1012,6 +1012,51 @@ class DBIO {
                 $this->close();
 				return $personSchedules; 
         }
+
+
+        public function readEventSchedule($eventId) //view all 
+        {
+            global $con; 
+			$sql = "SELECT * From Schedule WHERE Event_event_id =" . $eventId ; 
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$eventSchedules = array();
+			while($rows = mysql_fetch_array($result))
+			{
+	
+				$eventSchedule = new Schedule();
+				$eventSchedule->setId($rows[0]); 
+				$eventSchedule->settimeStart($rows[1]);
+				$eventSchedule->settimeEnd($rows[2]);
+				$eventSchedule->setEvent_event_id($rows[3]);
+				$eventSchedule->setDescription($rows[4]);
+				$eventSchedule->setInterest_interest_id($rows[5]);
+				$eventSchedule->setMaxNumPeople($rows[6]);
+				$eventSchedules[] = $eventSchedule;
+			} 
+            $this->close();
+			return $eventSchedules;
+        }
+
+        public function readVolunteerScheduleByEvent($eventId) //view all 
+        {
+            global $con; 
+			$sql = "SELECT * from Volunteer_has_Schedule Where Schedule_id IN (Select id From Schedule Where Event_event_id=" . $eventId . ");" ; 
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$volunteerSchedules = array();
+			while($rows = mysql_fetch_array($result))
+			{
+	
+				$volunteerSchedule = new Volunteer_Has_Schedule();
+				$volunteerSchedule->setId($rows[0]); 
+				$volunteerSchedule->setVolunteerId($rows[1]);
+				$volunteerSchedule->setScheduleId($rows[2]);
+				$volunteerSchedules[] = $volunteerSchedule;
+			} 
+            $this->close();
+			return $volunteerSchedules;
+        }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
         

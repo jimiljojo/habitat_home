@@ -45,6 +45,17 @@
 		}// end if-else
     }// end function
 
+    function validate(evt) {
+  var theEvent = evt || window.event;
+  var key = theEvent.keyCode || theEvent.which;
+  key = String.fromCharCode( key );
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+
 </script>
 
 
@@ -164,6 +175,30 @@
 
 	<div class="hide" id="div3">
 		<table class="table table-striped table-hover " style="width:100%">
+			<tr>
+				<th>Description</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>Interests</th>
+				<th>Max Number Of People</th>
+			</tr>
+
+			<?php $EventSchedule= getEventSchedules($event_id);
+			foreach ($EventSchedule as $EventScheduleItem){
+			?>
+
+			<tr>
+				<td> <?php echo $EventScheduleItem->getDescription(); ?> </td>
+				<td> <?php echo $EventScheduleItem->gettimeStart(); ?> </td>
+				<td> <?php echo $EventScheduleItem->gettimeEnd(); ?> </td>
+				<td> <?php echo $EventScheduleItem->getInterest_interest_id(); ?> </td>
+				<td> <?php echo $EventScheduleItem->getMaxNumPeople(); ?> </td>
+			</tr>
+
+
+			<?php } ?>
+
+
 		</table>
 	</div>
 <hr>
@@ -182,6 +217,26 @@
 
 	<div class="hide" id="div5">
 		<table class="table table-striped table-hover " style="width:100%">
+			<tr>
+				<th>Volunteer Name</th>
+				<th>Schedule Id</th>
+				<th>Enter Hours</th>
+				
+			</tr>
+
+			<?php $VolunteerSchedule= getVolunteerSchedule($event_id);
+			foreach ($VolunteerSchedule as $VolunteerScheduleItem){
+			?>
+
+			<tr>
+				<td> <?php echo $VolunteerScheduleItem->getVolunteerId(); ?> </td>
+				<td> <?php //echo $VolunteerScheduleItem->getScheduleId(); ?> </td>
+				<td> <input type='text' onkeypress='validate(event)' /> </td>
+				
+			</tr>
+
+
+			<?php } ?>
 		</table>
 	</div>
 <hr>
