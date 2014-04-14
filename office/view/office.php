@@ -42,8 +42,6 @@
 	<dd class="list">Find information on specific donations</dd>
     <dt class="list"><a href="/index.php?dir=office&sub=event">Events</a></dt>
 	<dd class="list">Find event information</dd>
-    <dt class="list"><a href="/index.php?dir=office&sub=foh">Friends of Habitat</a></dt>
-	<dd class="list">Find information on Friends of habitat_home</dd>
     <dt class="list"><a href="/index.php?dir=office&sub=persons">Persons</a></dt>   
         <dd class="list">Find information on a particular person</dd>    
     <dt class="list"><a href="/index.php?dir=office&sub=interests">Interests</a></dt>
