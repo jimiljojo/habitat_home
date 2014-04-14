@@ -44,6 +44,7 @@
 			$eventObj->setType(isset($_GET['type']) ? $_GET['type'] : '');
 			$eventObj->setCommittee(isset($_GET['committee']) ? $_GET['committee'] : '');
 			$eventObj->setSponsoredBy(isset($_GET['sponsor']) ? $_GET['sponsor'] : '');
+			$eventObj->setEndTime(isset($_GET['endTime']) ? $_GET['endTime'] : '');
 
 			$dbio->updateEvent($eventObj,$addressObj);
 
@@ -77,6 +78,7 @@
 			$eventObj->setType(isset($_GET['type']) ? $_GET['type'] : '');
 			$eventObj->setCommittee(isset($_GET['committee']) ? $_GET['committee'] : '');
 			$eventObj->setSponsoredBy(isset($_GET['sponsor']) ? $_GET['sponsor'] : '');
+			$eventObj->setEndTime(isset($_GET['endTime']) ? $_GET['endTime'] : '');
 
 			$dbio->createEvent($addressObj, $eventObj);
 

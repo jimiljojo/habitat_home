@@ -7,22 +7,10 @@
 			//Title | Date | Type [may be hidden] | GuestList | Time | Address | Committee [may be hidden] | Sponsor-->
 ?>
 
-<style>
-	table {border-collapse: collapse;}
-	tr:nth-child(2n) {background-color: lavender;}
-	tr:hover {background-color: gold;}
-	th {padding: 0px 10px; text-align: center;}
-	td {padding: 0px 10px; text-align: center;}
-</style>
 
 <script type="text/javascript">
 	function retrieve(n) {
-		//var dir = "&dir=" + document.getElementById("dir").value;
-		//var sub = "&sub=" + document.getElementById("sub").value;
-		//var act = "&act=" + document.getElementById("act").value;
 		document.getElementById("eventId").value=n;
-		//var url = "index.php?id=" + n + dir + sub + act;
-		//alert(document.getElementById("Id").value);
 		document.getElementById("viewEventForm").submit();
 			}
 </script>
@@ -41,11 +29,12 @@
 
 	<input type="hidden" name="eventId" id="eventId" value="0">
 
-<table>
+<table class="table table-striped table-hover " style="width:100%">
 	<tr>
 		<th>Title</th>
 		<th>Date</th>
-		<th>Time</th>
+		<th>Start Time</th>
+		<th>End Time</th>
 		<th>Guest List</th> <!-- make this a button to pull up  a table showing the guest list -->
 		<th>Address</th> 
 		<!--<th>Committee</th>-->
@@ -59,6 +48,7 @@
 		<td><?php echo $EventItem->getTitle(); ?></td>
 		<td><?php echo $EventItem->getDate(); ?></td>
 		<td><?php echo $EventItem->getTime(); ?></td>
+		<td><?php echo $EventItem->getEndTime(); ?></td>
 		
 		<td>
 			<?php 

@@ -1,4 +1,4 @@
-<? php
+<?php
 
 	// TITLE: Office ViewEvents view 
 	// FILE: office/view/viewEventInfo.php
@@ -108,7 +108,8 @@
 
 			
 			<tr><td>Date: <span class="mandatory">*</span></td><td><input type="text" name="date" value="<?php echo $EventItem->getDate(); ?>"> <label>YYYY-MM-DD</label></td></tr>
-			<tr><td>Time: <span class="mandatory">*</span></td><td><input type="text" name="time" value="<?php echo $EventItem->getTime(); ?>"> <label>24:59</label></td></tr>
+			<tr><td>Start Time: <span class="mandatory">*</span></td><td><input type="text" name="time" value="<?php echo $EventItem->getTime(); ?>"> <label>HH:MM:SS</label></td></tr>
+			<tr><td>End Time: <span class="mandatory">*</span></td><td><input type="text" name="endTime" value="<?php echo $EventItem->getEndTime(); ?>"> <label>HH:MM:SS</label></td></tr>
 
 			<?php 
 			$Address = readAddressByID($EventItem->getAddress()); ?>
