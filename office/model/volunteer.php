@@ -24,21 +24,10 @@ function listVolunteer(){
 }
 //function readContact($id){}
 
-function editVolunteer(){
-    
-} 
+function editVolunteer(){} 
 
-/*function getVolunteer($vid){
-    global $dbio;
-    $volunteers = $dbio->getVolById($vid);
-    return $volunteers;
-}*/
 
-function searchPersonByName($vid){
-    global $dbio;
-    $volunteers = $dbio->searchPersonByName();
-    return $volunteers; 
-}
+
 
 //test
 ?>

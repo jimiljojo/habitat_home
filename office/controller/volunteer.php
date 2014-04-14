@@ -56,8 +56,8 @@
                     
 			break;
 
-		case 'retrive':
-                    $page = $dir . '/view/edit' . ucfirst($sub) . '.php';
+		case 'delete':
+                    
 			break;
 
 		case 'listVolunteer':
