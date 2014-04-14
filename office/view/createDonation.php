@@ -7,13 +7,13 @@
   else
     $eventName = null;
 
+  $donor = " ";
 
   if($person->getFirst_name())
     $donor = $person->getFirst_name();
-  else if($org[0][0]->getName())
+  else if(isset($org[0][0]))
     $donor = $org[0][0]->getName();
-  else
-    $donor = null;
+    
   
 ?>
 
@@ -95,14 +95,14 @@
     <div class="form-group">
       <label for="event" class="col-lg-2 control-label">Event :</label>
       <div class="col-lg-10">
-        <input name="event" type="text" placeholder="event" value="<?php echo $eventName; ?>" disabled>
+        <input name="event" type="text" placeholder="" value="<?php echo $eventName; ?>" disabled>
     <span class="required">*</span></label>
       </div>
     </div>
     <div class="form-group">
       <label for="donor" class="col-lg-2 control-label">Donor :</label>
       <div class="col-lg-10">
-        <input name="donor" type="text" placeholder="donor" value="<?php echo $donor; ?>" disabled>
+        <input name="donor" type="text" placeholder="" value="<?php echo $donor; ?>" disabled>
     <span class="required">*</span></label>
       </div>
     </div>

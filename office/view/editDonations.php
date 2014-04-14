@@ -18,12 +18,12 @@
     $event = $donation->getEvent();
     $donor = $donor->getDonatedby();
 ?>
-<center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
+
 <hr>
 <form action="index.php" method="GET" class="form-horizontal">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="oid" type="hidden" value="<?php echo $donation->getDonation_id() ?>" >
+    <input name="did" type="hidden" value="<?php echo $donation->getDonation_id() ?>" >
     <input name="act" type="hidden" value="update" >
     <fieldset>
     <legend>Donation Info</legend>
@@ -35,9 +35,9 @@
     <?php 
     foreach ($donationtypes as $dt) {
       if($dt->getTypeName() == $type)
-        echo "<option value = '" . $dt->getTypeName() . "' name = '" . $dt->getTypeName() . "' selected='selected'>" . $dt->getTypeName() . "</option>";   
+        echo "<option value = '" . $dt->getIdDonationType() . "' name = '" . $dt->getTypeName() . "' selected='selected'>" . $dt->getTypeName() . "</option>";   
       else
-        echo "<option value = '" . $dt->getTypeName() . "' name = '" . $dt->getTypeName() . "'>" . $dt->getTypeName() . "</option>";   
+        echo "<option value = '" . $dt->getIdDonationType() . "' name = '" . $dt->getTypeName() . "'>" . $dt->getTypeName() . "</option>";   
     }
     ?>
   </select>
@@ -74,14 +74,14 @@
     <div class="form-group">
       <label for="inputEvent" class="col-lg-2 control-label">Event :</label>
       <div class="col-lg-10">
-        <input name="Event" type="text" placeholder="Event" value="<?php echo $event; ?>" >
+        <input name="Event" type="text" placeholder="Event" value="<?php echo $event; ?>" disabled>
 		<span class="required">*</span></label>
       </div>
     </div>
 		<div class="form-group">
       <label for="inputdonor" class="col-lg-2 control-label">Donor :</label>
       <div class="col-lg-10">
-        <input name="donor" type="text" placeholder="donor" value="<?php echo $donor; ?>" >
+        <input name="donor" type="text" placeholder="donor" value="<?php echo $donor; ?>" disabled>
 		<span class="required">*</span>
       </div>
     </div>

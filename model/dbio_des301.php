@@ -1973,5 +1973,15 @@ class DBIO {
         $result = mysql_query($sql, $con);
         $this->close();
     }
+
+
+    public function updateDonations($donation){
+    	global $con;
+        $sql = "UPDATE Donation SET date='" . $donation->getDate() . "', time='" . $donation->getTime() . "', details='" . $donation->getDetails() . "', donationType='" . $donation->getType() . "' WHERE donation_id='" . $donation->getDonation_id() . "'";
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $this->close();
+        return $result;
+    }
 }// end class
 ?>

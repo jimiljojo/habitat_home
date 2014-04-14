@@ -28,7 +28,7 @@
 		<th>Date</th>
 		<th>Time</th>
 		<th>Type</th>
-		<th>Guest List</th> <!-- make this a button to pull up  a table showing the guest list -->
+		<th>Guest List</th>
 		<th>Address</th> 
 		<th>Sponsor</th>
 		

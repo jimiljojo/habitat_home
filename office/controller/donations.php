@@ -42,7 +42,10 @@
 			break;
 
 		case 'update':
-			// CODE HERE
+			include_once 'office/model/donations.php';
+			$updated = update();
+			$donationInfo = edit();
+			$page = $dir . '/view/editDonations.php';
 			break;
 
 		case 'editDonation':

@@ -12,7 +12,7 @@
         $donation->setDate($_GET['date']);
         $donation->setTime($_GET['time']);
         $donation->setDetails($_GET['details']);
-        $donation->setType($_GET['type']);
+        $donation->setType($_GET['types']);
         $donation->setValue($_GET['value']);
         $donation->setEvent($_GET['event']);
 		global $dbio;
@@ -26,7 +26,18 @@
 		$tableinfo[] = $donors;
 		return $tableinfo;
 	}
-	function update() {}
+	function update() {
+		$donation = new Donation();
+		$donation->setDate($_GET['date']);
+        $donation->setTime($_GET['time']);
+        $donation->setDetails($_GET['details']);
+        $donation->setType($_GET['types']);
+        $donation->setValue($_GET['value']);
+        $donation->setDonation_id($_GET['did']);
+        global $dbio;
+        $updated = $dbio->updateDonations($donation);
+        return $updated;
+	}
 	function edit() {
 		global $dbio;
 		$did = $_GET['did'];
