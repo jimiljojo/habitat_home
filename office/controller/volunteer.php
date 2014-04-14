@@ -23,7 +23,7 @@
  
 			break;
 
-		case 'createVolunteer':
+		case 'create':
                     
                     $parameter = $_GET['param'];
                     $title = $_GET['title'];
@@ -40,7 +40,7 @@
                     $dob = $_GET['dob'];
                     
                     include $dir . '/model/' . $sub . '.php';
-                    $volunteers = createVolunteerBy($parameter);
+                    $volunteers = createVolunteer($parameter);
                     $page = $dir . '/view/create' . ucfirst($sub) . '.php';
                     
                     

@@ -9,8 +9,6 @@
  */
 ?>
 
-	<h4>Personal Information</h4>
-        <br/>
 	
 
 	<form  action="index.php" method="get">
