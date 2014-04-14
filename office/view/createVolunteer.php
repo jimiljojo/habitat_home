@@ -9,91 +9,10 @@
  */
 ?>
 
-<div style="margin-left:50px; margin-right:auto;">
-
-<div class="navbar navbar-inverse">
-  <div class="navbar-inner">
-    <a class="brand">Habitat Volunteer Registration</a>
-  </div>
-</div>
-
-<div style="padding-left: 10px; width: 50%;">
-			
-		<style>
-
-
-
-	.bold {font-weight: bold;}
-	.note {font-size: 10pt; color: grey;}
-	.mandatory {color: crimson;}
-	/*
-	h4.show, h4.hide {width: 742px;}
-	div {width: 750px;}
-	*/
-	label {margin-left: 5px;}
-	h4.show + div {display: block;}
-	h4.hide + div {display: none;}
-	h4.show + div, h4.hide + div {
-	    border: 1px solid black;
-	}
-	h4.show, h4.hide {
-	    margin-bottom: 0px;
-	    color: white;
-	    background-color: #02478a;
-	    padding-left: 10px;
-	}
-	#page {width: 800px; text-align: left; margin: auto;}
-
-	h4.show, h4.hide {
-	    border-top-left-radius: 10px;
-	    border-top-right-radius: 10px;
-	    padding-left: 15px;
-	    padding-top: 3px;
-	    padding-bottom: 3px;
-	}
-
-    label
-    {
-        padding-left: 10px;
-        
-    }
-    input
-    {
-        margin-bottom: 8px;
-    }
-    </style>  
 	<h4>Personal Information</h4>
         <br/>
-	<style>
-	.barCom, .barYet {
-		width: 85.333333333333px;
-		border: 1px solid black;
-		text-align: center;
-	}
-	.barCom, .barYet, label {display: inline;}
-	.barCom {background-color: #006dcc; padding-right:5px; color: #fff;}
-	.barYet {background-color: #da4f49; padding-right:5px; color: #fff;}
-        .barYet:last-child 
-        {
-            border-top-right-radius: .75em;
-            border-bottom-right-radius: .75em;
-            
-        }
-        
-        .barCom:first-of-type
-        {
-            border-top-left-radius: .75em;
-            border-bottom-left-radius: .75em;
-        }
-        
-  
-        
- 
-</style> 
-<div id="progressBar" style="width: 512px;">
-	<label class="bold">Progress</label>
-	<dir class="barCom">1</dir><dir class="barYet">2</dir><dir class="barYet">3</dir><dir class="barYet">4</dir><dir class="barYet">5</dir><dir class="barYet">6</dir></div>	<hr>
-	<br>
+	
+
 	<form  action="index.php" method="get">
 
 		
@@ -135,16 +54,7 @@
                 <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
                 <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
                </table></div>
-<!--
-		<h4 class="show" onclick="swap(this);">Maritial Status</h4><div>
-               <table class="intTable">
-		<input type="radio" name="maritial" value="1" id="maritial" required="required"><label>Single</label><br>
-		<input type="radio" name="maritial" value="2" id="maritial" required="required"><label>Married</label><br>
-		<input type="radio" name="maritial" value="3" id="maritial" required="required"><label>Widow</label><br>
-        <input type="radio" name="maritial" value="4" id="maritial" required="required"><label>Divorced</label><br>  
-		</table></div> 
 
--->
 		
 		<br>
 		<script type="text/javascript">
