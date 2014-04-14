@@ -166,7 +166,7 @@ global $dir;
 
         </script>
         
-		<input type="submit" value="Create">
+		<input type="submit" value="Edit">
 
 		<br>
 	</form>
