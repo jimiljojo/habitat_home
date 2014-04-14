@@ -38,7 +38,7 @@
 		case 'confirmCreate':
 			include_once 'office/model/donations.php';
 			$updated = create();
-			$page = $dir . '/view/editDonations.php';
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 
 		case 'update':

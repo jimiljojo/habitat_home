@@ -13,8 +13,14 @@
     $donor = $person->getFirst_name();
   else if(isset($org[0][0]))
     $donor = $org[0][0]->getName();
+
+
+  $eventid = isset($_GET['eventid']) ? $_GET['eventid'] : false;
+  $pid = isset($_GET['[pid]']) ? $_GET['pid'] : false;
+  $oid = isset($_GET['oid']) ? $_GET['oid'] : false;
     
   
+
 ?>
 
 
@@ -45,6 +51,9 @@
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
     <input name="act" type="hidden" value="confirmCreate" >
+    <input name="eventid" type="hidden" value="<?php echo $eventid; ?>" >
+    <input name="pid" type="hidden" value="<?php echo $pid; ?>" >
+    <input name="oid" type="hidden" value="<?php echo $oid; ?>" >
     <fieldset>
     <legend>Donation Info</legend>
 	<div class="form-group">
@@ -56,9 +65,9 @@
     $donationtypes = $dbio->readDonationtype();
     foreach ($donationtypes as $dt) {
       if($dt->getTypeName() == $type)
-        echo "<option value = '" . $dt->getTypeName() . "' name = '" . $dt->getTypeName() . "' selected='selected'>" . $dt->getTypeName() . "</option>";   
+        echo "<option value = '" . $dt->getIdDonationType() . "' name = '" . $dt->getTypeName() . "' selected='selected'>" . $dt->getTypeName() . "</option>";   
       else
-        echo "<option value = '" . $dt->getTypeName() . "' name = '" . $dt->getTypeName() . "'>" . $dt->getTypeName() . "</option>";   
+        echo "<option value = '" . $dt->getIdDonationType() . "' name = '" . $dt->getTypeName() . "'>" . $dt->getTypeName() . "</option>";   
     }
     ?>
   </select>

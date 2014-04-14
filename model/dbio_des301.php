@@ -1977,11 +1977,21 @@ class DBIO {
 
     public function updateDonations($donation){
     	global $con;
-        $sql = "UPDATE Donation SET date='" . $donation->getDate() . "', time='" . $donation->getTime() . "', details='" . $donation->getDetails() . "', donationType='" . $donation->getType() . "' WHERE donation_id='" . $donation->getDonation_id() . "'";
+        $sql = "UPDATE Donation SET date='" . $donation->getDate() . "', time='" . $donation->getTime() . "', details='" . $donation->getDetails() . "', donationType='" . $donation->getType() . "', value='" . $donation->getValue() . "' WHERE donation_id='" . $donation->getDonation_id() . "'";
         $this->open();
         $result = mysql_query($sql, $con);
         $this->close();
         return $result;
     }
+
+     public function createDonation($donation) {
+        global $con;
+        $sql ='INSERT INTO Donation (date, time, details, donationType, value, Event_event_id,entered_by_id)
+		 VALUES ("' . $donation->getDate() . '", "' . $donation->getTime() . '", "' . $donation->getDetails() . '", "' . $donation->getType() . '", "' . $donation->getValue() . '", "' . $donation->getEvent() . '", "' . $donation->getPerson_person() . '")';
+		$this->open(); 
+		$result = mysql_query($sql, $con);
+		$this->close();
+		return $result;
+		} 
 }// end class
 ?>

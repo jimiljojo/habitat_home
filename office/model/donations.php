@@ -3,19 +3,26 @@
 	// TITLE: Office Donations Model
 	// FILE: office/model/donations.php
 	// AUTHOR: AUTOGEN
-
+	
 
 	function search() {}
 	function create() {
-		$donor = $_GET['donor'];
+		$eventid = isset($_GET['eventid']) ? $_GET['eventid'] : '';
+		$pid = isset($_GET['[pid]']) ? $_GET['pid'] : '';
+		$oid = isset($_GET['oid']) ? $_GET['oid'] : '';
+
 		$donation = new Donation();
         $donation->setDate($_GET['date']);
         $donation->setTime($_GET['time']);
         $donation->setDetails($_GET['details']);
-        $donation->setType($_GET['types']);
+        $donation->setType($_GET['type']);
         $donation->setValue($_GET['value']);
-        $donation->setEvent($_GET['event']);
+        $donation->setEvent($eventid);
+        $personid =$_SESSION['personid'];
+        $donation->setPerson_person($personid);
 		global $dbio;
+		$updated = $dbio->createDonation($donation);
+		return $updated;
 	}
 	function read() {
 		global $dbio;
@@ -66,9 +73,16 @@
 
 	function getOrg() {
 		global $dbio;
-		$oid = $_GET['oid'];
-		$org = $dbio->getOrgById($oid);
-		return $org;
+		if(isset($_GET['oid'])){
+			$oid = $_GET['oid'];
+			$org = $dbio->getOrgById($oid);
+		}
+			
+		
+		if(isset($org))
+			return $org;
+		else
+			return '';
 	}
 
 ?>
