@@ -48,8 +48,6 @@
 	<dd class="list">Find a list of interests for a volunteer</dd>
     <dt class="list"><a href="/index.php?dir=office&sub=orgs">Organizations</a></dt>
 	<dd class="list">Find information on Organizations</dd>
-    <dt class="list"><a href="/index.php?dir=office&sub=projects">Projects</a></dt>
-	<dd class="list">Find information on a project</dd>
     <dt class="list"><a href="/index.php?dir=office&sub=schedules">Schedules</a></dt>
 	<dd class="list">Find volunteer schedules</dd>
     <dt class="list">Volunteers</dt>
