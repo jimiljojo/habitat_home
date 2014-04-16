@@ -1057,6 +1057,16 @@ class DBIO {
             $this->close();
 			return $volunteerSchedules;
         }
+
+        public function insertWorkForVolunteer($workObj){
+        	global $con;
+        	$sql="INSERT INTO Work(amount,Volunteer_Person_person_id,date,entered_by_id,Admin_idAdmin,Event_event_id)
+        	VALUES " .$workObj->getAmount(). "," .$workObj->getPerson_person(). "," .$workObj->getDate(). "," .$workObj->getEnteredById(). "," .$workObj->getAdminId(). "," .$workObj->getEvent(). ")";
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			return TRUE;
+        }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
         

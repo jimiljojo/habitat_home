@@ -252,26 +252,3 @@
 	 	</form>
 	</div>
 <hr>
-
-public function insertWorkForVolunteer($workObj){
-        	global $con;
-        	$sql="INSERT INTO Work(amount,Volunteer_Person_person_id,date,entered_by_id,Admin_idAdmin,Event_event_id)
-        	VALUES " .$workObj->getAmount(). "," .$workObj->getPerson_person(). "," .$workObj->getDate(). "," .$workObj->getEnteredById(). "," .$workObj->getAdminId(). "," .$workObj->getEvent(). ")";
-			$this->open();
-			$result = mysql_query($sql, $con);
-			$this->close();
-			return TRUE;
-        }
-
-        +	public function getEmailCheck($email){
-     	global $con;
- 	    	$sql='SELECT username FROM Account where username="'.$email.'"';
- 	    	$this->open();
- 	    	$results=mysql_query($sql,$con);
- 	    	$final=mysql_fetch_row($results);
- 			$status=$final[0];
- 			$this->close();
-			return $status;
- 
-     }
-
