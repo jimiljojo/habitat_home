@@ -47,6 +47,26 @@
 	    
 	    break;
 
+	    case 'checkEmail';
+	    $page = $dir . '/view/checkEmail.php';
+	    $email=($_GET['email']);
+	    $checkEmail=$dbio->getEmailCheck($email);
+	    if($checkEmail == $email){
+	    	print '<script type="text/javascript">'; 
+			print 'alert("A reset password link is sent to you on '.$email.'")'; 
+			print '</script>';
+	    }
+
+	    else{
+	    	print '<script type="text/javascript">'; 
+			print 'alert("Enter your email which you entered while registering with Habitat for Humanity OR Contact our office")'; 
+			print '</script>';
+	    }
+	   
+	    break;
+
+	    
+
 	    default:
 	   	$page = $dir . '/view/loginpage.php';
 	    break;

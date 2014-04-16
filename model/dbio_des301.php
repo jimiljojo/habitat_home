@@ -2097,5 +2097,18 @@ class DBIO {
 		$this->close();
 		return $result;
 		} 
+
+	public function getEmailCheck($email){
+	    	global $con;
+	    	$sql='SELECT username FROM Account where username="'.$email.'"';
+	    	$this->open();
+	    	$results=mysql_query($sql,$con);
+	    	$final=mysql_fetch_row($results);
+			$status=$final[0];
+			$this->close();
+			return $status;
+
+    }
+		
 }// end class
 ?>
