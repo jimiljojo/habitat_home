@@ -65,6 +65,12 @@
 		return $volunteerSchedules;
 	}
 
+	function getVolunteerById($volId){
+		global $dbio;
+		$volunteerDetails = $dbio->readPerson($volId);
+		return $volunteerDetails;
+	}
+
 	function create() {}
 
 	

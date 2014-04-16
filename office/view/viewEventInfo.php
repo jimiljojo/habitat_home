@@ -62,7 +62,7 @@
 <h2 class="bold">Edit Event</h2>
 <hr>
 
-<?php if($act=="update")
+<?php if($act=="updateInfo")
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>'; ?>
 
 
@@ -70,11 +70,10 @@
 	<input type="button" id="button1" onclick="swap(1);" value="Show"> </h4>
 
 	<div class="hide" id="div1">
-
 	<form action="index.php" method="GET">
 		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
 		<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
-		<input name="act" id="act" type="hidden" value="update" >
+		<input name="act" id="act" type="hidden" value="updateInfo" >
 	 
 
 		<?php 
@@ -214,30 +213,65 @@
 
 <h4>Process
 	<input type="button" id="button5" onclick="swap(5);" value="Show"> </h4>
-
 	<div class="hide" id="div5">
-		<table class="table table-striped table-hover " style="width:100%">
+
+	<form action="index.php" method="GET">
+		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
+		<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
+		<input name="act" id="act" type="hidden" value="submitHours" >
+		<input type="hidden" name="eventId" id="eventId" value=<?php echo $event_id ?> >
+	
+		<table class="table table-striped table-hover ">
 			<tr>
 				<th>Volunteer Name</th>
-				<th>Schedule Id</th>
 				<th>Enter Hours</th>
 				
 			</tr>
 
 			<?php $VolunteerSchedule= getVolunteerSchedule($event_id);
 			foreach ($VolunteerSchedule as $VolunteerScheduleItem){
+				$VolunteerDetails = getVolunteerById($VolunteerScheduleItem->getVolunteerId());
 			?>
 
 			<tr>
-				<td> <?php echo $VolunteerScheduleItem->getVolunteerId(); ?> </td>
-				<td> <?php //echo $VolunteerScheduleItem->getScheduleId(); ?> </td>
-				<td> <input type='text' onkeypress='validate(event)' /> </td>
+				<td> <?php echo $VolunteerDetails->getTitle(). " " .$VolunteerDetails->getFirst_name(). " " .$VolunteerDetails->getLast_name();  ?> </td>
+				<td> <input type='text' name ="hours<?php echo $VolunteerScheduleItem->getVolunteerId(); ?>" id="hours<?php echo $VolunteerScheduleItem->getVolunteerId(); ?>" maxlength=5 onkeypress='validate(event)' /> </td>
 				
 			</tr>
 
 
-			<?php } ?>
+			<?php } 
+			if($var){
+				echo "Not null";
+			}
+			else{
+				echo "Null"; 
+			}?>
+			<tr><td></td><td><input type="submit" value="Submit"></td></tr>
 		</table>
+	 	</form>
 	</div>
 <hr>
+
+public function insertWorkForVolunteer($workObj){
+        	global $con;
+        	$sql="INSERT INTO Work(amount,Volunteer_Person_person_id,date,entered_by_id,Admin_idAdmin,Event_event_id)
+        	VALUES " .$workObj->getAmount(). "," .$workObj->getPerson_person(). "," .$workObj->getDate(). "," .$workObj->getEnteredById(). "," .$workObj->getAdminId(). "," .$workObj->getEvent(). ")";
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			return TRUE;
+        }
+
+        +	public function getEmailCheck($email){
+     	global $con;
+ 	    	$sql='SELECT username FROM Account where username="'.$email.'"';
+ 	    	$this->open();
+ 	    	$results=mysql_query($sql,$con);
+ 	    	$final=mysql_fetch_row($results);
+ 			$status=$final[0];
+ 			$this->close();
+			return $status;
+ 
+     }
 

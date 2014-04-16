@@ -25,7 +25,7 @@
 			$page = $dir . '/view/viewEvents.php';
 			break;
 
-		case 'update':
+		case 'updateInfo':
 		
 		$_SESSION['eventId'] = isset($_GET['eventId']) ? $_GET['eventId'] : '';
 		$addressObj = new Address();
@@ -49,6 +49,24 @@
 			$dbio->updateEvent($eventObj,$addressObj);
 
 			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			break;
+
+		case 'submitHours':
+		
+			include 'office/model/event.php';
+			$_SESSION['eventId'] = isset($_GET['eventId']) ? $_GET['eventId'] : '';
+
+			$VolunteerSchedule= getVolunteerSchedule($event_id);
+
+			foreach ($VolunteerSchedule as $VolunteerScheduleItem){
+			
+			if(isset($_GET['hours'.$VolunteerScheduleItem->getVolunteerId()])){
+				
+			} 
+			
+			}
+
 			$page = $dir . '/view/viewEventInfo.php';
 			break;
 
