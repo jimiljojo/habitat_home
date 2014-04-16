@@ -1061,7 +1061,7 @@ class DBIO {
         public function insertWorkForVolunteer($workObj){
         	global $con;
         	$sql="INSERT INTO Work(amount,Volunteer_Person_person_id,date,entered_by_id,Admin_idAdmin,Event_event_id)
-        	VALUES " .$workObj->getAmount(). "," .$workObj->getPerson_person(). "," .$workObj->getDate(). "," .$workObj->getEnteredById(). "," .$workObj->getAdminId(). "," .$workObj->getEvent(). ")";
+        	VALUES (" .$workObj->getAmount(). "," .$workObj->getPerson_person(). ",CAST('" .$workObj->getDate(). "' As Date) ," .$workObj->getEnteredById(). ",Null," .$workObj->getEvent(). ")";
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$this->close();

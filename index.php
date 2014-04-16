@@ -33,6 +33,7 @@
 	require_once('class/volunteerEvents.php');
 	require_once('class/schedule.php');
 	require_once('class/volunteer_has_schedule.php');
+	require_once('class/work.php');
 	require_once ('model/dbio_des301.php');
         require_once ('class/volunteer.php');
 	//require_once('model/databaseio.php');

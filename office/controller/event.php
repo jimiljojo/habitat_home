@@ -57,13 +57,31 @@
 			include 'office/model/event.php';
 			$_SESSION['eventId'] = isset($_GET['eventId']) ? $_GET['eventId'] : '';
 
-			$VolunteerSchedule= getVolunteerSchedule($event_id);
+			$date=date('Y-m-d');
+			$VolunteerSchedule= getVolunteerSchedule($_SESSION['eventId']);
 
 			foreach ($VolunteerSchedule as $VolunteerScheduleItem){
-			
-			if(isset($_GET['hours'.$VolunteerScheduleItem->getVolunteerId()])){
+			$hours= isset($_GET['hours'.$VolunteerScheduleItem->getVolunteerId()]) ? $_GET['hours'.$VolunteerScheduleItem->getVolunteerId()] : "";
+
+			if($hours){
 				
-			} 
+				$workObj = new Work();
+		 		$workObj->setAmount($hours);
+		 		var_dump($workObj->getAmount());
+		 		$workObj->setPerson_person($VolunteerScheduleItem->getVolunteerId());
+		 		var_dump($workObj->getPerson_person());
+		 		$workObj->setDate($date);
+		 		var_dump($workObj->getDate());
+		 		$workObj->setEnteredById($_SESSION['personid']);
+		 		var_dump($workObj->getEnteredById());
+		 		$workObj->setAdminId(Null);
+		 		var_dump($workObj->getAdminId());
+		 		$workObj->setEvent($_GET['eventId']);
+		 		var_dump($workObj->getEvent());
+
+		 		$dbio->insertWorkForVolunteer($workObj);
+		 		
+			}
 			
 			}
 
