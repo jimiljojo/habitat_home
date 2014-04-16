@@ -5,7 +5,24 @@ global $dir;
         global $act;
         global $msg;
         $person_id = $_GET['vid'];
-
+                            
+        $first_name = $volunteer->getFirst_name();
+        $last_name = $volunteer->getLast_name();
+        $contact = $volunteer->getContact();
+                            
+                           
+        $contacts = $dbio->readContact($contact);
+        $phone = $contacts->getPhone();
+        $email = $contacts->getEmail();
+        $address = $contacts->getAddress();
+                            
+        $addresses = $dbio->readAddress($address);
+        $address_id = $addresses->getAddress_id();
+        $street1 = $addresses->getStreet1();
+        $street2 = $addresses->getStreet2();
+        $city = $addresses->getCity();
+        $state = $addresses->getState();
+        $zip = $addresses->getZip();
 /* 
  * file: createVolunteer.php
  * To change this license header, choose License Headers in Project Properties.
@@ -21,7 +38,11 @@ global $dir;
 			
 		
 
-	<form  action="index.php" method="get">
+    <form action="index.php" method="GET">
+    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+    <input name="vid" type="hidden" value="<?php echo $volunteer->getPerson_id(); ?>" >
+    <input name="act" type="hidden" value="update" >
 
 		
 		
@@ -39,7 +60,7 @@ global $dir;
 		</select></label></td><tr><br>
 		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname" value="<?php echo $first_name; ?>" ></label>
 		</td></tr>
-		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname"></label></td></tr>
+		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname" value="<?php echo $last_name; ?>"></label></td></tr>
 		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp yyyy-mm-dd)</td></tr>
 		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
 		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr>
@@ -47,18 +68,18 @@ global $dir;
 
 		<h4 class="show" onclick="swap(this);">Address</h4><div>
                <table class="intTable">
-		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1"></td></tr><br>
-		<tr><td>Street 2</td><td><input name="street2" type="text"></label></td></tr>
-		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city"></label></td></tr>
-		<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" id="state"></label></td></tr>
-		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> 
+		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1" value="<?php echo $street1; ?>"></td></tr><br>
+		<tr><td>Street 2</td><td><input name="street2" type="text" value="<?php echo $street2; ?>"></label></td></tr>
+		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city" value="<?php echo $city; ?>"></label></td></tr>
+		<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" id="state" value="<?php echo $state; ?>"></label></td></tr>
+		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip" value="<?php echo $zip; ?>"></label></td></tr> 
                </table></div>
 
 		<h4 class="show" onclick="swap(this);">Contact Information</h4><div>
                <table class="intTable">
-		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
+		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone" value="<?php echo $phone; ?>"></label></td></tr><br>
 		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
-		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
+		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email" value="<?php echo $email; ?>"></label></td></tr>
                 <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
                 <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
                </table></div>
