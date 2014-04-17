@@ -2060,6 +2060,65 @@ class DBIO {
 			return $status;
 
     }
+
+
+      public function readVolunteer($pid)
+        {
+            global $con;
+                      
+                        $sql = 'SELECT * FROM Person INNER JOIN Volunteer ON Person.person_id = Volunteer.Person_person_id WHERE Person.person_id =' . $pid;
+                       
+			$this->open();
+			$results = mysql_query($sql, $con);
+			$this->close();
+                        
+			if($results)
+				{
+					while ($result = mysql_fetch_array($results)) 
+					{
+
+						$person = new Person();
+						$person->setPerson_id($result[0]);
+						$person->setTitle($result[1]);
+						$person->setFirst_name($result[2]);
+						$person->setLast_name($result[3]);
+						$person->setGender($result[4]);
+						$person->setDob($result[5]);
+						$person->setMarital_status($result[6]);
+						$person->setContact($result[7]);
+						$person->setIsActive($result[8]);
+						$person->setLastActive($result[9]);
+						$person->setPrefEmail($result[10]);
+						$person->setPrefMail($result[11]);
+						$person->setPrefPhone($result[12]);
+
+                                                
+                        $volunteer = new Volunteer();
+                        $volunteer->setConsentAge($result[13]);
+                        $volunteer->setConsentVideo($result[14]);
+                        $volunteer->setConsentWaiver($result[15]);
+                        $volunteer->setConsentPhoto($result[16]);
+                        $volunteer->setAvailDay($result[17]);
+                        $volunteer->setAvailEve($result[18]);
+                        $volunteer->setAvailWend($result[19]);
+                        $volunteer->setPerson($result[20]);
+                        $volunteer->setIsBoardMember($result[21]);
+                        $volunteer->setConsentMinor($result[22]);
+                        $volunteer->setConsentSafety($result[23]);
+                        $volunteer->setEmergencyName($result[24]);
+                        $volunteer->setEmergencyPhone($result[25]);
+                        $volunteer->setChurchAmbassador($result[26]);
+                        $volunteer->setAffiliation($result[27]);
+                                                                        
+					} 
+                                        $returnArray = array($person, $volunteer);
+				}
+			else
+			{
+				echo "DB error read volunteer";
+			}
+			return $returnArray;
+        }
 		
 }// end class
 ?>
