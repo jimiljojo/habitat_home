@@ -40,7 +40,7 @@
                     $dob = $_GET['dob'];
                     
                     include $dir . '/model/' . $sub . '.php';
-                    $volunteers = createVolunteerBy($parameter);
+                    $volunteers = createVolunteer($parameter);
                     $page = $dir . '/view/create' . ucfirst($sub) . '.php';
                     
                     
@@ -53,12 +53,17 @@
 			break;
 
 		case 'update':
-                    
+                    include_once 'office/model/volunteer.php';
+                    $updated = updateInfo();
+                    $page = $dir . '/view/edit' . ucfirst($sub) . '.php';
 			break;
 
 		case 'delete':
                     
 			break;
+                    
+                case "retrieve":
+                    $page = $dir . '/view/edit' . ucfirst($sub) . '.php';
 
 		case 'listVolunteer':
                                       

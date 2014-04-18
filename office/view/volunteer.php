@@ -18,7 +18,8 @@
 
        
 
-    </head>	<body><!--onload="omniload()"-->
+    </head>	
+    <body>
        
 
         <div id="content">
@@ -42,9 +43,7 @@
     var msg = "This part is under construction"
 </script>
 
-<button type="Submit" onclick="alert(msg);">Create New</button><!--
-<button type="Submit" onclick="window.location=\'index.php?dir=&act=newVolunteer\';">Create New</button>
--->
+<button type="Submit" onclick="alert(msg);">Create New</button>
 <hr>
 <div>
     Here you can search for a volunteer by:
@@ -62,9 +61,6 @@
 	2014 <span class="habitatBlue">|</span> York Habitat for Humanity
 	</footer>
 </html>
-<!-- Hosting24 Analytics Code -->
-<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script>
-<!-- End Of Analytics Code -->
 
 
 
@@ -72,4 +68,5 @@
 
 
 
-<!-- end-->
+
+

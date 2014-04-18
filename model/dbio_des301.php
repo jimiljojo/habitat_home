@@ -862,17 +862,53 @@ class DBIO {
 		
 ///////////////////////////////////////////Schedule////////////////////////////////////////////////////
 //////////////////////////////////////////-_-_-_-//(v)_(';;;')(V)///////////////////////////////////////
-
+		public function createScheduleSlot($person, $scheduleId)
+		{
+			//$dbio = new DBIO();
+			global $con;
+			$this->open();
+			$tableName = "Volunteer_has_Schedule";
+			$sql = "INSERT INTO {$tableName} (Volunteer_Person_person_id, Schedule_id) VALUES ('{$person}', '{$scheduleId}')";
+			mysql_query($sql,$con);
+			$this->close();
+			echo "You have created a new {$tableName}";
+		}
+		
+		public function createSchedule($timeStart, $timeEnd, $eventId, $description, $interestId, $maxNumPeople)
+		{
+			//$dbio = new DBIO();
+			global $con;
+			$this->open();
+			$tableName = "Schedule";
+			$sql = "INSERT INTO {$tableName} (timeStart, timeEnd, Event_event_id, description, Interest_interest_id, maxNumPeople) VALUES ('{$timeStart}', '{$timeEnd}', '{$eventId}', '{$description}', '{$interestId}', '{$maxNumPeople}')";
+			//$this->readInterestType();
+			mysql_query($sql,$con);
+			$this->close();
+			echo "You have created a new {$tableName} its a part of the event {$eventId}, it starts at {$timeStart}, and ends at {$timeEnd}, its description is:{$description}, the max volunteers are:{$maxNumPeople}, and is linked to the following interest:{$interestId}";
+		}
+		
+		public function deleteScheduleSlot($scheduleId, $personId)
+		{
+			global $con;
+			$this->open();
+			$tableName = "Volunteer_has_Schedule";
+			$sql = "DELETE FROM Volunteer_has_Schedule
+					WHERE Volunteer_Person_person_id = '{$personId}' AND Schedule_id = '{$scheduleId}'";
+			mysql_query($sql,$con);
+			$this->close();
+		}
+	
+	
 		public function listSchedule() //view all 
-        {
+        	{
 			include_once "class/schedule.php";
-            global $con;
+            		global $con;
 			$sql = 'SELECT id, "rime start", timeEnd, Event_event_id, description, Interest_interest_id FROM Schedule';
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$schedules =array();
 			while($rows = mysql_fetch_array($result))
-            {
+        	 {
                 
 				$schedule = new Schedule();
 				$schedule->setId($rows[0]);
@@ -937,10 +973,10 @@ class DBIO {
 		public function readScheduleSlot($scheduleId)
 		{
 			global $con;
-			$sql = "SELECT title, first_name, last_name, Person.person_id FROM Schedule_slot 
-						JOIN Volunteer on Volunteer.Person_person_id = Schedule_slot.Volunteer_Person_person_id
+			$sql = "SELECT title, first_name, last_name, Person.person_id FROM Volunteer_has_Schedule 
+						JOIN Volunteer on Volunteer.Person_person_id = Volunteer_has_Schedule.Volunteer_Person_person_id
 						JOIN Person on Person.person_id = Volunteer.Person_person_id
-						WHERE Schedule_slot.Schedule_id = '{$scheduleId}'";
+						WHERE Volunteer_has_Schedule.Schedule_id = '{$scheduleId}'";
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$persons = array();
@@ -951,6 +987,7 @@ class DBIO {
 				$person->setFirst_name($row[1]);
 				$person->setLast_name($row[2]);
 				$person->setPerson_id($row[3]);
+				//$person->setId($row[4]);
 				$persons[] = $person;
 			}
 			$this->close();
@@ -1041,7 +1078,7 @@ class DBIO {
         public function readVolunteerScheduleByEvent($eventId) //view all 
         {
             global $con; 
-			$sql = "SELECT * from Volunteer_has_Schedule Where Schedule_id IN (Select id From Schedule Where Event_event_id=" . $eventId . ");" ; 
+			$sql = "SELECT * from Volunteer_has_Schedule Where Schedule_id IN (Select id From Schedule Where Event_event_id=" . $eventId . ")" ; 
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$volunteerSchedules = array();
@@ -1056,6 +1093,16 @@ class DBIO {
 			} 
             $this->close();
 			return $volunteerSchedules;
+        }
+
+        public function insertWorkForVolunteer($workObj){
+        	global $con;
+        	$sql="INSERT INTO Work(amount,Volunteer_Person_person_id,date,entered_by_id,Admin_idAdmin,Event_event_id)
+        	VALUES (" .$workObj->getAmount(). "," .$workObj->getPerson_person(). ",CAST('" .$workObj->getDate(). "' As Date) ," .$workObj->getEnteredById(). ",Null," .$workObj->getEvent(). ")";
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+			return TRUE;
         }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
@@ -1514,7 +1561,7 @@ class DBIO {
 			}
 			return $persons;
 		}// end function
-                      
+
 		public function searchPersonByName($fname,$lname){
 		global $con;
 		$sql = 'SELECT Person.person_id, Person.title, Person.first_name, Person.last_name, Person.dob, Person.Contact_contact_id, Contact.contact_id, Contact.phone, Contact.address_id, Address.address_id, Address.street1, Address.street2, Address.state, Address.city , Address.zip, FOH.Person_person_id, FOH.Event_event_id, Event.title FROM Person inner join Contact on Person.Contact_contact_id = Contact.contact_id inner join Address on Contact.address_id = Address.address_id left outer join FOH on Person.person_id = FOH.Person_person_id left outer join Event on FOH.Event_event_id = Event.event_id where Person.first_name = "' . $fname . '" or Person.last_name = "' . $lname . '"';
@@ -1646,25 +1693,25 @@ class DBIO {
 						$person->setPrefPhone($result[12]);
 						$persons[] = $person;
                                                 
-                                                $volunteer = new Volunteer();
-                                                $volunteer->setConsentAge($result[13]);
-                                                $volunteer->setConsentVideo($result[14]);
-                                                $volunteer->setConsentWaiver($result[15]);
-                                                $volunteer->setConsentPhoto($result[16]);
-                                                $volunteer->setAvailDay($result[17]);
-                                                $volunteer->setAvailEve($result[18]);
-                                                $volunteer->setAvailWend($result[19]);
-                                                $volunteer->setPerson($result[20]);
-                                                $volunteer->setIsBoardMember($result[21]);
-                                                $volunteer->setConsentMinor($result[22]);
-                                                $volunteer->setConsentSafety($result[23]);
-                                                $volunteer->setEmergencyName($result[24]);
-                                                $volunteer->setEmergencyPhone($result[25]);
-                                                $volunteer->setChurchAmbassador($result[26]);
-                                                $volunteer->setAffiliation($result[27]);
-                                                $volunteers[] = $volunteer;                                                 
+                        $volunteer = new Volunteer();
+                        $volunteer->setConsentAge($result[13]);
+                        $volunteer->setConsentVideo($result[14]);
+                        $volunteer->setConsentWaiver($result[15]);
+                        $volunteer->setConsentPhoto($result[16]);
+                        $volunteer->setAvailDay($result[17]);
+                        $volunteer->setAvailEve($result[18]);
+                        $volunteer->setAvailWend($result[19]);
+                        $volunteer->setPerson($result[20]);
+                        $volunteer->setIsBoardMember($result[21]);
+                        $volunteer->setConsentMinor($result[22]);
+                        $volunteer->setConsentSafety($result[23]);
+                        $volunteer->setEmergencyName($result[24]);
+                        $volunteer->setEmergencyPhone($result[25]);
+                        $volunteer->setChurchAmbassador($result[26]);
+                        $volunteer->setAffiliation($result[27]);
+                        $volunteers[] = $volunteer;                                                 
 					} 
-                                        $returnArray = array($persons, $volunteers);
+                                        $returnArray = array($results, $volunteers);
 				}
 			else
 			{
@@ -1939,7 +1986,6 @@ class DBIO {
 		}
 		return $donationtypes;
 	}// end function
-        
         public function searchVolunteers($searchType, $parameter)
         {
             global $con;
@@ -1982,91 +2028,33 @@ class DBIO {
 						$person->setPrefPhone($result[12]);
 						$persons[] = $person;
                                                 
-                                                $volunteer = new Volunteer();
-                                                $volunteer->setConsentAge($result[13]);
-                                                $volunteer->setConsentVideo($result[14]);
-                                                $volunteer->setConsentWaiver($result[15]);
-                                                $volunteer->setConsentPhoto($result[16]);
-                                                $volunteer->setAvailDay($result[17]);
-                                                $volunteer->setAvailEve($result[18]);
-                                                $volunteer->setAvailWend($result[19]);
-                                                $volunteer->setPerson($result[20]);
-                                                $volunteer->setIsBoardMember($result[21]);
-                                                $volunteer->setConsentMinor($result[22]);
-                                                $volunteer->setConsentSafety($result[23]);
-                                                $volunteer->setEmergencyName($result[24]);
-                                                $volunteer->setEmergencyPhone($result[25]);
-                                                $volunteer->setChurchAmbassador($result[26]);
-                                                $volunteer->setAffiliation($result[27]);
-                                                $volunteers[] = $volunteer;                                                 
+                        $volunteer = new Volunteer();
+                        $volunteer->setConsentAge($result[13]);
+                        $volunteer->setConsentVideo($result[14]);
+                        $volunteer->setConsentWaiver($result[15]);
+                        $volunteer->setConsentPhoto($result[16]);
+                        $volunteer->setAvailDay($result[17]);
+                        $volunteer->setAvailEve($result[18]);
+                        $volunteer->setAvailWend($result[19]);
+                        $volunteer->setPerson($result[20]);
+                        $volunteer->setIsBoardMember($result[21]);
+                        $volunteer->setConsentMinor($result[22]);
+                        $volunteer->setConsentSafety($result[23]);
+                        $volunteer->setEmergencyName($result[24]);
+                        $volunteer->setEmergencyPhone($result[25]);
+                        $volunteer->setChurchAmbassador($result[26]);
+                        $volunteer->setAffiliation($result[27]);
+                        $volunteers[] = $volunteer;                                                 
 					} 
-                                        $returnArray = array($persons, $volunteers);
+                                        $returnArray = array($results, $volunteers);
 				}
 			else
 			{
-				echo "DB error searchVolunteers";
+				echo "DB error viewVolunteersWhereCertifiedOrNot";
 			}
 			return $returnArray;
         }
-        
-        public function readVolunteer($pid)
-        {
-            global $con;
-                      
-                        $sql = 'SELECT * FROM Person INNER JOIN Volunteer ON Person.person_id = Volunteer.Person_person_id WHERE Person.person_id =' . $pid;
-                       
-			$this->open();
-			$results = mysql_query($sql, $con);
-			$this->close();
-                        
-			if($results)
-				{
-					while ($result = mysql_fetch_array($results)) 
-					{
-						
-						$person = new Person();
-						$person->setPerson_id($result[0]);
-						$person->setTitle($result[1]);
-						$person->setFirst_name($result[2]);
-						$person->setLast_name($result[3]);
-						$person->setGender($result[4]);
-						$person->setDob($result[5]);
-						$person->setMarital_status($result[6]);
-						$person->setContact($result[7]);
-						$person->setIsActive($result[8]);
-						$person->setLastActive($result[9]);
-						$person->setPrefEmail($result[10]);
-						$person->setPrefMail($result[11]);
-						$person->setPrefPhone($result[12]);
-						
-                                                
-                                                $volunteer = new Volunteer();
-                                                $volunteer->setConsentAge($result[13]);
-                                                $volunteer->setConsentVideo($result[14]);
-                                                $volunteer->setConsentWaiver($result[15]);
-                                                $volunteer->setConsentPhoto($result[16]);
-                                                $volunteer->setAvailDay($result[17]);
-                                                $volunteer->setAvailEve($result[18]);
-                                                $volunteer->setAvailWend($result[19]);
-                                                $volunteer->setPerson($result[20]);
-                                                $volunteer->setIsBoardMember($result[21]);
-                                                $volunteer->setConsentMinor($result[22]);
-                                                $volunteer->setConsentSafety($result[23]);
-                                                $volunteer->setEmergencyName($result[24]);
-                                                $volunteer->setEmergencyPhone($result[25]);
-                                                $volunteer->setChurchAmbassador($result[26]);
-                                                $volunteer->setAffiliation($result[27]);
-                                                                                                
-					} 
-                                        $returnArray = array($person, $volunteer);
-				}
-			else
-			{
-				echo "DB error read volunteer";
-			}
-			return $returnArray;
-        }
-        
+
         public function checkVolunteer($pid) {
         global $con;
         $sql = "select 1 from Volunteer where Person_person_id = " . $pid . "";
@@ -2106,5 +2094,77 @@ class DBIO {
 		$this->close();
 		return $result;
 		} 
+
+	public function getEmailCheck($email){
+	    	global $con;
+	    	$sql='SELECT username FROM Account where username="'.$email.'"';
+	    	$this->open();
+	    	$results=mysql_query($sql,$con);
+	    	$final=mysql_fetch_row($results);
+			$status=$final[0];
+			$this->close();
+			return $status;
+
+    }
+
+
+      public function readVolunteer($pid)
+        {
+            global $con;
+                      
+                        $sql = 'SELECT * FROM Person INNER JOIN Volunteer ON Person.person_id = Volunteer.Person_person_id WHERE Person.person_id =' . $pid;
+                       
+			$this->open();
+			$results = mysql_query($sql, $con);
+			$this->close();
+                        
+			if($results)
+				{
+					while ($result = mysql_fetch_array($results)) 
+					{
+
+						$person = new Person();
+						$person->setPerson_id($result[0]);
+						$person->setTitle($result[1]);
+						$person->setFirst_name($result[2]);
+						$person->setLast_name($result[3]);
+						$person->setGender($result[4]);
+						$person->setDob($result[5]);
+						$person->setMarital_status($result[6]);
+						$person->setContact($result[7]);
+						$person->setIsActive($result[8]);
+						$person->setLastActive($result[9]);
+						$person->setPrefEmail($result[10]);
+						$person->setPrefMail($result[11]);
+						$person->setPrefPhone($result[12]);
+
+                                                
+                        $volunteer = new Volunteer();
+                        $volunteer->setConsentAge($result[13]);
+                        $volunteer->setConsentVideo($result[14]);
+                        $volunteer->setConsentWaiver($result[15]);
+                        $volunteer->setConsentPhoto($result[16]);
+                        $volunteer->setAvailDay($result[17]);
+                        $volunteer->setAvailEve($result[18]);
+                        $volunteer->setAvailWend($result[19]);
+                        $volunteer->setPerson($result[20]);
+                        $volunteer->setIsBoardMember($result[21]);
+                        $volunteer->setConsentMinor($result[22]);
+                        $volunteer->setConsentSafety($result[23]);
+                        $volunteer->setEmergencyName($result[24]);
+                        $volunteer->setEmergencyPhone($result[25]);
+                        $volunteer->setChurchAmbassador($result[26]);
+                        $volunteer->setAffiliation($result[27]);
+                                                                        
+					} 
+                                        $returnArray = array($person, $volunteer);
+				}
+			else
+			{
+				echo "DB error read volunteer";
+			}
+			return $returnArray;
+        }
+		
 }// end class
 ?>

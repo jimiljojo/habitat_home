@@ -25,7 +25,7 @@
 			$page = $dir . '/view/viewEvents.php';
 			break;
 
-		case 'update':
+		case 'updateInfo':
 		
 		$_SESSION['eventId'] = isset($_GET['eventId']) ? $_GET['eventId'] : '';
 		$addressObj = new Address();
@@ -49,6 +49,42 @@
 			$dbio->updateEvent($eventObj,$addressObj);
 
 			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			break;
+
+		case 'submitHours':
+		
+			include 'office/model/event.php';
+			$_SESSION['eventId'] = isset($_GET['eventId']) ? $_GET['eventId'] : '';
+
+			$date=date('Y-m-d');
+			$VolunteerSchedule= getVolunteerSchedule($_SESSION['eventId']);
+
+			foreach ($VolunteerSchedule as $VolunteerScheduleItem){
+			$hours= isset($_GET['hours'.$VolunteerScheduleItem->getVolunteerId()]) ? $_GET['hours'.$VolunteerScheduleItem->getVolunteerId()] : "";
+
+			if($hours){
+				
+				$workObj = new Work();
+		 		$workObj->setAmount($hours);
+		 		var_dump($workObj->getAmount());
+		 		$workObj->setPerson_person($VolunteerScheduleItem->getVolunteerId());
+		 		var_dump($workObj->getPerson_person());
+		 		$workObj->setDate($date);
+		 		var_dump($workObj->getDate());
+		 		$workObj->setEnteredById($_SESSION['personid']);
+		 		var_dump($workObj->getEnteredById());
+		 		$workObj->setAdminId(Null);
+		 		var_dump($workObj->getAdminId());
+		 		$workObj->setEvent($_GET['eventId']);
+		 		var_dump($workObj->getEvent());
+
+		 		$dbio->insertWorkForVolunteer($workObj);
+		 		
+			}
+			
+			}
+
 			$page = $dir . '/view/viewEventInfo.php';
 			break;
 
@@ -84,7 +120,46 @@
 
 			include 'office/model/event.php';
 			$page = $dir . '/view/confirmCreateEvent.php';
-			break;	
+			break;
+			
+			case 'createScheduleSlot':
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			if( $_GET['person'] == "null" || $_GET['createScheduleSlot'] == null) {
+				return null;
+			} else {
+				$personId = $_GET['person'];
+				$scheduleId = $_GET['createScheduleSlot'];
+					createScheduleSlot($personId,$scheduleId);
+			}
+			break;
+			
+		case 'addSchedule':
+			include 'office/model/event.php';
+			$page = $dir . '/view/createSchedule.php';
+			break;
+			
+		case 'createSchedule':
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			if( $_GET['description'] == null || $_GET['timeStart'] == null || $_GET['timeEnd'] == null || $_GET['interest'] == null || $_GET['maxNumPeople'] == null) {
+				return null;
+			} else {
+				$description = $_GET['description'];
+				$timeStart = $_GET['timeStart'];
+				$timeEnd = $_GET['timeEnd'];
+				$interestId = $_GET['interest'];
+				$maxNumPeople = $_GET['maxNumPeople'];
+				$eventId = $_GET['eventId'];
+				createSchedule($timeStart, $timeEnd, $eventId, $description, $interestId, $maxNumPeople);
+			}
+			break;
+			
+		case 'deleteScheduleSlot':
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			deleteScheduleSlot($_GET['scheduleId'], $_GET['personId']);
+			break;
 
 		default:
 			include 'office/model/event.php';

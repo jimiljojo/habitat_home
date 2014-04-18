@@ -21,47 +21,51 @@
                 
 
 
-                <script type="text/javascript">
+<script type="text/javascript">
 	function retrieve(n) {
 		document.getElementById("vid").value=n;
-		document.getElementById("listVolunteers").submit();
+		document.getElementById("editVolunteers").submit();
 			}
 </script>
  
 	</head>
+        <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
+                <br/>
 	<body>
-            <form id="listVolunteers" action="index.php" method="GET">
+            <form id="editVolunteers" action="index.php" method="GET">
 		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
                 <input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
-                <input name="act" id="act" type="hidden" value="retrive" >
+                <input name="act" id="act" type="hidden" value="editVolunteer" >
                 <input name="vid" id="vid" type="hidden" value="0">
-                <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
-                <br/>
+                
 		<table>
 		<?php
                 echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>Phone</th><th>Street 1</th><th>Address 2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th></tr>';
 			
-                    foreach($volunteers as $volunteer) {
+                   foreach  ($volunteers as $volunteer) {
 
                             $person_id = $volunteer->getPerson_id();
                             $title = $volunteer->getTitle();
                             $first_name = $volunteer->getFirst_name();
                             $last_name = $volunteer->getLast_name();
+                            $dob = $volunteer->getDob();
                             $contact = $volunteer->getContact();
                             
                            
-                            $contacts = $dbio->readContact($contact);
-                            $phone = $contacts->getPhone();
-                            $email = $contacts->getEmail();
-                            $address = $contacts->getAddress();
+                                $contacts = $dbio->readContact($contact);
+                                $phone = $contacts->getPhone();
+                                $email = $contacts->getEmail();
+                                $phone2 = $contacts->getPhone2();
+                                $extension = $contacts->getExtension();
+                                $address = $contacts->getAddress();
                             
-                            $addresses = $dbio->readAddress($address);
-                            $address_id = $addresses->getAddress_id();
-                            $street1 = $addresses->getStreet1();
-                            $street2 = $addresses->getStreet2();
-                            $city = $addresses->getCity();
-                            $state = $addresses->getState();
-                            $zip = $addresses->getZip();
+                                    $addresses = $dbio->readAddress($address);
+                                    $address_id = $addresses->getAddress_id();
+                                    $street1 = $addresses->getStreet1();
+                                    $street2 = $addresses->getStreet2();
+                                    $city = $addresses->getCity();
+                                    $state = $addresses->getState();
+                                    $zip = $addresses->getZip();
                            
 				
                                 

@@ -16,8 +16,8 @@
 		// METHOD //
 
 		public function getId() {return $this->id;}
-		public function getVolunteerId() {return $this->$volunteerId;}
-		public function getScheduleId() {return $this->$schedule_id;}
+		public function getVolunteerId() {return $this->volunteerId;}
+		public function getScheduleId() {return $this->schedule_id;}
 		
 
 		public function setId($id) {$this->id = $id;}

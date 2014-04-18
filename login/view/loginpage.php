@@ -79,7 +79,7 @@ $act='loginCheck';
 		<input id="password" name="password" type="password"><label> Password</label><br>
 		<br>
 
-		<input type="button" value="submit" onclick="verify();"> &nbsp &nbsp <a href="index.php?div=recovery" class="aForgot">Forgot Password?</a><br>
+		<input type="submit" value="submit" onclick="verify();"> &nbsp &nbsp <a href="index.php?act=checkEmail" class="aForgot">Forgot Password?</a><br>
 		<br>
 		<br>
 		<div class="center">

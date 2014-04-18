@@ -17,7 +17,7 @@
 	    <style>
 		    
 	    </style>
-	<script src="https://www.google.com/jsapi"></script><script src="js/googleChart.js"></script><script src="js/omniload.js"></script><script src="js/swap.js"></script><script src="js/searchBy.js"></script>
+	
 
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="plugins/bootstrap/css/bootstrap.css">
@@ -54,7 +54,7 @@
 </script>
 
 
-<button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=editVolunteer';">Create New</button>
+<button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=create';">Create New</button>
 <hr><!--
 <form name="input" action="register/index.php" method="get"> <!-- create new button -->
 <!--<input type="submit" value="Create New">
@@ -76,9 +76,7 @@
 	2014 <span class="habitatBlue">|</span> York Habitat for Humanity
 	</footer>
 </html>
-<!-- Hosting24 Analytics Code -->
-<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script>
-<!-- End Of Analytics Code -->
+
 
 
 

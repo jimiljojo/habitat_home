@@ -65,6 +65,45 @@
 		return $volunteerSchedules;
 	}
 
+	function getVolunteerById($volId){
+		global $dbio;
+		$volunteerDetails = $dbio->readPerson($volId);
+		return $volunteerDetails;
+	}
+	
+	function getEventScheduleSlots($scheduleId) {
+		global $dbio;
+		$eventScheduleSlots= $dbio->readScheduleSlot($scheduleId);
+		return $eventScheduleSlots;
+	}
+	
+	function createScheduleSlot($personId,$scheduleId) {
+		global $dbio;
+		$dbio->createScheduleSlot($personId,$scheduleId);
+	}
+	
+	function createSchedule($timeStart, $timeEnd, $eventId, $description, $interestId, $maxNumPeople) {
+		global $dbio;
+		$dbio->createSchedule($timeStart, $timeEnd, $eventId, $description, $interestId, $maxNumPeople);
+	}
+	
+	function getVolunteers() {
+		global $dbio;
+		$volunteers = $dbio->listPersons();
+		return $volunteers;
+	}
+	
+	function getInterests() {
+		global $dbio;
+		$interests = $dbio->listInterests();
+		return $interests;
+	}
+	
+	function deleteScheduleSlot($scheduleId, $personId) {
+		global $dbio;
+		$dbio->deleteScheduleSlot($scheduleId, $personId);
+	}
+
 	function create() {}
 
 	
