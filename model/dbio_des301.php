@@ -1187,10 +1187,18 @@ class DBIO {
 		//create new person done not tested
 		public function createPerson($person, $contact, $address){
 			global $con;
-			$sql = "INSERT INTO Contact SET phone='" . $contact->getPhone() ."', email='" . $contact->getEmail() ."', '" . $contact->getPhone2() . "', '" . $contact->getExtension() . "'  ";
-			$this->open();
-			$result = mysql_query($sql, $con);
-			$this->close();
+                        $id = createAddress($address);
+                        if($id)
+                        {
+                            $id2 = createContact($contact, $id);     
+                            if($id2)
+                            {                          
+                                $sql = "INSERT INTO Person VALUES (" . $person->getTitle() .", " . $person->getFirst_name() .", " . $person->getLast_name() . ", " . $person->getGender() . ", " . $person->getDob() . ", " . $person->getMarital_status() . ", " . $id2 . ", " . $person->getIsActive() . ", " . $person->getLastActive() . ", " . $person->getPrefEmail() . ", " . $person->getPrefMail() . ", " . $person->getPrefPhone() . ")";
+                                $this->open();
+                                $result = mysql_query($sql, $con);
+                                $this->close();
+                            }
+                        }
 		}
 		
 
@@ -1198,7 +1206,8 @@ class DBIO {
 		public function createContact($contact, $addressID)
 		{
 			global $con;
-			$sql = 'INSERT INTO Contact VALUES (' . $contact->getStreet1() . ' , ' .$contact->getStreet2(). ', ' .$contact->getCity(). ', ' .$contact->getState(). ', ' .$contact->getZip(). ')';
+                        
+			$sql = 'INSERT INTO Contact VALUES (' . $addressID . ' , ' .$contact->getPhone(). ', ' .$contact->getEmail(). ', ' .$contact->getPhone2(). ', ' .$contact->getExtension(). ')';
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$this->close();
