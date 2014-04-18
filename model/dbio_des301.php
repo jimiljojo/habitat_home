@@ -973,10 +973,10 @@ class DBIO {
 		public function readScheduleSlot($scheduleId)
 		{
 			global $con;
-			$sql = "SELECT title, first_name, last_name, Person.person_id FROM Schedule_slot 
-						JOIN Volunteer on Volunteer.Person_person_id = Schedule_slot.Volunteer_Person_person_id
+			$sql = "SELECT title, first_name, last_name, Person.person_id FROM Volunteer_has_Schedule 
+						JOIN Volunteer on Volunteer.Person_person_id = Volunteer_has_Schedule.Volunteer_Person_person_id
 						JOIN Person on Person.person_id = Volunteer.Person_person_id
-						WHERE Schedule_slot.Schedule_id = '{$scheduleId}'";
+						WHERE Volunteer_has_Schedule.Schedule_id = '{$scheduleId}'";
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$persons = array();
@@ -987,6 +987,7 @@ class DBIO {
 				$person->setFirst_name($row[1]);
 				$person->setLast_name($row[2]);
 				$person->setPerson_id($row[3]);
+				//$person->setId($row[4]);
 				$persons[] = $person;
 			}
 			$this->close();
