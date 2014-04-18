@@ -120,7 +120,46 @@
 
 			include 'office/model/event.php';
 			$page = $dir . '/view/confirmCreateEvent.php';
-			break;	
+			break;
+			
+			case 'createScheduleSlot':
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			if( $_GET['person'] == "null" || $_GET['createScheduleSlot'] == null) {
+				return null;
+			} else {
+				$personId = $_GET['person'];
+				$scheduleId = $_GET['createScheduleSlot'];
+					createScheduleSlot($personId,$scheduleId);
+			}
+			break;
+			
+		case 'addSchedule':
+			include 'office/model/event.php';
+			$page = $dir . '/view/createSchedule.php';
+			break;
+			
+		case 'createSchedule':
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			if( $_GET['description'] == null || $_GET['timeStart'] == null || $_GET['timeEnd'] == null || $_GET['interest'] == null || $_GET['maxNumPeople'] == null) {
+				return null;
+			} else {
+				$description = $_GET['description'];
+				$timeStart = $_GET['timeStart'];
+				$timeEnd = $_GET['timeEnd'];
+				$interestId = $_GET['interest'];
+				$maxNumPeople = $_GET['maxNumPeople'];
+				$eventId = $_GET['eventId'];
+				createSchedule($timeStart, $timeEnd, $eventId, $description, $interestId, $maxNumPeople);
+			}
+			break;
+			
+		case 'deleteScheduleSlot':
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			deleteScheduleSlot($_GET['scheduleId'], $_GET['personId']);
+			break;
 
 		default:
 			include 'office/model/event.php';
