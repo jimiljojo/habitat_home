@@ -8,7 +8,7 @@
  * Author: Roman Galysh
  */
 
-function indexVolunteer($value1, $value2) {}
+function indexVolunteerBy($value1, $value2) {}
 
 
 function createVolunteer($parameter){}
@@ -16,27 +16,30 @@ function createVolunteer($parameter){}
 
 function updateInfo(){
     
-   // $vid = $_GET['vid'];
+    $vid = $_GET['vid'];
     $person = new Person();
-    $contact = new Contact();
-    $address = new Address();
-    
     $person->setTitle($_GET['title']);
-    $person->setFirst_name($_GET['fName']);
-    $person->setLast_name($_GET['lName']);
+    $person->setFirst_name($_GET['fname']);
+    $person->setLast_name($_GET['lname']);
+    $person->setDob($_GET['dob']);
     
-    $contact->setPhone($_GET['phone']);
-    $contact->setEmail($_GET['email']);
+    $contact = new Contact();
+    $phone->setPhone($_GET['phone']);
+    $email->setEmail($_GET['email']);
+    $phone->setPhone2($_GET['phone2']);
+    $phone->setExtension($_GET['extention']);
     
-    $address->setStreet1($_GET['street1']);
-    $address->setStreet2($_GET['street2']);
-    $address->setCity($_GET['city']);
-    $address->setState($_GET['state']);
-    $address->setZip($_GET['zip']);
+    
+    $address = new Address();
+    $street1->setStreet1($_GET['street1']);
+    $street2->setStreet2($_GET['street2']);
+    $city->setCity($_GET['city']);
+    $state->setState($_GET['state']);
+    $zip->setZip($_GET['zip']);
     
     global $dbio;
-    $updated = $dbio->updateInfo($person_id, $person, $contact, $address);
-    return $update;
+    $updated = $dbio->updateInfo($vid, $person, $contact, $address);
+    return $updated;
 }
 
 

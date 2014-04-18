@@ -53,8 +53,9 @@
 			break;
 
 		case 'update':
-                    include $dir . '/model/' . $sub . '.php';
+                    include_once 'office/model/volunteer.php';
                     $updated = updateInfo();
+                    $page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 
 		case 'delete':

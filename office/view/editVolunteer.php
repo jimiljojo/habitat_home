@@ -11,20 +11,24 @@
         global $act;
         global $msg;
         //$this->$person_id = $_GET['vid'];
-        $vid = $_GET['vid'];
+        $vid = filter_input(INPUT_GET, 'vid', FILTER_SANITIZE_STRING);
+        //$vid = $_GET['vid'];
         $information = $dbio->readVolunteer($vid);
         $volunteer = $information[1];
         $person = $information[0];
-        //$volunteer = filter_input(INPUT_GET, 'vid', FILTER_SANITIZE_STRING);
+  
         
         $title = $person->getTitle(); 
         $first_name = $person->getFirst_name();
         $last_name = $person->getLast_name();
+        $dob = $person->getDob();
         $contact = $person->getContact();
                                                 
         $contacts = $dbio->readContact($contact);
         $phone = $contacts->getPhone();
         $email = $contacts->getEmail();
+        $phone2 = $contacts->getPhone2();
+        $extension = $contacts->getExtension();
         $address = $contacts->getAddress();
                           
         $addresses = $dbio->readAddress($address);
@@ -51,7 +55,7 @@
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
     <input name="vid" type="hidden" value="<?php echo $person->getPerson_id(); ?>" >
-    <input name="act" type="hidden" value="update" >
+    <input name="act" type="hidden" value="updated" >
 
 		
 		
@@ -70,16 +74,16 @@
                     </select> -->
                     </td><tr><br> 
                    
-		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname" value="<?php echo $first_name; ?>" ></label>
+		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="first_name" type="text" id="first_name" value="<?php echo $first_name; ?>" ></label>
 		</td></tr>
-		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname" value="<?php echo $last_name; ?>"></label></td></tr>
-	
+		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="last_name" type="text" id="last_name" value="<?php echo $last_name; ?>"></label></td></tr>
+                <tr><td>D.O.B.<span class="mandatory">*</span> </td><td><input name="dob" type="text" id="dob" value="<?php echo $dob; ?>"></label></td></tr>
                </table></div>
 
 		<h4 class="show" onclick="swap(this);">Address</h4><div>
                <table class="intTable">
 		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1" value="<?php echo $street1; ?>"></td></tr><br>
-		<tr><td>Street 2</td><td><input name="street2" type="text" value="<?php echo $street2; ?>"></label></td></tr>
+		<tr><td>Street 2</td><td><input name="street2" type="text" id="street2" value="<?php echo $street2; ?>"></label></td></tr>
 		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city" value="<?php echo $city; ?>"></label></td></tr>
 		<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" id="state" value="<?php echo $state; ?>"></label></td></tr>
 		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip" value="<?php echo $zip; ?>"></label></td></tr> 
@@ -88,7 +92,8 @@
 		<h4 class="show" onclick="swap(this);">Contact Information</h4><div>
                <table class="intTable">
 		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone" value="<?php echo $phone; ?>"></label></td></tr><br>
-		
+		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone2" type="text" id="phone2" value="<?php echo $phone2; ?>"></label></td></tr><br>
+                <tr><td>Extension<span class="mandatory">*</span></td><td> <input name="extension" type="text" id="extension" value="<?php echo $extension; ?>"></label></td></tr><br>
 		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email" value="<?php echo $email; ?>"></label></td></tr>
                 
                </table></div>
@@ -196,7 +201,7 @@
 
         </script>
         
-		<input type="submit" value="update">
+		<input type="submit" value="updated">
 
 		<br>
 	</form>
