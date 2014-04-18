@@ -56,6 +56,16 @@
   }
 }
 
+	function retrieve(n) {
+		document.getElementById("personId").value=n;
+		
+		var deleteScheduleSlot=confirm("Are you sure you want to\ndelete this volunteer\nfrom this schedule");
+		if (deleteScheduleSlot!=false)
+			{
+				document.getElementById("deleteScheduleSlot").submit();
+			}
+	}
+
 </script>
 
 
