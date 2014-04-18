@@ -862,17 +862,53 @@ class DBIO {
 		
 ///////////////////////////////////////////Schedule////////////////////////////////////////////////////
 //////////////////////////////////////////-_-_-_-//(v)_(';;;')(V)///////////////////////////////////////
-
+		public function createScheduleSlot($person, $scheduleId)
+		{
+			//$dbio = new DBIO();
+			global $con;
+			$this->open();
+			$tableName = "Volunteer_has_Schedule";
+			$sql = "INSERT INTO {$tableName} (Volunteer_Person_person_id, Schedule_id) VALUES ('{$person}', '{$scheduleId}')";
+			mysql_query($sql,$con);
+			$this->close();
+			echo "You have created a new {$tableName}";
+		}
+		
+		public function createSchedule($timeStart, $timeEnd, $eventId, $description, $interestId, $maxNumPeople)
+		{
+			//$dbio = new DBIO();
+			global $con;
+			$this->open();
+			$tableName = "Schedule";
+			$sql = "INSERT INTO {$tableName} (timeStart, timeEnd, Event_event_id, description, Interest_interest_id, maxNumPeople) VALUES ('{$timeStart}', '{$timeEnd}', '{$eventId}', '{$description}', '{$interestId}', '{$maxNumPeople}')";
+			//$this->readInterestType();
+			mysql_query($sql,$con);
+			$this->close();
+			echo "You have created a new {$tableName} its a part of the event {$eventId}, it starts at {$timeStart}, and ends at {$timeEnd}, its description is:{$description}, the max volunteers are:{$maxNumPeople}, and is linked to the following interest:{$interestId}";
+		}
+		
+		public function deleteScheduleSlot($scheduleId, $personId)
+		{
+			global $con;
+			$this->open();
+			$tableName = "Volunteer_has_Schedule";
+			$sql = "DELETE FROM Volunteer_has_Schedule
+					WHERE Volunteer_Person_person_id = '{$personId}' AND Schedule_id = '{$scheduleId}'";
+			mysql_query($sql,$con);
+			$this->close();
+		}
+	
+	
 		public function listSchedule() //view all 
-        {
+        	{
 			include_once "class/schedule.php";
-            global $con;
+            		global $con;
 			$sql = 'SELECT id, "rime start", timeEnd, Event_event_id, description, Interest_interest_id FROM Schedule';
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$schedules =array();
 			while($rows = mysql_fetch_array($result))
-            {
+        	 {
                 
 				$schedule = new Schedule();
 				$schedule->setId($rows[0]);
