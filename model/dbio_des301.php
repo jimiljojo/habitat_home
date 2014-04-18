@@ -1234,6 +1234,7 @@ class DBIO {
 		//create new person done not tested
 		public function createPerson($person, $contact, $address){
 			global $con;
+                        $pid = false;
                         $id = createAddress($address);
                         if($id)
                         {
@@ -1244,8 +1245,10 @@ class DBIO {
                                 $this->open();
                                 $result = mysql_query($sql, $con);
                                 $this->close();
+                                $pid = last_insert_id();
                             }
                         }
+                        return $pid;
 		}
 		
 
@@ -2164,6 +2167,18 @@ class DBIO {
 				echo "DB error read volunteer";
 			}
 			return $returnArray;
+        }
+        
+        public function createVolunteerData($volunteer)
+        {
+            global $con;
+                      
+                        $sql = 'INSERT INTO Volunteer VALUES (' . $volunteer->getConsentAge() . ', ' . $volunteer->getConsentVideo() . ', ' . $volunteer->getConsentWaiver() . ', ' . $volunteer->getConsentPhoto() . ', ' . $volunteer->getAvailDay() . ', ' . $volunteer->getAvailEve() . ', ' . $volunteer->getAvailWend() . ', ' . $volunteer->getPerson() . ', ' . $volunteer->getIsBoardMember() . ', ' . $volunteer->getConsentMinor() . ', ' . $volunteer->getConsentSafety() . ', ' . $volunteer->getEmergencyName() . ', ' . $volunteer->getEmergencyPhone() . ', ' . $volunteer->getChurchAmbassador() . ', ' . $volunteer->getAffiliation() . ')';
+                       
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$this->close();
+                        return $result;
         }
 		
 }// end class
