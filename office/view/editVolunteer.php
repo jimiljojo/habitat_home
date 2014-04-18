@@ -1,28 +1,4 @@
 <?php
-
-global $dir;
-        global $sub;
-        global $act;
-        global $msg;
-        $person_id = $_GET['vid'];
-                            
-        $first_name = $volunteer->getFirst_name();
-        $last_name = $volunteer->getLast_name();
-        $contact = $volunteer->getContact();
-                            
-                           
-        $contacts = $dbio->readContact($contact);
-        $phone = $contacts->getPhone();
-        $email = $contacts->getEmail();
-        $address = $contacts->getAddress();
-                            
-        $addresses = $dbio->readAddress($address);
-        $address_id = $addresses->getAddress_id();
-        $street1 = $addresses->getStreet1();
-        $street2 = $addresses->getStreet2();
-        $city = $addresses->getCity();
-        $state = $addresses->getState();
-        $zip = $addresses->getZip();
 /* 
  * file: createVolunteer.php
  * To change this license header, choose License Headers in Project Properties.
@@ -30,40 +6,74 @@ global $dir;
  * and open the template in the editor.
  * Author: rwg5215
  */
+        global $dir;
+        global $sub;
+        global $act;
+        global $msg;
+        //$this->$person_id = $_GET['vid'];
+        $vid = $_GET['vid'];
+        $information = $dbio->readVolunteer($vid);
+        $volunteer = $information[1];
+        $person = $information[0];
+        //$volunteer = filter_input(INPUT_GET, 'vid', FILTER_SANITIZE_STRING);
+        
+        $title = $person->getTitle(); 
+        $first_name = $person->getFirst_name();
+        $last_name = $person->getLast_name();
+        $contact = $person->getContact();
+                                                
+        $contacts = $dbio->readContact($contact);
+        $phone = $contacts->getPhone();
+        $email = $contacts->getEmail();
+        $address = $contacts->getAddress();
+                          
+        $addresses = $dbio->readAddress($address);
+        $address_id = $addresses->getAddress_id();
+        $street1 = $addresses->getStreet1();
+        $street2 = $addresses->getStreet2();
+        $city = $addresses->getCity();
+        $state = $addresses->getState();
+        $zip = $addresses->getZip();
+            
+            if($updated){
+		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
+            }
+        
 ?>
 
 
 <html>
 
-			
+    <body>		
 		
 
     <form action="index.php" method="GET">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="vid" type="hidden" value="<?php echo $volunteer->getPerson_id(); ?>" >
+    <input name="vid" type="hidden" value="<?php echo $person->getPerson_id(); ?>" >
     <input name="act" type="hidden" value="update" >
 
 		
 		
-		<input name="act" type="hidden" value="getInterests" >
-		<h4 class="show" onclick="swap(this);">Personal Information</h4><div>
+	
+	<h4 class="show" onclick="swap(this);">Personal Information</h4><div>
                <table class="intTable">
-		<tr><td>
+                  
+                <tr><td>
 		Title<span class="mandatory">* </span></td> 
-		<td><select name="title" id="title">
-		<option></option>
+                    <td><input name="title" id="title" value ="<?php echo $title; ?>"></label>
+		<!-- <option></option>
   		<option>Mr.</option>
   		<option>Mrs.</option>
   		<option>Ms.</option>
   		<option>Dr.</option>
-		</select></label></td><tr><br>
+                    </select> -->
+                    </td><tr><br> 
+                   
 		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname" value="<?php echo $first_name; ?>" ></label>
 		</td></tr>
 		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname" value="<?php echo $last_name; ?>"></label></td></tr>
-		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp yyyy-mm-dd)</td></tr>
-		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
-		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr>
+	
                </table></div>
 
 		<h4 class="show" onclick="swap(this);">Address</h4><div>
@@ -78,10 +88,9 @@ global $dir;
 		<h4 class="show" onclick="swap(this);">Contact Information</h4><div>
                <table class="intTable">
 		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone" value="<?php echo $phone; ?>"></label></td></tr><br>
-		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
+		
 		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email" value="<?php echo $email; ?>"></label></td></tr>
-                <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
-                <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
+                
                </table></div>
 		
 		<br>
@@ -187,7 +196,7 @@ global $dir;
 
         </script>
         
-		<input type="submit" value="Edit">
+		<input type="submit" value="update">
 
 		<br>
 	</form>
@@ -196,5 +205,5 @@ global $dir;
 	<span class="note"><span class="mandatory">*</span> Required<br>
 	Email address is essential in order to receive monthly updates and special invitations
 	</span>
-        
+    </body>   
 </html>

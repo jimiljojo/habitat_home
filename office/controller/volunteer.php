@@ -53,7 +53,8 @@
 			break;
 
 		case 'update':
-                    
+                    include $dir . '/model/' . $sub . '.php';
+                    $updated = updateInfo();
 			break;
 
 		case 'delete':

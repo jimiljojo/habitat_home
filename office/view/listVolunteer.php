@@ -29,14 +29,15 @@
 </script>
  
 	</head>
+        <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
+                <br/>
 	<body>
             <form id="editVolunteers" action="index.php" method="GET">
 		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
                 <input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
-                <input name="act" id="act" type="hidden" value="retrieve" >
+                <input name="act" id="act" type="hidden" value="editVolunteer" >
                 <input name="vid" id="vid" type="hidden" value="0">
-                <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
-                <br/>
+                
 		<table>
 		<?php
                 echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Title</th><th>First Name</th><th>Last Name</th><th>Phone</th><th>Street 1</th><th>Address 2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th></tr>';
