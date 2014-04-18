@@ -55,7 +55,7 @@
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
     <input name="vid" type="hidden" value="<?php echo $person->getPerson_id(); ?>" >
-    <input name="act" type="hidden" value="updated" >
+    <input name="act" type="hidden" value="update" >
 
 		
 		
@@ -79,8 +79,17 @@
 		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="last_name" type="text" id="last_name" value="<?php echo $last_name; ?>"></label></td></tr>
                 <tr><td>D.O.B.<span class="mandatory">*</span> </td><td><input name="dob" type="text" id="dob" value="<?php echo $dob; ?>"></label></td></tr>
                </table></div>
-
-		<h4 class="show" onclick="swap(this);">Address</h4><div>
+        <br/>
+              <h4 class="show" onclick="swap(this);">Contact Information</h4><div>
+               <table class="intTable">
+		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone" value="<?php echo $phone; ?>"></label></td></tr><br>
+		<tr><td>Phone2<span class="mandatory">*</span></td><td> <input name="phone2" type="text" id="phone2" value="<?php echo $phone2; ?>"></label></td></tr><br>
+                <tr><td>Extension<span class="mandatory">*</span></td><td> <input name="extension" type="text" id="extension" value="<?php echo $extension; ?>"></label></td></tr><br>
+		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email" value="<?php echo $email; ?>"></label></td></tr>
+                
+               </table></div>
+        <br/>
+	     <h4 class="show" onclick="swap(this);">Address</h4><div>
                <table class="intTable">
 		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1" value="<?php echo $street1; ?>"></td></tr><br>
 		<tr><td>Street 2</td><td><input name="street2" type="text" id="street2" value="<?php echo $street2; ?>"></label></td></tr>
@@ -89,14 +98,7 @@
 		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip" value="<?php echo $zip; ?>"></label></td></tr> 
                </table></div>
 
-		<h4 class="show" onclick="swap(this);">Contact Information</h4><div>
-               <table class="intTable">
-		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone" value="<?php echo $phone; ?>"></label></td></tr><br>
-		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone2" type="text" id="phone2" value="<?php echo $phone2; ?>"></label></td></tr><br>
-                <tr><td>Extension<span class="mandatory">*</span></td><td> <input name="extension" type="text" id="extension" value="<?php echo $extension; ?>"></label></td></tr><br>
-		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email" value="<?php echo $email; ?>"></label></td></tr>
-                
-               </table></div>
+		
 		
 		<br>
 		<script type="text/javascript">
@@ -201,7 +203,7 @@
 
         </script>
         
-		<input type="submit" value="updated">
+		<input type="submit" value="update">
 
 		<br>
 	</form>

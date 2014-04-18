@@ -55,7 +55,7 @@
 		case 'update':
                     include_once 'office/model/volunteer.php';
                     $updated = updateInfo();
-                    $page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+                    $page = $dir . '/view/edit' . ucfirst($sub) . '.php';
 			break;
 
 		case 'delete':

@@ -76,9 +76,7 @@
 	2014 <span class="habitatBlue">|</span> York Habitat for Humanity
 	</footer>
 </html>
-<!-- Hosting24 Analytics Code -->
-<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script>
-<!-- End Of Analytics Code -->
+
 
 
 

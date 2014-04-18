@@ -17,25 +17,26 @@ function createVolunteer($parameter){}
 function updateInfo(){
     
     $vid = $_GET['vid'];
-    $person = new Person();
-    $person->setTitle($_GET['title']);
-    $person->setFirst_name($_GET['fname']);
-    $person->setLast_name($_GET['lname']);
-    $person->setDob($_GET['dob']);
-    
-    $contact = new Contact();
-    $phone->setPhone($_GET['phone']);
-    $email->setEmail($_GET['email']);
-    $phone->setPhone2($_GET['phone2']);
-    $phone->setExtension($_GET['extention']);
-    
-    
-    $address = new Address();
-    $street1->setStreet1($_GET['street1']);
-    $street2->setStreet2($_GET['street2']);
-    $city->setCity($_GET['city']);
-    $state->setState($_GET['state']);
-    $zip->setZip($_GET['zip']);
+        $person = new Person();
+        $contact = new Contact();
+        $address = new Address();
+
+        $person->setTitle($_GET['title']);
+        $person->setFirst_name($_GET['first_name']);
+        $person->setLast_name($_GET['last_name']);
+        $person->setDob($_GET['dob']);
+
+        $contact->setPhone($_GET['phone']);
+        $contact->setEmail($_GET['email']);
+        $contact->setPhone2($_GET['phone2']);
+        $contact->setExtension($_GET['extension']);
+
+        $address->setStreet1($_GET['street1']);
+        $address->setStreet2($_GET['street2']);
+        $address->setCity($_GET['city']);
+        $address->setState($_GET['state']);
+        $address->setZip($_GET['zip']);
+ 
     
     global $dbio;
     $updated = $dbio->updateInfo($vid, $person, $contact, $address);

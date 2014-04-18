@@ -48,12 +48,15 @@
                             $title = $volunteer->getTitle();
                             $first_name = $volunteer->getFirst_name();
                             $last_name = $volunteer->getLast_name();
+                            $dob = $volunteer->getDob();
                             $contact = $volunteer->getContact();
                             
                            
                                 $contacts = $dbio->readContact($contact);
                                 $phone = $contacts->getPhone();
                                 $email = $contacts->getEmail();
+                                $phone2 = $contacts->getPhone2();
+                                $extension = $contacts->getExtension();
                                 $address = $contacts->getAddress();
                             
                                     $addresses = $dbio->readAddress($address);
