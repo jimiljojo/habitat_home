@@ -42,23 +42,20 @@
     <input name="search" type="submit" value="Search By">
     <select id="searchBy" name="searchBy" onchange="searchByHandler();">
 	<option value="name" selected="selected">Name</option>
-	<option value="organization">Organization</option>
-	<option value="street">Street</option>
-	<option value="city">City</option>
+	<option value="phone number">Phone Number</option>
+	
     </select>
     <input id="input1" name="input1" placeholder="first name" type="text">
     <input id="input2" name="input2" placeholder="last name" type="text">
 </form>
-<script>
-    var msg = "This part is under construction"
-</script>
 
-
-<button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=create';">Create New</button>
-<hr><!--
-<form name="input" action="register/index.php" method="get"> <!-- create new button -->
-<!--<input type="submit" value="Create New">
-</form><br><br/>  -->
+<form name="input" action="index.php" method="get"> 
+	<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+	<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+	<input name="act" type="hidden" value="create" >
+	<input type="submit" value="Create New">
+</form><br><br/>
+<hr>
 
 <div>
     Here you can search for a volunteer by:

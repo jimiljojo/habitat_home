@@ -24,26 +24,11 @@
 			break;
 
 		case 'create':
-                    
-                    $parameter = $_GET['param'];
-                    $title = $_GET['title'];
-                    $gender = $_GET['gender'];
-                    $marital_status = $_GET['marital_status'];
-                    //$contact = $_GET['contact'];
-                    $fname = $_GET['fn'];
-                    $lname = $_GET['ln'];
-                    $addr = $_GET['addr'];
-                    $city = $_GET['city'];
-                    $state = $_GET['state'];
-                    $zip = $_GET['zip'];
-                    $phone = $_GET['pn'];
-                    $dob = $_GET['dob'];
-                    
+                                        
                     include $dir . '/model/' . $sub . '.php';
-                    $volunteers = createVolunteer($parameter);
+                    $volunteers = createPerson();
                     $page = $dir . '/view/create' . ucfirst($sub) . '.php';
-                    
-                    
+              
 			break;
 
 		case 'editVolunteer':

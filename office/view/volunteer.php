@@ -1,7 +1,7 @@
 <?php
 
-// TITLE: Office Accounts View
-// FILE: office/view/accounts.php
+// TITLE: 
+// FILE: office/view/.php
 // AUTHOR: rwg5215
 
 

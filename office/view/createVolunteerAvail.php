@@ -1,4 +1,4 @@
-<h2>volunteer/view/availability.php</h2>
+
 <hr>
 <form action="index.php">
     <h5><strong>I am available to work: </strong></h5>
