@@ -153,7 +153,7 @@
     <input type="radio" name="age" value="1" id="age" required="required"><label>Less than 18 years of age and have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/YorkHabitatMinorWaiverRelease.pdf" target="_blank">Minor Waiver</a></label> &nbsp&nbsp<span class="note">(You must be 16 years old or older to work on site.)</span><br>
     <input type="radio" name="age" value="2" id="age" required="required"><label>Greater than 18 years of age</label><br>
     <br/>
-    <input type="checkbox" name="photo" id="photo" value=1><label><span class="mandatory">*</span>I understand a personal photograph may be used in appropriate newspapers and/or newsletters. <span class="note">(This will help to highlight your service to the community and our affiliate.)</span><label><br/>
+    <input type="checkbox" name="photo" id="photo" value=1><label><span class="mandatory">*</span>I understand a personal photograph may be used in appropriate newspapers and/or newsletters. <span class="note">(This will help to highlight your service to the community and our affiliate.)</span></label><br/>
     <br/>
     <label><b><span class="mandatory">*</span>Please Click and read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/ConstructionSafety.pdf" target="_blank">Construction Safety Guidelines</a></b></label><br>
     <input type="checkbox" name="safety" id="safety" value=1><label>I have read the Construction Safety Guidelines</label><br/>
