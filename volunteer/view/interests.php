@@ -90,7 +90,7 @@
     <button onclick="swapAll('hide');">Hide All</button><br>
  -->
     <br>
-    <input type="submit" value="update">
+    <input type="submit" value="Update">
 </form>
 <hr/>
 <div class="note">
