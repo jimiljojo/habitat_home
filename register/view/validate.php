@@ -46,7 +46,6 @@
     $userName = isset($_SESSION['userName']) ? $_SESSION['userName'] : 'null';
     $password = isset($_SESSION['pw1']) ? $_SESSION['pw1'] : 'null';
 
-
 ?>
 
 
@@ -123,15 +122,15 @@
         <?php
 
             if($checkPhone=="1"){
-            echo 'day <br>';
+            echo 'Phone <br>';
             }
 
             if($checkMail=="1"){
-            echo 'evening <br>';
+            echo 'Mail <br>';
             }
         
             if($checkEmail=="1"){
-            echo 'weekend <br>';
+            echo 'Email <br>';
             }
         ?>
 
@@ -142,19 +141,20 @@
     </table>
         <?php
 
-            if($day=="on"){
+            if($day=="1"){
             echo 'day <br>';
             }
 
-            if($eve=="on"){
+            if($eve=="1"){
             echo 'evening <br>';
             }
         
-            if($wend=="on"){
+            if($wend=="1"){
             echo 'weekend <br>';
             }
 
         ?>
+        
 
     <table>
         <br><tr><td><b>Consent:</b></td></tr>
