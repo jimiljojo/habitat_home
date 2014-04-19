@@ -21,6 +21,7 @@ function createPerson(){
     $person->setFirst_name($_GET['first_name']);
     $person->setLast_name($_GET['last_name']);
     $person->setDob($_GET['dob']);
+    $person->setGender($_GET['gender']);
 
     $contact->setPhone($_GET['phone']);
     $contact->setEmail($_GET['email']);
