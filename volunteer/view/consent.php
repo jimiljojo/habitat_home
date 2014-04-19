@@ -100,7 +100,7 @@
     <input type="checkbox" name="photo" value="3" <?php echo $checkedPhoto; ?> <?php if ($checkedPhoto == 'checked="checked"') ?> /> I consent for my photo to be used by Habitat<br>
     <input type="checkbox" name="safetyGuidelines" value="4" <?php echo $safetyGuidelines; ?> <?php if ($safetyGuidelines == 'checked="checked"') ?> /> I have read the Construction Safety Guidelines<br>
     <input type="checkbox" name="video" value="5" <?php echo $checkedVideo; ?> <?php if ($checkedVideo == 'checked="checked"') ?> /> I have viewed the Construction Safety video<br>
-    <input type="checkbox" name="liability" value="6" <?php echo $checkLiability; ?> <?php if ($checkLiability == 'checked="checked"') ?> /> I accep the terms of Liability Waiver Form<br><br>
+    <input type="checkbox" name="liability" value="6" <?php echo $checkLiability; ?> <?php if ($checkLiability == 'checked="checked"') ?> /> I accept the terms of Liability Waiver Form<br><br>
     
     <h5><strong>Emergency Contact Information: </strong></h5>
     <table>
