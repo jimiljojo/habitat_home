@@ -24,6 +24,8 @@
         $dbEve=$avail->getEve();
         $dbWend=$avail->getWend();
 
+        
+
         if($dbDay=="1"){
             $checkedDay = 'Yes';
         }
