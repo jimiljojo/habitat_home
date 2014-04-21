@@ -140,7 +140,8 @@
 	
 	
 	case 'getInfo':
-	    
+
+		session_destroy();    
 	    $lifetime = 30 * 60;// 60 seconds * 30 minutes = 1800 seconds
 	    session_set_cookie_params($lifetime, '/');
 	
