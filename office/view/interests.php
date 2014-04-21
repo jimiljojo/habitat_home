@@ -59,9 +59,9 @@
 	
 </style>
 
-<h4>Interests Search</h4>
+<h2>Interests Search</h2>
 <hr>
-
+<br><br>
 
 <!--/////////////////////////////////////////		javascript			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 <script type="text/javascript" src="js/searchByHandler.js"></script>  <!-- I cant get this to work externally --> <!--This script changes the input boxes after drop down menu-->
