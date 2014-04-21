@@ -126,6 +126,11 @@
 		$dbio->updateSchedule($scheduleId, $timeStart, $timeEnd, $description, $interestId, $maxNumPeople);
 	}
 
+	function checkVolunteerProcessing($volId, $eventId){
+		global $dbio;
+		$isProcessed=$dbio->checkVolunteerProcessing($volId, $eventId);
+		return $isProcessed;
+	}
 	function create() {}
 
 	

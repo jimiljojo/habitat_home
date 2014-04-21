@@ -698,6 +698,20 @@ class DBIO {
 		return $eventId;
 	}
 	
+	 public function checkVolunteerProcessing($volunteerId, $eventId) {
+        global $con;
+        $sql = "SELECT * FROM Work WHERE Event_event_id=" .$eventId. " AND Volunteer_Person_person_id=" . $volunteerId;
+        $this->open();
+        $results = mysql_query($sql, $con);
+        while ($result = mysql_fetch_array($results)) {
+        	$isProcessed = $result[0];
+        }
+        $this->close();
+        if(isset($isProcessed))
+        	return true;
+        else
+        	return false;
+    }
 /////////////////////////////////////Interests/////////////////////////////////////////////////////////////////	   
 //////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
 	    public function listInterests()

@@ -340,8 +340,16 @@ function retrieveSchedule(n) {
 
 			<tr>
 				<td> <?php echo $VolunteerDetails->getTitle(). " " .$VolunteerDetails->getFirst_name(). " " .$VolunteerDetails->getLast_name();  ?> </td>
-				<td> <input type='text' name ="hours<?php echo $VolunteerScheduleItem->getVolunteerId(); ?>" id="hours<?php echo $VolunteerScheduleItem->getVolunteerId(); ?>" maxlength=5 onkeypress='validate(event)' /> </td>
 				
+				<?php $isProcessed=checkVolunteerProcessing($VolunteerScheduleItem->getVolunteerId(), $event_id);
+				if($isProcessed){
+					?>
+					<td> <label>Already Processed for this Event </label> </td>
+					<?php }
+				else {
+					?>
+					<td> <input type='text' name ="hours<?php echo $VolunteerScheduleItem->getVolunteerId(); ?>" id="hours<?php echo $VolunteerScheduleItem->getVolunteerId(); ?>" maxlength=5 onkeypress='validate(event)' /> </td>
+				<?php } ?>	
 			</tr>
 
 
