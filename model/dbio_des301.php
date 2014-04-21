@@ -724,7 +724,7 @@ class DBIO {
 		
 		public function listInterestTypes()
 		{
-			include_once "/class/interest_type.php";
+			include_once "class/interest_type.php";
 		  global $con;
 		  $intTypes = array();
 		  //$sql = 'SELECT type_id, title FROM Interest_Type ORDER BY "title"';
@@ -749,7 +749,7 @@ class DBIO {
 		
 		public function readInterests($id)
 		{
-			require_once '/class/volunteerInterest.php';
+			require_once 'class/volunteerInterest.php';
 			global $con;
 			$this->open();
 			//global $volInts;

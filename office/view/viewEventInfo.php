@@ -346,12 +346,7 @@ function retrieveSchedule(n) {
 
 
 			<?php } 
-			if($var){
-				echo "Not null";
-			}
-			else{
-				echo "Null"; 
-			}?>
+			?>
 			<tr><td></td><td><input type="submit" value="Submit"></td></tr>
 		</table>
 	 	</form>
