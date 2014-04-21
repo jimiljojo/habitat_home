@@ -897,6 +897,51 @@ class DBIO {
 			mysql_query($sql,$con);
 			$this->close();
 		}
+		
+		public function deleteSchedule($scheduleId)
+		{
+			global $con;
+			$this->open();
+			$tableName = "Schedule";
+			$sql = "DELETE FROM Schedule
+					WHERE id = '{$scheduleId}'";
+			mysql_query($sql,$con);
+			$this->close();
+		}
+		
+		public function readScheduleByScheduleId($scheduleId) {
+			global $con;
+			$this->open();
+			$tableName = "Schedule";
+			$schedules=array();
+			$sql = "SELECT id, timeStart, timeEnd, Event_event_id, description, Interest_interest_id, maxNumPeople
+					FROM Schedule
+					WHERE Schedule.id = '{$scheduleId}'";
+			$result = mysql_query($sql,$con);
+			while($row = mysql_fetch_array($result))
+			{
+				$schedule = new Schedule();
+				$schedule->setId($row[0]);
+				$schedule->settimeStart($row[1]);
+				$schedule->settimeEnd($row[2]);
+				$schedule->setEvent_event_id($row[3]);
+				$schedule->setDescription($row[4]);
+				$schedule->setInterest_interest_id($row[5]);
+				$schedules[]=$schedule;
+			}
+			return $schedules;
+			$this->close();
+		}
+		
+		public function updateSchedule($scheduleId, $timeStart, $timeEnd, $description, $interestId, $maxNumPeople) {
+			global $con;
+			$this->open();
+			$tableName = "Schedule";
+			$sql = "UPDATE Schedule
+					SET timeStart='{$timeStart}', timeEnd='{$timeEnd}', description='{$description}', Interest_interest_id='{$interestId}', maxNumPeople='{$maxNumPeople}'
+					WHERE id = '{$scheduleId}'";
+			mysql_query($sql, $con);
+		}
 	
 	
 		public function listSchedule() //view all 
