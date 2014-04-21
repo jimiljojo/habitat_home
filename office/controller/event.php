@@ -67,17 +67,11 @@
 				
 				$workObj = new Work();
 		 		$workObj->setAmount($hours);
-		 		var_dump($workObj->getAmount());
 		 		$workObj->setPerson_person($VolunteerScheduleItem->getVolunteerId());
-		 		var_dump($workObj->getPerson_person());
 		 		$workObj->setDate($date);
-		 		var_dump($workObj->getDate());
 		 		$workObj->setEnteredById($_SESSION['personid']);
-		 		var_dump($workObj->getEnteredById());
 		 		$workObj->setAdminId(Null);
-		 		var_dump($workObj->getAdminId());
 		 		$workObj->setEvent($_GET['eventId']);
-		 		var_dump($workObj->getEvent());
 
 		 		$dbio->insertWorkForVolunteer($workObj);
 		 		
