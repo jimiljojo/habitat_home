@@ -230,7 +230,7 @@ function retrieveSchedule(n) {
 				<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
 				<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
 				<input name="act" id="act" type="hidden" value="deleteScheduleSlot" >
-				<input name="scheduleId" id="scheduleSlot" type="hidden" value="<?php echo $EventScheduleItem->getId(); ?>">
+				<input name="scheduleId" id="scheduleSlotId" type="hidden" value="<?php echo $EventScheduleItem->getId(); ?>">
 				<input name="personId" type="hidden" id="personId" value="0">
 				<?php $eventScheduleSlots = getEventScheduleSlots($EventScheduleItem->getId());
 					$volSet=0;
