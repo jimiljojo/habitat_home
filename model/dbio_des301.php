@@ -1551,13 +1551,14 @@ class DBIO {
                             $foh->setPerson($result[0]);
                             $foh->setEvent($result[1]);
                         } 
-                        return $foh;
                     }
                     else //else return false
                     {
                         echo 'error finding FOH data';
                         return false;
                     }
+                    if(isset($foh))
+                    	return $foh;
                 }
                 
                 public function searchFOHByEvent($eventID)
