@@ -219,6 +219,7 @@ function retrieveSchedule(n) {
 				?>
 			
 				<tr onclick="retrieveSchedule(<?php echo $EventScheduleItem->getId(); ?>)">
+			</form>
 				<td> <?php echo $EventScheduleItem->getDescription(); ?> </td>
 				<td> <?php echo $EventScheduleItem->gettimeStart(); ?> </td>
 				<td> <?php echo $EventScheduleItem->gettimeEnd(); ?> </td>
