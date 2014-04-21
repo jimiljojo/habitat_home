@@ -160,6 +160,33 @@
 			$page = $dir . '/view/viewEventInfo.php';
 			deleteScheduleSlot($_GET['scheduleId'], $_GET['personId']);
 			break;
+			
+		case 'deleteSchedule':
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			deleteSchedule($_GET['scheduleId']);
+			break;
+			
+		case 'editSchedule':
+			include 'office/model/event.php';
+			$page = $dir . '/view/editSchedule.php';
+			break;
+			
+		case 'updateSchedule':
+			include 'office/model/event.php';
+			$page = $dir . '/view/viewEventInfo.php';
+			if( $_GET['description'] == null || $_GET['timeStart'] == null || $_GET['timeEnd'] == null || $_GET['interest'] == null || $_GET['maxNumPeople'] == null) {
+				return null;
+			} else {
+				$scheduleId = $_GET['scheduleId'];
+				$description = $_GET['description'];
+				$timeStart = $_GET['timeStart'];
+				$timeEnd = $_GET['timeEnd'];
+				$interestId = $_GET['interest'];
+				$maxNumPeople = $_GET['maxNumPeople'];
+				updateSchedule($scheduleId, $timeStart, $timeEnd, $description, $interestId, $maxNumPeople);
+			}
+			break;
 
 		default:
 			include 'office/model/event.php';
