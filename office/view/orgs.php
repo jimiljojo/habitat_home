@@ -32,10 +32,11 @@ alignment: bottom;
 
 
 
-
-<br><br/>
+<h2> Organizations Search </h2>
+<hr>
+<br><br>
 <form name="input" action="index.php" method="get">
-	<legend> Organizations Search </legend>
+	
 <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
 <input name="act" type="hidden" value="read" > <!-- view all button -->
