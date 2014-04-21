@@ -59,8 +59,7 @@
 	
 </style>
 
-<h4>Schedule and Schedule Slot Search</h4> 
-<hr>
+
 
 
 <!--/////////////////////////////////////////		javascript			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
@@ -205,6 +204,9 @@ function dropDownMenu()
 
 
 <!--/////////////////////////////////////////			HTML			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<h2>Schedule and Schedule Slot Search</h2> 
+<hr>
+<br><br>
 <div>
 	<form name="list" action="index.php" method="GET"> <!-- view all form -->
 		<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
@@ -243,7 +245,7 @@ function dropDownMenu()
 			?>
 		</select>
 	</form>
-</div><br><br>
+</div><br>
 
 <div>
 	<form name="read" action="index.php" method="GET"> <!-- view all form -->
