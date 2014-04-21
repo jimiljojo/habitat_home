@@ -19,9 +19,8 @@
 	    </style>
 	
 
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="plugins/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="plugins/bootstrap/css/bootstrap-responsive.css"> 
+       
+       
         <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.js"></script>
 
        

@@ -22,6 +22,8 @@
 		private $prefEmail;
 		private $prefMail;
 		private $prefPhone;
+		private $employer;
+		private $jobtitle;
 
 
 		// CONSTRUCTOR //
@@ -44,6 +46,8 @@
 		public function getPrefEmail() {return $this->prefEmail;}
 		public function getPrefMail() {return $this->prefMail;}
 		public function getPrefPhone() {return $this->prefPhone;}
+		public function getEmployer() {return $this->employer;}
+		public function getJobtitle() {return $this->jobtitle;}
 
 		public function setPerson_id($person_id) {$this->person_id = $person_id;}
 		public function setTitle($title) {$this->title = $title;}
@@ -58,6 +62,8 @@
 		public function setPrefEmail($prefEmail) {$this->prefEmail = $prefEmail;}
 		public function setPrefMail($prefMail) {$this->prefMail = $prefMail;}
 		public function setPrefPhone($prefPhone) {$this->prefPhone = $prefPhone;}
+		public function setEmployer($employer) {$this->employer = $employer;}
+		public function setJobtitle($jobtitle) {$this->jobtitle = $jobtitle;}
 
 	}// end class
 

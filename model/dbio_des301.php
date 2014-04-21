@@ -1233,6 +1233,8 @@ class DBIO {
 				$person->setPrefEmail($result[10]);
 				$person->setPrefMail($result[11]);
 				$person->setPrefPhone($result[12]);
+				$person->setEmployer($result[13]);
+				$person->setJobtitle($result[14]);
 			} else {
 				echo "DB error readPerson";
 			}
@@ -1286,7 +1288,7 @@ class DBIO {
                             $id2 = self::createContact($contact, $id);     
                             if($id2)
                             {                          
-                                $sql = "INSERT INTO Person VALUES ('','" . $person->getTitle() ."', '" . $person->getFirst_name() ."', '" . $person->getLast_name() . "', '" . $person->getGender() . "', '" . $person->getDob() . "', '" . $person->getMarital_status() . "', '" . $id2 . "', '" . $person->getIsActive() . "', '" . $person->getLastActive() . "', '" . $person->getPrefEmail() . "', '" . $person->getPrefMail() . "', '" . $person->getPrefPhone() . "','','')";
+                                $sql = "INSERT INTO Person VALUES ('','" . $person->getTitle() ."', '" . $person->getFirst_name() ."', '" . $person->getLast_name() . "', '" . $person->getGender() . "', '" . $person->getDob() . "', '" . $person->getMarital_status() . "', '" . $id2 . "', '" . $person->getIsActive() . "', '" . $person->getLastActive() . "', '" . $person->getPrefEmail() . "', '" . $person->getPrefMail() . "', '" . $person->getPrefPhone() . "','" . $person->getEmployer() . "','" . $person->getJobtitle() ."')";
                                 $this->open();
                                 $result = mysql_query($sql, $con);
                                 if($result){
@@ -1928,7 +1930,7 @@ class DBIO {
 		public function updatePerson($pid,$person,$contact,$address,$event) {
 		global $con;
 		
-		$sql = "update Person set title='" . $person->getTitle() ."', first_name='" . $person->getFirst_name() . "' , last_name='" . $person->getLast_name() . "' where person_id=" . $pid . ";" ;
+		$sql = "update Person set title='" . $person->getTitle() ."', first_name='" . $person->getFirst_name() . "' , last_name='" . $person->getLast_name() . "',employer='" . $person->getEmployer() . "',jobtitle='" . $person->getJobtitle() . "' where person_id=" . $pid . ";" ;
 		$sql2 = "update Contact set phone='" . $contact->getPhone() . "', email='" . $contact->getEmail() . "', phone2='" . $contact->getPhone2() . "' , extension='" . $contact->getExtension() . "' where contact_id=(select Contact_contact_id from Person where person_id=" . $pid . ");";
 		$sql3 = "UPDATE Address SET street1='" . $address->getStreet1() . "', street2='" . $address->getStreet2() . "', city='" . $address->getCity() . "', state='" . $address->getState() . "', zip='" . $address->getZip() ."' WHERE address_id=(SELECT address_id FROM Contact WHERE contact_id=(SELECT Contact_contact_id FROM Person WHERE person_id=" . $pid ."));";
 		$this->open();
@@ -2128,10 +2130,13 @@ class DBIO {
         global $con;
         $sql = "select 1 from Volunteer where Person_person_id = " . $pid . "";
         $this->open();
-        $result = mysql_query($sql, $con);
+        $results = mysql_query($sql, $con);
+        while ($result = mysql_fetch_array($results)) {
+        	$isVol = $result[0];
+        }
         $this->close();
-        if($result)
-        	return true;
+        if(isset($isVol))
+        	return $isVol;
         else
         	return false;
     }
@@ -2141,10 +2146,6 @@ class DBIO {
         $sql = "INSERT INTO Volunteer VALUES ('0', '0', '0', '0', '0', '0', '0', '" . $pid . "', '0', '0', '0', ' ', ' ', '0','');";
         $this->open();
         $result = mysql_query($sql, $con);
-        if($result){
-        	$sql = "DELETE FROM FOH WHERE Person_person_id='" . $pid . "';";
-        	$result = mysql_query($sql, $con);
-        }
         $this->close();
         return $result;
     }

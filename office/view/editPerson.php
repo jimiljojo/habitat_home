@@ -18,7 +18,7 @@
  	  $contact = $tableinfo[1];
  	  $address = $tableinfo[2];
     $event = $tableinfo[3];
-
+    $isVol = $tableinfo[4];
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
     $lName = $person->getLast_name();
@@ -32,8 +32,10 @@
     $eventname = $event->getTitle();
     $workPhone = $contact->getPhone2();
     $workExt = $contact->getExtension();
-    $jobTitle = 'engineer';
-
+    $employer = $person->getEmployer();
+    $jobTitle = $person->getJobtitle();
+    $maritial = $person->getMarital_status();
+    echo $maritial;
     if($updated)
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 ?>
@@ -150,6 +152,12 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="inputjobtitle" class="col-lg-2 control-label">Job Title :</label>
+      <div class="col-lg-10">
+       <input name="jobtitle" type="text" placeholder="job title" value="<?php echo $jobTitle; ?>" >
+      </div>
+    </div>
+    <div class="form-group">
       <label for="inputworkPhone" class="col-lg-2 control-label">Work Phone :</label>
       <div class="col-lg-10">
       	<input name="workPhone" type="text" placeholder="work phone" value="<?php echo $workPhone; ?>" >
@@ -162,6 +170,14 @@
 		<span class="required">*</span>
       </div>
     </div>
+    <div class="form-group">
+     <label for="inputMarriage" class="col-lg-2 control-label">Maritial Status :</label>
+    <div class="col-lg-10">
+    <input type="radio" name="maritial" value="1" id="maritial" required="required" <?php if($maritial==1)echo "checked"; ?> ><label>Single</label><br>
+    <input type="radio" name="maritial" value="2" id="maritial" required="required" <?php if($maritial==2)echo "checked"; ?> ><label>Married</label><br>
+    <input type="radio" name="maritial" value="3" id="maritial" required="required" <?php if($maritial==3)echo "checked"; ?> ><label>Widow</label><br>
+    <input type="radio" name="maritial" value="4" id="maritial" required="required" <?php if($maritial==4)echo "checked"; ?> ><label>Divorced</label><br>
+    </div></div>
     <?php
     if($eventname){
       echo '<div class="form-group">
@@ -180,13 +196,9 @@
             echo "<option value = '" . $eventId . "' name = '" . $eventTitle . "'>" . $eventTitle . "</option>";
         } 
         echo '</select></div></div>';
+
 ?>
-  <div class="form-group">
-      <label for="migrate" class="col-lg-2 control-label">Make volunteer :</label>
-      <div class="col-lg-10">
-    <input type="button" value="migrate" onclick="migrate()">
-  </div>
-  </div>
+  
 <?php
     }
     else{
@@ -217,21 +229,21 @@
     </select>
       </div>
     </div>
+
     <?php
     }
+    if(!$isVol){
+      echo '<div class="form-group">
+      <label for="migrate" class="col-lg-2 control-label">Make volunteer :</label>
+      <div class="col-lg-10">
+    <input type="button" value="migrate" onclick="migrate()">
+  </div>
+  </div>';
+    }
     ?>
+    
     <input type="submit" value="Update">
 </form>
 
-<form action="index.php" method="GET" class="form-horizontal">
-    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
-    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="pid" type="hidden" value="<?php echo $person->getPerson_id(); ?>" >
-    <input name="act" type="hidden" value="migrate" >
-    <?php 
-    if(!$tableinfo[4]){
-      echo 'Migrate Person to Volunteer : <input type="submit" value="Migrate">';
-    }
-    ?>
-    </form>
+
 <hr>

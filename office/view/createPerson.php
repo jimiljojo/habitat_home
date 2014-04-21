@@ -108,6 +108,12 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="inputjobtitle" class="col-lg-2 control-label">Job Title :</label>
+      <div class="col-lg-10">
+       <input name="jobtitle" type="text" placeholder="job title" >
+      </div>
+    </div>
+    <div class="form-group">
       <label for="inputworkPhone" class="col-lg-2 control-label">Work Phone :</label>
       <div class="col-lg-10">
       	<input name="workPhone" type="text" placeholder="work phone" >
@@ -120,7 +126,14 @@
 		<span class="required">*</span>
       </div>
     </div>
-    
+    <div class="form-group">
+     <label for="inputMarriage" class="col-lg-2 control-label">Maritial Status :</label>
+    <div class="col-lg-10">
+    <input type="radio" name="maritial" value="1" id="maritial" required="required"><label>Single</label><br>
+    <input type="radio" name="maritial" value="2" id="maritial" required="required"><label>Married</label><br>
+    <input type="radio" name="maritial" value="3" id="maritial" required="required"><label>Widow</label><br>
+    <input type="radio" name="maritial" value="4" id="maritial" required="required"><label>Divorced</label><br>
+    </div></div>
      <div class="form-group">
       <label for="foh" class="col-lg-2 control-label">Is this person a Friend of Habitat ? </label>
       <div class="col-lg-10">
