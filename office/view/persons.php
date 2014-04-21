@@ -72,9 +72,10 @@ break;
 
 }// end function
 </script>
-<br><br/>
+<h2> Persons Search </h2>
+<hr>
+<br><br>
 <form name="input" action="index.php" method="get">
-	<legend> Persons Search </legend>
 <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
 <input name="act" type="hidden" value="list" > <!-- view all button -->
