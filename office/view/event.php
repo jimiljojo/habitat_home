@@ -27,9 +27,9 @@ alignment: bottom;
 
 </style>
 
-<h2 class="bold"> EVENTS </h2>
+<h2> Events Search </h2>
 <hr>
-<br/><br/>
+<br><br>
 
 <!-- View All button -->
 <form name="input" action="index.php" method="get">
