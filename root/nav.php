@@ -47,7 +47,8 @@
 	    if ($thisSection && file_exists($subMenuFile)) {include $subNavFile;}
 	}// end if
 	
-	
+	echo '<hr>';
+	echo '<a href="logout.php">Logout</a>';
 ?>
 		<hr>
 		<dl>
