@@ -22,9 +22,10 @@
     <body>
        
 
-        <div id="content">
-	    <h4>Volunteer Search</h4>
-<hr>
+<div id="content">
+	<h2>Volunteer Search</h2>
+	<hr>
+	<br><br>
 <button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=listVolunteer';">View All</button><form method="GET" action="index.php">
     <input type="hidden" name="dir" value="office" >
     <input type="hidden" name="sub" value="volunteer" >
