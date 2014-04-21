@@ -60,7 +60,7 @@ function retrieveScheduleSlot(m,n) {
 	document.getElementById("scheduleSlotId").value=m;
 	document.getElementById("personId").value=n;
 	var deleteScheduleSlot=confirm("Are you sure you want to\ndelete this volunteer\nfrom this schedule");
-	if (deleteScheduleSlot==true)
+	if (deleteScheduleSlot===true)
 		{
 			document.getElementById("deleteScheduleSlot").submit();
 		}
