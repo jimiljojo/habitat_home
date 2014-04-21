@@ -26,10 +26,17 @@
 		case 'create':
                                         
                     include $dir . '/model/' . $sub . '.php';
-                    $volunteers = createPerson();
                     $page = $dir . '/view/create' . ucfirst($sub) . '.php';
               
 			break;
+                    
+                case 'confirmCreate':
+                    include $dir . '/model/' . $sub . '.php';
+                    $updated = create();
+                    $page = $dir . '/view/createVolunteer.php';
+			break;
+                    
+                    
 
 		case 'editVolunteer':
                     include $dir . '/model/' . $sub . '.php';

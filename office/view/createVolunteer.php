@@ -7,17 +7,19 @@
  * and open the template in the editor.
  * Author: rwg5215
  */
+
+
 ?>
 
 	
 <form action="index.php" method="GET" class="form-horizontal">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="act" type="hidden" value="create" >
+    <input name="act" type="hidden" value="confirmCreate" >
 
 		
 		
-		<input name="act" type="hidden" value="create" >
+		
 		<h4 class="show" onclick="swap(this);">Personal Information</h4><div>
                <table class="intTable">
 		<tr><td>
@@ -37,6 +39,17 @@
 		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr>
                </table></div>
 <br/>
+
+		<h4 class="show" onclick="swap(this);">Contact Information</h4><div>
+               <table class="intTable">
+		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
+		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
+		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
+             <!--
+                <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
+                <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
+               -->
+               </table></div>
 		<h4 class="show" onclick="swap(this);">Address</h4><div>
                <table class="intTable">
 		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1"></td></tr><br>
@@ -46,15 +59,6 @@
 		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> 
                </table></div>
 <br/>
-		<h4 class="show" onclick="swap(this);">Contact Information</h4><div>
-               <table class="intTable">
-		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
-		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
-		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
-                <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
-                <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
-               </table></div>
-
 		
 		<br>
 		<script type="text/javascript">

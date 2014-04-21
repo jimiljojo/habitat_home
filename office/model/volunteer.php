@@ -11,23 +11,23 @@
 function indexVolunteerBy($value1, $value2) {}
 
 
-function createPerson(){
-    
+function create(){
+   
     $person = new Person();
     $contact = new Contact();
     $address = new Address();
 
     $person->setTitle($_GET['title']);
-    $person->setFirst_name($_GET['first_name']);
-    $person->setLast_name($_GET['last_name']);
+    $person->setFirst_name($_GET['fname']);
+    $person->setLast_name($_GET['lname']);
     $person->setDob($_GET['dob']);
     $person->setGender($_GET['gender']);
 
     $contact->setPhone($_GET['phone']);
-    $contact->setEmail($_GET['email']);
     $contact->setPhone2($_GET['phone2']);
     $contact->setExtension($_GET['extension']);
-
+    $contact->setEmail($_GET['email']);
+   
     $address->setStreet1($_GET['street1']);
     $address->setStreet2($_GET['street2']);
     $address->setCity($_GET['city']);
@@ -38,6 +38,8 @@ function createPerson(){
     global $dbio;
     $updated = $dbio->createPerson($person, $contact, $address);
     return $updated;
+    
+    
 }
 
 
