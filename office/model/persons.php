@@ -23,9 +23,11 @@
 		$contact = new Contact();
 		$address = new Address();
 		$event = new Event();
+		$person->setPerson_id($_GET['title']);
 		$person->setTitle($_GET['title']);
 		$person->setFirst_name($_GET['fName']);
 		$person->setLast_name($_GET['lName']);
+		$person->setMarital_status("1");
 
 		$contact->setPhone($_GET['phone']);
 		$contact->setEmail($_GET['email']);
@@ -38,15 +40,23 @@
 		$address->setState($_GET['state']);
 		$address->setZip($_GET['zip']);
 		$event->setEvent_id(isset($_GET['events']) ? $_GET['events'] : null);
+
 		global $dbio;
 		$updated = $dbio->createPerson($person, $contact, $address);
+		
+		if($event->getEvent_id() != null){
+			$person_id = $updated;
+			$updated= $dbio->createFOH($event,$person_id);
+		}
 		return $updated;
 	}
+	
 	function read() {
 		global $dbio;
 		$tableinfo = $dbio->readPersons();
 		return $tableinfo;
 	}
+
 	function update() {
 		$pid = $_GET['pid'];
 		$person = new Person();

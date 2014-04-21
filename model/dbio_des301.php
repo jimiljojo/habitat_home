@@ -1235,17 +1235,30 @@ class DBIO {
 		public function createPerson($person, $contact, $address){
 			global $con;
                         $pid = false;
-                        $id = createAddress($address);
+                        $id = self::createAddress($address);
                         if($id)
                         {
-                            $id2 = createContact($contact, $id);     
+                            $id2 = self::createContact($contact, $id);     
                             if($id2)
                             {                          
-                                $sql = "INSERT INTO Person VALUES (" . $person->getTitle() .", " . $person->getFirst_name() .", " . $person->getLast_name() . ", " . $person->getGender() . ", " . $person->getDob() . ", " . $person->getMarital_status() . ", " . $id2 . ", " . $person->getIsActive() . ", " . $person->getLastActive() . ", " . $person->getPrefEmail() . ", " . $person->getPrefMail() . ", " . $person->getPrefPhone() . ")";
+                                $sql = "INSERT INTO Person VALUES ('','" . $person->getTitle() ."', '" . $person->getFirst_name() ."', '" . $person->getLast_name() . "', '" . $person->getGender() . "', '" . $person->getDob() . "', '" . $person->getMarital_status() . "', '" . $id2 . "', '" . $person->getIsActive() . "', '" . $person->getLastActive() . "', '" . $person->getPrefEmail() . "', '" . $person->getPrefMail() . "', '" . $person->getPrefPhone() . "','','')";
                                 $this->open();
                                 $result = mysql_query($sql, $con);
-                                $this->close();
-                                $pid = last_insert_id();
+                                if($result){
+                                	$sql = "select last_insert_id();";
+									$result = mysql_query($sql, $con);
+									$this->close();
+									while($rows = mysql_fetch_array($result)){
+										$person_id = $rows[0];
+									}
+									return $person_id;
+                                }
+                                else{
+                                	echo "error creating person";
+                                	return false;
+                                }
+                                
+				
                             }
                         }
                         return $pid;
@@ -1257,19 +1270,23 @@ class DBIO {
 		{
 			global $con;
                         
-			$sql = 'INSERT INTO Contact VALUES (' . $addressID . ' , ' .$contact->getPhone(). ', ' .$contact->getEmail(). ', ' .$contact->getPhone2(). ', ' .$contact->getExtension(). ')';
+			$sql = "INSERT INTO Contact VALUES ('','" . $addressID . "' , '" .$contact->getPhone(). "', '" .$contact->getEmail(). "', '" .$contact->getPhone2(). "', '" .$contact->getExtension(). "')";
 			$this->open();
 			$result = mysql_query($sql, $con);
-			$this->close();
 			if($result)
 			{
-				echo 'contact created';
-				//return findContactID($addressID);
-				return last_insert_id();
+				$sql = "select last_insert_id();";
+				$result = mysql_query($sql, $con);
+				$this->close();
+				while($rows = mysql_fetch_array($result)){
+					$contact_id = $rows[0];
+				}
+				return $contact_id;
 			}
 			else
 			{
 				echo 'error creating contact';
+				$this->close();
 				return false;
 			}
 		}
@@ -1302,19 +1319,23 @@ class DBIO {
 		public function createAddress($address)
 		{
 			global $con;
-			$sql = 'INSERT INTO Address VALUES (' . $address->getStreet1() . ' , ' .$address->getStreet2(). ', ' .$address->getCity(). ', ' .$address->getState(). ', ' .$address->getZip(). ')';
+			$sql = "INSERT INTO Address VALUES ('' ,'" . $address->getStreet1() . "' , '" .$address->getStreet2(). "', '" .$address->getCity(). "', '" .$address->getState(). "', '" .$address->getZip(). "')";
 			$this->open();
 			$result = mysql_query($sql, $con);
-			$this->close();
 			if($result)
 			{
-				echo 'address created';
-				//return findAddressID($address);
-				return last_insert_id();
+				$sql = "select last_insert_id();";
+				$result = mysql_query($sql, $con);
+				$this->close();
+				while($rows = mysql_fetch_array($result)){
+					$address_id = $rows[0];
+				}
+				return $address_id;
 			}
 			else
 			{
 				echo 'error creating address';
+				$this->close();
 				return false;
 			}
 		}
@@ -1440,11 +1461,11 @@ class DBIO {
 			}
 		}
                 
-                public function createFOH($personID, $eventID)
+                public function createFOH($event, $person_id)
 		{
 			global $con;
 
-			$sql = "INSERT INTO FOH VALUES(" . $personID .", " . $eventID . ")";
+			$sql = "INSERT INTO FOH VALUES(" . $person_id .", " . $event->getEvent_id() . ")";
 
 			$this->open();
 			$result = mysql_query($sql, $con);
