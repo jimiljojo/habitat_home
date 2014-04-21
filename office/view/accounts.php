@@ -73,17 +73,18 @@ break;
 }// end function
 </script>
 <br><br/>
+<h4> Accounts Search </h4> 
 <form name="input" action="index.php" method="get">
-	<legend>Accounts Search</legend>
+	
 <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
 <input name="act" type="hidden" value="read" > <!-- view all button -->
 <input type="submit" value="View All">
-</form><br/>
+</form><br>
 
 <form name="input" action="register/index.php" method="get"> <!-- create new button -->
 <input type="submit" value="Create New">
-</form><br><br/>
+</form><br>
 <form class='searchBy' method="GET" action="index.php"> <!-- search by, drop down menu, and input boxes -->
    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
