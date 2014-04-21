@@ -2093,10 +2093,15 @@ class DBIO {
 
     public function makeVolunteer($pid){
     	global $con;
-        $sql = "select 1 from Volunteer where Person_person_id = " . $pid . "";
+        $sql = "INSERT INTO Volunteer VALUES ('0', '0', '0', '0', '0', '0', '0', '" . $pid . "', '0', '0', '0', ' ', ' ', '0','');";
         $this->open();
         $result = mysql_query($sql, $con);
+        if($result){
+        	$sql = "DELETE FROM FOH WHERE Person_person_id='" . $pid . "';";
+        	$result = mysql_query($sql, $con);
+        }
         $this->close();
+        return $result;
     }
 
 

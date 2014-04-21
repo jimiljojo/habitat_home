@@ -17,7 +17,7 @@
  	  $person = $tableinfo[0];
  	  $contact = $tableinfo[1];
  	  $address = $tableinfo[2];
-          $event = $tableinfo[3];
+    $event = $tableinfo[3];
 
     $title = $person->getTitle();
     $fName = $person->getFirst_name();
@@ -46,15 +46,23 @@
       txtBox.style.visibility = "visible";
     else
       txtBox.style.visibility = "hidden";
-      }
+  }
+
+  function migrate(){
+    document.getElementById("act").value = "migrate";
+    document.getElementById("editpersonform").submit();
+
+  }
+
+
 </script>
 
 <hr>
-<form action="index.php" method="GET" class="form-horizontal">
+<form id="editpersonform" action="index.php" method="GET" class="form-horizontal">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
     <input name="pid" type="hidden" value="<?php echo $person->getPerson_id(); ?>" >
-    <input name="act" type="hidden" value="update" >
+    <input id="act" name="act" type="hidden" value="update" >
     <fieldset>
     <legend>Person Info</legend>
 	<div class="form-group">
@@ -172,9 +180,17 @@
             echo "<option value = '" . $eventId . "' name = '" . $eventTitle . "'>" . $eventTitle . "</option>";
         } 
         echo '</select></div></div>';
+?>
+  <div class="form-group">
+      <label for="migrate" class="col-lg-2 control-label">Make volunteer :</label>
+      <div class="col-lg-10">
+    <input type="button" value="migrate" onclick="migrate()">
+  </div>
+  </div>
+<?php
     }
     else{
-     ?>
+?>
      <div class="form-group">
       <label for="foh" class="col-lg-2 control-label">Is this person a Friend of Habitat ? </label>
       <div class="col-lg-10">
