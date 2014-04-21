@@ -72,8 +72,10 @@ break;
 
 }// end function
 </script>
-<br><br/>
-<h4> Accounts Search </h4> 
+<h2> Accounts Search </h2>
+<hr>
+<br><br>
+ 
 <form name="input" action="index.php" method="get">
 	
 <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
