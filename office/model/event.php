@@ -103,6 +103,28 @@
 		global $dbio;
 		$dbio->deleteScheduleSlot($scheduleId, $personId);
 	}
+	
+	function deleteSchedule($scheduleId) {
+		global $dbio;
+		$dbio->deleteSchedule($scheduleId);
+	}
+	
+	function readScheduleByScheduleId($scheduleId) {
+		global $dbio;
+		$schedules = $dbio->readScheduleByScheduleId($scheduleId);
+		return $schedules;
+	}
+	
+	function readInterest($interestId) {
+		global $dbio;
+		$interest = $dbio->readInterests($interestId);
+		return $interest;
+	}
+	
+	function updateSchedule($scheduleId, $timeStart, $timeEnd, $description, $interestId, $maxNumPeople) {
+		global $dbio;
+		$dbio->updateSchedule($scheduleId, $timeStart, $timeEnd, $description, $interestId, $maxNumPeople);
+	}
 
 	function create() {}
 
