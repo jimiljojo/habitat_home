@@ -56,15 +56,30 @@
   }
 }
 
-	function retrieve(n) {
-		document.getElementById("personId").value=n;
-		
-		var deleteScheduleSlot=confirm("Are you sure you want to\ndelete this volunteer\nfrom this schedule");
-		if (deleteScheduleSlot!=false)
-			{
-				document.getElementById("deleteScheduleSlot").submit();
-			}
+function retrieveScheduleSlot(m,n) {
+	document.getElementById("scheduleSlotId").value=m;
+	document.getElementById("personId").value=n;
+	var deleteScheduleSlot=confirm("Are you sure you want to\ndelete this volunteer\nfrom this schedule");
+	if (deleteScheduleSlot=true)
+		{
+			document.getElementById("deleteScheduleSlot").submit();
+		}
+}
+	
+function retrieveSchedule(n) {
+	document.getElementById("scheduleId").value=n;
+	var editSchedule=prompt("Press OK to edit,\n or\n type DELETE and press OK to delete","edit");
+	if (editSchedule ==="delete")
+	{
+		document.getElementById("actSchedule").value="deleteSchedule";
+		document.getElementById("editSchedule").submit();
 	}
+	if (editSchedule === "edit")
+	{
+		document.getElementById("actSchedule").value="editSchedule";
+		document.getElementById("editSchedule").submit();
+	}	
+}
 
 </script>
 
@@ -193,15 +208,21 @@
 				<th>Max Number Of People</th>
 			</tr>
 
-			<?php $EventSchedule= getEventSchedules($event_id);
-			foreach ($EventSchedule as $EventScheduleItem){
-			?>
-
-			<tr>
+			<form id="editSchedule" action="index.php" method="GET">
+				<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
+				<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
+				<input name="act" id="actSchedule" type="hidden" value="0" >
+				<input name="scheduleId" type="hidden" id="scheduleId" value="0">
+				<?php $EventSchedule= getEventSchedules($event_id);
+				foreach ($EventSchedule as $EventScheduleItem){
+				$interest = readInterest($EventScheduleItem->getInterest_interest_id());
+				?>
+			
+				<tr onclick="retrieveSchedule(<?php echo $EventScheduleItem->getId(); ?>)">
 				<td> <?php echo $EventScheduleItem->getDescription(); ?> </td>
 				<td> <?php echo $EventScheduleItem->gettimeStart(); ?> </td>
 				<td> <?php echo $EventScheduleItem->gettimeEnd(); ?> </td>
-				<td> <?php echo $EventScheduleItem->getInterest_interest_id(); ?> </td>
+				<td> <?php echo $interest[0]->getInterest_title(); ?> </td>
 				<td> <?php echo $EventScheduleItem->getMaxNumPeople(); ?> </td>
 			</tr>
 			
@@ -217,7 +238,7 @@
 					foreach ($eventScheduleSlots as $eventScheduleSlot) {
 					?>
 					
-						<tr onclick="retrieve(<?php echo $eventScheduleSlot->getPerson_id(); ?>);">
+						<tr onclick="retrieveScheduleSlot(<?php echo $EventScheduleItem->getId(). ","; echo $eventScheduleSlot->getPerson_id(); ?>);">
 							<td></td>
 								<?php if($volSet == 0){?> <td><b>volunteers</b></td> <?php $volSet = 1;}else{echo "<td></td>";}?>
 									<td>
