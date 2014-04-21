@@ -712,6 +712,30 @@ class DBIO {
         else
         	return false;
     }
+
+    public function readAuctionForEvent($eventId){
+
+    	global $con;
+		$sql = 'SELECT * FROM Auction_Item Where event_id='.$eventId;
+		$this->open();
+		$result = mysql_query($sql, $con);
+		$auctionItems= array();
+		
+		while($rows = mysql_fetch_array($result)){
+			$auctionItem = new Auction_item();
+			$auctionItem->setAuction_item_id($rows[0]);
+			$auctionItem->setItem_num($rows[1]);
+			$auctionItem->setTitle($rows[2]);
+			$auctionItem->setDescription($rows[3]);
+			$auctionItem->setPrice($rows[4]);
+			$auctionItem->setPerson($rows[5]);
+			$auctionItem->setDonation($rows[7]);
+			$auctionItem->setEventId($rows[8]);
+			$auctionItems[]=$auctionItem;
+		} 
+		$this->close();
+		return $auctionItems;
+    }
 /////////////////////////////////////Interests/////////////////////////////////////////////////////////////////	   
 //////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
 	    public function listInterests()

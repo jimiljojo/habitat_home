@@ -312,6 +312,21 @@ function retrieveSchedule(n) {
 
 	<div class="hide" id="div4">
 		<table class="table table-striped table-hover " style="width:100%">
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Buyer</th>
+			</tr>
+			<?php $AuctionItems=readAuctionItems($event_id);
+			 foreach ($AuctionItems as $auctionItem) { ?>
+			 <tr>
+				 <td> <?php echo $auctionItem->getTitle(); ?> </td>
+				 <td> <?php echo $auctionItem->getDescription(); ?> </td>
+				 <td> <?php echo $auctionItem->getPrice(); ?> </td>
+				 <td> <?php echo $auctionItem->getPerson(); ?> </td>
+			</tr>
+			 <?php }?>
 		</table>
 	</div>
 <hr>

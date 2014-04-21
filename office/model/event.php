@@ -131,6 +131,12 @@
 		$isProcessed=$dbio->checkVolunteerProcessing($volId, $eventId);
 		return $isProcessed;
 	}
+
+	function readAuctionItems($eventId){
+		global $dbio;
+		$auctionItems= $dbio->readAuctionForEvent($eventId);
+		return $auctionItems;
+	}
 	function create() {}
 
 	
