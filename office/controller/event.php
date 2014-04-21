@@ -41,6 +41,7 @@
 			$eventObj->setTitle(isset($_GET['title']) ? $_GET['title'] : '');
 			$eventObj->setDate(isset($_GET['date']) ? $_GET['date'] : '');
 			$eventObj->setTime(isset($_GET['time']) ? $_GET['time'] : '');
+			$eventObj->setEndTime(isset($_GET['endTime']) ? $_GET['endTime'] : '');
 			$eventObj->setType(isset($_GET['type']) ? $_GET['type'] : '');
 			$eventObj->setCommittee(isset($_GET['committee']) ? $_GET['committee'] : '');
 			$eventObj->setSponsoredBy(isset($_GET['sponsor']) ? $_GET['sponsor'] : '');
@@ -105,6 +106,7 @@
 			$eventObj->setTitle(isset($_GET['title']) ? $_GET['title'] : '');
 			$eventObj->setDate(isset($_GET['date']) ? $_GET['date'] : '');
 			$eventObj->setTime(isset($_GET['time']) ? $_GET['time'] : '');
+			$eventObj->setEndTime(isset($_GET['endTime']) ? $_GET['endTime'] : '');
 			$eventObj->setType(isset($_GET['type']) ? $_GET['type'] : '');
 			$eventObj->setCommittee(isset($_GET['committee']) ? $_GET['committee'] : '');
 			$eventObj->setSponsoredBy(isset($_GET['sponsor']) ? $_GET['sponsor'] : '');
