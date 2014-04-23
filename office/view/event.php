@@ -29,7 +29,7 @@ alignment: bottom;
 
 <h2> Events Search </h2>
 <hr>
-<br><br>
+<br>
 
 <!-- View All button -->
 <form name="input" action="index.php" method="get">
@@ -39,7 +39,7 @@ alignment: bottom;
 	<input type="submit" value="View All">
 </form>
 
-<br/><br/>
+<br>
 
 <!-- Create New Event button -->
 <form name="input" action="index.php" method="get"> 
@@ -49,7 +49,7 @@ alignment: bottom;
 	<input type="submit" value="Create New">
 </form>
 
-<br/><br/>
+<br>
 
 <!-- Search by, drop down menu of event types -->
 <form name='search' action="index.php" method="get"> 
@@ -70,15 +70,15 @@ alignment: bottom;
 
 </form>
 
-<br/><br/> 
+<br><br> 
 
-<!--
+
 <span class="notes">
 <ul>
-<li>View All Events will display all Events</li> <!--Inclusive
-<li>Search Events will search all events limiting the search by type</li> <!--Criteria
+<li>View All Events will display all Events</li> 
+<li>Search Events will search all events limiting the search by type</li> 
 <li>Create Event will allow you to create new Events</li>
 </ul>
 </span>
 
--->
+
