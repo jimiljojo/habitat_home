@@ -331,6 +331,7 @@ function retrieveSchedule(n) {
 	</div>
 <hr>
 
+<?php if($EventItem->getDate()<date('Y-m-d')){ ?>
 <h4>Process
 	<input type="button" id="button5" onclick="swap(5);" value="Show"> </h4>
 	<div class="hide" id="div5">
@@ -359,7 +360,7 @@ function retrieveSchedule(n) {
 				<?php $isProcessed=checkVolunteerProcessing($VolunteerScheduleItem->getVolunteerId(), $event_id);
 				if($isProcessed){
 					?>
-					<td> <label>Already Processed for this Event </label> </td>
+					<td> <label>Processed for this Event </label> </td>
 					<?php }
 				else {
 					?>
@@ -375,3 +376,4 @@ function retrieveSchedule(n) {
 	 	</form>
 	</div>
 <hr>
+<?php } ?>
