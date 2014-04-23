@@ -34,6 +34,8 @@ function swap(divNo) {
 
 <h2>Authorization</h2>
 <hr>
+<?php if($isAuthorized)
+		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> Hours successfully authorized</div>'; ?>
 
 <h4>Work Hours Authorization
 	<input type="button" id="button1" onclick="swap(1);" value="Show"> </h4>
@@ -69,7 +71,8 @@ function swap(divNo) {
 			</tr>		
 			
 			<?php } ?>
+			<tr><td></td><td></td><td></td><td></td><td></td> <td><input type="submit" value="Authorize" /></td> </tr>
 		</table>
-		<input type="submit" value="Authorize" />
+		
 	</form>	
 	</div>

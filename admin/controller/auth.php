@@ -35,8 +35,6 @@
 			If(!empty($_GET['authorize'])){
 
 			foreach(($_GET['authorize']) as $workId) {
-				var_dump($workId);
-				var_dump($_SESSION['personid']);
 
  			$result=$dbio->authorizeByAdmin($_SESSION['personid'], $workId);
  			$isAuthorized=true;

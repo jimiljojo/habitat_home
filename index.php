@@ -106,10 +106,12 @@
 					switch ($clearance) { //Setting clearance for person
 						case '1':
 							$isAdmin = true;
+							$isOffice = true;
 							break;
 
 						case '2':
 							$isOffice = true;
+							$isVolunteer= true;
 							break;
 
 						case '3':	
