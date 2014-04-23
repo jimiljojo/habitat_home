@@ -6,22 +6,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  * Author: Roman Galysh
- */
+ */$updated = false;
 
 	switch ($act) {
+            
+            
+                case 'search':
+                            include_once 'office/model/volunteer.php';
+                            $tableinfo = search();
+                            $page = $dir . '/view/viewVolunteers.php';
+                            break;
 
-		case 'search':
-                    
-                    $parameter = $_GET['param'];
-                    $value1 = $_GET['i1'];
-                    $value2 = $_GET['i2'];
-                  
-                    
-                    include $dir . '/model/' . $sub . '.php';
-                    $volunteers = indexVolunteerBy($value1, $value2);
-                    $page = $dir . '/view/list' . ucfirst($sub) . '.php';
- 
-			break;
+	   
 
 		case 'create':
                                         

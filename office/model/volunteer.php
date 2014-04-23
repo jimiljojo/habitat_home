@@ -10,6 +10,19 @@
 
 function indexVolunteerBy($value1, $value2) {}
 
+	function search() {
+		global $dbio;
+		if($_GET['searchBy'] == 'name'){
+                    $fname = $_GET['input1'];
+                    $lname =  $_GET['input2'];
+                    $tableinfo = $dbio->searchPersonByName($fname,$lname);
+			}
+			elseif ($_GET['searchBy'] == 'organization') {
+                            $org = $_GET['input1'];
+                            $tableinfo = $dbio->searchPersonByOrg($org);
+			}
+                            return $tableinfo;
+                           }
 
 function create(){
    
