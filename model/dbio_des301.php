@@ -1017,6 +1017,7 @@ class DBIO {
 				$schedule->setEvent_event_id($row[3]);
 				$schedule->setDescription($row[4]);
 				$schedule->setInterest_interest_id($row[5]);
+				$schedule->setMaxNumPeople($row[6]);
 				$schedules[]=$schedule;
 			}
 			return $schedules;
