@@ -74,20 +74,21 @@ break;
 </script>
 <h2> Persons Search </h2>
 <hr>
-<br><br>
+<br>
 <form name="input" action="index.php" method="get">
 <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
 <input name="act" type="hidden" value="list" > <!-- view all button -->
 <input type="submit" value="View All">
-</form><br/>
+</form><br>
 
 <form name="input" action="index.php" method="get"> 
 	<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 	<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
 	<input name="act" type="hidden" value="create" >
 	<input type="submit" value="Create New">
-</form><br><br/>
+</form><br>
+
 <form class='searchBy' method="GET" action="index.php"> <!-- search by, drop down menu, and input boxes -->
    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
@@ -100,17 +101,17 @@ break;
 </select>
 <input id="input1" name="input1" placeholder="first name" type="text">
 <input id="input2" name="input2" placeholder="last name" type="text">
-</form><br><br/> 
+</form><br>
 
 <!--results can be listed here, pushing text down.-->
 
 <br>
 <h6>Here is where you will be able to search for an account and make changes, such as
-<br><br/>1. Volunteer Status
+<br><br>1. Volunteer Status
 <br>2. Availability
-<br><br/>An administrator will be able to create an account for donors, homeowners, etc.
-<h6/>
-<br><br/>
+<br><br>An administrator will be able to create an account for donors, homeowners, etc.
+</h6>
+<br><br>
 
 
 
