@@ -74,7 +74,7 @@ break;
 </script>
 <h2> Accounts Search </h2>
 <hr>
-<br><br>
+<br>
  
 <form name="input" action="index.php" method="get">
 	
@@ -99,7 +99,7 @@ break;
 </select>
 <input id="input1" name="input1" placeholder="first name" type="text">
 <input id="input2" name="input2" placeholder="last name" type="text">
-</form><br><br/> 
+</form><br>
 
 <!--results can be listed here, pushing text down.-->
 
