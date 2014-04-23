@@ -69,6 +69,34 @@ class DBIO {
 			return $status;
 		}
 
+		public function getAccountType($personId){
+
+			global $con;
+			$sql1='SELECT * FROM Admin WHERE Person_person_id=' .$personId;
+			$sql2='SELECT isOffice FROM Account WHERE person_id=' .$personId;
+			$sql3='SELECT isVolunteer FROM Account WHERE person_id=' .$personId;
+
+			$this->open();
+			$results = mysql_query($sql1,$con);
+			$results2= mysql_query($sql2,$con);
+			$this->close();
+
+			if(mysql_fetch_row($results)){
+				return '1';
+			}
+			else{
+				
+				if(mysql_fetch_row($results2)[0]=='1'){
+					return '2';
+				}
+
+				else {
+					return '3';
+				}
+				
+			}
+
+		}
 		public function getPersonId($accid){
 
 			global $con;
@@ -170,6 +198,44 @@ class DBIO {
 		}
 		
 	   
+////////////////////////////////////////Admin///////////////////////////////////////////////////////////////////	   
+//////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
+
+		public function readPendingWorkAuthorization(){
+			global $con;
+			$sql='SELECT * FROM Work WHERE Admin_idAdmin IS NULL';
+			$this->open();
+			$result=mysql_query($sql,$con);
+
+			while($rows = mysql_fetch_array($result)) {
+			 $work = new Work();
+			 $work->setIdWork($rows[0]);
+			 $work->setAmount($rows[1]);
+			 $work->setPerson_person($rows[2]);
+			 $work->setDate($rows[3]);
+			 $work->setEnteredById($rows[4]);
+			 $work->setAdminId($rows[5]);
+			 $work->setEvent($rows[6]);
+			 $workInfo[] = $work;
+		  }// end while
+		  $this->close();
+		  return $workInfo;
+		}
+
+		public function authorizeByAdmin($personId, $workId){
+			global $con;
+			$this->open();
+
+			$sql1='SELECT idAdmin FROM Admin WHERE Person_person_id=' .$personId;
+			$result1=mysql_query($sql1,$con);
+			$adminId=mysql_fetch_row($result1);
+
+			$sql = 'UPDATE Work SET Admin_idAdmin=' .$adminId[0]. ' WHERE idWork=' .$workId;
+			$result=mysql_query($sql,$con);
+			$this->close();
+
+			return true;
+		}
 
 ////////////////////////////////////Interests/////////////////////////////////////////////////////////////////////	   
 //////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
@@ -965,6 +1031,7 @@ class DBIO {
 				$schedule->setEvent_event_id($row[3]);
 				$schedule->setDescription($row[4]);
 				$schedule->setInterest_interest_id($row[5]);
+				$schedule->setMaxNumPeople($row[6]);
 				$schedules[]=$schedule;
 			}
 			return $schedules;
@@ -1137,7 +1204,7 @@ class DBIO {
         public function readEventSchedule($eventId) //view all 
         {
             global $con; 
-			$sql = "SELECT * From Schedule WHERE Event_event_id =" . $eventId ; 
+			$sql = "SELECT * From Schedule WHERE Event_event_id ='{$eventId}' ORDER BY timeStart ASC"; 
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$eventSchedules = array();

@@ -59,9 +59,7 @@
 	
 </style>
 
-<h2>Interests Search</h2>
-<hr>
-<br><br>
+
 
 <!--/////////////////////////////////////////		javascript			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 <script type="text/javascript" src="js/searchByHandler.js"></script>  <!-- I cant get this to work externally --> <!--This script changes the input boxes after drop down menu-->
@@ -184,6 +182,10 @@ function dropDownMenu()
 
 
 <!--/////////////////////////////////////////			HTML			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<h2>Interests Search</h2>
+<hr>
+<br>
+
 <div>
 	<form name="list" action="index.php" method="GET"> <!-- view all form -->
 		<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
@@ -209,7 +211,7 @@ function dropDownMenu()
 			<option name="interestType" value="createInterestType">Interest Type</option> <!-- drop down menu option -->
 		</select> <!--end drop down menu options-->
 	</form>
-</div><br><br>
+</div><br>
 
 <div>
 	<form name="read" action="index.php" method="GET"> <!-- view all form -->

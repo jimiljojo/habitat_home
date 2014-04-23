@@ -1,11 +1,8 @@
 <?php
 
-	//----- TEMPORARY VALUES
 	session_start();
 	
-	$isAdmin = true;
-	$isOffice = true;
-	$isVolunteer = true;
+
 	//----- SESSION
 
 	require_once 'root/config.php'; // CONFIG
@@ -98,7 +95,35 @@
 			</header>
 			<div id="body">
 				<?php 
-				if ($dir!='login') {include 'root/nav.php';} ?>
+				if ($dir!='login') {
+
+					$isAdmin = false;
+					$isOffice = false;
+					$isVolunteer = false;
+	
+					$clearance= $dbio->getAccountType($_SESSION['personid']); //Getting clearance value
+
+					switch ($clearance) { //Setting clearance for person
+						case '1':
+							$isAdmin = true;
+							break;
+
+						case '2':
+							$isOffice = true;
+							break;
+
+						case '3':	
+							$isVolunteer = true;
+							break;
+
+						default:
+							var_dump('Invalid clearance');
+							break;
+					}
+					
+					include 'root/nav.php';
+				} ?>
+
 				<?php //if (file_exists($dir . '/menu.php')) {include 'root/subNav.php';} ?>
 				<div id="content">
 					<?php include $page; // view call ?>
