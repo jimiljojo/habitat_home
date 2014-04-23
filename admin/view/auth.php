@@ -43,5 +43,31 @@ function swap(divNo) {
 		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
 		<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
 		<input name="act" id="act" type="hidden" value="authorize" >
+
+		<table class="table table-striped table-hover " style="width:100%">
+			<tr>
+				<th>Volunteer Name</th>
+				<th>Hours Entered By</th>
+				<th>Entered On</th>
+				<th>Event Name</th>
+				<th>Hours</th>
+				<th>Authorize</th>
+			</tr>
+
+			<?php $workAuthorizations = readHours();
+
+				foreach ($workAuthorizations as $workAuthorization) {
+				?>
+			<tr>
+				<td><?php $personDetails= readPerson($workAuthorization->getPerson_person()); echo $personDetails->getTitle() .' '. $personDetails->getFirst_name().' '.$personDetails->getLast_name(); ?></td>
+
+				<td><?php $personDetails= readPerson($workAuthorization->getEnteredById()); echo $personDetails->getTitle() .' '. $personDetails->getFirst_name().' '.$personDetails->getLast_name(); ?></td>
+				<td><?php echo $workAuthorization->getDate(); ?></td>
+				<td><?php $eventDetails = readEvent($workAuthorization->getEvent()); echo $eventDetails[0]->getTitle();  ?></td>
+				<td><?php echo $workAuthorization->getAmount(); ?> </td>
+				<td><input type="checkbox" name="authorize[]" id="authorize[]" value=<?php $workAuthorization->getIdWork();?>/> </td>
+			</tr>		
+			
+			<?php } ?>
 	</form>	
 	</div>

@@ -30,8 +30,19 @@
 		case 'list':
 			// CODE HERE
 			break;
+		case 'authorize':	
+
+			If(!empty($_GET['authorize'])){
+			foreach(($_GET['authorize']) as $workId) {
+ 			$items[] = $username;
+			}
+		}
+		$_SESSION['interestVolunteer'] = ($items);
+
+			break;
 
 		default:
+			include 'admin/model/auth.php';
 			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 

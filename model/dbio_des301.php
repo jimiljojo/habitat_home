@@ -207,7 +207,7 @@ class DBIO {
 			$this->open();
 			$result=mysql_query($sql,$con);
 
-			while($rows = mysql_fetch_array($results)) {
+			while($rows = mysql_fetch_array($result)) {
 			 $work = new Work();
 			 $work->setIdWork($rows[0]);
 			 $work->setAmount($rows[1]);
