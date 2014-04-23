@@ -1190,7 +1190,7 @@ class DBIO {
         public function readEventSchedule($eventId) //view all 
         {
             global $con; 
-			$sql = "SELECT * From Schedule WHERE Event_event_id =" . $eventId ; 
+			$sql = "SELECT * From Schedule WHERE Event_event_id ='{$eventId}' ORDER BY timeStart ASC"; 
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$eventSchedules = array();
