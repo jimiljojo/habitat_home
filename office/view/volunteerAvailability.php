@@ -1,6 +1,9 @@
 
 <hr>
-<form action="index.php">
+<form action="index.php" method="GET" class="form-horizontal">
+    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
+    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
+    <input name="act" type="hidden" value="confirmAvailability" >
     <h5><strong>I am available to work: </strong></h5>
 
 <?php

@@ -18,12 +18,12 @@
 <form action="index.php" method="GET" class="form-horizontal">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="act" type="hidden" value="confirmCreate" >
+    <input name="act" type="hidden" value="getInterests" >
 
 		
 		
 		
-		<h4 class="show" onclick="swap(this);">Personal Information</h4><div>
+	<h4 class="show" onclick="swap(this);">Personal Information</h4><div>
                <table class="intTable">
 		<tr><td>
 		Title<span class="mandatory">* </span></td> 
@@ -166,8 +166,8 @@
 
         </script>
         
-		<input type="submit" value="create">
-
+        
+        <button>Next</button>
 		<br>
 	</form>
 	<br>

@@ -29,9 +29,26 @@
                 case 'confirmCreate':
                     include $dir . '/model/' . $sub . '.php';
                     $updated = create();
-                    $page = $dir . '/view/createVolunteer.php';
+                    $page = $dir . '/view/createVolunteerAvailability.php';
 			break;
                     
+               case 'confirmAvailability':
+                    include $dir . '/model/' . $sub . '.php';
+                    $updated = create();
+                    $page = $dir . '/view/createVolunteerConsent.php';
+			break;
+                
+               case 'confirmConsent':
+                    include $dir . '/model/' . $sub . '.php';
+                    $updated = create();
+                    $page = $dir . '/view/createVolunteerInterests.php';
+			break;
+                    
+               case 'confirmInterests':
+                    include $dir . '/model/' . $sub . '.php';
+                    $updated = create();
+                    $page = $dir . '/view/createVolunteer.php';
+			break;
                     
 
 		case 'editVolunteer':

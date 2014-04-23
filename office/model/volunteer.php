@@ -100,6 +100,59 @@ function editVolunteers(){
     return $volunteers;
 } 
 
+//****************************************************************************
+//****************************************************************************
+
+    global $msg;
+    global $dbio;
+    $pid = $_SESSION['personid'];
+
+    function setVolunteerAvailability($vid, $day, $eve, $wend) {
+    
+   
+        $dbio->setVolunteerAvailability($vid, $day, $eve, $wend);
+
+    }
+
+    function getAvailability() {
+    	global $dbio;
+        $pid = $_SESSION['personid'];
+        $ppid=$pid;
+        $dbAvailability = $dbio->getVolunteerAvailability($ppid);
+        return $dbAvailability;
+
+
+     
+    
+    }
+
+    function setVolunteerConsent($vid, $age, $photo, $agree, $video) {
+    
+   
+        $dbio->setVolunteerConsent($vid, $age, $photo, $agree, $video);
+
+    }
+    
+    function getVolunteerConsent() {
+        
+        global $dbio;
+        $ppid=$_SESSION['personid'];
+        $dbConsent = $dbio->getVolunteerConsent($ppid);
+        
+        return $dbConsent;
+     
+    
+    }
+    
+   function update() {
+        global $dbio;
+
+        $deleteAll = $dbio->deleteInterestsByVolunteer($_SESSION['personid']);
+        $updated = $dbio->addInterestByVolunteer($_SESSION['personid'], $_SESSION['interestVolunteer']);
+               
+        return $updated;
+    }
+
 ?>
 
 
