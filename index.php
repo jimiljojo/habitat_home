@@ -106,6 +106,7 @@
 					switch ($clearance) { //Setting clearance for person
 						case '1':
 							$isAdmin = true;
+							$isOffice = true;
 							break;
 
 						case '2':
