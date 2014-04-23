@@ -222,6 +222,20 @@ class DBIO {
 		  return $workInfo;
 		}
 
+		public function authorizeByAdmin($personId, $workId){
+			global $con;
+			$this->open();
+
+			$sql1='SELECT idAdmin FROM Admin WHERE Person_person_id=' .$personId;
+			$result1=mysql_query($sql1,$con);
+			$adminId=mysql_fetch_row($result1);
+
+			$sql = 'UPDATE Work SET Admin_idAdmin=' .$adminId[0]. ' WHERE idWork=' .$workId;
+			$result=mysql_query($sql,$con);
+			$this->close();
+
+			return true;
+		}
 
 ////////////////////////////////////Interests/////////////////////////////////////////////////////////////////////	   
 //////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   

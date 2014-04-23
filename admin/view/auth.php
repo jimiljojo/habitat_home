@@ -65,9 +65,11 @@ function swap(divNo) {
 				<td><?php echo $workAuthorization->getDate(); ?></td>
 				<td><?php $eventDetails = readEvent($workAuthorization->getEvent()); echo $eventDetails[0]->getTitle();  ?></td>
 				<td><?php echo $workAuthorization->getAmount(); ?> </td>
-				<td><input type="checkbox" name="authorize[]" id="authorize[]" value=<?php $workAuthorization->getIdWork();?>/> </td>
+				<td><input type="checkbox" name="authorize[]" id="authorize[]" value="<?php echo $workAuthorization->getIdWork(); ?>" /> </td>
 			</tr>		
 			
 			<?php } ?>
+		</table>
+		<input type="submit" value="Authorize" />
 	</form>	
 	</div>

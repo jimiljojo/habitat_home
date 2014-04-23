@@ -3,7 +3,7 @@
 	// TITLE: Admin Authrorization Controller
 	// FILE: admin/controller/auth.php
 	// AUTHOR: AUTOGEN
-
+	global $dbio;
 
 	switch ($act) {
 
@@ -33,9 +33,18 @@
 		case 'authorize':	
 
 			If(!empty($_GET['authorize'])){
+
 			foreach(($_GET['authorize']) as $workId) {
- 			$items[] = $username;
-			}
+				var_dump($workId);
+				var_dump($_SESSION['personid']);
+
+ 			$result=$dbio->authorizeByAdmin($_SESSION['personid'], $workId);
+ 			$isAuthorized=true;
+ 			}
+
+ 			include 'admin/model/auth.php';
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+			
 		}
 		$_SESSION['interestVolunteer'] = ($items);
 
