@@ -198,6 +198,30 @@ class DBIO {
 		}
 		
 	   
+////////////////////////////////////////Admin///////////////////////////////////////////////////////////////////	   
+//////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
+
+		public function readPendingWorkAuthorization(){
+			global $con;
+			$sql='SELECT * FROM Work WHERE Admin_idAdmin IS NULL';
+			$this->open();
+			$result=mysql_query($sql,$con);
+
+			while($rows = mysql_fetch_array($results)) {
+			 $work = new Work();
+			 $work->setIdWork($rows[0]);
+			 $work->setAmount($rows[1]);
+			 $work->setPerson_person($rows[2]);
+			 $work->setDate($rows[3]);
+			 $work->setEnteredById($rows[4]);
+			 $work->setAdminId($rows[5]);
+			 $work->setEvent($rows[6]);
+			 $workInfo[] = $work;
+		  }// end while
+		  $this->close();
+		  return $workInfo;
+		}
+
 
 ////////////////////////////////////Interests/////////////////////////////////////////////////////////////////////	   
 //////////////////////////////////////|-_-_-_-|\///////////////////////////////////////////////////////////////	   
