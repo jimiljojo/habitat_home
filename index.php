@@ -110,6 +110,7 @@
 
 						case '2':
 							$isOffice = true;
+							$isVolunteer= true;
 							break;
 
 						case '3':	
