@@ -28,23 +28,27 @@
                     
                 case 'confirmCreate':
                     include $dir . '/model/' . $sub . '.php';
+                    $_SESSION['personalInfo']=array($_get['fname'],$_get['lname'],$_get['dob'],$_get['gender'],$_get['phone'],$_get['phone2'],$_get['extension'],$_get['email'],$_get['street1'],$_get['street2'],$_get['city'],$_get['state'],$_get['zip'], );
                     $updated = create();
                     $page = $dir . '/view/createVolunteerAvailability.php';
 			break;
                     
                case 'confirmAvailability':
+                   $_SESSION['volAvail']=array($_get['day'],$_get['evening'],$_get['weekend'],);
                     include $dir . '/model/' . $sub . '.php';
                     $updated = create();
                     $page = $dir . '/view/createVolunteerConsent.php';
 			break;
                 
                case 'confirmConsent':
+                   $_SESSION['volConsent']=array($_get['less18'],$_get['greater18'],$_get['photo'],$_get['safetyGuidelines'],$_get['video'],$_get['liability'],);
                     include $dir . '/model/' . $sub . '.php';
                     $updated = create();
                     $page = $dir . '/view/createVolunteerInterests.php';
 			break;
                     
                case 'confirmInterests':
+                   $_SESSION['volInterests']=array($_get['']);
                     include $dir . '/model/' . $sub . '.php';
                     $updated = create();
                     $page = $dir . '/view/createVolunteer.php';
