@@ -2,7 +2,7 @@
 
 // TITLE: Office Accounts View
 // FILE: office/view/indexVolunteer.php
-// AUTHOR: rwg5215
+// AUTHOR: 
 
 
 ?>

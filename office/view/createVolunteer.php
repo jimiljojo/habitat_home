@@ -5,16 +5,11 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- * Author: rwg5215
+ * Author:
  */
 
 ?>
 
- 
-
-
-
-	
 <form action="index.php" method="GET" class="form-horizontal">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
