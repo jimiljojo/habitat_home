@@ -28,7 +28,7 @@
 	    {
 
 	    	//include ('view/loginpage.php');
-	    	$page = $dir . '/view/loginpage.php';
+	    	$page = $dir . 'view/loginpage.php';
 	    	print '<script type="text/javascript">'; 
 			print 'alert("Not a valid Username or Password")'; 
 			print '</script>';
@@ -40,7 +40,7 @@
 	    	
 	    	$_SESSION['personid']=$personid;
 	    	$_SESSION['userName'] = (isset($_GET['userName'])) ? $_GET['userName'] : '';
-	    	$page = $dir . '/view/home.php';
+	    	$page = $dir . 'view/home.php';
 	    }
 
 
@@ -48,7 +48,7 @@
 	    break;
 
 	    case 'checkEmail';
-	    $page = $dir . '/view/checkEmail.php';
+	    $page = $dir . 'view/checkEmail.php';
 	    $act='dbcheck';
 	    
 	    
@@ -63,7 +63,7 @@
 
 
 	    if($checkEmail == $email){
-	    	$page = $dir . '/view/loginpage.php';
+	    	$page = $dir . 'view/loginpage.php';
 	    	print '<script type="text/javascript">'; 
 			print 'alert("Reset Password is mailed to you on '.$email.'. Please enter a new password after loggin in with the reset password")'; 
 			print '</script>';
@@ -71,7 +71,7 @@
 	    }
 
 	    else{
-	    	$page = $dir . '/view/checkEmail.php';
+	    	$page = $dir . 'view/checkEmail.php';
 	    	print '<script type="text/javascript">'; 
 			print 'alert("Enter your email which you entered while registering with Habitat for Humanity OR Contact our office")'; 
 			print '</script>';
@@ -82,7 +82,7 @@
 	    
 
 	    default:
-	   	$page = $dir . '/view/loginpage.php';
+	   	$page = $dir . 'view/loginpage.php';
 	    break;
 	}
 
