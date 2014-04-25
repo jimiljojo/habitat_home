@@ -86,7 +86,7 @@ class DBIO {
 			}
 			else{
 				
-				if(mysql_fetch_row($results2)[0]=='1'){
+				if(mysql_fetch_row($results2[0])=='1'){
 					return '2';
 				}
 
