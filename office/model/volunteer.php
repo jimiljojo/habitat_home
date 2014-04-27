@@ -24,36 +24,39 @@ function indexVolunteerBy($value1, $value2) {}
                             return $tableinfo;
                            }
 
-function create(){
-   
-    $person = new Person();
-    $contact = new Contact();
-    $address = new Address();
+    function create(){
+       
+        $person = new Person();
+        $contact = new Contact();
+        $address = new Address();
+        $volunteer = new Volunteer();
 
-    $person->setTitle($_GET['title']);
-    $person->setFirst_name($_GET['fname']);
-    $person->setLast_name($_GET['lname']);
-    $person->setDob($_GET['dob']);
-    $person->setGender($_GET['gender']);
+        $person->setTitle($_SESSION['personalinfo'][0]);
+        $person->setFirst_name($_SESSION['personalinfo'][1]);
+        $person->setLast_name($_SESSION['personalinfo'][2]);
+        $person->setDob($_SESSION['personalinfo'][3]);
+        $person->setGender($_SESSION['personalinfo'][4]);
 
-    $contact->setPhone($_GET['phone']);
-    $contact->setPhone2($_GET['phone2']);
-    $contact->setExtension($_GET['extension']);
-    $contact->setEmail($_GET['email']);
-   
-    $address->setStreet1($_GET['street1']);
-    $address->setStreet2($_GET['street2']);
-    $address->setCity($_GET['city']);
-    $address->setState($_GET['state']);
-    $address->setZip($_GET['zip']);
- 
-    
-    global $dbio;
-    $updated = $dbio->createPerson($person, $contact, $address);
-    return $updated;
-    
-    
-}
+        $contact->setPhone($_SESSION['personalinfo'][5]);
+        $contact->setPhone2($_SESSION['personalinfo'][6]);
+        $contact->setExtension($_SESSION['personalinfo'][7]);
+        $contact->setEmail($_SESSION['personalinfo'][8]);
+       
+        $address->setStreet1($_SESSION['personalinfo'][9]);
+        $address->setStreet2($_SESSION['personalinfo'][10]);
+        $address->setCity($_SESSION['personalinfo'][11]);
+        $address->setState($_SESSION['personalinfo'][12]);
+        $address->setZip($_SESSION['personalinfo'][13]);
+
+        
+     
+        
+        global $dbio;
+        $updated = $dbio->createPerson($person, $contact, $address);
+        return $updated;
+        
+        
+    }
 
 
 function updateInfo(){

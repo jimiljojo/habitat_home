@@ -1,9 +1,7 @@
 
 <hr>
 <form action="index.php" method="GET" class="form-horizontal">
-    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
-    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="act" type="hidden" value="confirmConsent" >
+ 
     <h5><strong>I consent the following: </strong></h5>
     
     
@@ -14,13 +12,13 @@
         global $sub;
         global $act;
         global $msg;
-       
-
+        
+        
 
 ?>
     
     
-    <input name="act" type="hidden" value="updateConsent" >
+    <input name="act" type="hidden" value="confirmCreate" >
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
     <input type="checkbox" name="less18" value="1"  /> I am less than 18 years of age and have read the Minor Waiver<br>

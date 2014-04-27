@@ -10,7 +10,7 @@
 		// ATTRIBUTES //
 
 		private $id;
-                private $consentAge;
+        private $consentAge;
 		private $consentVideo;
 		private $consentWaiver;
 		private $consentPhoto;

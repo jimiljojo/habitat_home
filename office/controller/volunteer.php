@@ -24,9 +24,9 @@
 			break;
                     
         case 'confirmCreate':
-            include $dir . '/model/' . $sub . '.php';
-            $updated = create();
-            $page = $dir . '/view/createVolunteerAvailability.php';
+            include_once 'office/model/volunteer.php';
+            
+            $page = $dir . '/view/index' . ucfirst($sub) . '.php';
 			break;
                     
        case 'getAvailability':
@@ -34,10 +34,12 @@
 			break;
                 
        case 'getConsent':
+            $_SESSION['avail'] = array(isset($_GET['day']),isset($_GET['evening']),isset($_GET['weekend']));
             $page = $dir . '/view/volunteerConsent.php';
 			break;
                     
        case 'getInterests':
+            $_SESSION['personalinfo'] = array($_GET['title'],$_GET['fname'],$_GET['lname'],$_GET['dob'],$_GET['gender'],$_GET['phone'],$_GET['phone2'],$_GET['extension'],$_GET['email'],$_GET['street1'],$_GET['street2'],$_GET['city'],$_GET['state'],$_GET['zip']);
             $page = $dir . '/view/volunteerInterests.php';
 			break;
                     
