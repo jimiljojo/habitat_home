@@ -964,6 +964,24 @@ class DBIO {
 		  return $intTypes;
 		}// end function
 		
+		public function readInterestByPerson($personId) {
+			global $con;
+			$sql="SELECT Interest_interest_id
+					FROM Volunteer_has_Interest
+					WHERE Volunteer_Person_person_id = ({$personId})";
+			$this->open();
+			$interests = array();			
+			$result = mysql_query($sql,$con);
+			while($row = mysql_fetch_array($result))
+			{
+				$interest = new Volunteer_has_interest();
+				$interest->setInterest($row[0]);
+				$interests[] = $interest;
+			}
+			$this->close();
+			return $interests;
+		}// end function
+		
 ///////////////////////////////////////////Schedule////////////////////////////////////////////////////
 //////////////////////////////////////////-_-_-_-//(v)_(';;;')(V)///////////////////////////////////////
 		public function createScheduleSlot($person, $scheduleId)
@@ -1158,10 +1176,10 @@ class DBIO {
 						Schedule.id, Schedule.description, Schedule.timeStart, Schedule.timeEnd,
 						Address.street1, Address.street2, Address.city, Address.state, Address.zip,
 						Event_Type.title
-						FROM Schedule_slot 
-						JOIN Volunteer on Volunteer.Person_person_id = Schedule_slot.Volunteer_Person_person_id
+						FROM Volunteer_has_Schedule 
+						JOIN Volunteer on Volunteer.Person_person_id = Volunteer_has_Schedule.Volunteer_Person_person_id
 						JOIN Person on Person.person_id = Volunteer.Person_person_id
-						JOIN Schedule on Schedule.id = Schedule_slot.Schedule_id
+						JOIN Schedule on Schedule.id = Volunteer_has_Schedule.Schedule_id
 						JOIN Event on Event.event_id = Schedule.Event_event_id
 						JOIN Address on Address.address_id = Event.Address_address_id
 						JOIN Event_Type on Event_Type.type_id = Event.type_id
@@ -1199,12 +1217,106 @@ class DBIO {
                 $this->close();
 				return $personSchedules; 
         }
+        
+        public function readEventByInterest($interestIds) {
+			//$interestId = implode(',',$interestIds);
+			global $con;
+			$sql ="SELECT DISTINCT Event.event_id, Event.title, Event.date, Event.time,Address.street1, Address.street2, Address.city, Address.state, Address.zip, Event_Type.title
+					FROM Event 
+					JOIN Schedule on Schedule.Event_event_id = Event.Event_id
+					JOIN Address on Address.address_id = Event.Address_address_id
+					JOIN Event_Type on Event_Type.type_id = Event.type_id
+					WHERE Event.event_id in (
+					SELECT Event_event_id
+					FROM `Schedule`
+					WHERE Interest_interest_id in ({$interestIds}))";
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$events=array();
+			while($rows = mysql_fetch_array($result))
+				{
+					$event = new Event;
+					$address = new Address;
+					$eventType = new Event_Type;
+					$event->setEvent_id($rows[0]);
+					$event->setTitle($rows[1]);
+					$event->setDate($rows[2]);
+					$event->setTime($rows[3]);
+					$address->setStreet1($rows[4]);
+					$address->setStreet2($rows[5]);
+					$address->setCity($rows[6]);
+					$address->setState($rows[7]);
+					$address->setZip($rows[8]);
+					$eventType->setTitle($rows[9]);
+					$hold = array($event, $address, $eventType);
+					$events[] = $hold; 
+                } 
+                $this->close();
+				return $events; 
+        }
 
 
         public function readEventSchedule($eventId) //view all 
         {
             global $con; 
 			$sql = "SELECT * From Schedule WHERE Event_event_id ='{$eventId}' ORDER BY timeStart ASC"; 
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$eventSchedules = array();
+			while($rows = mysql_fetch_array($result))
+			{
+	
+				$eventSchedule = new Schedule();
+				$eventSchedule->setId($rows[0]); 
+				$eventSchedule->settimeStart($rows[1]);
+				$eventSchedule->settimeEnd($rows[2]);
+				$eventSchedule->setEvent_event_id($rows[3]);
+				$eventSchedule->setDescription($rows[4]);
+				$eventSchedule->setInterest_interest_id($rows[5]);
+				$eventSchedule->setMaxNumPeople($rows[6]);
+				$eventSchedules[] = $eventSchedule;
+			} 
+            $this->close();
+			return $eventSchedules;
+        }
+        
+        public function readEventAll() {
+			//$interestId = implode(',',$interestIds);
+			global $con;
+			$sql ="SELECT Event.event_id, Event.title, Event.date, Event.time, Address.street1, Address.street2, Address.city, Address.state, Address.zip, Event_Type.title
+					FROM Event 
+					JOIN Address on Address.address_id = Event.Address_address_id
+					JOIN Event_Type on Event_Type.type_id = Event.type_id
+					Order by Event.date ASC";
+			$this->open();
+			$result = mysql_query($sql, $con);
+			$events=array();
+			while($rows = mysql_fetch_array($result))
+				{
+					$event = new Event;
+					$address = new Address;
+					$eventType = new Event_Type;
+					$event->setEvent_id($rows[0]);
+					$event->setTitle($rows[1]);
+					$event->setDate($rows[2]);
+					$event->setTime($rows[3]);
+					$address->setStreet1($rows[4]);
+					$address->setStreet2($rows[5]);
+					$address->setCity($rows[6]);
+					$address->setState($rows[7]);
+					$address->setZip($rows[8]);
+					$eventType->setTitle($rows[9]);
+					$hold = array($event, $address, $eventType);
+					$events[] = $hold; 
+                } 
+                $this->close();
+				return $events; 
+        }
+        
+        public function readEventSchedule($eventId) //view all 
+        {
+            global $con; 
+			$sql = "SELECT * From Schedule WHERE Event_event_id =" . $eventId ; 
 			$this->open();
 			$result = mysql_query($sql, $con);
 			$eventSchedules = array();
