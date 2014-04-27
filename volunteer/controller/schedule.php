@@ -7,31 +7,23 @@
 
 	switch ($act) {
 
-		case 'search':
-			// CODE HERE
+		case 'viewSchedule':
+			include 'office/model/event.php';
+			include 'volunteer/model/schedule.php';
+			$page = $dir . '/view/eventSchedule.php';
 			break;
-
-		case 'create':
-			// CODE HERE
-			break;
-
-		case 'read':
-			// CODE HERE
-			break;
-
-		case 'update':
-			// CODE HERE
-			break;
-
-		case 'delete':
-			// CODE HERE
-			break;
-
-		case 'list':
-			// CODE HERE
+			
+		case'personSchedule':
+			include 'office/model/event.php';
+			//include 'volunteer/model/schedule.php';
+			foreach($_GET['check_list'] as $check) {
+				createScheduleSlot($_SESSION['personid'], $check);
+			}
+			$page = $dir . '/view/schedule.php';
 			break;
 
 		default:
+			include 'volunteer/model/schedule.php';
 			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
 			break;
 
