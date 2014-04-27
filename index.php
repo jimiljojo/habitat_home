@@ -100,7 +100,7 @@
 
 					$isAdmin = false;
 					$isOffice = false;
-					$isVolunteer = false;
+					$isVolunteer = true;
 	
 					$clearance= $dbio->getAccountType($_SESSION['personid']); //Getting clearance value
 

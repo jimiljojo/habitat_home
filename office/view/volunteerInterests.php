@@ -26,7 +26,7 @@
     <form action="index.php" method="GET">
 	<input name="dir" type="hidden" value="<?php echo $dir; ?>">
 	<input name="sub" type="hidden" value="<?php echo $sub; ?>">
-	<input name="act" type="hidden" value="updateInterests">
+	<input name="act" type="hidden" value="getAvailability">
 <?php		
     foreach ($interestTypes as $it) {
 
@@ -53,8 +53,8 @@
 		$n = $columnCount * $i + $j;
 		$id = $typeInts[$n]->getId();
 		$title = $typeInts[$n]->getTitle();
-		$checked = ($typeInts[$n]->getIsInterest()) ? 'checked="checked"' : '';
-		echo '<td><input type="checkbox" name="interestVol[]" value="' . $id . '" ' . $checked . ' /><label>' . $title . '</label></td>';
+		
+		echo '<td><input type="checkbox" name="interestVol[]" value="' . $id . '" /><label>' . $title . '</label></td>';
 	    }// end for
 
 	    echo '</tr>';
@@ -87,7 +87,7 @@
     <button onclick="swapAll('hide');">Hide All</button><br>
  -->
     <br>
-    <input type="submit" value="Update">
+    <input type="submit" value="Next">
 </form>
 <hr/>
 <div class="note">

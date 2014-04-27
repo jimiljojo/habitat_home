@@ -1,9 +1,7 @@
 
 <hr>
 <form action="index.php" method="GET" class="form-horizontal">
-    <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
-    <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="act" type="hidden" value="confirmAvailability" >
+    
     <h5><strong>I am available to work: </strong></h5>
 
 <?php
@@ -14,57 +12,14 @@
         global $sub;
         global $act;
         global $msg;
-        global $checkedDay;
-        global $checkedEvening;
-        global $checkedWeekend;
-        $act='updateAvailability';
-
-         $avail=getAvailability();
-
-        $dbDay=$avail->getDay();
-        $dbEve=$avail->getEve();
-        $dbWend=$avail->getWend();
-
-        
-
-        if($dbDay=="1"){
-            $checkedDay = 'Yes';
-        }
-
-        else{
-            $checkedDay= 'No';
-        }
-
-        if($dbEve=="1"){
-            $checkedEvening= 'Yes';
-        }
-
-        else{
-            $checkedEvening= 'No';
-        }
-
-        if($dbWend=="1")
-        {
-            $checkedWeekend="Yes";
-        }
-
-        else{
-            $checkedWeekend="No";
-        }
-        
-        
-        $checkedDay = ($checkedDay == 'Yes') ? 'checked= "checked"' : '';
-        $checkedEvening = ($checkedEvening == 'Yes') ? 'checked= "checked"' : '';
-        $checkedWeekend = ($checkedWeekend == 'Yes') ? 'checked= "checked"' : '';
-
 ?>
-    <input name="act" type="hidden" value="updateAvailability" >
+    <input name="act" type="hidden" value="getConsent" >
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="day" type="checkbox" value="0" <?php echo $checkedDay; ?> /> Days<br>
-    <input name="evening" type="checkbox" value="1" <?php echo $checkedEvening; ?> /> Evenings<br>
-    <input name="weekend" type="checkbox" value="2" <?php echo $checkedWeekend; ?> /> Weekends<br><br>
-    <button>Save Changes</button>
+    <input name="day" type="checkbox" value="0" /> Days<br>
+    <input name="evening" type="checkbox" value="1" /> Evenings<br>
+    <input name="weekend" type="checkbox" value="2" /> Weekends<br><br>
+    <button>Next</button>
 </form>
 <hr>
 <span class="note">
