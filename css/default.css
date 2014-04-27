@@ -1,7 +1,6 @@
 body {
 	font-family: arial;
-	margin: 0px;
-	float:top;
+	
 
 }
 
@@ -16,11 +15,24 @@ a {text-decoration: none;}
 
 /* ----- */
 
-#body {margin-top: 20px;}
+#body {margin-top: 20px;
+margin-left:20px;}
 
-#mainNav, #content {
+#mainNav
+{
+	display: inline;
+	float:left;
+	left: 20px;
+	top: 120px;
+	width: 10%;
+	padding-right: 20px;	
+}
+}
+#content 
+{
 	display: inline;
 	float: left;
+	position: relative;
 }
 
 #mainNav {width: 200px;}
