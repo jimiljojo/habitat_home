@@ -1,6 +1,7 @@
 body {
 	font-family: arial;
 	margin: 0px;
+	float:right;
 }
 
 h1 {
@@ -14,7 +15,8 @@ a {text-decoration: none;}
 
 /* ----- */
 
-#body {margin-top: 20px;}
+#body {margin-top: 20px;
+float:right;}
 
 #mainNav, #content {
 	display: inline;
