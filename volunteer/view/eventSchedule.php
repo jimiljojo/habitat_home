@@ -1,3 +1,7 @@
+<?php
+//bmw5285
+?>
+
 <script>
 function check() {
 	var a=confirm("You are about to sign up for an event");
