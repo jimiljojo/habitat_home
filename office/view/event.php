@@ -73,12 +73,16 @@ alignment: bottom;
 <br><br> 
 
 
-<span class="notes">
+<!--<span class="notes">
 <ul>
 <li>View All Events will display all Events</li> 
 <li>Search Events will search all events limiting the search by type</li> 
 <li>Create Event will allow you to create new Events</li>
 </ul>
-</span>
-
+</span>-->
+<h6>
+<li>View All Events will display all Events</li> 
+<li>Search Events will search all events limiting the search by type</li> 
+<li>Create Event will allow you to create new Events</li>
+</h6>
 
