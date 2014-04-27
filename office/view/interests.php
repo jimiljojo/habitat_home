@@ -4,12 +4,11 @@
 	// FILE: office/view/interests.php
 	// AUTHOR: Brandon Willis; bmw5285
 
-
-?>
 if($updated)
       echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 
 ?>
+
 
 <style> /* css */ 
 
