@@ -265,3 +265,9 @@ function dropDownMenu()
 	</form> <!-- end search by form -->
 </div>
 <?php //if(empty($_GET['vol1']) || empty($_GET['vol2'])) {return null;} ?>
+<h6>
+Here is where you will be able to search for volunteers with related interests and make changes such as
+<br>1. View Interests and Interest Types 
+<br>2. Create Interests and Interest Types 
+<br>3. Search By Interests and Interest Types
+</h6>
