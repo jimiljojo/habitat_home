@@ -1313,7 +1313,7 @@ class DBIO {
 				return $events; 
         }
         
-        public function readEventSchedule($eventId) //view all 
+        /*public function readEventSchedule($eventId) //view all 
         {
             global $con; 
 			$sql = "SELECT * From Schedule WHERE Event_event_id =" . $eventId ; 
@@ -1335,7 +1335,7 @@ class DBIO {
 			} 
             $this->close();
 			return $eventSchedules;
-        }
+        }*/
 
         public function readVolunteerScheduleByEvent($eventId) //view all 
         {
