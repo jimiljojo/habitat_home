@@ -48,7 +48,8 @@
 	<tr>
 	    <td>
 		<select name="title" type="text">
-		    <option value="Mr" selected="selected">Mr.</option>;
+		    <option value="<?php echo $title; ?>" disabled selected="selected"><?php echo $title; ?></option>;
+		    <option value="Mr">Mr.</option>;
 		    <option value="Mrs">Mrs.</option>;
 		    <option value="Ms">Ms.</option>;
 		    <option value="Dr">Dr.</option>;
