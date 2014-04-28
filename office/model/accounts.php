@@ -30,7 +30,7 @@
 		global $dbio;
 		$accid = $_GET['accid'];
 		$pid = $dbio->getPersonid($accid);
-		echo $pid;
+		//echo $pid;
 		$account = new Account();
 		$account= $dbio->readAccountInfo($pid);
 
