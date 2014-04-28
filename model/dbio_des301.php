@@ -854,7 +854,7 @@ class DBIO {
 		
 		public function readInterests($id)
 		{
-			require_once 'class/volunteerInterest.php';
+			//require_once 'class/volunteerInterest.php';
 			global $con;
 			$this->open();
 			//global $volInts;
@@ -881,7 +881,7 @@ class DBIO {
 		
 		public function readInterest($id)
 		{
-			require_once '/class/volunteerInterest.php';
+			//require_once '/class/volunteerInterest.php';
 			global $con;
 			$this->open();
 			//global $volInts;
@@ -912,7 +912,7 @@ class DBIO {
 	    	}
 
 		public function readInterestType($id){
-			require_once '/class/volunteerInterest.php';
+			//require_once '/class/volunteerInterest.php';
 			global $con;
 			$this->open();
 			//global $volInts;
@@ -942,7 +942,7 @@ class DBIO {
 		
 		public function viewInterestType($id)
 		{
-			include_once "/class/interest_type.php";
+			//include_once "/class/interest_type.php";
 			global $con;
 		  $intTypes = array();
 		  //$sql = 'SELECT type_id, title FROM Interest_Type ORDER BY "title"';
