@@ -48,8 +48,12 @@ function shitTheBed() {
 <div id="content">
 	<h2>Volunteer Search</h2>
 <hr>
+<!-- back button -->
 <button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=listVolunteer';">
     View All</button>
+    
+   <!-- start form --> 
+    
 <form method="GET" action="index.php">
     <input type="hidden" name="dir" value="office" >
     <input type="hidden" name="sub" value="volunteer" >
@@ -69,9 +73,13 @@ function shitTheBed() {
 	<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
 	<input name="act" type="hidden" value="create" >
 	<input type="submit" value="Create New">
-</form><br><br/>
-<hr>
+</form>
 
+<!-- end form -->
+<br><br/>
+<hr>
+ 
+ <!-- information text -->
 <div>
     Here you can search for a volunteer by:
     <ul>
