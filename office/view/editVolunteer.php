@@ -6,13 +6,16 @@
  * and open the template in the editor.
  * Author: 
  */
+ 
+ //variables
+ 
         global $dir;
         global $sub;
         global $act;
         global $msg;
-        //$this->$person_id = $_GET['vid'];
+        
         $vid = filter_input(INPUT_GET, 'vid', FILTER_SANITIZE_STRING);
-        //$vid = $_GET['vid'];
+        
         $information = $dbio->readVolunteer($vid);
         $volunteer = $information[1];
         $person = $information[0];
@@ -49,7 +52,7 @@
 <html>
 
     <body>		
-		
+		<!-- start Form -->
 
     <form action="index.php" method="GET">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
@@ -101,6 +104,9 @@
 		
 		
 		<br>
+		
+		<!-- form validation -->
+		
 		<script type="text/javascript">
 
             function check()
@@ -207,6 +213,9 @@
 
 		<br>
 	</form>
+	
+	<!-- end form -->
+	
 	<br>
 	<hr>
 	<span class="note"><span class="mandatory">*</span> Required<br>
