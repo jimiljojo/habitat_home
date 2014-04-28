@@ -16,7 +16,7 @@
     <input name="act" type="hidden" value="getInterests" >
 
 		
-		
+		<!-- Form Start -->
 		
 	<h4 class="show" onclick="swap(this);">Personal Information</h4><div>
                <table class="intTable">
@@ -60,6 +60,9 @@
 <br/>
 		
 		<br>
+		
+		<!-- check for proper input -->
+		
 		<script type="text/javascript">
 
             function check()
@@ -166,6 +169,9 @@
         <button>Next</button>
 		<br>
 	</form>
+	
+	<!-- end Form -->
+	
 	<br>
 	<hr>
 	<span class="note"><span class="mandatory">*</span> Required<br>
