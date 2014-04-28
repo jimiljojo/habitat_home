@@ -20,42 +20,43 @@
 		
 	<h4 class="show" onclick="swap(this);">Personal Information</h4><div>
                <table class="intTable">
-		<tr><td>
-		Title<span class="mandatory">* </span></td> 
-		<td><select name="title" id="title">
-		<option></option>
-  		<option>Mr.</option>
-  		<option>Mrs.</option>
-  		<option>Ms.</option>
-  		<option>Dr.</option>
-		</select></label></td><tr><br>
-		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname"></label>
-		</td></tr>
-		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname"></label></td></tr>
-		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp yyyy-mm-dd)</td></tr>
-		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
-		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr>
-               </table></div>
+			<tr><td>
+			Title<span class="mandatory">* </span></td> 
+			<td><select name="title" id="title">
+			<option></option>
+	  		<option>Mr.</option>
+	  		<option>Mrs.</option>
+	  		<option>Ms.</option>
+	  		<option>Dr.</option>
+			</select></label></td><tr><br>
+			<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname"></label>
+			</td></tr>
+			<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname"></label></td></tr>
+			<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" type="integer" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp yyyy-mm-dd)</td></tr>
+			<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
+			<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr>
+               </table>
+           </div>
 <br/>
 
-		<h4 class="show" onclick="swap(this);">Contact Information</h4><div>
+	       <h4 class="show" onclick="swap(this);">Contact Information</h4><div>
                <table class="intTable">
-		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
-		<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
-		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
-             <!--
-                <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
-                <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
-               -->
-               </table></div>
-		<h4 class="show" onclick="swap(this);">Address</h4><div>
-               <table class="intTable">
-		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1"></td></tr><br>
-		<tr><td>Street 2</td><td><input name="street2" type="text"></label></td></tr>
-		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city"></label></td></tr>
-		<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" id="state"></label></td></tr>
-		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> 
-               </table></div>
+			<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
+			<tr><td>Sec. Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
+			<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
+	             
+               </table>
+           </div>
+               
+	       <h4 class="show" onclick="swap(this);">Address</h4><div>
+        	<table class="intTable">
+			<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1"></td></tr><br>
+			<tr><td>Street 2</td><td><input name="street2" type="text"></label></td></tr>
+			<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city"></label></td></tr>
+			<tr><td>State<span class="mandatory">*</span> </td><td><input name="state" type="text" id="state"></label></td></tr>
+			<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> 
+	        </table>
+	    </div>
 <br/>
 		
 		<br>
