@@ -7,7 +7,7 @@
 
 ?>
 <?php
- 
+    $pid = $_SESSION['personid'];
     $email = $person->getPrefEmail();
     $mail = $person->getPrefMail();
     $phone = $person->getPrefPhone();
@@ -20,8 +20,8 @@
 <form action="index.php" method="GET">
 	<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 	<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-	<input name="pid" type="hidden" value="<?php echo $pid; ?>" >
 	<input name="act" type="hidden" value="update" >
+	<input name="pid" type="hidden" value="<?php echo $pid; ?>" >
 	<dl>
 	    <dt>Receive Email?</dt>
 		<dd><input type="radio" name="mail"id="yes" value="1" <?php echo $email ? 'checked' : ''; ?>><label>Yes</label></dd>
