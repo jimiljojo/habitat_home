@@ -31,6 +31,8 @@
 	</head>
         <center><input type="button"  class="btn btn-primary btn-sm" onclick="history.back();" value="Back"></center>
                 <br/>
+                
+                <!-- start form -->
 	<body>
             <form id="editVolunteers" action="index.php" method="GET">
 		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
@@ -86,11 +88,13 @@
 				echo '</tr>';
 			}
                         
-                        //var_dump($volunteers);
+                        
 		?>
 		</table>
 		<br>
             </form>
+            
+            <!-- end form -->
 		<hr>
 		<br>
 		<div id="notes"></div>
