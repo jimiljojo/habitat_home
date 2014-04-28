@@ -14,9 +14,10 @@
     if($update)
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 ?>
-<h4>Preferences</h4>
+<h2>Preferences</h2>
 
 <hr>
+<br>
 <form action="index.php" method="GET">
 	<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 	<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
@@ -36,7 +37,10 @@
 	<input type="submit" value="Update">
 </form>
 <hr>
-<span class="note">
+<h6>
+ Email may still be used in case you forget your password and start an account recovery.
+</h6>
+<!--<span class="note">
     Update your contact preferences here. <br>
     Email may still be used in case you forget your password and start an account recovery.
-</span> 
+</span> -->
