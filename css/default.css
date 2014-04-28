@@ -1,6 +1,7 @@
 body {
 	font-family: arial;
-	
+	width: 900px;
+	width:100%;
 
 }
 
@@ -16,7 +17,8 @@ a {text-decoration: none;}
 /* ----- */
 
 #body {margin-top: 20px;
-margin-left:20px;}
+margin-left:20px;
+width:65%;}
 
 #mainNav
 {
@@ -24,8 +26,10 @@ margin-left:20px;}
 	float:left;
 	left: 20px;
 	top: 120px;
-	width: 10%;
-	padding-right: 20px;	
+	width: 25%;
+	width:200px;
+	margin-right:50px;
+	
 }
 }
 #content 
@@ -34,11 +38,11 @@ margin-left:20px;}
 	float: left;
 	position: relative;
 }
-
+/*
 #mainNav {width: 200px;}
 
 #content {width: 800px;}
-
+*/
 /* ----- */
 
 .logout {
