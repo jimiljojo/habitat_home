@@ -9,6 +9,8 @@
 	$person->setTitle($_GET['title']);
 	$person->setFirst_name($_GET['fName']);
 	$person->setLast_name($_GET['lName']);
+	$person->setEmployer($_GET['employer']);
+	$person->setJobtitle($_GET['jobTitle']);
 
 	$contact->setPhone($_GET['phone']);
 	$contact->setEmail($_GET['email']);
