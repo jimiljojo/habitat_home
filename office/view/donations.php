@@ -97,8 +97,8 @@ break;
    <input name="searchBtn" type="submit" value="Search" action="index.php" method="get">
 
 <select id="searchBy" name="searchBy" action="/habitat/office/model/accounts.php" method="get" onclick='searchByHandler()'>
-<option value="name" selected="selected" ><label>Name</label></option>
-<option value="organization" ><label>Organization</label></option>
+<option value="name" selected="selected" >Name</option>
+<option value="organization" >Organization</option>
 </select>
 <input id="input1" name="input1" placeholder="first name" type="text">
 <input id="input2" name="input2" placeholder="last name" type="text">
