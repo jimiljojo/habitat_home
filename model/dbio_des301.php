@@ -993,7 +993,7 @@ class DBIO {
 			$sql = "INSERT INTO {$tableName} (Volunteer_Person_person_id, Schedule_id) VALUES ('{$person}', '{$scheduleId}')";
 			mysql_query($sql,$con);
 			$this->close();
-			echo "You have created a new {$tableName}";
+			//echo "You have created a new {$tableName}";
 		}
 		
 		public function createSchedule($timeStart, $timeEnd, $eventId, $description, $interestId, $maxNumPeople)
@@ -1006,7 +1006,7 @@ class DBIO {
 			//$this->readInterestType();
 			mysql_query($sql,$con);
 			$this->close();
-			echo "You have created a new {$tableName} its a part of the event {$eventId}, it starts at {$timeStart}, and ends at {$timeEnd}, its description is:{$description}, the max volunteers are:{$maxNumPeople}, and is linked to the following interest:{$interestId}";
+			//echo "You have created a new {$tableName} its a part of the event {$eventId}, it starts at {$timeStart}, and ends at {$timeEnd}, its description is:{$description}, the max volunteers are:{$maxNumPeople}, and is linked to the following interest:{$interestId}";
 		}
 		
 		public function deleteScheduleSlot($scheduleId, $personId)
