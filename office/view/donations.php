@@ -26,6 +26,8 @@ alignment: center;
 width: 150px;
 height: 30px;
 alignment: bottom;
+font-family: Arial;
+font-size: 15px;
 }
 
 </style>
@@ -111,7 +113,7 @@ break;
 <br><br/>1. Volunteer Status
 <br>2. Availability
 <br><br/>An administrator will be able to create an account for donors, homeowners, etc.
-<h6/>
+</h6>
 <br><br/>
 
 
