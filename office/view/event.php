@@ -81,8 +81,8 @@ alignment: bottom;
 </ul>
 </span>-->
 <h6>
-<li>View All Events will display all Events</li> 
-<li>Search Events will search all events limiting the search by type</li> 
-<li>Create Event will allow you to create new Events</li>
+1.View All Events will display all Events <br>
+2.Search Events will search all events limiting the search by type </br>
+3.Create Event will allow you to create new Events
 </h6>
 
