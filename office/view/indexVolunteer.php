@@ -7,6 +7,28 @@
 
 ?>
 
+<script>
+
+function shitTheBed() {
+	var shit = document.getElementById("searchBy").value;
+	switch (shit) {
+		case "name":
+			document.getElementById("input1").placeholder="first name";
+			document.getElementById("input1").style.display="inline";
+			document.getElementById("input2").placeholder="last name";
+			document.getElementById("input2").style.display="inline";
+			break;
+		case "phone number":
+			document.getElementById("input1").placeholder="555-555-5555";
+			document.getElementById("input1").style.display="inline";
+			document.getElementById("input2").placeholder="bed";
+			document.getElementById("input2").style.display="none";
+			break;
+	}
+}
+
+</script>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,7 +61,7 @@
     <input type="hidden" name="sub" value="volunteer" >
     <input type="hidden" name="act" value="search" >
     <input name="search" type="submit" value="Search By">
-    <select id="searchBy" name="searchBy" onchange="searchByHandler();">
+    <select id="searchBy" name="searchBy" onchange="shitTheBed();">
 	<option value="name" selected="selected">Name</option>
 	<option value="phone number">Phone Number</option>
 	
