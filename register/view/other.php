@@ -115,12 +115,13 @@
     <tr><td><span class="mandatory">*</span>Organization Affiliation:</td><td>
         <select id="AddrType" name="organization" onchange="showTextBox();">
             <option></option>
-            <option value="none">None of these</option>
+            
             <?php 
             foreach($org as $name){
             echo '<option value="' . $name->getOrgName(). '">'.$name->getOrgName(). '</option>';
     }
     ?>
+        <option value="none">None of these</option>
         </select></td><td>
         
         <div id="container"></div>
