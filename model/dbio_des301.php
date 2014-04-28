@@ -74,7 +74,7 @@ class DBIO {
 			global $con;
 			$sql1='SELECT * FROM Admin WHERE Person_person_id=' .$personId;
 			$sql2='SELECT isOffice FROM Account WHERE person_id=' .$personId;
-			$sql3='SELECT isVolunteer FROM Account WHERE person_id=' .$personId;
+			//$sql3='SELECT isVolunteer FROM Account WHERE person_id=' .$personId;
 
 			$this->open();
 			$results = mysql_query($sql1,$con);
@@ -86,7 +86,7 @@ class DBIO {
 			}
 			else{
 				
-				if(mysql_fetch_row($results2[0])=='1'){
+				if(mysql_fetch_row($results2)[0]=='1'){
 					return '2';
 				}
 
