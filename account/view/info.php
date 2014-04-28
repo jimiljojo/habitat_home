@@ -23,10 +23,10 @@
     $zip = $address->getZip();
     $phone = $contact->getPhone();
     $email = $contact->getEmail();
-    $employer = 'abc company';
+    $employer = $person->getEmployer();
     $workPhone = $contact->getPhone2();
     $workExt = $contact->getExtension();
-    $jobTitle = 'engineer';
+    $jobTitle = $person->getJobTitle();
 
     if($update)
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
