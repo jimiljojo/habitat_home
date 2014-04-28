@@ -37,8 +37,8 @@
 <form action="index.php" method="GET">
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input name="pid" type="hidden" value="<?php echo $pid; ?>" >
     <input name="act" type="hidden" value="update" >
+    <input name="pid" type="hidden" value="<?php echo $pid; ?>" >
     <table>
 	<tr>
 	    <th>Name Info</th>
