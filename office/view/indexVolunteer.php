@@ -36,13 +36,7 @@ function shitTheBed() {
         <title></title>
 
 		
-	    <style>
-		    
-	    </style>
-	
-
-       
-       
+	   
         <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.js"></script>
 
        
@@ -82,9 +76,8 @@ function shitTheBed() {
     Here you can search for a volunteer by:
     <ul>
         <li>Volunteer Name</li>
-        <li>Organization</li>
-        <li>Street Address</li>
-        <li>City</li>
+        <li>Phone Number</li>
+        
     </ul>
     Only an administrator will be able to create a new volunteer
     <br>
