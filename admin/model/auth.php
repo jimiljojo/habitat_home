@@ -23,6 +23,12 @@
 		return $eventDetails;
 	}
 
+	function readDonations(){
+		global $dbio;
+		$donationInfo = $dbio->readPendingDonationAuthorizations();
+		return $donationInfo;
+	}
+
 	function search() {}
 	function create() {}
 	function read() {}

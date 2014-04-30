@@ -16,7 +16,7 @@
 		private $when_entered;
 		private $value;
 		private $event;
-		private $Person_person;
+		private $donor;
 		private $donationType;
 
 
@@ -36,7 +36,7 @@
 		public function getValue() {return $this->value;}
 		public function getEvent() {return $this->event;}
 		
-		public function getPerson_person() {return $this->Person_person;}
+		public function getDonor() {return $this->donor;}
 
 		public function setDonation_id($donation_id) {$this->donation_id = $donation_id;}
 		public function setDate($date) {$this->date = $date;}
@@ -47,7 +47,7 @@
 		public function setValue($value) {$this->value = $value;}
 		public function setEvent($event) {$this->event = $event;}
 		
-		public function setPerson_person($Person_person) {$this->Person_person = $Person_person;}
+		public function setDonor($donor) {$this->donor = $donor;}
 
 	}// end class
 

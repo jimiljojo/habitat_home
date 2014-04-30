@@ -2471,6 +2471,36 @@ class DBIO {
 			$this->close();
                         return $result;
         }
+
+        public function readPendingDonationAuthorizations() {
+        global $con;
+        $sql = "select Donation.donation_id, Donation.date, Donation.time, Donation.details, DonationType.typeName, Donation.value,Donation.Admin_idAdmin, Event.title from Donation inner join Event on Donation.Event_event_id = Event.event_id inner join DonationType on Donation.donationType = DonationType.idDonationType where Donation.Admin_idAdmin IS null ;";
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $donations = array();
+        while ($rows = mysql_fetch_array($result)) {
+            $donation = new Donation();
+            $donation->setDonation_id($rows[0]);
+            $donation->setDate($rows[1]);
+            $donation->setTime($rows[2]);
+            $donation->setDetails($rows[3]);
+            $donation->setType($rows[4]);
+            $donation->setValue($rows[5]);
+            $donation->setEvent($rows[7]);
+            $donations[] = $donation;
+        }
+        $this->close();
+        return $donations;
+    }
+
+    public function authorizeDonation($person_id,$donation_id) {
+        global $con;
+        $sql = "update Donation set Admin_idAdmin='" . $person_id . "' where donation_id='" . $donation_id . "'";
+        $this->open();
+        $result = mysql_query($sql, $con);
+        $this->close();
+        return $result;
+    }
 		
 }// end class
 ?>

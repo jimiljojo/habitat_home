@@ -31,9 +31,9 @@
 		echo '<td>' . $donation->getTime() . '</td>';
 		foreach ($donors as $donor) {
 			if($donation->getDonation_id() == $donor->getDonation_id() )
-				echo '<td>' . $donor->getDonatedby() . '</td>';
+				$donation->setDonor($donor->getDonatedby());
 		}		
-
+		echo '<td>' . $donation->getDonor() . '</td>';
 		echo '<td>' . $donation->getEvent() . '</td>';
 		echo '</tr>';
 	}

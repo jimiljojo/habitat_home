@@ -48,7 +48,7 @@
 	}// end if
 	
 	echo '<hr>';
-	echo '<a href="logout.php">Logout</a>';
+	echo '<li><a class="logout"  href="logout.php">Logout</a></li>';
 ?>
 		<hr>
 		<dl>

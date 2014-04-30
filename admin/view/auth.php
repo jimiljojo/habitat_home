@@ -2,7 +2,7 @@
 
 	// TITLE: Admin Authrorization View
 	// FILE: admin/view/auth.php
-	// AUTHOR: sbkedia
+	// AUTHOR: sbkedia & jhp
 
 
 ?>
@@ -35,7 +35,7 @@ function swap(divNo) {
 <h2>Authorization</h2>
 <hr>
 <?php if($isAuthorized)
-		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> Hours successfully authorized</div>'; ?>
+		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong>Successfully authorized</div>'; ?>
 
 <h4>Work Hours Authorization
 	<input type="button" id="button1" onclick="swap(1);" value="Show"> </h4>
@@ -44,7 +44,7 @@ function swap(divNo) {
 	<form action="index.php" method="GET">
 		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
 		<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
-		<input name="act" id="act" type="hidden" value="authorize" >
+		<input name="act" id="act" type="hidden" value="authorizework" >
 
 		<table class="table table-striped table-hover " style="width:100%">
 			<tr>
@@ -72,6 +72,57 @@ function swap(divNo) {
 			
 			<?php } ?>
 			<tr><td></td><td></td><td></td><td></td><td></td> <td><input type="submit" value="Authorize" /></td> </tr>
+		</table>
+		
+	</form>	
+	</div>
+
+<br>
+
+	<h4>Donations Authorization
+	<input type="button" id="button2" onclick="swap(2);" value="Show"> </h4>
+
+	<div class="hide" id="div2">
+	<form action="index.php" method="GET">
+		<input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
+		<input name="sub" id="sub" type="hidden" value="<?php echo $sub; ?>" >
+		<input name="act" id="act" type="hidden" value="authorizedonation" >
+
+		<table class="table table-striped table-hover " style="width:100%">
+			<tr>
+					<th>Type</th>
+					<th>Details</th>
+					<th>Value</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>From</th>
+					<th>Where</th>
+					<th>Authorize</th>
+			</tr>
+
+			<?php $donationAuthorizations = readDonations();
+				  $donors = $dbio->getDonors();
+
+				foreach ($donationAuthorizations as $donationAuthorization) {
+					foreach ($donors as $donor) {
+						if($donationAuthorization->getDonation_id() == $donor->getDonation_id() )
+							$donationAuthorization->setDonor($donor->getDonatedby());
+		}
+				?>
+			<tr>
+				<td><?php echo $donationAuthorization->getType(); ?></td>
+				<td><?php echo $donationAuthorization->getDetails(); ?></td>
+				<td><?php echo $donationAuthorization->getValue(); ?></td>
+				<td><?php echo $donationAuthorization->getDate(); ?></td>
+				<td><?php echo $donationAuthorization->getTime();  ?></td>
+
+				<td><?php echo $donationAuthorization->getDonor(); ?> </td>
+				<td><?php echo $donationAuthorization->getEvent(); ?> </td>
+				<td><input type="checkbox" name="authorized[]" id="authorized[]" value="<?php echo $donationAuthorization->getDonation_id(); ?>" /> </td>
+			</tr>		
+			
+			<?php } ?>
+			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td> <td><input type="submit" value="Authorize" /></td> </tr>
 		</table>
 		
 	</form>	

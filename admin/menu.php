@@ -8,7 +8,5 @@
 	$subLinks = array();
 
 	$subLinks[] = new Link('Authrorization','auth');
-	$subLinks[] = new Link('System Alerts','alerts');
-	$subLinks[] = new Link('Reports','reports');
 
 ?>

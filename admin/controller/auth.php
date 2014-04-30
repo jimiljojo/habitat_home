@@ -4,6 +4,7 @@
 	// FILE: admin/controller/auth.php
 	// AUTHOR: AUTOGEN
 	global $dbio;
+	$isAuthorized = false;
 
 	switch ($act) {
 
@@ -27,10 +28,20 @@
 			// CODE HERE
 			break;
 
-		case 'list':
-			// CODE HERE
+		case 'authorizedonation':
+			If(!empty($_GET['authorized'])){
+
+			foreach(($_GET['authorized']) as $donationId) {
+
+ 			$isAuthorized=$dbio->authorizeDonation($_SESSION['personid'], $donationId);
+ 			}
+
+ 			include 'admin/model/auth.php';
+			$page = $dir . '/view/' . (($sub) ? $sub : $dir) . '.php';
+		}
 			break;
-		case 'authorize':	
+
+		case 'authorizework':	
 
 			If(!empty($_GET['authorize'])){
 
