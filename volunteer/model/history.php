@@ -12,8 +12,7 @@
     function getEventId(){
         $person_id=$_SESSION['personid'];
         global $dbio;
-    	//$event_id=$dbio->getEventId($person_id);
-        $event_id=$dbio->getEventId("7");
+    	$event_id=$dbio->getEventId($person_id);
     	return $event_id;
     }
 

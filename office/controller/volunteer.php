@@ -30,6 +30,12 @@
 			break;
                     
        case 'getAvailability':
+            If(!empty($_GET['interestVol'])){
+            foreach(($_GET['interestVol']) as $username) {
+            $items[] = $username;
+            }
+        }
+            $_SESSION['interestVolunteer'] = ($items);
             $page = $dir . '/view/volunteerAvailability.php';
 			break;
                 

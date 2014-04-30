@@ -30,6 +30,7 @@ function indexVolunteerBy($value1, $value2) {}
         $contact = new Contact();
         $address = new Address();
         $volunteer = new Volunteer();
+        $consent = new Consent();
 
         $person->setTitle($_SESSION['personalinfo'][0]);
         $person->setFirst_name($_SESSION['personalinfo'][1]);
@@ -48,7 +49,17 @@ function indexVolunteerBy($value1, $value2) {}
         $address->setState($_SESSION['personalinfo'][12]);
         $address->setZip($_SESSION['personalinfo'][13]);
 
-        
+        $interests = $_SESSION['interestVolunteer'];
+        $availability = $_SESSION['avail'];
+
+        $consent->setMinor($_GET['less18']);
+        $consent->setMajor($_GET['greater18']);
+        $consent->setPhoto($_GET['photo']);
+        $consent->setSafety($_GET['safetyGuidelines']);
+        $consent->setVideo($_GET['video']);
+        $consent->setWaiver($_GET['liability']);
+        $consent->setName($_GET['emergencyName']);
+        $consent->setPhone($_GET['phone']);
      
         
         global $dbio;
