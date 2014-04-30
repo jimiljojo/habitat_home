@@ -152,7 +152,7 @@
 				{
 					$interestType = $intType->getTitle();
 					$interestId = $intType->getType_id();
-					echo "<option value = '{$interestId}' name = '{$interestType}'>{$interestId}, {$interestType}</option>";
+					echo "<option value = '{$interestId}' name = '{$interestType}'>{$interestType}</option>";
 				}
 				echo "<select></td>";
 				echo '<td><input name = "title" type="text" value="' . $ints[0]->getInterest_title() . '"></td>';
@@ -169,7 +169,7 @@
 						SET Interest.type_id='{$interestId}', Interest.title='{$_POST['title']}', Interest.description='{$_POST['description']}'
 						WHERE interest_id = '{$id}'";
 				$result = mysql_query($sql,$con);
-				echo $interestId, $_POST['title'], $_POST['description'];
+				//echo $interestId, $_POST['title'], $_POST['description'];
 				
 			}
 		}
@@ -207,7 +207,7 @@
 						SET Interest_Type.title='{$_POST['title']}', Interest_Type.description='{$_POST['description']}'
 						WHERE Interest_Type.type_id = '{$id}'";
 				$result = mysql_query($sql,$con);
-				echo $_POST['title'], $_POST['description'];
+				//echo $_POST['title'], $_POST['description'];
 				
 			}
 		}
