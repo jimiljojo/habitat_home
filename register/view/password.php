@@ -8,6 +8,8 @@
 	global $msg;
 	global $total;
 
+	$email = isset($_SESSION['email']) ? $_SESSION['email'] : 'null';
+
 ?>
 <style>
     /*label
@@ -61,7 +63,7 @@
 	    	<input type="checkbox" name="volunteer">Volunteer</label><br> </table></div>
 	    <br/> -->
 	    <h4 class="show" onclick="swap(this);">Username and Password</h4><div><table class="intTable">
-	    <tr><td><label><span class="mandatory">*</span>Username</label></td><td> <input type="text" name="userName" id="userName"></td><td> &nbsp<span style="color:lightgrey; font-size: 10pt;">Example:  ben10</span> </td></tr>
+	    <tr><td><label><span class="mandatory">*</span>Username</label></td><td> <input type="text" name="userName" id="userName" value="<?php echo $email ?>" disabled="disabled"></td><td> &nbsp<span style="color:lightgrey; font-size: 10pt;">(Your Email id will be used as your Username) <a href="index.php?act=getInfo">Change Email/Username</a></span> </td></tr>
 	    
 	    <tr><td><label><span class="mandatory">*</span>Password</label></td><td><input type="password" name="pw1" id="pw1"></td></tr><br>
 	    <tr><td><label><span class="mandatory">*</span>Confirm</label></td><td><input type="password" name="pw2" id="pw2"> </td><td>&nbsp<span style="color:lightgrey; font-size: 10pt;">Re-type password</span></td></tr></table></div><br>
@@ -72,14 +74,14 @@
             {
             	
 
-            	if (document.getElementById('userName').value==""
-                 || document.getElementById('userName').value==undefined)
-                {
-                    alert ("Please Enter your 'Username'");
-                    return false;
-                }
+            	// if (document.getElementById('userName').value==""
+             //     || document.getElementById('userName').value==undefined)
+             //    {
+             //        alert ("Please Enter your 'Username'");
+             //        return false;
+             //    }
 
-                else if (document.getElementById('pw1').value==""
+                if (document.getElementById('pw1').value==""
                  || document.getElementById('pw1').value==undefined)
                 {
                     alert ("Please Enter your 'Password'");

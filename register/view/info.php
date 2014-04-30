@@ -73,7 +73,7 @@
 		Title<span class="mandatory">* </span></td> 
 		<td><select name="title" id="title" value="<?php echo isset($_SESSION['title']) ? $_SESSION['title'] : '' ?>">
 		<option></option>
-  		<option value="<? $_SESSION['title'] == "title" ? ' selected="selected"' : '' ?>"> Mr.</option>
+  		<option> Mr.</option>
   		<option>Mrs.</option>
   		<option>Ms.</option>
   		<option>Dr.</option>

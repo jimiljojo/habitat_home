@@ -31,30 +31,29 @@
 	
 	case 'validate':
 	    // session_start();
-	    $use=($_GET['userName']);
-	    $usernameCheck=$dbio->getUsername($use);
-	    if($use==$usernameCheck)
-	    {
-	    	$act = 'validate';
-	    	$progress = 4;
-	    	include ('view/password.php');
-	    	print '<script type="text/javascript">'; 
-			print 'alert("The Username '. $use .' is already registered. Please try a different username!")'; 
-			print '</script>';
-	    }
+	  //   $use=($_GET['userName']);
+	  //   $usernameCheck=$dbio->getUsername($use);
+	  //   if($use==$usernameCheck)
+	  //   {
+	  //   	$act = 'validate';
+	  //   	$progress = 4;
+	  //   	include ('view/password.php');
+	  //   	print '<script type="text/javascript">'; 
+			// print 'alert("The Username '. $use .' is already registered. Please try a different username!")'; 
+			// print '</script>';
+	  //   }
 
-	    else
-	    {
+	    
 	    	$password1=($_GET['pw1']);
 	    	$password2=($_GET['pw2']);
-	    	if($password1 != $password2)
+	    if($password1 != $password2)
 	    	{
 	    		$act = 'validate';
 	    		$progress = 4;
 	    		include ('view/password.php');
 	    	}
 
-	    	else
+	    else
 	    	{
 	    		$_SESSION['userName'] = (isset($_GET['userName'])) ? $_GET['userName'] : '';
 	    		$_SESSION['password'] = (isset($_GET['pw1'])) ? $_GET['pw1'] : '';
@@ -63,7 +62,7 @@
 	    		$act = 'confirm';
 	    		include ('view/validate.php');
 	    	}
-	    }
+	    
 
 	    
 	    break;

@@ -57,7 +57,7 @@
     <input name="act" type="hidden" value="<?php echo '' . $act;?>" >
     <table>
         
-        <tr><td><b>Username:</td><td> <?php echo $userName ?> </td></tr>
+        <tr><td><b>Username:</td><td> <?php echo $email ?> </td><td><a href="index.php?act=getInfo">Change Email/Username</a></td></tr>
 
         <tr><td><b>Personal Information:<b></td></tr>
         <tr><td>Title:</td><td> <input type="text" value="<?php echo $title ?>"></td></tr>
@@ -76,7 +76,7 @@
         <tr><td><b>Contact Information:</b></td></tr>
         <tr><td>Phone:</td><td> <input type="text" value="<?php echo $phone ?>"></td></tr>
         <tr><td>Sec. Phone:</td><td> <input type="text" value="<?php echo $phone2 ?>"></td><td>&nbsp ext.</td><td><input type="text" value="<?php echo $extension ?>"></td></tr>
-        <tr><td>Email Address:</td><td> <input type="text" value="<?php echo $email ?>"></td></tr>
+        <tr><td>Email Address:</td><td> <input type="text" value="<?php echo $email ?>" disabled="disabled"></td><td><a href="index.php?act=getInfo">Change Email/Username</a></td></tr>
         <tr><td>Emergency Contact Name:</td><td> <input type="text" value="<?php echo $emergencyname ?>"></td></tr>
         <tr><td>Emergency Contact Phone:</td><td> <input type="text" value="<?php echo $emergencyphone ?>"></td></tr>
 
