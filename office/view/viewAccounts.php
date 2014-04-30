@@ -21,7 +21,7 @@
 	$persons = $tableinfo[1];
 	$contacts = $tableinfo[2];
 
-	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Username </th><th>Title</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>State</th><th>City</th><th>Zip</th></tr>';
+	echo '<table class="table table-striped table-hover " style="width:100%"><tr><th>Username </th><th>Title</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Phone</th><th>Street 1</th><th>Street 2</th><th>City</th><th>State</th><th>Zip</th></tr>';
 	
 	foreach ($accounts as $account) {
 		echo '<tr onclick="retrieve(' . $account->getAccount_id() . ');">';
