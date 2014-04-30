@@ -26,9 +26,9 @@ if($_GET['act'] == "createInterest")
 		$title = $_POST['title'];
 		$description = $_POST['description'];
 		//echo "<br>{$type_id}<br>"; //test everything
-		if (empty($interestType_id) || empty($title) || empty($description))
+		if (empty($interestType_id) || empty($title))
 			{
-				echo "I am error";
+				echo "Required field missing";
 			}
 			else
 			{
@@ -56,7 +56,7 @@ if($_GET['act'] == "createInterestType")
 			$description = $_POST['description'];
 			if (empty($title) || empty($description))
 			{
-				echo "I am error";
+				echo "Required field missing";
 			}
 			else
 			{
