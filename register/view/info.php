@@ -150,7 +150,7 @@
 		<h4 class="show" onclick="swap(this);">Contact Information</h4><div><table class="intTable">
 		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone" value="<?php echo isset($_SESSION['phone']) ? $_SESSION['phone'] : '' ?>"></label></td></tr><br>
 		<tr><td>Secondary Phone</td><td> <input name="phone2" type="text" value="<?php echo isset($_SESSION['phone2']) ? $_SESSION['phone2'] : '' ?>" ></label></td><td>&nbsp ext.<input name="extension" type="text" value="<?php echo isset($_SESSION['extension']) ? $_SESSION['extension'] : '' ?>"></td></tr>
-		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>"></label></td></tr>
+		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>"></label></td><td>&nbsp (Email will be used as your Username)</td></tr>
         <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname" value="<?php echo isset($_SESSION['emergencyname']) ? $_SESSION['emergencyname'] : '' ?>"></label></td></tr>
         <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone" value="<?php echo isset($_SESSION['emergencyphone']) ? $_SESSION['emergencyphone'] : '' ?>"></label></td></tr>
         </table></div>
