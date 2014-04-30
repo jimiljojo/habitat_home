@@ -75,7 +75,7 @@ class DBIO {
 		public function getUsername($use)
 		{
 			global $con;
-			$sql='SELECT username FROM Account WHERE username IN ("'.$use.'")';
+			$sql='SELECT email FROM Contact WHERE email IN ("'.$use.'")';
 			$this->open();
 			$results=mysql_query($sql,$con);
 			$final=mysql_fetch_row($results);

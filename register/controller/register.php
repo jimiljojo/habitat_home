@@ -126,16 +126,39 @@
 	    $_SESSION['phone'] = isset($_GET['phone']) ? $_GET['phone'] : '';
 	    $_SESSION['phone2'] = isset($_GET['phone2']) ? $_GET['phone2'] : '';
 	    $_SESSION['extension'] = isset($_GET['extension']) ? $_GET['extension'] : '';
-	    $_SESSION['email'] = isset($_GET['email']) ? $_GET['email'] : '';
+	   // $_SESSION['email'] = isset($_GET['email']) ? $_GET['email'] : '';
 	    $_SESSION['emergencyname'] = isset($_GET['emergencyname']) ? $_GET['emergencyname'] : '';
 	    $_SESSION['emergencyphone'] = isset($_GET['emergencyphone']) ? $_GET['emergencyphone'] : '';
 	    $_SESSION['maritial'] = isset($_GET['maritial']) ? $_GET['maritial'] : '';
 
+	    //**************************************************************************************************
+
+	    $email=($_GET['email']);
+	    $usernameCheck=$dbio->getUsername($email);
+	    if($email == $usernameCheck){
+	    	$act = 'getInterests';
+	    	$progress = 1;
+	    	include ('view/info.php');
+	    	print '<script type="text/javascript">'; 
+			print 'alert("The Email '. $email .' is already registered. Please try a different Email!")'; 
+			print '</script>';
+	    }
+
+	    else{
+	    	$_SESSION['email'] = isset($_GET['email']) ? $_GET['email'] : '';
+	    	$progress = 2;
+	    	$act = 'getOther';
+	    	include ('view/interests.php');
+	    }
+
+
+
+
+	    //***************************************************************************************************
+
 	    
 
-	    $progress = 2;
-	    $act = 'getOther';
-	    include ('view/interests.php');
+	    
 	    break;
 	
 	

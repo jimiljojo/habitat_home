@@ -71,26 +71,26 @@
 		<h4 class="show" onclick="swap(this);">Personal Information</h4><div><table class="intTable">
 		<tr><td>
 		Title<span class="mandatory">* </span></td> 
-		<td><select name="title" id="title">
+		<td><select name="title" id="title" value="<?php echo isset($_SESSION['title']) ? $_SESSION['title'] : '' ?>">
 		<option></option>
-  		<option>Mr.</option>
+  		<option value="<? $_SESSION['title'] == "title" ? ' selected="selected"' : '' ?>"> Mr.</option>
   		<option>Mrs.</option>
   		<option>Ms.</option>
   		<option>Dr.</option>
 		</select></label></td><tr><br>
-		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname"></label>
+		<tr><td>First Name<span class="mandatory">* </span></td><td> <input name="fname" type="text" id="fname" value="<?php echo isset($_SESSION['fname']) ? $_SESSION['fname'] : '' ?>"></label>
 		</td></tr>
-		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname"></label></td></tr>
-		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" id="dob"></label></td><td>&nbsp &nbsp(eg:&nbsp mm-dd-yyyy)</td></tr>
-		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender">
+		<tr><td>Last Name<span class="mandatory">* </span></td><td> <input name="lname" type="text" id="lname" value="<?php echo isset($_SESSION['lname']) ? $_SESSION['lname'] : '' ?>"></label></td></tr>
+		<tr><td>Date of Birth<span class="mandatory">*</span></td><td><input name="dob" id="dob" value="<?php echo isset($_SESSION['dob']) ? $_SESSION['dob'] : '' ?>"></label></td><td>&nbsp &nbsp(eg:&nbsp mm-dd-yyyy)</td></tr>
+		<tr><td>Gender<span class="mandatory">*</span></td><td><select name="gender" id="gender" value="<?php echo isset($_SESSION['gender']) ? $_SESSION['gender'] : '' ?>">
 		<option></option><option>Male</option><option>Female</option><option>Other</option></td></tr></table></div>
 
 		<h4 class="show" onclick="swap(this);">Address</h4><div><table class="intTable">
-		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1"></td></tr><br>
-		<tr><td>Street 2</td><td><input name="street2" type="text"></label></td></tr>
-		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city"></label></td></tr>
+		<tr><td>Street 1<span class="mandatory">*</span></td><td> <input name="street1" type="text" id="street1" value="<?php echo isset($_SESSION['street1']) ? $_SESSION['street1'] : '' ?>"></td></tr><br>
+		<tr><td>Street 2</td><td><input name="street2" type="text" value="<?php echo isset($_SESSION['street2']) ? $_SESSION['street2'] : '' ?>"></label></td></tr>
+		<tr><td>City<span class="mandatory">*</span> </td><td><input name="city" type="text" id="city" value="<?php echo isset($_SESSION['city']) ? $_SESSION['city'] : '' ?>"></label></td></tr>
 		<tr><td>State<span class="mandatory">*</span> </td><td>
-        <select name="state" type="text" id="state">
+        <select name="state" type="text" id="state" value="<?php echo isset($_SESSION['state']) ? $_SESSION['state'] : '' ?>">
         <option value=""></option>
         <option value="Alabama">Alabama</option>
         <option value="Alaska">Alaska</option>
@@ -145,18 +145,18 @@
         <option value="Wyoming">Wyoming</option>
         </select>
         </label></td></tr>
-		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip"></label></td></tr> </table></div>
+		<tr><td>Zip<span class="mandatory">*</span> </td><td><input name="zip" type="text" id="zip" value="<?php echo isset($_SESSION['zip']) ? $_SESSION['zip'] : '' ?>"></label></td></tr> </table></div>
 
 		<h4 class="show" onclick="swap(this);">Contact Information</h4><div><table class="intTable">
-		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone"></label></td></tr><br>
-		<tr><td>Secondary Phone</td><td> <input name="phone2" type="text" ></label></td><td>&nbsp ext.<input name="extension" type="text"></td></tr>
-		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email"></label></td></tr>
-        <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname"></label></td></tr>
-        <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone"></label></td></tr>
+		<tr><td>Phone<span class="mandatory">*</span></td><td> <input name="phone" type="text" id="phone" value="<?php echo isset($_SESSION['phone']) ? $_SESSION['phone'] : '' ?>"></label></td></tr><br>
+		<tr><td>Secondary Phone</td><td> <input name="phone2" type="text" value="<?php echo isset($_SESSION['phone2']) ? $_SESSION['phone2'] : '' ?>" ></label></td><td>&nbsp ext.<input name="extension" type="text" value="<?php echo isset($_SESSION['extension']) ? $_SESSION['extension'] : '' ?>"></td></tr>
+		<tr><td>Email<span class="mandatory">*</span> </td><td><input name="email" type="text" id="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>"></label></td></tr>
+        <tr><td>Emergency Contact's Name<span class="mandatory">*</span> </td><td><input name="emergencyname" type="text" id="emergencyname" value="<?php echo isset($_SESSION['emergencyname']) ? $_SESSION['emergencyname'] : '' ?>"></label></td></tr>
+        <tr><td>Emergency Contact's Phone<span class="mandatory">*</span> </td><td><input name="emergencyphone" type="text" id="emergencyphone" value="<?php echo isset($_SESSION['emergencyphone']) ? $_SESSION['emergencyphone'] : '' ?>"></label></td></tr>
         </table></div>
 
 		<h4 class="show" onclick="swap(this);">Maritial Status</h4><div><table class="intTable">
-		<input type="radio" name="maritial" value="1" id="maritial" required="required"><label>Single</label><br>
+		<input type="radio" name="maritial" value="1" id="maritial" required="required" ><label>Single</label><br>
 		<input type="radio" name="maritial" value="2" id="maritial" required="required"><label>Married</label><br>
 		<input type="radio" name="maritial" value="3" id="maritial" required="required"><label>Widow</label><br>
         <input type="radio" name="maritial" value="4" id="maritial" required="required"><label>Divorced</label><br>
