@@ -53,7 +53,7 @@
 		//$this->readInterestType();
 		mysql_query($sql,$con);
 		$dbio->close();
-		echo "You have created a new {$tableName} its interest type is {$type_id} named {$title} with the following description: <br> {$description}";
+		//echo "You have created a new {$tableName} its interest type is {$type_id} named {$title} with the following description: <br> {$description}";
 	}
 	
 	function createInterestType($title, $description)
@@ -66,7 +66,7 @@
 		$sql = "INSERT INTO {$tableName} (title, description) VALUES ('{$title}', '{$description}')";
 		mysql_query($sql,$con);
 		$dbio->close();
-		echo "You have created a new {$tableName} named {$title} with the following description: <br> {$description}";
+		//echo "You have created a new {$tableName} named {$title} with the following description: <br> {$description}";
 	}
 	
 	function readInterest()
