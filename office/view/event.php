@@ -21,7 +21,7 @@ alignment: center;
 #searchBy
 {
 width: 150px;
-height: 30px;
+height: 40px;
 alignment: bottom;
 }
 
@@ -80,9 +80,10 @@ alignment: bottom;
 <li>Create Event will allow you to create new Events</li>
 </ul>
 </span>-->
-<h6>
-1.View All Events will display all Events <br>
-2.Search Events will search all events limiting the search by type </br>
-3.Create Event will allow you to create new Events
-</h6>
+<h5>
+Here is where you will be able to search for an event and make changes, such as
+<br><br>1. Edit Event Information
+<br>2. Search Events
+<br>3. Create Event
+</h5>
 

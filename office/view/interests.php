@@ -59,6 +59,11 @@ if($updated)
 		height: 30px;
 		alignment: bottom;
 	}
+	#alignment
+	{
+	position:relative;
+	float:left;
+	}
 	
 </style>
 
@@ -185,6 +190,7 @@ function dropDownMenu()
 
 
 <!--/////////////////////////////////////////			HTML			\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<div id="alignment">
 <h2>Interests Search</h2>
 <hr>
 <br>
@@ -264,10 +270,12 @@ function dropDownMenu()
 		</select> <!-- end drop down menu -->
 	</form> <!-- end search by form -->
 </div>
+<br>
 <?php //if(empty($_GET['vol1']) || empty($_GET['vol2'])) {return null;} ?>
-<h6>
+<h5>
 Here is where you will be able to search for volunteers with related interests and make changes such as
-<br>1. View Interests and Interest Types 
+<br><br>1. Edit Interests and Interest Types
 <br>2. Create Interests and Interest Types 
 <br>3. Search By Interests and Interest Types
-</h6>
+</h5>
+</div>

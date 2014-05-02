@@ -10,6 +10,14 @@
 		// window.location = url;
 	}
 </script>
+<style>#alignment
+{
+position:relative;
+float:left;
+width:75%;
+}
+</style>
+<div id="alignment">
 <?php
   //Author: bmw5285; copied from j*p*
 	/*
@@ -38,3 +46,4 @@
   	readInterestType();
   }
 ?>
+</div>

@@ -26,7 +26,7 @@
 		}
 </style>
 
-<h4>Your Account</h4>       
+<h2>Your Account</h2>       
 <hr>
 
 <dl>

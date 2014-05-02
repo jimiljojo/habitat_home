@@ -30,8 +30,7 @@
 		}
 </style>
 
-<h4>Office Volunteer</h4>
-
+<h2>Office Volunteer</h2>
 
 <hr>
 
@@ -50,6 +49,6 @@
 	<dd class="list">Find information on Organizations</dd>
     <dt class="list"><a href="/index.php?dir=office&sub=schedules">Schedules</a></dt>
 	<dd class="list">Find volunteer schedules</dd>
-    <dt class="list">Volunteers</dt>
+    <dt class="list"><a href="">Volunteers</a></dt>
 	<dd class="list">Find information on a volunteer</dd>
 </dl>

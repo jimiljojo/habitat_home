@@ -25,7 +25,7 @@
 
 		}
 </style>
-<h4>Administration</h4> 
+<h2>Administration</h2> 
 <hr>
 <dl>
     <dt class="list"><a href="/index.php?dir=admin&sub=auth">Authorizations</a></dt>

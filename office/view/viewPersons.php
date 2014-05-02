@@ -9,7 +9,16 @@
 		document.getElementById("viewPersonsForm").submit();
 			}
 </script>
-
+<style>
+#alignment
+{
+position:relative;
+float:left;
+width:75%;
+}
+</style>
+<div id="alignment">
+<h2>View Persons</h2>
 <br><br>
 <form id="viewPersonsForm" action="index.php" method="GET">
 <input name="dir" id="dir" type="hidden" value="<?php echo $dir; ?>" >
@@ -55,6 +64,7 @@
 		echo '</table>';
 ?>
 </form>
+</div>
 <!--results can be listed here, pushing text down.-->
 
 

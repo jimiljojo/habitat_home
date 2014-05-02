@@ -37,10 +37,10 @@ include 'home/model/home.php';
 
  
 
-<h3>Welcome <?php echo $person->getTitle() . ' ' . $person->getFirst_name() . ' ' . $person->getLast_name(); ?></h3>
+<h2>Welcome <?php echo $person->getTitle() . ' ' . $person->getFirst_name() . ' ' . $person->getLast_name(); ?></h2>
 <hr>
 <?php if ($isAdmin) { ?>
-<h4>Admin</h4>
+<h3>Admin</h3>
 <dl>
     <dt>Authorization Notices</dt>
 	<dd><a href="">Sweat-Equity (13)</a></dd>
@@ -57,7 +57,7 @@ include 'home/model/home.php';
 	<dd><a href="">HO Status Updates (2)</a></dd>
 </dl>
 <?php } else { ?>
-<h4>Calendar</h4>
+<h3>Calendar</h3>
 <dl class="event">
     <dt>23 March</dt>
 	<dd>Knitting club meeting</dd>

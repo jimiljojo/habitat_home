@@ -24,7 +24,7 @@ alignment: center;
 #searchBy
 {
 width: 150px;
-height: 30px;
+height: 35px;
 alignment: bottom;
 font-family: Arial;
 font-size: 15px;
@@ -74,9 +74,9 @@ break;
 
 }// end function
 </script>
+
 <h2> Donations Search <h2>
 <hr>
-<br>
 <form name="input" action="index.php" method="get">
 
 <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
@@ -108,13 +108,11 @@ break;
 
 <!--results can be listed here, pushing text down.-->
 
+<h5>Here is where you will be able to search for a donation and make changes, such as
+<br><br>1. Edit Donation Information
+<br>2. Create New Donation
+</h5>
 <br>
-<h6>Here is where you will be able to search for an account and make changes, such as
-<br><br/>1. Volunteer Status
-<br>2. Availability
-<br><br/>An administrator will be able to create an account for donors, homeowners, etc.
-</h6>
-<br><br/>
 
 
 

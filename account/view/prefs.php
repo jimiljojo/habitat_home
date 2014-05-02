@@ -37,9 +37,9 @@
 	<input type="submit" value="Update">
 </form>
 <hr>
-<h6>
- Email may still be used in case you forget your password and start an account recovery.
-</h6>
+<h5>
+ Update your preferred method of contact for Habitat for Humanity
+</h5>
 <!--<span class="note">
     Update your contact preferences here. <br>
     Email may still be used in case you forget your password and start an account recovery.

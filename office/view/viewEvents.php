@@ -15,6 +15,16 @@
 			}
 </script>
 
+<style>
+#alignment
+{
+position:relative;
+float:left;
+width:65%;
+}
+</style>
+
+<div id="alignment">
 <h2>All Events</h2>
 <hr>
 
@@ -99,4 +109,5 @@
 	<?php }// end foreach ?>
 </table> 
 </form>
+</div>
 

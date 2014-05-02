@@ -31,7 +31,13 @@
     if($update)
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 ?>
-<h4>Personal Information</h4>
+<style>
+th
+{
+font-size:1.3em;
+}
+</style>
+<h2>Personal Information</h2>
 
 <hr>
 <form action="index.php" method="GET">
@@ -45,6 +51,7 @@
 	    <th>Address Info</th>
 	    <th>Contact Info</th>
 	</tr>
+
 	<tr>
 	    <td>
 		<select name="title" type="text">

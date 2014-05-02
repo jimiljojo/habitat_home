@@ -27,6 +27,11 @@ width: 150px;
 height: 30px;
 alignment: bottom;
 }
+#alignment
+{
+position:relative;
+float:left;
+}
 
 </style>
 
@@ -65,12 +70,12 @@ alignment: bottom;
 <!--results can be listed here, pushing text down.-->
 
 <br>
-<h6>Here is where you will be able to search for an account and make changes, such as
-<br><br>1. Volunteer Status
-<br>2. Availability
-<br><br/>An administrator will be able to create an account for donors, homeowners, etc.
-<h6/>
-<br><br>
+<h5>Here is where you will be able to search for an organization and make changes, such as
+<br><br>1. Edit Organization Information
+<br>2. Create New Organization
+<br>3. Search For an Organization
+<h5/>
+
 
 
 

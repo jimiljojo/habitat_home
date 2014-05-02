@@ -14,14 +14,20 @@ a {text-decoration: none;}
 
 /* ----- */
 
-#body {margin-top: 20px;}
+#body {margin-top: 20px;
+position:relative;
+float:left;
+width:80%;}
 
 #mainNav, #content {
 	display: inline;
 	float: left;
 }
 
-#mainNav {width: 200px;}
+#mainNav {
+width: 200px;
+margin-right:20px;
+margin-left:20px;}
 
 
 

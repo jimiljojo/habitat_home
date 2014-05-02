@@ -28,6 +28,11 @@ height: 30px;
 alignment: bottom;
 }
 
+#alignment
+{
+position:relative;
+float:left;
+}
 </style>
 
 
@@ -72,7 +77,8 @@ break;
 
 }// end function
 </script>
-<h2> Persons Search </h2>
+<div id="alignment">
+<h2>Persons Search </h2>
 <hr>
 <br>
 <form name="input" action="index.php" method="get">
@@ -106,13 +112,13 @@ break;
 <!--results can be listed here, pushing text down.-->
 
 <br>
-<h6>Here is where you will be able to search for an account and make changes, such as
-<br><br>1. Volunteer Status
-<br>2. Availability
-<br><br>An administrator will be able to create an account for donors, homeowners, etc.
-</h6>
+<h5>Here is where you will be able to search for a person and make changes, such as
+<br><br>1. Edit Account Information
+<br>2. Create New a Account
+<br>3. Search For an Account by <b>Name</b> or <b>Organization</b>
+</h5>
 <br><br>
-
+</div>
 
 
 <!-- end-->
