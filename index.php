@@ -63,10 +63,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="css/default.css" >
+		<link rel="stylesheet" href="css/default.css" media="screen">
 		<link rel="stylesheet" href="css/nav.css" >
 		<link rel="stylesheet" href="css/color.css" >
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
+		<link rel="stylesheet" type="text/css" href="css/defaultprintcss.css" media="print">
+		<link rel="alternative stylesheet" type="text/css" href="css/defaultprintingcss-preview.css" media="screen" title="Print Preview" >
+		<link rel="stylesheet" type="text/css" href="css/print.css" media="print" > 
+		<script src="js/print.js"></script> 
 
 	 
 		<?php
@@ -95,6 +99,7 @@
 				
 			</header>
 			<div id="body">
+			<div id="mainnav">
 				<?php 
 				if ($dir!='login') {
 
@@ -129,10 +134,11 @@
 
 				<?php //if (file_exists($dir . '/menu.php')) {include 'root/subNav.php';} ?>
 				<div id="content">
+				<a id="printpage" href="#" onclick="print_preview(); return false;"> Print this page</a>
 					<?php include $page; // view call ?>
 				</div>
 			</div>
-			<!--<footer></footer>-->
+			</div>
 		</div>
 	</body>
 </html>
