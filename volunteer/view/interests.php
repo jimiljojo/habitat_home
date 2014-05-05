@@ -20,7 +20,7 @@
     if($updated)
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 ?>
-    <h4>Your Volunteer Interests</h4>
+    <h2>Your Volunteer Interests</h2>
     <hr>
     <button onclick="swapAll('show');">Show All</button>
     <button onclick="swapAll('hide');">Hide All</button>
@@ -92,7 +92,7 @@
     <br>
     <input type="submit" value="Update">
 </form>
-<hr/>
-<div class="note">
+<hr>
+<h5>
     Check the box next to the type of work you are interested in performing for Habitat York
-</div>
+</h5>
