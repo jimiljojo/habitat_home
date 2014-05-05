@@ -1,6 +1,12 @@
 body {
 	font-family: arial;
 	margin: 0px;
+	width:800px;
+	width:100%;
+}
+#printpage
+{position:relative;
+float:right;
 }
 
 h1 {
@@ -19,17 +25,22 @@ position:relative;
 float:left;
 width:80%;}
 
-#mainNav, #content {
+#mainNav {
 	display: inline;
 	float: left;
+	left: 20px;
+	top: 120px;
+	width:25%;
+	margin-right:20px;
 }
 
-#mainNav {
-width: 200px;
-margin-right:20px;
-margin-left:20px;}
-
-
+#content
+{
+	display:inline;
+	float:left;
+	position:relative;
+	width:65%;
+}
 
 /* ----- */
 
