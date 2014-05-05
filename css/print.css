@@ -1,0 +1,13 @@
+#ads, #printFriendly, #mainNav, #mainnav, #brand, a.brand {
+  display: none !important;
+}
+
+#content {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12pt;
+}
+
+#content a[href]:after {
+   content: " (" attr(href) ") ";
+   font-size: 90%;}
+ 
