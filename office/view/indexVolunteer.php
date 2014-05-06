@@ -61,7 +61,7 @@ function shitTheBed() {
     <input name="search" type="submit" value="Search By">
     <select id="searchBy" name="searchBy" onchange="shitTheBed();">
 	<option value="name" selected="selected">Name</option>
-	<option value="phone number">Phone Number</option>
+	
 	
     </select>
     <input id="input1" name="input1" placeholder="first name" type="text">
@@ -84,7 +84,7 @@ function shitTheBed() {
     Here you can search for a volunteer by:
     <ul>
         <li>Volunteer Name</li>
-        <li>Phone Number</li>
+        
         
     </ul>
     Only an administrator will be able to create a new volunteer
