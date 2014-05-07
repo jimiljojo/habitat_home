@@ -37,6 +37,7 @@
 	require_once ('model/dbio_des301.php');
 	require_once ('class/volunteer.php');
 	require_once ('class/volunteer_has_interest.php');
+	require_once('class/workHistory.php');
 	//require_once('model/databaseio.php');
 	//require_once('model/urlio.php');
 	//require_once('model/sessionio.php');

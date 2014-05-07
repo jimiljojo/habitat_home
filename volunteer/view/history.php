@@ -6,6 +6,11 @@
         global $sub;
         global $act;
         global $msg;
+        global $person_id;
+    
+
+        $person_id=$_SESSION['personid'];
+        //var_dump($person_id);
         
        // $dbevent = getEvent();
         $dbevent= getEvents();
@@ -18,6 +23,12 @@
         
 
         $dbHours = getHours();
+        //$person_id='8';
+        $result=$dbio->getWorkHistory($person_id);
+        //var_dump($result);
+        
+        
+
         
 
         
@@ -92,78 +103,24 @@
         <th>Date</th>
         <th>Hours Worked</th>
         
-        <th>Authorized</th>
+        <!-- <th>Authorized</th> -->
     </tr>
     
     <?php
-        // global $col;
-        
-                
-        // $col = count($workHistory);
-        
-        // for ($i = 0; $i < $col;)
-        // {
-        //     $workHistory2 = $workHistory[$i];
-            
-        //     // $month = substr($date[$i],4,2);
-        //     // $day = substr($date[$i],6,8);
-        //     // $year = substr($date[$i],0,4);
-        //     $month = substr($date[$i]);
-        //     $day = substr($date[$i]);
-        //     $year = substr($date[$i]);
-
-        //     $startHours = substr($start[$i],0,2);
-        //     $startMins = substr($start[$i],2,5);
-            
-        //     $endHours = substr($end[$i],0,2);
-        //     $endMins = substr($end[$i],2,4);
-            
-        //     $timeOfDay = ($startHours > 11) ? 'PM' : 'AM';
-        //     $timeOfDay2 = ($endHours > 11) ? 'PM' : 'AM';
-            
-           // $totalHours = $totalHours+($dbEndTime - $dbStartTime);
-        //     $totalEndMin = $totalEndMin+($endMins);
-        //     $totalStartMin = $totalStartMin+($startMins);
-        
-            
-        //     if ($startHours > 12) {$startHours = strval($startHours-12);}
-        //     if ($endHours > 12) {$endHours = strval($endHours-12);}
-            
-            echo '<tr>';
-                // echo '<td>' . $association[$i] . '</td>';
-                // echo '<td>' . $day . '/' . $month . '/' . $year . '</td>';
-                // echo '<td>' . $startHours . ':' . $startMins . ' ' . $timeOfDay . '</td>';
-                // echo '<td>' . $endHours . ':' . $endMins . ' ' . $timeOfDay2 . '</td>';
-                // echo '<td>' . $auth[$i] . '</td>';
-                foreach ($dbevent as $a) echo '<td>' . $a . '</td>';
-                foreach ($dbdate as $b) echo '<td>' . $b . '</td>';
-                foreach ($dbHours as $c) echo '<td>' . $c . '</td>';
-                
-                echo '<td>' . "Yes" . '</td>';
-            echo '</tr>';
-            
-        //     $i++;
-            
-        // }
-        
-        $totalMin = $totalMin+($totalEndMin-$totalStartMin);
-        
-        while ($totalMin >= 60)
-        {
-            $totalMin = $totalMin - 60;
-            $totalHours = $totalHours + 1;                 
+      foreach ($result as $workHistory) {
+            echo "<tr>";
+            echo "<td>" . $workHistory->getEvent() . "</td>";
+            echo "<td>" . $workHistory->getDateW() . "</td>";
+            echo "<td>" . $workHistory->getTime() . "</td>";
+            echo "<tr>";
         }
         
-        while ($totalMin < 0)
-        {
-            $totalMin = $totalMin + 60;
-            $totalHours = $totalHours - 1;
-        }
+        
     ?>
    
 </table>
     
-    <h5>Total Time Worked: 
+    <h5>Total Hours Worked: 
         <?php echo "105 hours"; ?>
     
     
