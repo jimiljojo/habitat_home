@@ -14,7 +14,7 @@ if($updated)
 
 	input[type=submit] 
 	{
-		width: 125px;
+		width: 140px;
 		height: 40px;
 	}
 	

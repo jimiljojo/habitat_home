@@ -32,6 +32,7 @@ alignment: bottom;
 {
 position:relative;
 float:left;
+width:100%;
 }
 </style>
 

@@ -1,7 +1,7 @@
-<h2>volunteer/view/availability.php</h2>
+<h2>Your Availabilities</h2>
 <hr>
 <form action="index.php">
-    <h5><strong>I am available to work: </strong></h5>
+    <h4><strong>I am available to work: </strong></h4>
 
 <?php
 
@@ -66,7 +66,7 @@
     <button>Save Changes</button>
 </form>
 <hr>
-<span class="note">
-    Here is where your availability is displayed.<br>
-    You can also make changes to your availability here.
-</span>
+<h5>
+    Here is where your availabilities is displayed.<br>
+    You can also make changes to your availabilities here.
+</h5>

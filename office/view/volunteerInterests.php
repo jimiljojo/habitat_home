@@ -17,7 +17,7 @@
     if($updated)
 		echo '<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>UPDATED</strong> You successfully updated the information.</div>';
 ?>
-    <h4>Your Volunteer Interests</h4>
+    <h2>Your Volunteer Interests</h2>
     <hr>
     <button onclick="swapAll('show');">Show All</button>
     <button onclick="swapAll('hide');">Hide All</button>

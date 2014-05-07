@@ -1,4 +1,4 @@
-<h2>volunteer/view/consent.php</h2>
+<h2>Your Consents</h2>
 <hr>
 <form action"index.php">
     <h5><strong>I consent the following: </strong></h5>
@@ -95,12 +95,12 @@
     <input name="act" type="hidden" value="updateConsent" >
     <input name="dir" type="hidden" value="<?php echo $dir; ?>" >
     <input name="sub" type="hidden" value="<?php echo $sub; ?>" >
-    <input type="checkbox" name="less18" value="1" <?php echo $less18; ?> <?php if ($less18 == 'checked="checked"') ?> /> I am less than 18 years of age and have read the Minor Waiver<br>
+    <input type="checkbox" name="less18" value="1" <?php echo $less18; ?> <?php if ($less18 == 'checked="checked"') ?> /> I am less than 18 years of age and have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/YorkHabitatMinorWaiverRelease.pdf">Minor Waiver</a><br>
     <input type="checkbox" name="greater18" value="1" <?php echo $greater18; ?> <?php if ($greater18 == 'checked="checked"') ?> /> I am greater than 18 years of age<br>
     <input type="checkbox" name="photo" value="3" <?php echo $checkedPhoto; ?> <?php if ($checkedPhoto == 'checked="checked"') ?> /> I consent for my photo to be used by Habitat<br>
-    <input type="checkbox" name="safetyGuidelines" value="4" <?php echo $safetyGuidelines; ?> <?php if ($safetyGuidelines == 'checked="checked"') ?> /> I have read the Construction Safety Guidelines<br>
-    <input type="checkbox" name="video" value="5" <?php echo $checkedVideo; ?> <?php if ($checkedVideo == 'checked="checked"') ?> /> I have viewed the Construction Safety video<br>
-    <input type="checkbox" name="liability" value="6" <?php echo $checkLiability; ?> <?php if ($checkLiability == 'checked="checked"') ?> /> I accept the terms of Liability Waiver Form<br><br>
+    <input type="checkbox" name="safetyGuidelines" value="4" <?php echo $safetyGuidelines; ?> <?php if ($safetyGuidelines == 'checked="checked"') ?> /> I have read the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/2013/ConstructionSafety.pdf">Construction Safety Guidelines</a><br>
+    <input type="checkbox" name="video" value="5" <?php echo $checkedVideo; ?> <?php if ($checkedVideo == 'checked="checked"') ?> /> I have viewed the <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/ConstructionVideo.html">Construction Safety video</a><br>
+    <input type="checkbox" name="liability" value="6" <?php echo $checkLiability; ?> <?php if ($checkLiability == 'checked="checked"') ?> /> I accept the terms of <a href="http://www.yorkhabitat.org/TDE_CMS/database/userfiles/file/waiverform20120711.pdf">Liability Waiver Form</a><br><br>
     
     <h5><strong>Emergency Contact Information: </strong></h5>
     <table>
@@ -138,8 +138,8 @@
     <button value="submit" onclick="return check();">Save Changes</button>
 </form>
 <hr>
-<span class="note">
-    You can not un-check items that have been already completed.<br>
-    You must be over the age of 16 and have completed all consent requirements to be available for construction work.<br>
-    Emergency contact information must be enter to be available for construction work.
-</span>
+<h5>
+    <br>You can not un-check items that have been already completed.<br>
+    <br>You must be over the age of 16 and have completed all consent requirements to be available for construction work.<br>
+    <br>Emergency contact information must be enter to be available for construction work.
+</h5>

@@ -6,12 +6,37 @@
 
 
 ?>
+<style> /* css */ 
+
+button, input[type=submit] 
+{
+width: 150px;
+height: 40px;
+}
+
+select
+{
+alignment: center;
+}
+
+#viewAll, #searchBy
+{
+width: 150px;
+height: 30px;
+alignment: bottom;
+}
+div.vol
+{
+width:800px;
+}
+
+</style>
 
 <script>
 
-function shitTheBed() {
-	var shit = document.getElementById("searchBy").value;
-	switch (shit) {
+function switchDropDown() {
+	var change = document.getElementById("searchBy").value;
+	switch (change) {
 		case "name":
 			document.getElementById("input1").placeholder="first name";
 			document.getElementById("input1").style.display="inline";
@@ -46,54 +71,48 @@ function shitTheBed() {
        
 
 <div id="content">
+<div class="vol">
 	<h2>Volunteer Search</h2>
 <hr>
-<!-- back button -->
-<button type="Submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=listVolunteer';">
+
+<button type="submit" onclick="window.location='index.php?dir=office&sub=volunteer&act=listVolunteer';">
     View All</button>
-    
-   <!-- start form --> 
-    
-<form method="GET" action="index.php">
+<br>
+<form class="vol" method="GET" action="index.php">
     <input type="hidden" name="dir" value="office" >
     <input type="hidden" name="sub" value="volunteer" >
     <input type="hidden" name="act" value="search" >
+<br>
     <input name="search" type="submit" value="Search By">
-    <select id="searchBy" name="searchBy" onchange="shitTheBed();">
-	<option value="name" selected="selected">Name</option>
-	
-	
-    </select>
+		<select id="searchBy" name="searchBy" onchange="switchDropDown();">
+			<option value="name" selected="selected">Name</option>
+			<option value="phone number">Phone Number</option>
+		</select>
     <input id="input1" name="input1" placeholder="first name" type="text">
     <input id="input2" name="input2" placeholder="last name" type="text">
 </form>
-
-<form name="input" action="index.php" method="get"> 
+<br>
+<form class="vol" name="input" action="index.php" method="get"> 
 	<input name="dir" type="hidden" value="<?php echo $dir; ?>" >
 	<input name="sub" type="hidden" value="<?php echo $sub; ?>" >
 	<input name="act" type="hidden" value="create" >
 	<input type="submit" value="Create New">
 </form>
-
-<!-- end form -->
-<br><br/>
+</div><br><br>
 <hr>
- 
- <!-- information text -->
-<div>
-    Here you can search for a volunteer by:
-    <ul>
-        <li>Volunteer Name</li>
-        
-        
-    </ul>
-    Only an administrator will be able to create a new volunteer
-    <br>
-</div>        </div>
-    </div>
-    </body>	<footer>
-	2014 <span class="habitatBlue">|</span> York Habitat for Humanity
-	</footer>
+
+    <h5>Here you can search for a volunteer by:
+    <br><br>
+      1. Volunteer Name
+	<br>
+      2. Phone Number
+	</h5>
+    
+
+    <br>  
+
+     </div>
+    </body>
 </html>
 
 

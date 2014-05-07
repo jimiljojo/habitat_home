@@ -1,12 +1,21 @@
 body {
 	font-family: arial;
-	margin: 0px;
-	width:800px;
 	width:100%;
-}
+border-style:solid;
+	border-width:5px;
+border-color:white;
+	}
+	#align
+	{
+margin-right:30%;
+	width:900px;
+	}
+	
 #printpage
-{position:relative;
+{
+position:relative;
 float:right;
+
 }
 
 h1 {
@@ -21,31 +30,48 @@ a {text-decoration: none;}
 /* ----- */
 
 #body {margin-top: 20px;
-position:relative;
+margin-left:20px;
+width:95%;
 float:left;
-width:80%;}
+border-style:solid;
+	border-width:5px;
+border-color:white;
+}
 
-#mainNav {
+#mainNav
+{
 	display: inline;
-	float: left;
+	float:left;
 	left: 20px;
 	top: 120px;
-	width:25%;
-	margin-right:20px;
+	width:250px;
+	
+border-style:solid;
+	border-width:5px;
+border-color:white;
 }
 
-#content
+#content 
 {
-	display:inline;
-	float:left;
-	position:relative;
+	display: inline;
+	float: left;
+	position: relative;
 	width:65%;
+border-style:solid;
+	border-width:5px;
+border-color:white;
 }
+
+/*
+
+
+#content {width: 800px;}*/
 
 /* ----- */
 
 .logout {
-    color: crimson;
+    color: white;
+    background-color: crimson;
     border-radius: 10px;
     padding: 0px 5px;
 }

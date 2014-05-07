@@ -1,4 +1,4 @@
-<h2>volunteer/view/history.php</h2>
+<h2>Work History</h2>
 <hr>
 
 <?php

@@ -23,6 +23,5 @@
 </form>
 <hr>
 <span class="note">
-    Here is where your availability is displayed.<br>
-    You can also make changes to your availability here.
+    Here is where you can chose your availabilities for work
 </span>

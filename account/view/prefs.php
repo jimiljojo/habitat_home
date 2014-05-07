@@ -38,7 +38,7 @@
 </form>
 <hr>
 <h5>
- Update your preferred method of contact for Habitat for Humanity
+ Update your preferred methods of contact for Habitat for Humanity
 </h5>
 <!--<span class="note">
     Update your contact preferences here. <br>

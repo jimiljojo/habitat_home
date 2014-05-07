@@ -7,7 +7,7 @@
 ?>
 <style> /* css */ 
 
-input[type=submit] 
+input[type=submit], #searchBy 
 {
 width: 150px;
 height: 40px;
@@ -20,9 +20,12 @@ alignment: center;
 
 #searchBy
 {
-width: 150px;
-height: 40px;
 alignment: bottom;
+}
+#eventType
+{
+font-size:15px;
+height:35px;
 }
 
 </style>
