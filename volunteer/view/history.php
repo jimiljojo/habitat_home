@@ -120,8 +120,16 @@
    
 </table>
     
-    <h5>Total Hours Worked: 
-        <?php echo "105 hours"; ?>
+    <h5><b>Total Hours Worked: 
+        <?php
+        $a=0;
+        foreach($result as $abc){
+            $a=$a+$abc->getTime();
+        }
+
+        echo $a." Hours";
+
+         ?>
     
     
     </h5>
