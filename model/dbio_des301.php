@@ -2509,7 +2509,7 @@ class DBIO {
 		$sql="SELECT Work.amount,Work.date ,Event.title from Work inner join Event on Work.Event_event_id = Event.event_id where Work.Volunteer_Person_person_id ='" .$person_id."'";
 		$this->open();
 		$result = mysql_query($sql,$con);
-		$history=array();
+		$Whistory=array();
 		while($rows=mysql_fetch_array($result)){
 			$history=new WorkHistory();
 			$history->setTime($rows[0]);
