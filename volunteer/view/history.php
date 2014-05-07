@@ -9,6 +9,7 @@
         
        // $dbevent = getEvent();
         $dbevent= getEvents();
+
         // foreach($dbevent as $a){
         //     echo $a;
         // }

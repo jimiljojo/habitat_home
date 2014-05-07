@@ -750,7 +750,8 @@ class DBIO {
 
 	public function getEventId($person_id){
 		global $con;
-		$sql='SELECT Event_event_id from Person_relates_to_Event where Person_person_id="'.$person_id.'"'; 
+		//$sql='SELECT Event_event_id from Person_relates_to_Event where Person_person_id="'.$person_id.'"'; 
+		$sql='Select Event_event_id from Work where Volunteer_Person_person_id="'.$person_id.'"';
 		//$eventId=array();
 		$this->open();
 		$result=mysql_query($sql,$con);

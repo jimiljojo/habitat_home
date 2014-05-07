@@ -8,6 +8,7 @@
 	switch ($act) {
 
 		case 'viewHistory':
+		
 		break;
 		
 		default:
