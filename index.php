@@ -1,3 +1,4 @@
+
 <?php
 
 	session_start();
@@ -67,11 +68,10 @@
 		<link rel="stylesheet" href="css/nav.css" >
 		<link rel="stylesheet" href="css/color.css" >
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
-		<link rel="stylesheet" type="text/css" href="css/defaultprintcss.css" media="print">
-		<link rel="alternative stylesheet" type="text/css" href="css/defaultprintingcss-preview.css" media="screen" title="Print Preview" >
-		<link rel="stylesheet" type="text/css" href="css/print.css" media="print" > 
-		<script src="js/print.js"></script> 
-
+		<link rel="stylesheet" href="css/defaultprintcss.css" media="print">
+		<link rel="alternative stylesheet" href="css/defaultprintingcss-preview.css" media="screen" title="Print Preview">
+		<link rel="stylesheet" type="text/css" href="css/print.css" media="print">
+		<script src="js/print.js"></script>
 	 
 		<?php
 			// <link rel="stylesheet" href="css/nav.css" >
@@ -100,6 +100,7 @@
 			</header>
 			<div id="body">
 			<div id="mainnav">
+			<div id="mainNav">
 				<?php 
 				if ($dir!='login') {
 
@@ -131,13 +132,14 @@
 					
 					include 'root/nav.php';
 				} ?>
-
+				</div>
+				</div>
 				<?php //if (file_exists($dir . '/menu.php')) {include 'root/subNav.php';} ?>
 				<div id="content">
-				<a id="printpage" href="#" onclick="print_preview(); return false;"> Print this page</a>
+							<a id="printpage" href="#" onclick="print_preview(); return false;">Print this page</a>
+
 					<?php include $page; // view call ?>
 				</div>
-			</div>
 			</div>
 		</div>
 	</body>
