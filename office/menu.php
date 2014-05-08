@@ -13,7 +13,6 @@
 	$subLinks[] = new Link('Persons','persons');
 	$subLinks[] = new Link('Interests','interests');
 	$subLinks[] = new Link('Organizations','orgs');
-	$subLinks[] = new Link('Schedules','schedules');
 	$subLinks[] = new Link('Volunteer','volunteer');
 
 ?>
