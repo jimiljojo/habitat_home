@@ -87,17 +87,10 @@
          
 ?>
 
-<style>
-    table,th,td
-    {
-        border:1px solid black;
-        border-collapse:collaspe;
-        padding: 5px;
-    }
-</style>
+
 
 <form>
-<table>
+<table class="table table-striped table-hover " style="width:100%">
     <tr>
         <th>Event/Project</th>
         <th>Date</th>
@@ -118,10 +111,14 @@
         
     ?>
    
-</table>
-    
-    <h5><b>Total Hours Worked: 
-        <?php
+</table><br><br>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">Total Hours Worked:</h3>
+  </div>
+  <div class="panel-body">
+    <?php
         $a=0;
         foreach($result as $abc){
             $a=$a+$abc->getTime();
@@ -130,9 +127,11 @@
         echo $a." Hours";
 
          ?>
+  </div>
+</div>
+
     
     
-    </h5>
     
 </form>
 <hr>
