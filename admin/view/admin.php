@@ -28,7 +28,7 @@
 <h2>Administration</h2> 
 <hr>
 <dl>
-    <dt class="list"><a href="/index.php?dir=admin&sub=auth">Authorizations</a></dt>
+    <dt class="list"><a href="index.php?dir=admin&sub=auth">Authorizations</a></dt>
 	<dd class="list">This is where items are located that an Administrator must authorize. </dd>
    <!--  <dt class="list"><a href="/index.php?dir=admin&sub=alerts">System Alerts</a></dt>
 	<dd class="list">This is where the administrator will see alerts about pledges, delinquent mortgages, security notices, etc. </dd>
